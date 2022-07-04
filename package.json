@@ -9,6 +9,9 @@
   },
   "private": true,
   "dependencies": {
+    "@material/material-color-utilities": "^0.1.2",
+    "@soperio/react": "^0.1.7",
+    "color-blend": "^4.0.0",
     "core-js": "^3.6.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
