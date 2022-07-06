@@ -1,8 +1,8 @@
-import { ComponentManager, ComponentTheme, HTMLTextAreaProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentTheme, HTMLTextAreaProps } from "@soperio/react";
 import React from "react";
-import { ComponentProps, ExtendConfig } from "./types";
-
 import defaultConfig from "./config";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.TextArea";
 

@@ -1,4 +1,5 @@
-import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, InvalidState, InvalidThemeProps, SoperioComponent, ValidState, ValidThemeProps } from "@soperio/react";
+import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, InvalidState, InvalidThemeProps, ValidState, ValidThemeProps } from "@katia/core";
+import { SoperioComponent } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Select">;
 
@@ -6,5 +7,5 @@ export type ComponentProps = SoperioComponent & TraitProps & ValidState & Invali
 
 interface ConfigStateProps extends ValidThemeProps, InvalidThemeProps, DisabledThemeProps { }
 
-export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
+export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

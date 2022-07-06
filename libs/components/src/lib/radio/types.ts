@@ -1,4 +1,5 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, SoperioComponent } from "@soperio/react";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig } from "@katia/core";
+import { SoperioComponent } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Radio">;
 
@@ -6,5 +7,5 @@ export type ComponentProps = SoperioComponent & TraitProps & CheckedState & Disa
 
 interface ConfigStateProps extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps { }
 
-export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
+export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

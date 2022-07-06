@@ -1,20 +1,21 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/react";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { SoperioComponent } from "@soperio/react";
 import { ButtonProps } from "../button";
 
 type TraitProps = ComponentTypings<"Soperio.Accordion">;
 
 export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
 
-interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type AccordionComponentProps = {
-  accordion?: SoperioComponent & ConfigStateProps,
-  item?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
-  itemHeader?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
-  itemHeaderLabel?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
-  itemHeaderCollapseButton?: SoperioComponent & ConfigStateProps,
-  itemContent?: SoperioComponent & ConfigStateProps, // AccordionContentThemeProps
+  accordion: SoperioComponent,
+  item: SoperioComponent, // AccordionHeaderThemeProps
+  itemHeader: SoperioComponent, // AccordionHeaderThemeProps
+  itemHeaderLabel: SoperioComponent, // AccordionHeaderThemeProps
+  itemHeaderCollapseButton: SoperioComponent & ButtonProps,
+  itemContent: SoperioComponent, // AccordionContentThemeProps
 }
 
-export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, AccordionComponentProps>>;
+export type Config = MultiPartComponentConfig<TraitProps, AccordionComponentProps, ConfigStateProps>;
 export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;

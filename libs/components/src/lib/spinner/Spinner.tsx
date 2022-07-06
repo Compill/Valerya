@@ -1,4 +1,5 @@
-import { ComponentManager, ComponentTheme, SoperioComponent, useColor, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentTheme, SoperioComponent, useColor } from "@soperio/react";
 import React from "react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";

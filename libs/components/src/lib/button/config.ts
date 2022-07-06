@@ -1,59 +1,60 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config =
 {
-  return {
-    defaultProps: {
-      stateDisabled:
-      {
-        cursor: "default"
-      },
-    },
-    defaultTraits:
+  defaultProps:
+  {
+    stateDisabled:
     {
-      variant: "default",
-      corners: "default",
-      size: "md"
+      cursor: "default"
     },
-    traits:
+  },
+  defaultTraits:
+  {
+    variant: "default",
+    corners: "default",
+    size: "md"
+  },
+  traits:
+  {
+    size:
     {
-      size:
+      "sm":
       {
-        "sm":
-        {
-          px: "2",
-          py: "1.5",
-          fontSize: "sm"
-        },
-        "md":
-        {
-          px: "2.5",
-          py: "1.5",
-          fontSize: "md"
-        },
-        "lg":
-        {
-          px: "3",
-          py: "2",
-          fontSize: "lg"
-        },
-        "xl":
-        {
-          px: "3.5",
-          py: "2.5",
-          fontSize: "xl"
-        },
-        "x2":
-        {
-          px: "4",
-          py: "2.5",
-          fontSize: "x2"
-        }
+        px: "2",
+        py: "1.5",
+        fontSize: "sm"
       },
-      variant:
+      "md":
       {
-        default:
+        px: "2.5",
+        py: "1.5",
+        fontSize: "md"
+      },
+      "lg":
+      {
+        px: "3",
+        py: "2",
+        fontSize: "lg"
+      },
+      "xl":
+      {
+        px: "3.5",
+        py: "2.5",
+        fontSize: "xl"
+      },
+      "x2":
+      {
+        px: "4",
+        py: "2.5",
+        fontSize: "x2"
+      }
+    },
+    variant:
+    {
+      default: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           bgColor: /*darkMode ? "#ff00ff" : */theme.default,
           hover_bgColor: theme.defaultHover,
@@ -79,8 +80,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             bgColor: theme.defaultActive,
             hover_bgColor: theme.defaultActive,
           }
-        },
-        light:
+        }
+      ),
+      light: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           // bgColor: theme.light,
           bgColor: theme.default,
@@ -113,8 +116,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             bgOpacity: "70",
             textOpacity: "85",
           }
-        },
-        link:
+        }
+      ),
+      link: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           px: "0",
           py: "0",
@@ -134,8 +139,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             hover_textDecoration: "no-underline",
             cursor: "default"
           }
-        },
-        outline:
+        }
+      ),
+      outline: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           bgColor: "transparent",
           border: "2",
@@ -161,8 +168,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           {
             textOpacity: "85"
           }
-        },
-        borderless:
+        }
+      ),
+      borderless: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           bgColor: "transparent",
           textColor: theme.default,
@@ -185,15 +194,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             cursor: "default"
           }
         }
-      },
-      corners:
-      {
-        square: {},
-        default: { rounded: true },
-        pill: { rounded: "full" }
-      }
+      )
+    },
+    corners:
+    {
+      square: {},
+      default: { rounded: true },
+      pill: { rounded: "full" }
     }
-  };
+  }
 }
 
 export default config

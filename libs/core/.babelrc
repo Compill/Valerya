@@ -4,7 +4,8 @@
       "@nrwl/react/babel",
       {
         "runtime": "automatic",
-        "useBuiltIns": "usage"
+        "useBuiltIns": "usage",
+        "importSource": "@soperio"
       }
     ]
   ],

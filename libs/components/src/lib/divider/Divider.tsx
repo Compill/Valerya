@@ -1,7 +1,8 @@
-import { ComponentManager, ComponentTheme, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentTheme } from "@soperio/react";
 import React from "react";
-import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Divider";
 
@@ -28,7 +29,7 @@ export const Divider = React.forwardRef<HTMLHRElement,DividerProps>(({
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant,orientation }, props);
   return (
     <hr
-    
+
     transition={firstRender ? "none" : "all"}
       {...styles}
       {...props}

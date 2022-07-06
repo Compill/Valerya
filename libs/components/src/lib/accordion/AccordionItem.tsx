@@ -51,7 +51,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
   const show = _isOpen || expanded === id
 
   return (
-    <div {...styles.item} {...itemStyle}>
+    <div {...styles["item"]} {...itemStyle}>
       <div
         onClick={handleClick}
         dflex
@@ -60,19 +60,19 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         alignItems="center"
         cursor="pointer"
         ref={ref}
-        {...styles.itemHeader}
+        {...styles["itemHeader"]}
         {...itemHeaderStyle}
         {...props}>
         <div
           borderB={showBorder && borderWidth === "full" ? true : "0"}
-          {...styles.itemHeaderLabel}
+          {...styles["itemHeaderLabel"]}
           {...itemHeaderLabelStyle}
         >
           {label}
         </div>
 
         {children && (
-          <Button onClick={handleClick} {...styles.itemHeaderCollapseButton} {...itemHeaderCollapseButtonStyle}>
+          <Button onClick={handleClick} {...styles["itemHeaderCollapseButton"]} {...itemHeaderCollapseButtonStyle}>
             {firstRender && (
               <>
                 {expandIcon && collapseIcon && (show ? collapseIcon : expandIcon)}
@@ -131,7 +131,7 @@ const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>
           variants={accordionAnimation}
           style={{ overflow: "hidden" }}
         >
-          <div overflow="hidden" {...styles.itemContent} {...props} ref={ref}>
+          <div overflow="hidden" {...styles["itemContent"]} {...props} ref={ref}>
             {children}
           </div>
         </motion.div>

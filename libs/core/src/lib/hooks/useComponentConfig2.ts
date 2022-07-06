@@ -1,11 +1,10 @@
-import { SoperioComponent, useSurface, useDarkMode, useTheme, SurfaceSchemeSet } from "@soperio/theming";
-import { IS_DEV } from "@soperio/utils";
+import { IS_DEV, SoperioComponent, useDarkMode, useTheme } from "@soperio/react";
 import deepmerge from "deepmerge";
-import { ThemingToken } from "libs/theming/src/lib/ThemingToken";
-import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { ComponentConfig2, ExtendComponentConfig2 } from "../ComponentConfig2";
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { ComponentTheme } from "../ComponentTheme";
+import { SurfaceSchemeSet } from "../SurfaceScheme";
+import { useSurface } from "./useSurface";
 
 
 type KeysOf<T> =
@@ -33,67 +32,78 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-type SS = Extract<keyof ThemingToken<"surfaces">, string> | SurfaceSchemeSet // TODO
-
-function useMergedComponentConfig<T extends SoperioComponent>(component: string, surface: SS)
+function useMergedComponentConfig(component: string)
 {
   const sTheme = useTheme()
+
+  const themeConfig = sTheme.components?.[component]
+  const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig2
+
+  return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
+}
+
+type SS = /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet // TODO
+
+export function useComponentConfig2<T extends SoperioComponent, P extends ComponentConfig2>(
+  component = "",
+  surface: SS,
+  customConfig: ExtendComponentConfig2<P> | undefined,
+  traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
+  props?: T): T
+{
   const darkMode = useDarkMode();
   const _surface = useSurface(surface);
 
-  const componentTheme = sTheme.components?.[component]
-  const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig<T>
-
-  if (componentTheme)
-  {
-    return deepmerge(runIfFn<ComponentConfig<T>>(defaultConfig, _surface, darkMode) as any, runIfFn<ComponentConfig<T>>(componentTheme, _surface, darkMode) as any);
-  }
-
-  return runIfFn<ComponentConfig<T>>(defaultConfig, _surface, darkMode)
-}
-
-export function useComponentConfig2<T extends SoperioComponent, P extends ComponentConfig<T>>(
-  component = "",
-  surface: SS,
-  customConfig: ExtendComponentConfig<P> | undefined,
-  componentConfig: KeysOf<P> = {} as KeysOf<P>,
-  props?: T): T
-{
-  // const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as ComponentConfig<T>);
-  const defaultConfig = useMergedComponentConfig(component, surface)
-
-  const darkMode = useDarkMode();
+  const defaultConfig = useMergedComponentConfig(component)
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
 
-  const _surface = useSurface(surface);
 
   let config
 
+  // If we have a custom config set as a prop on this component
+  // Merge it with the config merged earlier
   if (customConfig)
   {
-    const c = runIfFn<ComponentConfig<T>>(customConfig.config, _surface, darkMode) as ComponentConfig<T>
+    const c = customConfig.config as P
 
+    // User wants to extend the current config
+    // So merge objects
     if (customConfig.mode === "extends")
-      config = deepmerge(runIfFn(defaultConfig, _surface, darkMode) ?? {}, c as Partial<T>) as T;
+      config = deepmerge(defaultConfig ?? {}, c) as P;
+    // User wants a brand new config, use custom config
     else
       config = c;
   }
+  // Else use the merged config from earlier
   else if (defaultConfig)
   {
-    config = runIfFn<ComponentConfig<T>>(defaultConfig, _surface, darkMode);
+    config = defaultConfig
   }
 
   if (config)
-    return mergeProps(config as BaseComponentConfig<T>, componentConfig, props) as T;
+    return mergeProps(config, traitsConfig, props, _surface, darkMode) as T;
 
   return {} as T;
 }
 
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
-function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: BaseComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
+function mergeProps<T extends SoperioComponent, P extends ComponentConfig2>(
+  config: ComponentConfig2,
+  traitsConfig: Partial<KeysOf<P["traits"]>>,
+  props: any,
+  surface: SurfaceSchemeSet,
+  darkMode: boolean
+): OmitStates<T>
 {
+  // Here we must merge:
+  // - the default props from the config
+  // - the selected traits props
+  // - the state props
+  // - the user defined props on the component
+
+
   // Let's start with the component default values
   let finalProps = { ...(config.defaultProps as T) };
 
@@ -103,14 +113,18 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(co
 
   const traits = c.traits
 
-  for (const key in componentConfig)
+  for (const key in traitsConfig)
   {
-    const variant = traits[key]
+    const trait = traits[key]
+    const traitName = traitsConfig[key] ?? defaultTraits?.[key]
 
-    const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultTraits?.[key]] : null;
+    if (trait && traitName)
+    {
+      const configProps = runIfFn(trait[traitName], surface, darkMode) as T;
 
-    if (configProps)
-      finalProps = deepmerge(finalProps, configProps) as T
+      if (configProps)
+        finalProps = deepmerge(finalProps, configProps) as T
+    }
   }
 
   return mergeStateProps(finalProps, props)

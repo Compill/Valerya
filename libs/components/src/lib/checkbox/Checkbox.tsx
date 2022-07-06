@@ -1,7 +1,8 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, splitComponentProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentTheme, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
 const COMPONENT_ID = "Soperio.Checkbox";
 

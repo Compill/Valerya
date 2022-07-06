@@ -1,4 +1,5 @@
-import { ComponentManager, ComponentTheme, createContext, HTMLDivProps, MultiPartStyleProvider, Opacity, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
+import { ComponentTheme, createContext, HTMLDivProps, Opacity, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
 import React from "react";
@@ -71,7 +72,7 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
    */
   React.useEffect(() =>
   {
-    const close = (e) =>
+    const close = (e: any) =>
     {
       if (e.keyCode === 27 && closeOnEsc)
       {
@@ -99,7 +100,7 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
           top="0"
           start="0"
           z="1000"
-          {...styles.backdrop}
+          {...styles["backdrop"]}
           {...props}
           bgOpacity={backdropOpacity}
           ref={ref}>
@@ -113,12 +114,12 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
             overflowY="auto"
             outline="none"
             z="1050"
-            {...styles.modalWrapper}
+            {...styles["modalWrapper"]}
             {...props}>
             <div
               onClick={(e) => e.stopPropagation()}
               bgOpacity="100"
-              {...styles.modalContent}
+              {...styles["modalContent"]}
               {...props}
             >
               <ModalContextProvider value={context}>
@@ -159,18 +160,18 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <div dflex justifyContent="between" alignItems="center" {...styles.header}>
+    <div dflex justifyContent="between" alignItems="center" {...styles["header"]}>
       <div
         ref={ref}
         borderB={showBorder && borderWidth === "full" ? true : "0"}
-        {...styles.headerTitle}
+        {...styles["headerTitle"]}
         {...props}
       >
         {children}
       </div>
 
       <Button
-        {...styles.headerCloseButton}
+        {...styles["headerCloseButton"]}
         onClick={closeModal}
       >
         <svg
@@ -196,7 +197,7 @@ export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(({ chi
   const styles = useMultiPartStyles();
 
   return (
-    <div {...styles.body} {...props} ref={ref}>
+    <div {...styles["body"]} {...props} ref={ref}>
       {children}
     </div>
   );
@@ -226,7 +227,7 @@ export const ModalFooter = React.forwardRef<HTMLDivElement, ModalFooterProps>(({
       <div
         ref={ref}
         borderT={showBorder && borderWidth === "full" ? true : "0"}
-        {...styles.footer}
+        {...styles["footer"]}
         {...props}
       >
         {children}

@@ -1,4 +1,5 @@
-import { ComponentManager, ComponentTheme, HTMLUListProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useColorTheme, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
+import { ComponentTheme, HTMLUListProps, ParentComponent, SoperioComponent, useColorTheme } from "@soperio/react";
 import { OrString } from "@soperio/utils";
 import React from "react";
 import defaultConfig from "./config";
@@ -34,7 +35,7 @@ const List = React.forwardRef<HTMLUListElement, ListProps>(({
   return (
     <ul
       transition={firstRender ? "none" : "all"}
-      {...styles.list}
+      {...styles["list"]}
       {...props}
       ref={ref}
     >
@@ -65,7 +66,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
       ref={ref}
       borderColor={colorTheme.border1}
       borderB={showBorder && borderWidth === "full" ? true : "0"}
-      {...styles.listItem}
+      {...styles["listItem"]}
       {...props}
     >{children}
     </li>
@@ -88,7 +89,7 @@ export const ListItemIcon = React.forwardRef<HTMLSpanElement, ListItemIconProps>
   return (
     <span
       ref={ref}
-      {...styles.listItemIcon}
+      {...styles["listItemIcon"]}
       {...props}
     >
       {children}

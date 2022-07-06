@@ -1,4 +1,5 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, Rotate, SoperioComponent, SpacingPositive, useMultiPartComponentConfig } from "@soperio/react";
+import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, useMultiPartComponentConfig } from "@katia/core";
+import { ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react"
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { AccordionContextProvider } from "./AccordionContext";
@@ -117,7 +118,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   return (
     <div
       ref={ref}
-      {...styles.accordion}
+      {...styles["accordion"]}
       spaceY={gap}
       {...props}
     >

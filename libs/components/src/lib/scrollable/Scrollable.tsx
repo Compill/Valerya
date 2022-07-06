@@ -1,4 +1,5 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, useComponentConfig } from "@soperio/react";
+import { ComponentManager, useComponentConfig } from "@katia/core";
+import { ComponentTheme, HTMLDivProps } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 

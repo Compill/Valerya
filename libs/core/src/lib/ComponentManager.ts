@@ -1,17 +1,16 @@
 import { ComponentConfig, MultiPartComponentConfig } from "./ComponentConfig";
-import { SoperioComponent } from "@soperio/theming";
 
 export class ComponentManager
 {
-    static components: Record<string, ComponentConfig<SoperioComponent> | MultiPartComponentConfig<SoperioComponent>> = {};
+  static components: Record<string, ComponentConfig | MultiPartComponentConfig<Record<string, string>>> = {};
 
-    static registerComponent<T extends SoperioComponent, C extends ComponentConfig<T> | MultiPartComponentConfig<T>>(name: string, componentConfig: C)
-    {
-        this.components[name] = componentConfig;
-    }
+  static registerComponent<C extends ComponentConfig | MultiPartComponentConfig<Record<string, string>>>(name: string, componentConfig: C)
+  {
+    this.components[name] = componentConfig;
+  }
 
-    static getComponentConfig(name: string): ComponentConfig<SoperioComponent> | MultiPartComponentConfig<SoperioComponent> | undefined
-    {
-        return this.components[name];
-    }
+  static getComponentConfig(name: string): ComponentConfig | MultiPartComponentConfig<Record<string, string>> | undefined
+  {
+    return this.components[name];
+  }
 }

@@ -1,8 +1,9 @@
-import { Color, ComponentConfig, ComponentTypings, ExtendComponentConfig, SoperioComponent, SpacingPositive } from "@soperio/react";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig } from "@katia/core";
+import { Color, SoperioComponent, SpacingPositive } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Spinner">
 
-interface CustomProps extends SoperioComponent 
+interface CustomProps extends SoperioComponent
 {
   trackColor?: Color,
   thickness?: SpacingPositive,
@@ -11,5 +12,5 @@ interface CustomProps extends SoperioComponent
 
 export type ComponentProps = TraitProps & CustomProps
 
-export type Config = ComponentConfig<CustomProps, TraitProps>;
+export type Config = ComponentConfig<TraitProps, CustomProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

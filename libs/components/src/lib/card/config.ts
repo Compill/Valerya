@@ -1,65 +1,68 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config =
 {
-  return {
-    defaultTraits:
-    {
-      variant: "default",
-      corners: "default",
+  defaultTraits:
+  {
+    variant: "default",
+    corners: "default",
 
-    },
-    defaultProps: 
+  },
+  defaultProps:
+  {
+    card: {
+      mx: "2"
+    }
+  },
+  subComponents: ["card", "header", "content", "footer"],
+  traits:
+  {
+    variant:
     {
-      card: {
-        mx: "2"
-      }
-    },
-    subComponents: ["card", "header", "content", "footer"],
-    traits:
-    {
-      variant:
+      default:
       {
-        default:
-        {
-          card:
+        card: (theme: ColorTheme, darkMode: boolean) =>
+        (
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             border: "0",
             textColor: theme.textDark1
           }
-        },
-        bordered:
-        {
-          card:
+        )
+      }
+      ,
+      bordered:
+      {
+        card: (theme: ColorTheme, darkMode: boolean) =>
+        (
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             border: "2",
             borderColor: theme.border1,
-          },
-        },
+          }
+        ),
       },
-      corners:
+    },
+    corners:
+    {
+      square: {},
+      default:
       {
-        square: {},
-        default:
+        card:
         {
-          card:
-          {
-            rounded: true
-          }
-        },
-        pill:
+          rounded: true
+        }
+      },
+      pill:
+      {
+        card:
         {
-          card:
-          {
-            rounded: "full"
-          }
+          rounded: "full"
         }
       }
     }
-  };
+  }
 };
 
 export default config

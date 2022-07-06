@@ -1,8 +1,9 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, splitComponentProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentTheme, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
 import defaultConfig from "./config";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
 const COMPONENT_ID = "Soperio.Radio";
 
@@ -38,7 +39,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
-// TODO Fix tick 
+// TODO Fix tick
   return (
     <div display="flex" flexRow  alignItems="center" {...soperioProps}>
       <label  userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">

@@ -1,10 +1,9 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
-import { SpacingPositive, useColorTheme } from "@soperio/react";
-import { OrString } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
+import { ComponentTheme, HTMLDivProps, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme } from "@soperio/react";
+import { IS_DEV } from "@soperio/utils";
 import React from "react";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
-import { IS_DEV } from "@soperio/utils"
 
 const COMPONENT_ID = "Soperio.Card";
 
@@ -32,11 +31,11 @@ const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
   const firstRender = useFirstRender();
 
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props);
-  
+
   return (
     <div
       transition={firstRender ? "none" : "all"}
-      {...styles.card}
+      {...styles["card"]}
       {...props}
       ref={ref}
     >
@@ -72,7 +71,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
         ref={ref}
         borderColor={colorTheme.border1}
         borderB={showBorder && borderWidth === "full" ? true : "0"}
-        {...styles.header}
+        {...styles["header"]}
         {...props}
       >
         {children}
@@ -92,7 +91,7 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ child
   const styles = useMultiPartStyles();
 
   return (
-    <div px="7" py="5" fontSize="sm" {...styles.body} {...props} ref={ref}>
+    <div px="7" py="5" fontSize="sm" {...styles["body"]} {...props} ref={ref}>
       {children}
     </div>
   );
@@ -125,7 +124,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
         ref={ref}
         borderColor={colorTheme.border1}
         borderT={showBorder && borderWidth === "full" ? true : "0"}
-        {...styles.footer}
+        {...styles["footer"]}
         {...props}
       >
         {children}

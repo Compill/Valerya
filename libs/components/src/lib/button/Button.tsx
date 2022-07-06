@@ -1,8 +1,9 @@
-import { ComponentManager, ComponentTheme, HTMLButtonProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentTheme, HTMLButtonProps } from "@soperio/react";
 import React from 'react';
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 import { IS_DEV } from "@soperio/utils"
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
 const COMPONENT_ID = "Soperio.Button"
 

@@ -1,26 +1,5 @@
 import { Color } from "@soperio/react"
 
-type BuildSurfaceOptions =
-{
-  autoGenerateColors: "material" | "alpha",
-
-}
-
-export function buildSurface(surface: Partial<SurfaceSchemeSet>)
-{
-  // TODO Build a surface from a partial one
-  // If some colors from some states are not defined, use the primary color
-  // main.color & main.onColor should at least be defined
-}
-
-export function buildSurfaceFromColor(color: Color, options: BuildSurfaceOptions)
-{
-  // TODO Build color palette from color
-  // Then build surface from options
-  // Either a material style surface
-  // Or a Chakra-UI style surface (like the one I did with colorThemes)
-}
-
 export interface SurfaceSchemeSet
 {
   main: SurfaceScheme,

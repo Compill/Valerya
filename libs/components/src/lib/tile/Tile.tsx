@@ -1,4 +1,5 @@
-import { useColorTheme, useFirstRender } from "@soperio/react";
+import { useFirstRender } from "@katia/core";
+import { useColorTheme } from "@soperio/react";
 import React from "react";
 import { TileProps } from "./types";
 

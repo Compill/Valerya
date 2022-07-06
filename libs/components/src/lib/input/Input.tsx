@@ -1,7 +1,8 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentTheme, HTMLInputProps } from "@soperio/react";
 import React from "react";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
 
 const COMPONENT_ID = "Soperio.Input";
 

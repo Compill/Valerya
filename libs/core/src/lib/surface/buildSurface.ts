@@ -24,6 +24,9 @@ function buildSurfaceScheme(color: RGBA, onColor: RGBA, states: States): Surface
   const primaryHex = RGBAToHex(color)
   const onPrimaryHex = RGBAToHex(onColor)
 
+  console.log("primaryHEX", primaryHex)
+  console.log("onPrimaryHEX", onPrimaryHex)
+
   return {
     color: primaryHex,
     onColor: onPrimaryHex,
@@ -120,9 +123,9 @@ function generatePalette(color: number, options: PaletteOptions): ColorPalette
 // Then build surface from options
 // Either a material style surface
 // Or a Chakra-UI style surface (like the one I did with colorThemes)
-function buildSurfaceFromColor(color: number, options: BuildSurfaceOptions): SurfaceSchemeSet
+export function buildSurfaceFromColor(color: number, options?: BuildSurfaceOptions): SurfaceSchemeSet
 {
-  const scheme = options.darkMode ? Scheme.dark(color) : Scheme.light(color)
+  const scheme = options?.darkMode ? Scheme.dark(color) : Scheme.light(color)
 
   const primaryRGBA = intToRGBA(scheme.primary)
   const primaryContainerRGBA = intToRGBA(scheme.primaryContainer)
@@ -130,12 +133,12 @@ function buildSurfaceFromColor(color: number, options: BuildSurfaceOptions): Sur
   const onPrimaryContainerRGBA = intToRGBA(scheme.onPrimaryContainer)
 
   const states = {
-    hover: options.hoverStatePercent ?? 0.08,
-    pressed: options.hoverStatePercent ?? 0.12,
-    selected: options.hoverStatePercent ?? 0.16,
-    active: options.hoverStatePercent ?? 0.20,
-    disabledLayer: options.hoverStatePercent ?? 0.12,
-    disabledContent: options.hoverStatePercent ?? 0.38
+    hover: options?.hoverStatePercent ?? 0.08,
+    pressed: options?.hoverStatePercent ?? 0.12,
+    selected: options?.hoverStatePercent ?? 0.16,
+    active: options?.hoverStatePercent ?? 0.20,
+    disabledLayer: options?.hoverStatePercent ?? 0.12,
+    disabledContent: options?.hoverStatePercent ?? 0.38
   }
 
   return {
@@ -143,7 +146,7 @@ function buildSurfaceFromColor(color: number, options: BuildSurfaceOptions): Sur
     alt: buildSurfaceScheme(primaryContainerRGBA, onPrimaryContainerRGBA, states),
     mainInverse: buildSurfaceScheme(onPrimaryRGBA, primaryRGBA, states),
     altInverse: buildSurfaceScheme(onPrimaryContainerRGBA, primaryContainerRGBA, states),
-    mainLayer: buildSurfaceScheme({ r: 0, g: 0, b: 0, a: 0 }, onPrimaryRGBA, states),
+    mainLayer: buildSurfaceScheme({ r: 0, g: 0, b: 0, a: 0 }, primaryRGBA, states),
   }
 }
 
@@ -162,10 +165,15 @@ function ARGBToHex(color: number): string
 
 function RGBAToHex(color: RGBA)
 {
-  const r = color.r.toString(16)
-  const g = color.r.toString(16)
-  const b = color.r.toString(16)
-  const a = Math.round(color.a * 255).toString(16)
+  let r = color.r.toString(16)
+  let g = color.g.toString(16)
+  let b = color.b.toString(16)
+  let a = color.a.toString(16)
+
+  if (r.length === 1) r = `0${r}`
+  if (g.length === 1) g = `0${g}`
+  if (b.length === 1) b = `0${b}`
+  if (a.length === 1) a = `0${a}`
 
   return `#${r}${g}${b}${a}`
 }
@@ -195,8 +203,11 @@ function colorBlend(color: RGBA, ...blendColors: RGBA[]): string
 
   let blended = normal(color, blendColors[0])
 
-  for (let i = 0; i < blendColors.length; i++)
+  for (let i = 1; i < blendColors.length; i++)
     blended = normal(blended, blendColors[i])
+
+  // Blending lib returns alpha between 0 and 1 instead or 0..255
+  blended.a = Math.round(blended.a * 255)
 
   return RGBAToHex(blended)
 }

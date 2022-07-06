@@ -1,108 +1,114 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config =
 {
-  return {
-    defaultTraits:
-    {
-      variant: "default",
-      corners: "default",
-    },
-    defaultProps:
-    {
-      accordion: {
+  defaultTraits:
+  {
+    variant: "default",
+    corners: "default",
+  },
+  defaultProps:
+  {
+    accordion: (theme: ColorTheme, darkMode: boolean) => (
+      {
         minW: "300px",
         textColor: theme.textDark1
-      },
-      itemHeader: {
+      }
+    ),
+    itemHeader: (theme: ColorTheme, darkMode: boolean) => (
+      {
         py: "2",
         bgColor: theme.background1,
-      },
-      itemHeaderLabel:
+      }
+    ),
+    itemHeaderLabel: (theme: ColorTheme, darkMode: boolean) => (
       {
         mx: "4",
-        borderColor: theme.border1
-      },
-      itemHeaderCollapseButton:
-      {
-        mx: "4",
-        p: '0',
-        h: "24px",
-        variant: "borderless",
-        corners: "pill"
-      },
-      itemContent:
+        borderColor: theme.border1,
+
+      }
+    ),
+    itemHeaderCollapseButton:
+    {
+      mx: "4",
+      p: '0',
+      h: "24px",
+      variant: "borderless",
+      corners: "pill"
+    },
+    itemContent: (theme: ColorTheme, darkMode: boolean) => (
       {
         bgColor: theme.background1,
         px: "4",
         py: "4",
         fontSize: "sm"
       }
-    },
-    subComponents: [ "accordion", "itemHeader", "itemHeaderLabel", "itemHeaderCollapseButton", "itemContent" ],
-    traits:
+    )
+  },
+  subComponents: ["accordion", "itemHeader", "itemHeaderLabel", "itemHeaderCollapseButton", "itemContent"],
+  traits:
+  {
+    variant:
     {
-      variant:
+      default:
       {
-        default:
+        accordion:
         {
-          accordion:
-          {
-            border: "0",
-          },
-          itemContent:
+          border: "0",
+        },
+        itemContent: (theme: ColorTheme, darkMode: boolean) => (
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-          }
-        },
-        bordered:
-        {
-          itemHeader:
+          })
+      },
+      bordered:
+      {
+        itemHeader: (theme: ColorTheme, darkMode: boolean) => (
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             hover_bgColor: theme.background2,
             borderT: "2",
             borderB: "1",
             borderColor: theme.border1,
-          },
-        },
-        menu:
-        {
-          itemHeader:
-          {
-            bgColor: "transparent"
-          },
-          itemContent:
-          {
-            bgColor: "transparent"
           }
+        ),
+      },
+      menu:
+      {
+        itemHeader:
+        {
+          bgColor: "transparent"
+        },
+        itemContent:
+        {
+          bgColor: "transparent"
+        },
+      },
+    },
+    corners:
+    {
+      square: {},
+      default:
+      {
+        accordion:
+        {
+          rounded: true
+        },
+        itemHeader:
+        {
+          rounded: true
         }
       },
-      corners:
+      pill:
       {
-        square: {},
-        default:
+        accordion:
         {
-          accordion:
-          {
-            rounded: true
-          },
-          itemHeader:
-          {
-            rounded: true
-          }
-        },
-        pill:
-        {
-          accordion:
-          {
-            rounded: "full"
-          }
+          rounded: "full"
         }
       }
     }
-  };
+  }
 };
 
 export default config

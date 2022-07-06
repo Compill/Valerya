@@ -1,50 +1,50 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config =
 {
-  return {
-    traits:
+  traits:
+  {
+    size:
     {
-      size:
+      "sm":
       {
-        "sm":
-        {
-          fontSize: "sm",
-          w: "3",
-          h: "3",
-        },
-        "md":
-        {
-
-          fontSize: "md",
-          w: "4",
-          h: "4",
-        },
-        "lg":
-        {
-
-          fontSize: "lg",
-          w: "5",
-          h: "5",
-        },
-        "xl":
-        {
-
-          fontSize: "xl",
-          w: "6",
-          h: "6",
-        },
-        "x2":
-        {
-          fontSize: "x2",
-          w: "7",
-          h: "7",
-        }
+        fontSize: "sm",
+        w: "3",
+        h: "3",
       },
-      variant:
+      "md":
       {
-        default:
+
+        fontSize: "md",
+        w: "4",
+        h: "4",
+      },
+      "lg":
+      {
+
+        fontSize: "lg",
+        w: "5",
+        h: "5",
+      },
+      "xl":
+      {
+
+        fontSize: "xl",
+        w: "6",
+        h: "6",
+      },
+      "x2":
+      {
+        fontSize: "x2",
+        w: "7",
+        h: "7",
+      }
+    },
+    variant:
+    {
+      default: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           bgColor: theme.background5,
 
@@ -60,8 +60,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             textOpacity: "70",
             cursor: "default"
           }
-        },
-        outline:
+        }
+      ),
+      outline: (theme: ColorTheme, darkMode: boolean) =>
+      (
         {
           bgColor: "transparent",
           border: "2",
@@ -78,16 +80,16 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             textOpacity: "40",
             cursor: "default"
           }
-        },
-      },
-      shape:
-      {
-        square: { rounded: "none" },
-        default: { rounded: true },
-        circle: { rounded: "full" }
-      }
+        }
+      ),
+    },
+    shape:
+    {
+      square: { rounded: "none" },
+      default: { rounded: true },
+      circle: { rounded: "full" }
     }
-  };
+  }
 }
 
 export default config

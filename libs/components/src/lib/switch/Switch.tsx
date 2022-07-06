@@ -1,14 +1,15 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, ParentComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/react";
-
+import { ComponentManager, useFirstRender, useMultiPartComponentConfig } from "@katia/core";
+import { ComponentTheme, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
 import React from "react";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
 
 const COMPONENT_ID = "Soperio.Switch";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLInputProps, "size"> {
+export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLInputProps, "size">
+{
   theme?: ComponentTheme;
   config?: ExtendConfig
 }
@@ -27,15 +28,18 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
   onMouseDown,
   onClick,
   ...props
-}: SwitchProps, ref) => {
+}: SwitchProps, ref) =>
+{
   const firstRender = useFirstRender();
 
-  const preventFocus = React.useCallback((event:any) => {
+  const preventFocus = React.useCallback((event: any) =>
+  {
     event.preventDefault();
     onMouseDown && onMouseDown(event);
   }, [onMouseDown]);
 
-  const looseFocus = React.useCallback((event:any) => {
+  const looseFocus = React.useCallback((event: any) =>
+  {
     (document.activeElement as HTMLElement).blur();
     onClick && onClick(event);
   }, [onClick]);
@@ -63,24 +67,16 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
         transition={firstRender ? "none" : "all"}
         shadow=" 0 0 10px grey"
         {...styles["track"]}
-      > 
-
+      >
         <span
           transition={firstRender ? "none" : "all"}
-
           {...styles["thumb"]}
-        > 
-          
-        </span>
-        
+        />
       </span>
+
       <span {...styles["label"]}>
-            {children}
-
-
-          </span>
-
-
+        {children}
+      </span>
     </label>
   );
 });

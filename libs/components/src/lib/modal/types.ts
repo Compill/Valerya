@@ -1,18 +1,24 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/react";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { SoperioComponent } from "@soperio/react";
+import { ButtonProps } from "../button";
 
 type TraitProps = ComponentTypings<"Soperio.Modal">;
 
 export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
 
-interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type ModalComponentProps = {
-  modal?: SoperioComponent & ConfigStateProps,
-  modalContent?: SoperioComponent & ConfigStateProps,
-  header?: SoperioComponent & ConfigStateProps, // ModalHeaderThemeProps
-  body?: SoperioComponent & ConfigStateProps, // ModalContentThemeProps
-  footer?: SoperioComponent & ConfigStateProps, // ModalFooterThemeProps
+  backdrop: SoperioComponent,
+  modalWrapper: SoperioComponent,
+  modal: SoperioComponent,
+  modalContent: SoperioComponent,
+  header: SoperioComponent, // ModalHeaderThemeProps
+  headerTitle: SoperioComponent,
+  headerCloseButton: ButtonProps,
+  body: SoperioComponent, // ModalContentThemeProps
+  footer: SoperioComponent, // ModalFooterThemeProps
 }
 
-export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, ModalComponentProps>>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
+export type Config = MultiPartComponentConfig<TraitProps, ModalComponentProps, ConfigStateProps>
+export type ExtendConfig = ExtendMultiPartComponentConfig<Config>

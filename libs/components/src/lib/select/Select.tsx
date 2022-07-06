@@ -1,8 +1,9 @@
-import { ComponentManager, ComponentTheme, HTMLSelectProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentTheme, HTMLSelectProps, ParentComponent } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
 import defaultConfig from "./config";
+import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
 const COMPONENT_ID = "Soperio.Select";
 

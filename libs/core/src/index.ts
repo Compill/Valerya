@@ -1,4 +1,5 @@
-export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits } from "./lib/ComponentConfig";
+export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "./lib/ComponentConfig";
+export type { ComponentConfig2, ExtendComponentConfig2, ExtendMultiPartComponentConfig2, MultiPartComponentConfig2 } from "./lib/ComponentConfig2";
 export * from "./lib/ComponentManager";
 export * from "./lib/ComponentStates";
 export * from './lib/ComponentTheme';
@@ -12,4 +13,6 @@ export * from "./lib/hooks/usePrevious";
 export * from "./lib/hooks/useResponsiveProps";
 export * from "./lib/HTMLTagProps";
 export * from "./lib/MultiPartStyleProvider";
+export * from "./lib/surface/buildSurface";
+export * from "./lib/SurfaceScheme";
 export * from "./lib/utils";
