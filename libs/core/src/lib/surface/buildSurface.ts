@@ -4,7 +4,7 @@ import { SurfaceScheme, SurfaceSchemeSet } from "../SurfaceScheme"
 
 type BuildSurfaceOptions =
   {
-    autoGenerateColors: "material" | "alpha",
+    autoGenerateColors?: "material" | "alpha",
     darkMode?: boolean,
     hoverStatePercent?: number
     activeStatePercent?: number
@@ -23,9 +23,6 @@ function buildSurfaceScheme(color: RGBA, onColor: RGBA, states: States): Surface
 {
   const primaryHex = RGBAToHex(color)
   const onPrimaryHex = RGBAToHex(onColor)
-
-  console.log("primaryHEX", primaryHex)
-  console.log("onPrimaryHEX", onPrimaryHex)
 
   return {
     color: primaryHex,

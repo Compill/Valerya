@@ -1,9 +1,9 @@
 
-import { buildSurfaceFromColor, ComponentManager, SurfaceSchemeSet, useComponentConfig2 } from "@katia/core";
+import { ComponentManager, SurfaceSchemeSet, useComponentConfig2 } from "@katia/core";
 import { HTMLDivProps, SoperioComponent } from "@soperio/react";
 import React from "react";
 import defaultConfig from "./config";
-import { ComponentProps, ExtendConfig } from "./types";
+import { ComponentProps, ExtendConfig, TraitProps } from "./types";
 
 const COMPONENT_ID = "Soperio.Surface"
 
@@ -19,30 +19,36 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 // TODO Make all component extends SurfaceSchemeProps instead of redefining the
 // scheme property
 
-export interface SurfaceSchemeProps
+export interface SurfaceSchemeProps extends TraitProps
 {
   scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet,
 }
 
-export interface SurfaceProps extends ComponentProps, SurfaceSchemeProps, HTMLDivProps
+export interface SurfaceProps extends ComponentProps, HTMLDivProps
 {
+  scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet,
   // variant is already in ComponentProps
   config?: ExtendConfig;
   hoverable?: boolean
 }
 
-const defaultScheme = buildSurfaceFromColor(0x0099ff)
+// scheme
+// schemePair
+// schemeMix
+// scheme
+// schemeVariant
+// "none" | "main" | "mainInverse" | "mainInverseHoverMain" | "mainLayer" | "mainLayerHoverMain" | "alt" | "altInverse" | "altHoverMain"
 
 export const Surface = React.forwardRef<HTMLDivElement, SurfaceProps>((
   {
-    scheme = defaultScheme,// = "primary",
+    scheme,// = "primary",
     hoverable,
-    variant,
+    schemeVariant,
     config,
     ...props
   }: SurfaceProps, ref) =>
 {
-  const styles = useComponentConfig2(COMPONENT_ID, scheme, config, { variant }, props)
+  const styles = useComponentConfig2(COMPONENT_ID, scheme, config, { schemeVariant }, props)
 
   const filteredStyles:SoperioComponent = { ...styles }
 
@@ -57,7 +63,7 @@ export const Surface = React.forwardRef<HTMLDivElement, SurfaceProps>((
 
   return (
     <div
-      {...(hoverable ? { cursor: "pointer" } : null)}
+      {...(hoverable || props.onClick ? { cursor: "pointer" } : null)}
       {...filteredStyles}
       {...props}
       ref={ref}

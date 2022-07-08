@@ -42,7 +42,7 @@ function useMergedComponentConfig(component: string)
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
 }
 
-type SS = /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet // TODO
+type SS = /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet | undefined // TODO
 
 export function useComponentConfig2<T extends SoperioComponent, P extends ComponentConfig2>(
   component = "",
@@ -53,6 +53,8 @@ export function useComponentConfig2<T extends SoperioComponent, P extends Compon
 {
   const darkMode = useDarkMode();
   const _surface = useSurface(surface);
+
+  console.log("surface", _surface, surface)
 
   const defaultConfig = useMergedComponentConfig(component)
 

@@ -19,6 +19,7 @@ declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;
 
 export declare type ComponentConfig2<
   T extends Record<string, string> = Record<string, string>, // Traits
+  P extends SoperioComponent = SoperioComponent, // Component Props
   S extends StateAndExtraProps = NoStateProps
   > =
   {
@@ -29,7 +30,7 @@ export declare type ComponentConfig2<
       [key in keyof T]?:
       {
         // For each trait, only allow trait possible values (like "default" for example)
-        [Property in NonNullable<T[key]>]?: TraitConfig<S>
+        [Property in NonNullable<T[key]>]?: TraitConfig<P & S>
       };
     }
   };

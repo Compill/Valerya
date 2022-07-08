@@ -18,6 +18,7 @@ declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;
 
 export declare type ComponentConfig<
   T extends Record<string, string> = Record<string, string>, // Traits
+  // P extends SoperioComponent = SoperioComponent, // Component Props TODO
   S extends StateAndExtraProps = NoStateProps
 > =
   {

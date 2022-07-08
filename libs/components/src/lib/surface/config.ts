@@ -12,12 +12,15 @@ const config:Config =
   },
   defaultTraits:
   {
-    variant: "main",
+    schemeVariant: "main",
   },
   traits:
   {
-    variant:
+    schemeVariant:
     {
+      none: {
+
+      },
       main: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {

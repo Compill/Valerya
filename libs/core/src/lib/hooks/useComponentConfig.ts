@@ -1,5 +1,6 @@
 import { ColorTheme, IS_DEV, SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/react";
 import deepmerge from "deepmerge";
+import { KatiaConfigComponents, KatiaConfigExtendComponents } from "libs/core/KatiaConfig";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
@@ -34,6 +35,13 @@ function runIfFn<T>(
 function useMergedComponentConfig(component: string)
 {
   const sTheme = useTheme()
+  // const configs = useThemeExtra("katia.components") as KatiaConfigComponents
+  // const extendConfigs = useThemeExtra("katia.components.extend") as KatiaConfigExtendComponents
+
+  // const defaultConfig = configs[component]
+  // const themeConfig = extendConfigs[component]
+
+  // return themeConfig ? deepmerge(defaultConfig, themeConfig.config as any) : defaultConfig
 
   const themeConfig = sTheme.components?.[component]
   const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig

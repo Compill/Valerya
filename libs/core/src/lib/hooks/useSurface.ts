@@ -1,17 +1,23 @@
 import { IS_DEV, useDarkMode, useTheme } from "@soperio/react";
+import { buildSurfaceFromColor } from "../surface/buildSurface";
 import { SurfaceSchemeSet } from "../SurfaceScheme";
 
 const CACHE_TYPE = "surfaceSheme"
 
 const DEFAULT_SURFACE_KEY = "primary"
 
+const defaultSurface = buildSurfaceFromColor(0xFF0EA5E9)
+const defaultSurfaceDark = buildSurfaceFromColor(0xFF0EA5E9, { darkMode: true })
+// const defaultSurface = buildSurfaceFromColor(0xff0ea5e9)
+// const defaultSurface = buildSurfaceFromColor(0xFF0369a1)
+
 // Extract is a hack because typescript returns number | string for type keyof
-export function useSurface(surface?: false /*| Extract<keyof ThemingToken<"surfaces">, string>*/ | SurfaceSchemeSet): SurfaceSchemeSet
+export function useSurface(surface?: /*| Extract<keyof ThemingToken<"surfaces">, string>*/ | SurfaceSchemeSet | undefined): SurfaceSchemeSet
 {
   const theme = useTheme();
   const darkMode = useDarkMode();
 
-  if (!surface || typeof surface === "string")
+  if (typeof surface === "string")
   {
     // if (darkMode)
     // {
@@ -35,7 +41,7 @@ export function useSurface(surface?: false /*| Extract<keyof ThemingToken<"surfa
     // return processSurface(indexedSurface || {});
   }
 
-  return surface;
+  return surface ?? (darkMode ? defaultSurfaceDark : defaultSurface);
   // return surface ? processSurface(surface) : surface;
 }
 

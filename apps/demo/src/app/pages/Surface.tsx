@@ -1,9 +1,28 @@
 import { Container, Surface, SurfaceProps } from "@katia/components";
 import { buildSurfaceFromColor } from "@katia/core";
+import { SoperioComponent, useDarkMode } from "@soperio/react";
+import { SurfaceVariantProp } from "libs/components/src/lib/surface/types";
 
-const sfBlue = buildSurfaceFromColor(0xff0099ff)
-const sfRed = buildSurfaceFromColor(0xffff3300)
-const sfGreen = buildSurfaceFromColor(0xff99ffcc)
+// const blue = buildSurfaceFromColor(0xff0099ff)
+// const red = buildSurfaceFromColor(0xffff3300)
+// const sfGreen = buildSurfaceFromColor(0xff99ffcc)
+
+const sfBlue = buildSurfaceFromColor(0xff6750a4)
+const sfRed = buildSurfaceFromColor(0xffb3261e)
+const sfGreen = buildSurfaceFromColor(0xff3a691e)
+
+const sfBlueDark = buildSurfaceFromColor(0xff6750a4, { darkMode: true })
+const sfRedDark = buildSurfaceFromColor(0xffb3261e, { darkMode: true })
+const sfGreenDark = buildSurfaceFromColor(0xff3a691e, { darkMode: true })
+
+
+// TODO Surface system
+// In order to use useSurface and to get a default surface in the case
+// that none is defined in the theme, define a default surface
+// in the code (not the theme, because user may not add Katia config in the theme)
+// This way, since we don't know what semantic the user will use, we have at least
+// one existing surface to fallback to
+
 
 /**
  *
@@ -11,11 +30,10 @@ const sfGreen = buildSurfaceFromColor(0xff99ffcc)
  */
 export default function Page({ ...props })
 {
-
   const sfProps:Omit<SurfaceProps, "ref"> = {
-    transition: "colors",
-    duration: 350,
-    easing: "in",
+    // transition: "colors",
+    // duration: 350,
+    // easing: "in",
     rounded: true,
     p: "10",
     hoverable: true
@@ -24,158 +42,53 @@ export default function Page({ ...props })
   return (
     <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
 
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} {...sfProps}>
-          Hello
-        </Surface>
+      <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainInverse" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altInverse" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainLayerHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainInverseHoverMain" surfaceProps={sfProps} />
 
-        <Surface scheme={sfRed} {...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} {...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="alt" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="alt" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="alt" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="mainInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="mainInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="mainInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="mainLayer" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="mainLayer" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="mainLayer" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="altInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="altInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="altInverse" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="mainLayerHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="mainLayerHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="mainLayerHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="mainInverseHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="mainInverseHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="mainInverseHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
-      <div dflex flexRow gap="20">
-        <Surface scheme={sfBlue} variant="altHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfRed} variant="altHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-
-        <Surface scheme={sfGreen} variant="altHoverMain" {...sfProps}
-{...sfProps}
-{...sfProps}>
-          Hello
-        </Surface>
-      </div>
     </Container>
   );
+}
+
+interface SurfaceBlockProps extends SoperioComponent, SurfaceVariantProp
+{
+  surfaceProps: Omit<SurfaceProps, "ref">
+}
+
+function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
+{
+  const darkMode = useDarkMode()
+
+  const blue = darkMode ? sfBlueDark : sfBlue
+  const red = darkMode ? sfRedDark : sfRed
+  const green = darkMode ? sfGreenDark : sfGreen
+
+  return (
+    <div dflex flexRow gap="20">
+      <Surface schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+
+      <Surface scheme={blue} schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+
+      <Surface scheme={red} schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+
+      <Surface scheme={green} schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+    </div>
+  )
 }
