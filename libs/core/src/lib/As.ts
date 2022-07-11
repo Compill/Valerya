@@ -49,7 +49,7 @@ export type ComponentWithAs<Component extends As, Props extends object = any> = 
   id?: string
 }
 
-export function forwardRef<Component extends As, Props extends object>(
+export function forwardRef<Props extends object, Component extends As>(
   component: React.ForwardRefRenderFunction<
     any,
     RightJoinProps<PropsOf<Component>, Props> & {

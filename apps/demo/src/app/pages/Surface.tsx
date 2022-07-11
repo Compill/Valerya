@@ -1,7 +1,6 @@
-import { Container, Surface, SurfaceProps } from "@katia/components";
+import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
 import { buildSurfaceFromColor } from "@katia/core";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
-import { SurfaceVariantProp } from "libs/components/src/lib/surface/types";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
@@ -55,7 +54,7 @@ export default function Page({ ...props })
   );
 }
 
-interface SurfaceBlockProps extends SoperioComponent, SurfaceVariantProp
+interface SurfaceBlockProps extends SoperioComponent, SurfaceSchemeVariant
 {
   surfaceProps: Omit<SurfaceProps, "ref">
 }
@@ -70,6 +69,12 @@ function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
 
   return (
     <div dflex flexRow gap="20">
+
+      <Surface scheme="primary" schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+
       <Surface schemeVariant={schemeVariant} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>

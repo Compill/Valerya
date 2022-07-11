@@ -1,6 +1,17 @@
 import { CorePalette, Scheme } from "@material/material-color-utilities"
 import { normal } from "color-blend"
-import { SurfaceScheme, SurfaceSchemeSet } from "../SurfaceScheme"
+import { SurfaceScheme, SurfaceSchemeSet } from "./SurfaceScheme"
+
+
+// TODO Build Chakra-UI / Soperio UI style components
+// E.g use alpha to set colors and states
+// so, instead of buildSurfaceFromColor, I would rename it
+// buildMaterialStyleSurface and create
+// buildAlphaBasedStyleSurface
+// buildBootstrapStyleSurface
+// ...
+
+
 
 type BuildSurfaceOptions =
   {

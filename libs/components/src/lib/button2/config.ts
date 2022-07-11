@@ -4,10 +4,16 @@ import { Config } from "./types";
 const config: Config =
 {
   defaultProps: {
+    hover_transition: "all",
+    easing: "linear",
+    duration: "300",
+    hover_duration: "300",
+    fontWeight: "500",
     stateDisabled:
     {
       cursor: "default"
     },
+    hoverable: true
   },
   defaultTraits:
   {
@@ -63,6 +69,7 @@ const config: Config =
       (
         {
           schemeVariant: "altHoverMain",
+          textColor: surface.main.color
         }
       ),
       link: (surface: SurfaceSchemeSet, darkMode: boolean) =>
@@ -74,9 +81,11 @@ const config: Config =
           p: "0",
           appearanceNone: true,
           hover_textDecoration: "underline",
-
+          hoverable: false,
           stateSelected:
           {
+            bgColor: "transparent",
+            hover_bgColor: "transparent",
             textDecoration: "underline",
           },
           stateDisabled:
@@ -92,10 +101,12 @@ const config: Config =
           schemeVariant: "mainLayerHoverMain",
           border: "2",
           borderColor: surface.main.color,
+          hover_borderColor: surface.main.hover.color,
           stateSelected:
           {
             bgColor: surface.main.color,
-            textColor: surface.main.onColor
+            textColor: surface.main.onColor,
+            hover_borderColor: surface.main.hover.selected.color
           },
           stateDisabled:
           {

@@ -1,6 +1,5 @@
 import { ColorTheme, IS_DEV, SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/react";
 import deepmerge from "deepmerge";
-import { KatiaConfigComponents, KatiaConfigExtendComponents } from "libs/core/KatiaConfig";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";

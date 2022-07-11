@@ -1,49 +1,64 @@
-import { IS_DEV, useDarkMode, useTheme } from "@soperio/react";
+import { IS_DEV, useDarkMode } from "@soperio/react";
+import { useThemeExtra } from "@soperio/theming";
+import { KatiaConfigSurfaces } from "../KatiaConfig";
 import { buildSurfaceFromColor } from "../surface/buildSurface";
-import { SurfaceSchemeSet } from "../SurfaceScheme";
-
-const CACHE_TYPE = "surfaceSheme"
-
-const DEFAULT_SURFACE_KEY = "primary"
+import { SurfaceSchemeSet } from "../surface/SurfaceScheme";
+import { ThemeSurfaceScheme } from "../surface/types";
 
 const defaultSurface = buildSurfaceFromColor(0xFF0EA5E9)
 const defaultSurfaceDark = buildSurfaceFromColor(0xFF0EA5E9, { darkMode: true })
 // const defaultSurface = buildSurfaceFromColor(0xff0ea5e9)
 // const defaultSurface = buildSurfaceFromColor(0xFF0369a1)
 
-// Extract is a hack because typescript returns number | string for type keyof
-export function useSurface(surface?: /*| Extract<keyof ThemingToken<"surfaces">, string>*/ | SurfaceSchemeSet | undefined): SurfaceSchemeSet
+export function useSurface(surface?: ThemeSurfaceScheme | SurfaceSchemeSet): SurfaceSchemeSet
 {
-  const theme = useTheme();
+  const surfaces = useThemeExtra("katia.surfaces")
+  const darkSurfaces = useThemeExtra("katia.surfaces.dark")
+  const defaultSurfaces = useThemeExtra("katai.surfaces.defaults")
+
   const darkMode = useDarkMode();
 
   if (typeof surface === "string")
   {
-    // if (darkMode)
-    // {
-    //   const darkThemeSurface = theme?.darkModeOverride?.surfaces?.[surface || DEFAULT_SURFACE_KEY];
+    if (!surfaces)
+      throw new Error("You're trying to useSurface but the theme doesn't contains any surface. Add some in the theme configuration under extras -> katia.surfaces")
 
-    //   if (darkThemeSurface)
-    //     return processSurface(darkThemeSurface);
-    // }
+    const s = surfaces as KatiaConfigSurfaces
 
-    const indexedSurface = (theme as any)["extras"]?.["katia-ui"]?.["surfaces"]?.[surface || DEFAULT_SURFACE_KEY]
+    // If dark mode and dark mode surface exists, return it
+    if (darkMode)
+    {
+      const ds = darkSurfaces as KatiaConfigSurfaces
+      const darkSurface = ds?.[surface];
 
-    // const indexedSurface = theme.surfaces[surface || DEFAULT_SURFACE_KEY];
+      if (darkSurface)
+        return darkSurface;
+      // return processSurface(darkSurface);
+    }
+
+    // Else, find light surface
+
+    const indexedSurface = s?.[surface]
 
     if (!indexedSurface)
     {
       if (IS_DEV)
-        console.warn(`[Soperio]: the surface ${surface} does not exist in your theme.`);
+        console.warn(`[Katia UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme.Add it in the theme configuration under extras -> katia.surfaces`);
+
+      // Avoid crashing, return default surface
+      return darkMode ? (defaultSurfaces?.dark ?? defaultSurfaceDark) : (defaultSurfaces?.light ?? defaultSurface)
     }
 
-    return indexedSurface || {};
+    return indexedSurface;
     // return processSurface(indexedSurface || {});
   }
 
-  return surface ?? (darkMode ? defaultSurfaceDark : defaultSurface);
+  // Return surface if defined, default surface otherwise
+  return surface ?? (darkMode ? (defaultSurfaces?.dark ?? defaultSurfaceDark) : (defaultSurfaces?.light ?? defaultSurface));
   // return surface ? processSurface(surface) : surface;
 }
+
+// const CACHE_TYPE = "surfaceSheme"
 
 // function processSurface(surface: SurfaceSchemeSet)
 // {

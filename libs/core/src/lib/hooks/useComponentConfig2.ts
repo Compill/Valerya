@@ -3,7 +3,8 @@ import deepmerge from "deepmerge";
 import { ComponentConfig2, ExtendComponentConfig2 } from "../ComponentConfig2";
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { SurfaceSchemeSet } from "../SurfaceScheme";
+import { SurfaceSchemeSet } from "../surface/SurfaceScheme";
+import { ThemeSurfaceScheme } from "../surface/types";
 import { useSurface } from "./useSurface";
 
 
@@ -42,19 +43,15 @@ function useMergedComponentConfig(component: string)
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
 }
 
-type SS = /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet | undefined // TODO
-
 export function useComponentConfig2<T extends SoperioComponent, P extends ComponentConfig2>(
   component = "",
-  surface: SS,
+  surface: ThemeSurfaceScheme | SurfaceSchemeSet | undefined,
   customConfig: ExtendComponentConfig2<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): T
 {
   const darkMode = useDarkMode();
   const _surface = useSurface(surface);
-
-  console.log("surface", _surface, surface)
 
   const defaultConfig = useMergedComponentConfig(component)
 

@@ -1,3 +1,4 @@
+export * from "./lib/As";
 export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "./lib/ComponentConfig";
 export type { ComponentConfig2, ExtendComponentConfig2, ExtendMultiPartComponentConfig2, MultiPartComponentConfig2 } from "./lib/ComponentConfig2";
 export * from "./lib/ComponentManager";
@@ -12,7 +13,9 @@ export * from "./lib/hooks/useMultiPartComponentConfig";
 export * from "./lib/hooks/usePrevious";
 export * from "./lib/hooks/useResponsiveProps";
 export * from "./lib/HTMLTagProps";
+export * from "./lib/KatiaConfig";
 export * from "./lib/MultiPartStyleProvider";
 export * from "./lib/surface/buildSurface";
-export * from "./lib/SurfaceScheme";
+export * from "./lib/surface/SurfaceScheme";
+export * from "./lib/surface/types";
 export * from "./lib/utils";

@@ -1,6 +1,6 @@
 import { SoperioComponent } from "@soperio/react";
 import { ComponentStateProps, NoStateProps } from "./ComponentStates";
-import { SurfaceSchemeSet } from "./SurfaceScheme";
+import { SurfaceSchemeSet } from "./surface/SurfaceScheme";
 
 type Trait<T> = SoperioComponent & T
 type TraitFn<T> = (surface: SurfaceSchemeSet, darkMode: boolean) => Trait<T>
