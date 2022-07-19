@@ -1,128 +1,78 @@
-interface RGB {
-  r: number,
-  g: number,
-  b: number,
+import { color, normal } from "color-blend"
+
+export function alpha(color: RGBA, alpha: number): RGBA
+{
+    if (alpha < 0 || alpha > 255)
+        throw new Error("Alpha must be between 0 and 1")
+
+    return { ...color, a: Math.round(255 * alpha) }
 }
 
-interface RGBA extends RGB
+export function ARGBToHex(color: number): string
 {
-  a: number
-}
-// Some utility (no actual blend-related algorithms) for color handling
-
-/**
- * Restricts a number to given boundaries
- * @param value The number to restrict
- * @param from  The lower boundary
- * @param to    The upper boundary
- * @return The restricted value
- */
-function restrictNumber(value: number, from: number, to: number)
-{
-  return Math.min(Math.max(value || 0, from), to)
+    return '#' + ('000000' + (color & 0xFFFFFF).toString(16)).slice(-6);
 }
 
-/**
- * Restricts an { r,g,b,a } color to its boundaries (0..255 color channels, 0..1 alpha channel)
- * @param color The { r,g,b,a } color to restrict
- * @return The restricted color
- */
-function restrictColor(color: RGBA): RGBA
+export function RGBAToHex(color: RGBA)
 {
-  return {
-    r: restrictNumber(color.r, 0, 255),
-    g: restrictNumber(color.g, 0, 255),
-    b: restrictNumber(color.b, 0, 255),
-    a: restrictNumber(color.a, 0, 1)
-  }
+    let r = color.r.toString(16)
+    let g = color.g.toString(16)
+    let b = color.b.toString(16)
+    let a = color.a.toString(16)
+
+    if (r.length === 1) r = `0${r}`
+    if (g.length === 1) g = `0${g}`
+    if (b.length === 1) b = `0${b}`
+    if (a.length === 1) a = `0${a}`
+
+    return `#${r}${g}${b}${a}`
 }
 
-
-
-/**
- * Rounds the color channels of an RGBA color
- * @param color     The { r,g,b,a } color to handle
- * @param precision How many decimals? Defaults to 0
- * @return The { r,g,b,a } with rounded color channels
- */
-function roundChannels(color: RGBA, precision?: number): RGBA
-function roundChannels(color: RGB, precision?: number): RGB
-function roundChannels(color: any, precision = 0): RGB | RGBA
+export function hexToRGBA(color:string): RGBA
 {
-  const multiplier = Math.pow(10, precision)
-
-  return {
-    r: Math.round(color.r * multiplier) / multiplier,
-    g: Math.round(color.g * multiplier) / multiplier,
-    b: Math.round(color.b * multiplier) / multiplier,
-    a: color.a
-  }
+    return {
+        r: parseInt(color.substring(1, 3), 16),
+        g: parseInt(color.substring(3, 5), 16),
+        b: parseInt(color.substring(5, 7), 16),
+        a: color.length > 7 ? parseInt(color.substring(7, 9), 16) : 255
+    }
 }
 
-/**
- * Applies the appropriate alpha blending to a blend process.
- * @see https://www.w3.org/TR/compositing-1/#blending
- * @param backdropAlpha  The alpha channel of the backdrop color [0..1]
- * @param sourceAlpha    The alpha channel of the source color [0..1]
- * @param compositeAlpha The alpha channel of the composite color [0..1]
- * @param backdropColor  A color channel (R, G or B) of the backdrop color [0..255]
- * @param sourceColor    A color channel (R, G or B) of the source color [0..255]
- * @param compositeColor A color channel (R, G or B) of the composite color [0..255]
- * @return The resulting color channel
- */
-function alphaCompose(
-  backdropAlpha: number,
-  sourceAlpha: number,
-  compositeAlpha: number,
-  backdropColor: number,
-  sourceColor: number,
-  compositeColor: number
-)
+export interface RGBA
 {
-  return (
-    (1 - sourceAlpha / compositeAlpha) * backdropColor +
-    (sourceAlpha / compositeAlpha) *
-    Math.round(
-      (1 - backdropAlpha) * sourceColor + backdropAlpha * compositeColor
-    )
-  )
+    r: number,
+    g: number,
+    b: number,
+    a: number,
 }
 
-/**
- * Blend two colors
- * All RGBA objects are { r,g,b,a } with [0..255] for RGB and [0..1] for alpha
- * @param source               The { r,g,b,a } color to be put on top
- * @param backdrop             The { r,g,b,a } color to be put below the source
- * @param abstractModeCallback The abstract blend mode function (separable vs. non-separable)
- * @param concreteModeCallback The concrete blend mode function (normal, multiply, ...)
- * @param options              The options to apply
- * @return The { r,g,b,a } result object, channel values are not rounded
- */
-export function performBlend(
-  backdrop: RGBA,
-  source: RGBA
-)
+export function intToRGBA(color: number): RGBA
 {
-  // Remove out-of-bounds values
-  backdrop = restrictColor(backdrop)
-  source = restrictColor(source)
+    return {
+        r: color >> 16 & 255,
+        g: color >> 8 & 255,
+        b: color & 255,
+        a: color >> 24 & 255,
+    }
+}
 
-  // Calculate resulting alpha
-  const a = source.a + backdrop.a - source.a * backdrop.a
+export function colorBlend(color: RGBA, ...blendColors: RGBA[]): RGBA
+{
+    if (!blendColors || blendColors.length === 0)
+        throw new Error("colorBlend must have at least two parameters")
 
-  // Calculate resulting RGB
-  const resultRGB = { r: source.r, g: source.g, b: source.b }
+    let blended = normal(normalizeColorBlendAlpha(color), normalizeColorBlendAlpha(blendColors[0]))
 
-  // Calculate actual RGBs from backdrop, source and result + alpha values
-  // Since blending may result in out-of-bounds color channels, cut those
-  let resultRGBA = restrictColor({
-    r: alphaCompose(backdrop.a, source.a, a, backdrop.r, source.r, resultRGB.r),
-    g: alphaCompose(backdrop.a, source.a, a, backdrop.g, source.g, resultRGB.g),
-    b: alphaCompose(backdrop.a, source.a, a, backdrop.b, source.b, resultRGB.b),
-    a: a
-  })
+    for (let i = 1; i < blendColors.length; i++)
+        blended = normal(blended, normalizeColorBlendAlpha(blendColors[i]))
 
-  resultRGBA = roundChannels(resultRGBA)
+    // Blending lib returns alpha between 0 and 1 instead or 0..255
+    blended.a = Math.round(blended.a * 255)
 
-  return resultRGBA
+    return blended
+}
+
+function normalizeColorBlendAlpha(color: RGBA): RGBA
+{
+    return {...color, a: color.a / 255 }
 }

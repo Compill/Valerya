@@ -6,7 +6,7 @@ export function Header()
   const toggleDarkMode = useToggleDarkMode()
 
   return (
-    <div w="full" h="64px" dflex alignItems="center" placeContent="center">
+    <div w="full" h="64px" dflex alignItems="center" placeContent="center" bgColor="root.bg-color-1">
 
       <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
 

@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { buildSurfaceFromColor } from "@katia/core";
+import { buildAlphaSurface, buildSurfaceFromColor } from "@katia/core";
 import { extendTheme, SoperioProvider } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
@@ -13,15 +13,19 @@ const theme = extendTheme({
     "katia.surfaces":
     {
       "primary": buildSurfaceFromColor(0xff6750a4),
-      "secondary": buildSurfaceFromColor(0xffff00ff),
-      "tertiary": buildSurfaceFromColor(0xff3a691e),
+      // "secondary": buildSurfaceFromColor(0xffff00ff),
+      "secondary": buildAlphaSurface(0xff8b5cf6),
+      "tertiary": buildAlphaSurface(0xff0ea5e9),
+      // "tertiary": buildSurfaceFromColor(0xff3a691e),
       "accent": buildSurfaceFromColor(0xffb3261e)
     },
     "katia.surfaces.dark":
     {
       "primary": buildSurfaceFromColor(0xff6750a4, { darkMode: true }),
-      "secondary": buildSurfaceFromColor(0xffff00ff, { darkMode: true }),
-      "tertiary": buildSurfaceFromColor(0xff3a691e, { darkMode: true }),
+      // "secondary": buildSurfaceFromColor(0xffff00ff, { darkMode: true }),
+      "secondary": buildAlphaSurface(0xff8b5cf6, { darkMode: true }),
+      "tertiary": buildAlphaSurface(0xff0ea5e9, { darkMode: true }),
+      // "tertiary": buildSurfaceFromColor(0xff3a691e, { darkMode: true }),
       "accent": buildSurfaceFromColor(0xffb3261e, { darkMode: true })
     }
   }

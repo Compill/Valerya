@@ -101,12 +101,12 @@ const config: Config =
           schemeVariant: "mainLayerHoverMain",
           border: "2",
           borderColor: surface.main.color,
-          hover_borderColor: surface.main.hover.color,
+          hover_borderColor: surface.main.color,
           stateSelected:
           {
             bgColor: surface.main.color,
             textColor: surface.main.onColor,
-            hover_borderColor: surface.main.hover.selected.color
+            hover_borderColor: surface.main.selected.color
           },
           stateDisabled:
           {

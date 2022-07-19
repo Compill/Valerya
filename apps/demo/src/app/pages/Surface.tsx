@@ -42,13 +42,13 @@ export default function Page({ ...props })
     <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
 
       <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altHoverMain" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
       <SurfaceBlock schemeVariant="mainInverse" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altInverse" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainLayerHoverMain" surfaceProps={sfProps} />
       <SurfaceBlock schemeVariant="mainInverseHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainLayerHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altInverse" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altHoverMain" surfaceProps={sfProps} />
 
     </Container>
   );
@@ -70,12 +70,19 @@ function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
   return (
     <div dflex flexRow gap="20">
 
+      <div trait="typo.h5" dflex flexCol placeContent="center" alignItems="center" w="16">{schemeVariant}</div>
+
       <Surface scheme="primary" schemeVariant={schemeVariant} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme="secondary" schemeVariant={schemeVariant} {...surfaceProps}>
+        <div trait="typo.h3">Title</div>
+        <div trait="typo.subtitle1">Subtitle</div>
+      </Surface>
+
+      <Surface scheme="tertiary" schemeVariant={schemeVariant} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

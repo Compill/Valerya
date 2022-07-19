@@ -145,22 +145,22 @@ const config:Config =
       (
         {
           bgColor: surface.mainLayer.color,
-          hover_bgColor: surface.main.hover.color,
+          hover_bgColor: surface.main.color,
           textColor: surface.mainLayer.onColor,
-          hover_textColor: surface.main.hover.onColor,
+          hover_textColor: surface.main.onColor,
           stateSelected:
           {
             bgColor: surface.mainLayer.selected.color,
-            hover_bgColor: surface.main.hover.selected.color,
+            hover_bgColor: surface.main.selected.color,
             textColor: surface.mainLayer.selected.onColor,
-            hover_textColor: surface.main.hover.selected.onColor,
+            hover_textColor: surface.main.selected.onColor,
           },
           stateActive:
           {
             bgColor: surface.mainLayer.active.color,
-            hover_bgColor: surface.main.hover.active.color,
+            hover_bgColor: surface.main.active.color,
             textColor: surface.mainLayer.active.onColor,
-            hover_textColor: surface.main.hover.active.onColor,
+            hover_textColor: surface.main.active.onColor,
           },
           stateDisabled:
           {
@@ -235,22 +235,22 @@ const config:Config =
       (
         {
           bgColor: surface.alt.color,
-          hover_bgColor: surface.main.hover.color,
+          hover_bgColor: surface.main.color,
           textColor: surface.alt.onColor,
-          hover_textColor: surface.main.hover.onColor,
+          hover_textColor: surface.main.onColor,
           stateSelected:
           {
             bgColor: surface.alt.selected.color,
-            hover_bgColor: surface.main.hover.selected.color,
+            hover_bgColor: surface.main.selected.color,
             textColor: surface.alt.selected.onColor,
-            hover_textColor: surface.main.hover.selected.onColor,
+            hover_textColor: surface.main.selected.onColor,
           },
           stateActive:
           {
             bgColor: surface.alt.active.color,
-            hover_bgColor: surface.main.hover.active.color,
+            hover_bgColor: surface.main.active.color,
             textColor: surface.alt.active.onColor,
-            hover_textColor: surface.main.hover.active.onColor,
+            hover_textColor: surface.main.active.onColor,
           },
           stateDisabled:
           {

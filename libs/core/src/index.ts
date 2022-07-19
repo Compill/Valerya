@@ -15,6 +15,7 @@ export * from "./lib/hooks/useResponsiveProps";
 export * from "./lib/HTMLTagProps";
 export * from "./lib/KatiaConfig";
 export * from "./lib/MultiPartStyleProvider";
+export * from "./lib/surface/buildAlphaSurface";
 export * from "./lib/surface/buildSurface";
 export * from "./lib/surface/SurfaceScheme";
 export * from "./lib/surface/types";

@@ -1,5 +1,5 @@
 import { CorePalette, Scheme } from "@material/material-color-utilities"
-import { normal } from "color-blend"
+import { alpha, ARGBToHex, colorBlend, intToRGBA, RGBA, RGBAToHex } from "./colorUtils"
 import { SurfaceScheme, SurfaceSchemeSet } from "./SurfaceScheme"
 
 
@@ -39,15 +39,15 @@ function buildSurfaceScheme(color: RGBA, onColor: RGBA, states: States): Surface
     color: primaryHex,
     onColor: onPrimaryHex,
     active: {
-      color: colorBlend(color, alpha(onColor, states.active)),
+      color: blend(color, alpha(onColor, states.active)),
       onColor: onPrimaryHex,
     },
     selected: {
-      color: colorBlend(color, alpha(onColor, states.selected)),
+      color: blend(color, alpha(onColor, states.selected)),
       onColor: onPrimaryHex,
     },
     pressed: {
-      color: colorBlend(color, alpha(onColor, states.pressed)),
+      color: blend(color, alpha(onColor, states.pressed)),
       onColor: onPrimaryHex,
     },
     disabled: {
@@ -55,18 +55,23 @@ function buildSurfaceScheme(color: RGBA, onColor: RGBA, states: States): Surface
       onColor: RGBAToHex(alpha(onColor, states.disabledContent)),
     },
     hover: {
-      color: colorBlend(color, alpha(onColor, states.hover)),
+      color: blend(color, alpha(onColor, states.hover)),
       onColor: onPrimaryHex,
       active: {
-        color: colorBlend(color, alpha(onColor, states.hover), alpha(onColor, states.active)),
+        color: blend(color, alpha(onColor, states.hover), alpha(onColor, states.active)),
         onColor: onPrimaryHex,
       },
       selected: {
-        color: colorBlend(color, alpha(onColor, states.hover), alpha(onColor, states.selected)),
+        color: blend(color, alpha(onColor, states.hover), alpha(onColor, states.selected)),
         onColor: onPrimaryHex,
       }
     },
   }
+}
+
+function blend(color: RGBA, ...otherColors: RGBA[]): string
+{
+  return RGBAToHex(colorBlend.call(null, color, ...otherColors))
 }
 
 interface ColorPalette
@@ -156,66 +161,4 @@ export function buildSurfaceFromColor(color: number, options?: BuildSurfaceOptio
     altInverse: buildSurfaceScheme(onPrimaryContainerRGBA, primaryContainerRGBA, states),
     mainLayer: buildSurfaceScheme({ r: 0, g: 0, b: 0, a: 0 }, primaryRGBA, states),
   }
-}
-
-function alpha(color: RGBA, alpha: number): RGBA
-{
-  if (alpha < 0 || alpha > 1)
-    throw new Error("Alpha must be between 0 and 1")
-
-  return { ...color, a: alpha }
-}
-
-function ARGBToHex(color: number): string
-{
-  return '#' + ('000000' + (color & 0xFFFFFF).toString(16)).slice(-6);
-}
-
-function RGBAToHex(color: RGBA)
-{
-  let r = color.r.toString(16)
-  let g = color.g.toString(16)
-  let b = color.b.toString(16)
-  let a = color.a.toString(16)
-
-  if (r.length === 1) r = `0${r}`
-  if (g.length === 1) g = `0${g}`
-  if (b.length === 1) b = `0${b}`
-  if (a.length === 1) a = `0${a}`
-
-  return `#${r}${g}${b}${a}`
-}
-
-interface RGBA
-{
-  r: number,
-  g: number,
-  b: number,
-  a: number,
-}
-
-function intToRGBA(color: number): RGBA
-{
-  return {
-    r: color >> 16 & 255,
-    g: color >> 8 & 255,
-    b: color & 255,
-    a: color >> 24 & 255,
-  }
-}
-
-function colorBlend(color: RGBA, ...blendColors: RGBA[]): string
-{
-  if (!blendColors || blendColors.length === 0)
-    throw new Error("colorBlend must have at least two parameters")
-
-  let blended = normal(color, blendColors[0])
-
-  for (let i = 1; i < blendColors.length; i++)
-    blended = normal(blended, blendColors[i])
-
-  // Blending lib returns alpha between 0 and 1 instead or 0..255
-  blended.a = Math.round(blended.a * 255)
-
-  return RGBAToHex(blended)
 }

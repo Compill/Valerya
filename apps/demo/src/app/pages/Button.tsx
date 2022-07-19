@@ -1,4 +1,4 @@
-import { Button, Container } from "@katia/components";
+import { Button, Button2, Container } from "@katia/components";
 
 /**
  *
@@ -18,11 +18,11 @@ export default function Page({ ...props })
       </div>
 
       <div flexRow>
-        <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow z="1001">Open Left</Button>
-        <Button variant="light" block mx="auto" my="5">Light button</Button>
-        <Button variant="link" block mx="auto" my="5">Link button</Button>
-        <Button variant="outline" block mx="auto" my="5">Outline button</Button>
-        <Button variant="borderless" block mx="auto" my="5">Borderless</Button>
+        <Button2 scheme="secondary" variant="default" block mx="auto" my="5" shadow z="1001">Open Left</Button2>
+        <Button2 scheme="secondary" variant="light" block mx="auto" my="5">Light button</Button2>
+        <Button2 scheme="secondary" variant="link" block mx="auto" my="5">Link button</Button2>
+        <Button2 scheme="secondary" variant="outline" block mx="auto" my="5">Outline button</Button2>
+        <Button2 scheme="secondary" variant="borderless" block mx="auto" my="5">Borderless</Button2>
       </div>
 
       <div flexRow>
