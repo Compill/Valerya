@@ -68,8 +68,8 @@ const config: Config =
       light: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          schemeVariant: "altHoverMain",
-          textColor: surface.main.color
+          schemeVariant: "altHovMain",
+          // textColor: surface.main.color
         }
       ),
       link: (surface: SurfaceSchemeSet, darkMode: boolean) =>
@@ -98,7 +98,7 @@ const config: Config =
       outline: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          schemeVariant: "mainLayerHoverMain",
+          schemeVariant: "mainLayerHovMain",
           border: "2",
           borderColor: surface.main.color,
           hover_borderColor: surface.main.color,

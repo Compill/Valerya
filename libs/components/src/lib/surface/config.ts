@@ -51,62 +51,62 @@ const config:Config =
           }
         }
       ),
-      mainInverse: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      mainInv: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: surface.mainInverse.color,
-          hover_bgColor: surface.mainInverse.hover.color,
-          textColor: surface.mainInverse.onColor,
-          hover_textColor: surface.mainInverse.hover.onColor,
+          bgColor: surface.mainInv.color,
+          hover_bgColor: surface.mainInv.hover.color,
+          textColor: surface.mainInv.onColor,
+          hover_textColor: surface.mainInv.hover.onColor,
           stateSelected:
           {
-            bgColor: surface.mainInverse.selected.color,
-            hover_bgColor: surface.mainInverse.hover.selected.color,
-            textColor: surface.mainInverse.selected.onColor,
-            hover_textColor: surface.mainInverse.hover.selected.onColor,
+            bgColor: surface.mainInv.selected.color,
+            hover_bgColor: surface.mainInv.hover.selected.color,
+            textColor: surface.mainInv.selected.onColor,
+            hover_textColor: surface.mainInv.hover.selected.onColor,
           },
           stateActive:
           {
-            bgColor: surface.mainInverse.active.color,
-            hover_bgColor: surface.mainInverse.hover.active.color,
-            textColor: surface.mainInverse.active.onColor,
-            hover_textColor: surface.mainInverse.hover.active.onColor,
+            bgColor: surface.mainInv.active.color,
+            hover_bgColor: surface.mainInv.hover.active.color,
+            textColor: surface.mainInv.active.onColor,
+            hover_textColor: surface.mainInv.hover.active.onColor,
           },
           stateDisabled:
           {
-            bgColor: surface.mainInverse.disabled.color,
-            hover_bgColor: surface.mainInverse.disabled.color,
-            textColor: surface.mainInverse.disabled.onColor,
-            hover_textColor: surface.mainInverse.disabled.onColor,
+            bgColor: surface.mainInv.disabled.color,
+            hover_bgColor: surface.mainInv.disabled.color,
+            textColor: surface.mainInv.disabled.onColor,
+            hover_textColor: surface.mainInv.disabled.onColor,
           }
         }
       ),
-      mainInverseHoverMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      mainInvHovMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: surface.mainInverse.color,
+          bgColor: surface.mainInv.color,
           hover_bgColor: surface.main.hover.color,
-          textColor: surface.mainInverse.onColor,
+          textColor: surface.mainInv.onColor,
           hover_textColor: surface.main.hover.onColor,
           stateSelected:
           {
-            bgColor: surface.mainInverse.selected.color,
+            bgColor: surface.mainInv.selected.color,
             hover_bgColor: surface.main.hover.selected.color,
-            textColor: surface.mainInverse.selected.onColor,
+            textColor: surface.mainInv.selected.onColor,
             hover_textColor: surface.main.hover.selected.onColor,
           },
           stateActive:
           {
-            bgColor: surface.mainInverse.active.color,
+            bgColor: surface.mainInv.active.color,
             hover_bgColor: surface.main.hover.active.color,
-            textColor: surface.mainInverse.active.onColor,
+            textColor: surface.mainInv.active.onColor,
             hover_textColor: surface.main.hover.active.onColor,
           },
           stateDisabled:
           {
-            bgColor: surface.mainInverse.disabled.color,
+            bgColor: surface.mainInv.disabled.color,
             hover_bgColor: surface.main.disabled.color,
-            textColor: surface.mainInverse.disabled.onColor,
+            textColor: surface.mainInv.disabled.onColor,
             hover_textColor: surface.main.disabled.onColor,
           }
         }
@@ -141,7 +141,7 @@ const config:Config =
           }
         }
       ),
-      mainLayerHoverMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      mainLayerHovMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
           bgColor: surface.mainLayer.color,
@@ -201,37 +201,37 @@ const config:Config =
           }
         }
       ),
-      altInverse: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      altInv: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: surface.altInverse.color,
-          hover_bgColor: surface.altInverse.hover.color,
-          textColor: surface.altInverse.onColor,
-          hover_textColor: surface.altInverse.hover.onColor,
+          bgColor: surface.altInv.color,
+          hover_bgColor: surface.altInv.hover.color,
+          textColor: surface.altInv.onColor,
+          hover_textColor: surface.altInv.hover.onColor,
           stateSelected:
           {
-            bgColor: surface.altInverse.selected.color,
-            hover_bgColor: surface.altInverse.hover.selected.color,
-            textColor: surface.altInverse.selected.onColor,
-            hover_textColor: surface.altInverse.hover.selected.onColor,
+            bgColor: surface.altInv.selected.color,
+            hover_bgColor: surface.altInv.hover.selected.color,
+            textColor: surface.altInv.selected.onColor,
+            hover_textColor: surface.altInv.hover.selected.onColor,
           },
           stateActive:
           {
-            bgColor: surface.altInverse.active.color,
-            hover_bgColor: surface.altInverse.hover.active.color,
-            textColor: surface.altInverse.active.onColor,
-            hover_textColor: surface.altInverse.hover.active.onColor,
+            bgColor: surface.altInv.active.color,
+            hover_bgColor: surface.altInv.hover.active.color,
+            textColor: surface.altInv.active.onColor,
+            hover_textColor: surface.altInv.hover.active.onColor,
           },
           stateDisabled:
           {
-            bgColor: surface.altInverse.disabled.color,
-            hover_bgColor: surface.altInverse.disabled.color,
-            textColor: surface.altInverse.disabled.onColor,
-            hover_textColor: surface.altInverse.disabled.onColor,
+            bgColor: surface.altInv.disabled.color,
+            hover_bgColor: surface.altInv.disabled.color,
+            textColor: surface.altInv.disabled.onColor,
+            hover_textColor: surface.altInv.disabled.onColor,
           }
         }
       ),
-      altHoverMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      altHovMain: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
           bgColor: surface.alt.color,

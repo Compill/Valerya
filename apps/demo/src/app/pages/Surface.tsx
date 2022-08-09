@@ -6,13 +6,13 @@ import { SoperioComponent, useDarkMode } from "@soperio/react";
 // const red = buildSurfaceFromColor(0xffff3300)
 // const sfGreen = buildSurfaceFromColor(0xff99ffcc)
 
-const sfBlue = buildSurfaceFromColor(0xff6750a4)
+const sfBlue = buildSurfaceFromColor(0xff010101, { neutral: true})
 const sfRed = buildSurfaceFromColor(0xffb3261e)
-const sfGreen = buildSurfaceFromColor(0xff3a691e)
+const sfGreen = buildSurfaceFromColor(0xff84cc16)
 
-const sfBlueDark = buildSurfaceFromColor(0xff6750a4, { darkMode: true })
+const sfBlueDark = buildSurfaceFromColor(0xff010101, { darkMode: true, neutral: true })
 const sfRedDark = buildSurfaceFromColor(0xffb3261e, { darkMode: true })
-const sfGreenDark = buildSurfaceFromColor(0xff3a691e, { darkMode: true })
+const sfGreenDark = buildSurfaceFromColor(0xff84cc16, { darkMode: true })
 
 
 // TODO Surface system
@@ -42,13 +42,13 @@ export default function Page({ ...props })
     <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
 
       <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainInverse" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainInverseHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainInv" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainInvHovMain" surfaceProps={sfProps} />
       <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainLayerHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="mainLayerHovMain" surfaceProps={sfProps} />
       <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altInverse" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altHoverMain" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altInv" surfaceProps={sfProps} />
+      <SurfaceBlock schemeVariant="altHovMain" surfaceProps={sfProps} />
 
     </Container>
   );

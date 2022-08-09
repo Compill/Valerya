@@ -5,6 +5,7 @@ import { SurfaceScheme, SurfaceSchemeSet } from "./SurfaceScheme"
 interface BuildSurfaceOptions
 {
     darkMode?: boolean,
+    coef?: number,
     hoverStatePercent?: number
     activeStatePercent?: number
     pressedStatePercent?: number
@@ -25,21 +26,25 @@ interface States
 
 export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions): SurfaceSchemeSet
 {
+    // Coef is between -0.5 and +0.5
+    // Default is 0
+    // Add 1 to make it a multiplier (0.5 > 1.5)
+    const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
     const primaryRGBA = intToRGBA(color)
 
     const primaryContainerRGBA = options?.darkMode ? colorBlend(primaryRGBA, { r: 0, g: 0, b: 0, a: 0.7 }) : colorBlend(primaryRGBA, { r: 255, g: 255, b: 255, a: 0.8 })
 
 
-    const primaryHex = options?.darkMode ? lighten(RGBAToHex(primaryRGBA), (1 - getBrightness(primaryRGBA)) * 50) : RGBAToHex(primaryRGBA)
+    const primaryHex = options?.darkMode ? lighten(RGBAToHex(primaryRGBA), (1 - getBrightness(primaryRGBA)) * 50 * coef) : RGBAToHex(primaryRGBA)
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
 
-    const primaryContainerHex = options?.darkMode ? darken(primaryHex, primaryBrightness * 70) : lighten(primaryHex, (1 - primaryBrightness) * 57)
+    const primaryContainerHex = options?.darkMode ? darken(primaryHex, primaryBrightness * 70 * coef) : lighten(primaryHex, (1 - primaryBrightness) * 57 * coef)
     const primaryContainerBrightness = getBrightness(hexToRGBA(primaryContainerHex))
 
     const isDarkPrimaryColor = isDark(primaryHex)
 
-    const onPrimaryHex = options?.darkMode ? darken(primaryHex, primaryBrightness * 70) : "#ffffff" //(isDarkPrimaryColor ? "#ffffff" : darken(primaryHex, primaryBrightness * 75))
-    const onPrimaryContainerHex = options?.darkMode ? lighten(primaryContainerHex, (1 - primaryContainerBrightness) * 67) : darken(primaryContainerHex, primaryContainerBrightness * 75)
+    const onPrimaryHex = options?.darkMode ? darken(primaryHex, primaryBrightness * 70 * coef) : "#ffffff" //(isDarkPrimaryColor ? "#ffffff" : darken(primaryHex, primaryBrightness * 75))
+    const onPrimaryContainerHex = options?.darkMode ? lighten(primaryContainerHex, (1 - primaryContainerBrightness) * 67 * coef) : darken(primaryContainerHex, primaryContainerBrightness * 75 * coef)
 
     const isDarkContainerColor = isDark(primaryContainerHex)
     const colorBlendPrimaryFn = isDarkPrimaryColor ? whiten : darken
@@ -97,7 +102,7 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
                 }
             }
         },
-        mainInverse: {
+        mainInv: {
             color: onPrimaryHex,
             onColor: primaryHex,
             active:
@@ -133,7 +138,7 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
                 }
             }
         },
-        altInverse: buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
+        altInv: buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
         mainLayer: {
             color: "transparent",
             onColor: primaryHex,

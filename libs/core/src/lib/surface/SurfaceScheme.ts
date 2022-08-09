@@ -3,10 +3,10 @@ import { Color } from "@soperio/react"
 export interface SurfaceSchemeSet
 {
   main: SurfaceScheme,
-  mainInverse: SurfaceScheme,
+  mainInv: SurfaceScheme,
   mainLayer: SurfaceScheme,
   alt: SurfaceScheme
-  altInverse: SurfaceScheme
+  altInv: SurfaceScheme
 }
 
 export interface SurfaceColorSet

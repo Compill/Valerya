@@ -17,6 +17,7 @@
     "color-blend": "^4.0.0",
     "core-js": "^3.6.5",
     "react": "18.2.0",
+    "react-color": "^2.19.3",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.3.0"

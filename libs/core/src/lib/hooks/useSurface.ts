@@ -14,7 +14,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceSchemeSet): Sur
 {
   const surfaces = useThemeExtra("katia.surfaces")
   const darkSurfaces = useThemeExtra("katia.surfaces.dark")
-  const defaultSurfaces = useThemeExtra("katai.surfaces.defaults")
+  const defaultSurfaces = useThemeExtra("katia.surfaces.default")
 
   const darkMode = useDarkMode();
 

@@ -48,7 +48,7 @@ const config: Config =
       {
         px: "4",
         py: "2.5",
-        fontSize: "x2"
+        fontSize: "x2",
       }
     },
     variant:

@@ -16,6 +16,7 @@ import { SurfaceScheme, SurfaceSchemeSet } from "./SurfaceScheme"
 type BuildSurfaceOptions =
   {
     autoGenerateColors?: "material" | "alpha",
+    neutral?: boolean,
     darkMode?: boolean,
     hoverStatePercent?: number
     activeStatePercent?: number
@@ -140,10 +141,10 @@ export function buildSurfaceFromColor(color: number, options?: BuildSurfaceOptio
 {
   const scheme = options?.darkMode ? Scheme.dark(color) : Scheme.light(color)
 
-  const primaryRGBA = intToRGBA(scheme.primary)
-  const primaryContainerRGBA = intToRGBA(scheme.primaryContainer)
-  const onPrimaryRGBA = intToRGBA(scheme.onPrimary)
-  const onPrimaryContainerRGBA = intToRGBA(scheme.onPrimaryContainer)
+  const primaryRGBA = intToRGBA(options?.neutral ? scheme.surfaceVariant : scheme.primary)
+  const primaryContainerRGBA = intToRGBA(options?.neutral ? scheme.surfaceVariant : scheme.primaryContainer)
+  const onPrimaryRGBA = intToRGBA(options?.neutral ? scheme.onSurfaceVariant : scheme.onPrimary)
+  const onPrimaryContainerRGBA = intToRGBA(options?.neutral ? scheme.onSurfaceVariant : scheme.onPrimaryContainer)
 
   const states = {
     hover: options?.hoverStatePercent ?? 0.08,
@@ -157,8 +158,8 @@ export function buildSurfaceFromColor(color: number, options?: BuildSurfaceOptio
   return {
     main: buildSurfaceScheme(primaryRGBA, onPrimaryRGBA, states),
     alt: buildSurfaceScheme(primaryContainerRGBA, onPrimaryContainerRGBA, states),
-    mainInverse: buildSurfaceScheme(onPrimaryRGBA, primaryRGBA, states),
-    altInverse: buildSurfaceScheme(onPrimaryContainerRGBA, primaryContainerRGBA, states),
+    mainInv: buildSurfaceScheme(onPrimaryRGBA, primaryRGBA, states),
+    altInv: buildSurfaceScheme(onPrimaryContainerRGBA, primaryContainerRGBA, states),
     mainLayer: buildSurfaceScheme({ r: 0, g: 0, b: 0, a: 0 }, primaryRGBA, states),
   }
 }
