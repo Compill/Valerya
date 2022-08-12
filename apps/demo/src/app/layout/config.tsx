@@ -6,6 +6,7 @@ const SurfacePage = React.lazy(() => import("../pages/Surface"));
 const ButtonPage = React.lazy(() => import("../pages/Button"));
 const Button2Page = React.lazy(() => import("../pages/Button2"));
 const ColorPickerPage = React.lazy(() => import("../pages/ColorPicker"));
+const SliderPickerPage = React.lazy(() => import("../pages/Slider"));
 
 
 export const menu = {
@@ -14,4 +15,5 @@ export const menu = {
   "Button": () => <ButtonPage />,
   "Button2": () => <Button2Page />,
   "Color Picker": () => <ColorPickerPage />,
+  "Slider Picker": () => <SliderPickerPage />,
 }

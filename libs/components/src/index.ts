@@ -13,6 +13,7 @@ export * from './lib/modal/';
 export * from './lib/radio/';
 export * from './lib/scrollable/';
 export * from './lib/select/';
+export * from './lib/slider/';
 export * from './lib/sidebar/';
 export * from './lib/spinner/';
 export * from './lib/stack/';

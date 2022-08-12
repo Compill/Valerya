@@ -10,6 +10,7 @@ export * from "./lib/hooks/useComponentConfig";
 export * from "./lib/hooks/useComponentConfig2";
 export * from "./lib/hooks/useFirstRender";
 export * from "./lib/hooks/useMultiPartComponentConfig";
+export * from "./lib/hooks/useMultiPartComponentConfig2";
 export * from "./lib/hooks/usePrevious";
 export * from "./lib/hooks/useResponsiveProps";
 export * from "./lib/HTMLTagProps";

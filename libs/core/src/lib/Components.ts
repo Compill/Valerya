@@ -80,6 +80,13 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
+  "Soperio.Slider":
+  {
+    size: "sm" | "md" | "lg" | "xl" | "x2";
+    variant: "default" | "solid" | "underline";
+    corners: "square" | "default" | "pill";
+    orientation: "horizontal" | "vertical";
+  },
   "Soperio.Spinner":
   {
     variant?: "default" | "track",
