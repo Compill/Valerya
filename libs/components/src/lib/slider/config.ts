@@ -30,13 +30,15 @@ const config: Config =
       alignItems: "center",
       justifyContent: "center",
       rounded: "full",
-      boxSizing: "border-box"
+      boxSizing: "border-box",
+      shadow: "sm",
+      shadowColor: "#666",
     },
   },
   defaultTraits:
   {
     variant: "default",
-    corners: "default",
+    corners: "pill",
     size: "md",
     orientation: "horizontal"
   },
@@ -50,6 +52,7 @@ const config: Config =
         slider:
         {
           w: "full",
+          h: "full"
         },
         rail:
         {
@@ -150,45 +153,75 @@ const config: Config =
       },
       "lg":
       {
-        thumb:
-        {
-          w: "4",
-          h: "4"
-        },
         slider:
         {
           px: "3",
           py: "2",
           fontSize: "lg"
-        }
+        },
+        rail:
+        {
+          w: "1.5",
+          h: "1.5"
+        },
+        track:
+        {
+          w: "1.5",
+          h: "1.5"
+        },
+        thumb:
+        {
+          w: "4",
+          h: "4"
+        },
       },
       "xl":
       {
-        thumb:
-        {
-          w: "5",
-          h: "5"
-        },
         slider:
         {
           px: "3.5",
           py: "2.5",
           fontSize: "xl"
-        }
+        },
+        rail:
+        {
+          w: "2",
+          h: "2"
+        },
+        track:
+        {
+          w: "2",
+          h: "2"
+        },
+        thumb:
+        {
+          w: "5",
+          h: "5"
+        },
       },
       "x2":
       {
-        thumb:
-        {
-          w: "6",
-          h: "6"
-        },
         slider:
         {
           px: "4",
           py: "2.5",
           fontSize: "x2"
-        }
+        },
+        rail:
+        {
+          w: "2.5",
+          h: "2.5"
+        },
+        track:
+        {
+          w: "2.5",
+          h: "2.5"
+        },
+        thumb:
+        {
+          w: "6",
+          h: "6"
+        },
       }
     },
     variant:
@@ -213,7 +246,8 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "mainInv"
+            schemeVariant: "main",
+            focus_outlineColor: surface.alt.color,
           }
         )
       },
@@ -241,12 +275,94 @@ const config: Config =
           }
         )
       },
+      alt:
+      {
+        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "altInv"
+          }
+        ),
+        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "alt"
+          }
+        ),
+        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "mainInv"
+          }
+        )
+      },
+      test:
+      {
+        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "alt"
+          }
+        ),
+        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "main"
+          }
+        ),
+        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "main",
+            shadow: "none",
+          }
+        ),
+      },
+      test2:
+      {
+        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "alt"
+          }
+        ),
+        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "main"
+          }
+        ),
+        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            schemeVariant: "mainInv",
+            shadow: "none",
+            border: "2",
+            borderColor: surface.main.color
+          }
+        )
+      }
     },
     corners:
     {
       square: {},
-      default: { slider: { rounded: true } },
-      pill: { slider: { rounded: "full" } }
+      default: {
+        rail: { rounded: true },
+        track: { rounded: true }
+      },
+      pill: {
+        rail: { rounded: "full" },
+        track: { rounded: "full" }
+      }
     }
   }
 }

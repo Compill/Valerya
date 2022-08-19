@@ -83,7 +83,7 @@ export interface Components
   "Soperio.Slider":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
-    variant: "default" | "solid" | "underline";
+    variant: "default" | "solid" | "alt" | "test" | "test2";
     corners: "square" | "default" | "pill";
     orientation: "horizontal" | "vertical";
   },

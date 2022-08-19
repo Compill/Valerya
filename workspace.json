@@ -6,6 +6,8 @@
     "core": "libs/core",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
-    "ui": "libs/ui"
+    "react-utils": "libs/react-utils",
+    "ui": "libs/ui",
+    "utils": "libs/utils"
   }
 }

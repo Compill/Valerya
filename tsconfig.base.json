@@ -18,7 +18,9 @@
     "paths": {
       "@katia/components": ["libs/components/src/index.ts"],
       "@katia/core": ["libs/core/src/index.ts"],
-      "@katia/ui": ["libs/ui/src/index.ts"]
+      "@katia/react-utils": ["libs/react-utils/src/index.ts"],
+      "@katia/ui": ["libs/ui/src/index.ts"],
+      "@katia/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

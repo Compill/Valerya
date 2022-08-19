@@ -127,7 +127,6 @@ interface PaletteProps
 
 function Palette({ color, coef }: PaletteProps)
 {
-  console.log("coef", coef, typeof coef)
   const transformCoef = (parseFloat(coef) + 0.5) * 5
   const leveledCoef = 4 + transformCoef
   const colors = [color]

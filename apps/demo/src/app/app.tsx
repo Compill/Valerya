@@ -67,7 +67,6 @@ export function App() {
 
 function AppContent()
 {
-  console.log("app content")
   return (
     <div dflex alignItems="start">
       <Menu />

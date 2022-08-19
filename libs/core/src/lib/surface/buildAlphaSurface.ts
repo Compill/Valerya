@@ -186,6 +186,7 @@ function blend(color: RGBA, ...otherColors: RGBA[]): string
 function buildSurfaceScheme(color: string, onColor: string, states: States): SurfaceScheme
 {
     const isDarkColor = isDark(color)
+    // TODO This generates alpha colors instead of opaque colors
     const colorBlendFn = /*isDarkColor ? whiten : */darken
 
     return {
