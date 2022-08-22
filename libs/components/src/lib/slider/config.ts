@@ -271,7 +271,7 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "mainInv"
+            schemeVariant: "mainInvHovMain"
           }
         )
       },

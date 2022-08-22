@@ -1,18 +1,18 @@
 import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
-import { buildSurfaceFromColor } from "@katia/core";
+import { buildAlphaSurface, buildSurfaceFromColor } from "@katia/core";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
 // const sfGreen = buildSurfaceFromColor(0xff99ffcc)
 
-const sfBlue = buildSurfaceFromColor(0xff010101, { neutral: true})
-const sfRed = buildSurfaceFromColor(0xffb3261e)
-const sfGreen = buildSurfaceFromColor(0xff84cc16)
+const sfBlue = buildAlphaSurface(0xff010101)
+const sfRed = buildAlphaSurface(0xffb3261e)
+const sfGreen = buildAlphaSurface(0xff84cc16)
 
-const sfBlueDark = buildSurfaceFromColor(0xff010101, { darkMode: true, neutral: true })
-const sfRedDark = buildSurfaceFromColor(0xffb3261e, { darkMode: true })
-const sfGreenDark = buildSurfaceFromColor(0xff84cc16, { darkMode: true })
+const sfBlueDark = buildAlphaSurface(0xff010101, { darkMode: true })
+const sfRedDark = buildAlphaSurface(0xffb3261e, { darkMode: true })
+const sfGreenDark = buildAlphaSurface(0xff84cc16, { darkMode: true })
 
 
 // TODO Surface system

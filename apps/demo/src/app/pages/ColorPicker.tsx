@@ -21,7 +21,9 @@ export default function Page({ ...props })
   const [color, setColor] = React.useState({ hex: "#0099ffff" })
   const [coef, setCoef] = React.useState("0.00")
 
-  const scheme = buildAlphaSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef) })
+  const darkMode = useDarkMode()
+
+  const scheme = buildAlphaSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef), darkMode })
 
   const handleChange = React.useCallback(color => setColor(color), [setColor])
   const handleCoefChange = React.useCallback(event => setCoef(event.target.value), [setCoef])
@@ -87,14 +89,12 @@ const sfProps: Omit<SurfaceProps, "ref"> = {
 
 function SurfaceBlock({ scheme, schemeVariant }: SurfaceBlockProps)
 {
-  const darkMode = useDarkMode()
-
   return (
     <div dflex flexCol gap="10">
 
       <div trait="typo.h5" fontSize="sm" textAlign="center" w="full" dflex flexCol placeContent="center" alignItems="center">{schemeVariant}</div>
 
-      <Surface scheme={scheme} schemeVariant={schemeVariant} {...sfProps} w="40">
+      <Surface scheme={scheme} schemeVariant={schemeVariant} {...sfProps} w="36" h="36" dflex flexCol placeContent="center">
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

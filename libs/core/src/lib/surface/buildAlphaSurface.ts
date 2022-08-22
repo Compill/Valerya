@@ -64,7 +64,7 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
         hoverPercent = "0" + hoverPercent
 
     return {
-        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states),
+        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states, options?.darkMode ?? false),
         alt:
         {
             color: primaryContainerHex,
@@ -125,7 +125,8 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
                 onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
             },
             hover: {
-                color: RGBAToHex(alpha(hexToRGBA(primaryHex), (states.hover) / 100)),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : RGBAToHex(colorBlend({ r: 255, g: 255, b: 255, a: 255 }, alpha(hexToRGBA(darken(primaryHex, states.hover)), (states.hover * 5) / 100))),
+                // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (states.hover * 2.55) / 100)),
                 onColor: primaryHex,
                 active: {
                     color: lighten(onPrimaryHex, states.hover + states.active),
@@ -138,7 +139,7 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
                 }
             }
         },
-        altInv: buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
+        altInv: buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states, options?.darkMode ?? false),
         mainLayer: {
             color: "transparent",
             onColor: primaryHex,
@@ -162,7 +163,8 @@ export function buildAlphaSurface(color: number, options?: BuildSurfaceOptions):
                 onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
             },
             hover: {
-                color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
+                // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : RGBAToHex(colorBlend({ r: 255, g: 255, b: 255, a: 255 }, alpha(hexToRGBA(darken(primaryHex, states.hover)), (states.hover * 5) / 100))),
                 onColor: primaryHex,
                 active: {
                     color: lighten(primaryHex, states.hover + states.active),
@@ -183,11 +185,12 @@ function blend(color: RGBA, ...otherColors: RGBA[]): string
     return RGBAToHex(colorBlend.call(null, color, ...otherColors))
 }
 
-function buildSurfaceScheme(color: string, onColor: string, states: States): SurfaceScheme
+function buildSurfaceScheme(color: string, onColor: string, states: States, darkMode: boolean): SurfaceScheme
 {
     const isDarkColor = isDark(color)
     // TODO This generates alpha colors instead of opaque colors
     const colorBlendFn = /*isDarkColor ? whiten : */darken
+    // const colorBlendFn = darkMode ? lighten : darken
 
     return {
         color: color,
