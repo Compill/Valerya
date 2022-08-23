@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { buildAlphaSurface, buildSurfaceFromColor } from "@katia/core";
+import { buildAlphaSurface, buildDarkSurface, buildSurfaceFromColor, buildWhiteSurface, SurfaceSchemeSet } from "@katia/core";
 import { extendTheme, SoperioProvider } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
@@ -28,9 +28,14 @@ import { Menu } from "./layout/Menu";
 const theme = extendTheme({
   extras:
   {
+    // TODO Transform into 
+    // withLightSurface
+    // withDarkSurface
+    // withDefaultSurface
     "katia.surfaces":
     {
-      "primary": buildAlphaSurface(0xff16a34a),
+      // "primary": buildAlphaSurface(0xff16a34a),
+      "primary": buildWhiteSurface(0xffffffff, 0xff181818),
       // "secondary": buildSurfaceFromColor(0xffff00ff),
       "secondary": buildAlphaSurface(0xff94a3b8),
       "tertiary": buildAlphaSurface(0xff0ea5e9),
@@ -39,9 +44,10 @@ const theme = extendTheme({
     },
     "katia.surfaces.dark":
     {
-      "primary": buildAlphaSurface(0xff16a34a, { darkMode: true }),
+      // "primary": buildAlphaSurface(0xff16a34a, { darkMode: true }),
+      "primary": buildDarkSurface(0xff181818, 0xffffffff),
       // "secondary": buildSurfaceFromColor(0xffff00ff, { darkMode: true }),
-      "secondary": buildAlphaSurface(0xff8b5cf6, { darkMode: true }),
+      "secondary": buildAlphaSurface(0xff475569, { darkMode: true }),
       "tertiary": buildAlphaSurface(0xff0ea5e9, { darkMode: true }),
       // "tertiary": buildSurfaceFromColor(0xff3a691e, { darkMode: true }),
       "accent": buildSurfaceFromColor(0xffb3261e, { darkMode: true })
@@ -50,11 +56,13 @@ const theme = extendTheme({
     {
       "light": buildAlphaSurface(0xff0ea5e9),//buildAlphaSurface(0xff06b6d4),
       "dark": buildAlphaSurface(0xff06b6d4, { darkMode: true }),
+      "neutral": buildAlphaSurface(0xff94a3b8)
     }
   }
 })
 
-export function App() {
+export function App()
+{
 
   return (
     <AppContextProvider>
@@ -79,3 +87,31 @@ function AppContent()
 }
 
 export default App;
+
+// const whiteSurface: SurfaceSchemeSet = {
+//   main:
+//   {
+//     color: "white-alpha-100",
+//     onColor: "black-alpha-100"
+//   },
+//   mainInv:
+//   {
+//     color: "black-alpha-100",
+//     onColor: "white-alpha-100"
+//   },
+//   mainLayer:
+//   {
+//     color: "transparent",
+//     onColor: "black-alpha-100"
+//   },
+//   alt:
+//   {
+//     color: "white-alpha-100",
+//     onColor: "black-alpha-100"
+//   },
+//   altInv:
+//   {
+//     color: "black-alpha-100"
+//     onColor: "white-alpha-100",
+//   }
+// }

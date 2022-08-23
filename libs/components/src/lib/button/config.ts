@@ -1,14 +1,19 @@
-import { ColorTheme } from "@soperio/react";
+import { SurfaceSchemeSet } from "@katia/core";
 import { Config } from "./types";
 
 const config: Config =
 {
-  defaultProps:
-  {
+  defaultProps: {
+    hover_transition: "all",
+    easing: "linear",
+    duration: "300",
+    hover_duration: "300",
+    fontWeight: "500",
     stateDisabled:
     {
       cursor: "default"
     },
+    hoverable: true
   },
   defaultTraits:
   {
@@ -48,119 +53,67 @@ const config: Config =
       {
         px: "4",
         py: "2.5",
-        fontSize: "x2",
+        fontSize: "x2"
       }
     },
     variant:
     {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      default: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: /*darkMode ? "#ff00ff" : */theme.default,
-          hover_bgColor: theme.defaultHover,
-          textColor: darkMode ? theme.textDark1 : theme.textLight1,//(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          schemeVariant: "main",
           border: "0",
-          stateSelected:
-          {
-            bgColor: theme.defaultActive,
-            hover_bgColor: theme.defaultActive,
-          },
-          stateDisabled:
-          {
-            bgColor: theme.default,
-            hover_bgColor: theme.default,
-            bgOpacity: "70",
-            // hover_bgOpacity: "70",
-            textOpacity: "85",
-            cursor: "default"
-          },
-          stateSelectedDisabled:
-          {
-            bgColor: theme.defaultActive,
-            hover_bgColor: theme.defaultActive,
-          }
         }
       ),
-      light: (theme: ColorTheme, darkMode: boolean) =>
+      light: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          // bgColor: theme.light,
-          bgColor: theme.default,
-          bgOpacity: darkMode ? "30" : "15",
-
-          border: "0",
-          textColor: darkMode ? theme.textDark4 : theme.defaultActive,
-          hover_bgColor: theme.default,
-          hover_bgOpacity: "100",
-          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          stateSelected:
-          {
-            bgColor: theme.defaultActive,
-            textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.defaultActive) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-            hover_bgColor: theme.defaultActive,
-          },
-          stateDisabled:
-          {
-            bgOpacity: "5",
-            hover_bgOpacity: "5",
-            textColor: theme.defaultActive,
-            hover_textColor: theme.defaultActive,
-            textOpacity: "50",
-            cursor: "default"
-          },
-          stateSelectedDisabled:
-          {
-            bgColor: theme.defaultActive,
-            textColor: theme.textLight1,
-            bgOpacity: "70",
-            textOpacity: "85",
-          }
+          schemeVariant: "altHovMain",
+          // textColor: surface.main.color
         }
       ),
-      link: (theme: ColorTheme, darkMode: boolean) =>
+      link: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
+          schemeVariant: "mainLayer",
           px: "0",
           py: "0",
           p: "0",
           appearanceNone: true,
-          bgColor: "transparent",
-          textColor: theme.default,
           hover_textDecoration: "underline",
-
+          hoverable: false,
           stateSelected:
           {
+            bgColor: "transparent",
+            hover_bgColor: "transparent",
             textDecoration: "underline",
           },
           stateDisabled:
           {
-            textOpacity: "60",
             hover_textDecoration: "no-underline",
             cursor: "default"
           }
         }
       ),
-      outline: (theme: ColorTheme, darkMode: boolean) =>
+      outline: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: "transparent",
+          schemeVariant: "mainLayerHovMain",
           border: "2",
-          borderColor: theme.default,
-          textColor: theme.default,
-          hover_bgColor: theme.default,
-          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          borderColor: surface.main.color,
+          hover_borderColor: surface.main.color,
           stateSelected:
           {
-            bgColor: theme.default,
-            textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+            bgColor: surface.main.color,
+            textColor: surface.main.onColor,
+            hover_borderColor: surface.main.selected.color
           },
           stateDisabled:
           {
             textOpacity: "70",
             borderOpacity: "70",
             bgOpacity: "70",
-            hover_textColor: theme.default,
+            // hover_textColor: theme.default,
             hover_bgColor: "transparent",
             cursor: "default"
           },
@@ -170,29 +123,10 @@ const config: Config =
           }
         }
       ),
-      borderless: (theme: ColorTheme, darkMode: boolean) =>
+      borderless: (surface: SurfaceSchemeSet, darkMode: boolean) =>
       (
         {
-          bgColor: "transparent",
-          textColor: theme.default,
-          hover_bgColor: theme.default,
-          hover_bgOpacity: darkMode ? "30" : "15",
-          hover_textColor: darkMode ? theme.textDark4 : theme.defaultActive,
-
-          border: "0",
-          stateSelected:
-          {
-            bgColor: theme.default,
-            bgOpacity: darkMode ? "30" : "15",
-          },
-          stateDisabled:
-          {
-            textOpacity: "60",
-            bgOpacity: "60",
-            hover_bgColor: "transparent",
-            hover_textColor: theme.default,
-            cursor: "default"
-          }
+          schemeVariant: "mainLayer",
         }
       )
     },

@@ -85,9 +85,9 @@ const config:Config =
       (
         {
           bgColor: surface.mainInv.color,
-          hover_bgColor: surface.main.hover.color,
+          hover_bgColor: surface.main.color,
           textColor: surface.mainInv.onColor,
-          hover_textColor: surface.main.hover.onColor,
+          hover_textColor: surface.main.onColor,
           stateSelected:
           {
             bgColor: surface.mainInv.selected.color,

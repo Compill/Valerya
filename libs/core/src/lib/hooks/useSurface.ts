@@ -43,7 +43,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceSchemeSet): Sur
     if (!indexedSurface)
     {
       if (IS_DEV)
-        console.warn(`[Katia UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme.Add it in the theme configuration under extras -> katia.surfaces`);
+        console.warn(`[Katia UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme. Add it in the theme configuration under extras -> katia.surfaces`);
 
       // Avoid crashing, return default surface
       return darkMode ? (defaultSurfaces?.dark ?? defaultSurfaceDark) : (defaultSurfaces?.light ?? defaultSurface)

@@ -21,7 +21,7 @@ export interface Components
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
     shape: "default" | "rounded" | "pill" | "square";
   },
-  "Soperio.Button":
+  "Katia.Button":
   {
     variant?: "default" | "light" | "outline" | "link" | "borderless";
     size?: "sm" | "md" | "lg" | "xl" | "x2";
