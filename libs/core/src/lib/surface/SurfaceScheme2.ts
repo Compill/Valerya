@@ -35,7 +35,13 @@ export interface LayerVariants
 
 /*
 
-Surface 
+Surface Interface
+{
+  palette
+  layers
+}
+
+Surface Component
 {
   theme
   layer

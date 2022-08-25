@@ -13,7 +13,8 @@ type SliderComponentProps = {
     slider: SoperioComponent,
     rail: SoperioComponent & SurfaceProps,
     track: SoperioComponent & SurfaceProps, 
-    thumb: SoperioComponent & SurfaceProps 
+    thumb: SoperioComponent & SurfaceProps,
+    thumbDragging: SoperioComponent & SurfaceProps 
 }
 
 export type Config = MultiPartComponentConfig2<TraitProps, SliderComponentProps, ConfigStateProps>;

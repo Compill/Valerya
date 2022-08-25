@@ -124,7 +124,7 @@ const Thumb = forwardRef<ThumbProps, "span">(({ }, ref) =>
 {
     const styles = useMultiPartStyles();
 
-    const { getThumbProps } = useSliderContext();
+    const { getThumbProps, state } = useSliderContext();
 
-    return <Surface {...styles["thumb"]} {...getThumbProps({}, ref)} hoverable />
+    return <Surface {...styles["thumb"]} {...(state.isDragging ? styles["thumbDragging"] : {})} {...getThumbProps({}, ref)} hoverable />
 })

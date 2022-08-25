@@ -33,7 +33,14 @@ const config: Config =
       boxSizing: "border-box",
       shadow: "sm",
       shadowColor: "#666",
+      transition: "transform",
+      duration: "300"
     },
+    thumbDragging:
+    {
+      transform: true,
+      scale: "125"
+    }
   },
   defaultTraits:
   {
@@ -42,7 +49,7 @@ const config: Config =
     size: "md",
     orientation: "horizontal"
   },
-  subComponents: ["slider", "rail", "track", "thumb"],
+  subComponents: ["slider", "rail", "track", "thumb", "thumbDragging"],
   traits:
   {
     orientation:
@@ -249,6 +256,12 @@ const config: Config =
             schemeVariant: "main",
             focus_outlineColor: surface.alt.color,
           }
+        ),
+        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.main.hover.color
+          }
         )
       },
       solid:
@@ -273,6 +286,12 @@ const config: Config =
             scheme: surface,
             schemeVariant: "mainInvHovMain"
           }
+        ),
+        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.main.hover.color
+          }
         )
       },
       alt:
@@ -296,6 +315,12 @@ const config: Config =
           {
             scheme: surface,
             schemeVariant: "mainInv"
+          }
+        ),
+        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.mainInv.hover.color
           }
         )
       },
@@ -323,6 +348,12 @@ const config: Config =
             shadow: "none",
           }
         ),
+        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.main.hover.color
+          }
+        )
       },
       test2:
       {
@@ -348,6 +379,12 @@ const config: Config =
             shadow: "none",
             border: "2",
             borderColor: surface.main.color
+          }
+        ),
+        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.mainInv.hover.color
           }
         )
       }

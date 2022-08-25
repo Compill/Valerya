@@ -240,8 +240,9 @@ export function useSlider({
     usePanGesture(rootRef, {
         onPanSessionStart(event)
         {
-            console.log(onChangeStart, onChangeStart(66))
-            if (!isInteractive) return
+            if (!isInteractive)
+                return
+
             setDragging.on()
             focusThumb()
             setValueFromPointer(event)
@@ -249,15 +250,19 @@ export function useSlider({
         },
         onPanSessionEnd()
         {
-            if (!isInteractive) return
-            setDragging.off()
+            if (!isInteractive) 
+                return
+            
+                setDragging.off()
             onChangeEnd?.(value)
             prevRef.current = value
         },
         onPan(event)
         {
-            if (!isInteractive) return
-            setValueFromPointer(event)
+            if (!isInteractive) 
+                return
+            
+                setValueFromPointer(event)
         },
     })
 

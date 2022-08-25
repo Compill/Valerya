@@ -34,12 +34,12 @@ export default function Page({ ...props })
     // duration: 350,
     // easing: "in",
     rounded: true,
-    p: "10",
+    p: "4",
     hoverable: true
   }
 
   return (
-    <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
+    <Container center size="x2" dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
 
       <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
       <SurfaceBlock schemeVariant="mainInv" surfaceProps={sfProps} />
@@ -68,9 +68,9 @@ function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
   const green = darkMode ? sfGreenDark : sfGreen
 
   return (
-    <div dflex flexRow gap="20">
+    <div dflex flexRow gap="10">
 
-      <div trait="typo.h5" dflex flexCol placeContent="center" alignItems="center" w="16">{schemeVariant}</div>
+      <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{schemeVariant}</div>
 
       <Surface scheme="primary" schemeVariant={schemeVariant} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
