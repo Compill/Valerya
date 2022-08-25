@@ -1,18 +1,20 @@
 import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
-import { buildAlphaSurface, buildSurfaceFromColor } from "@katia/core";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
+import { buildSurface, SurfaceScheme } from "@katia/surface";
+import { useSurface } from "libs/core/src/lib/hooks/useSurface";
+import { ThemeSurfaceScheme } from "@katia/core";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
 // const sfGreen = buildSurfaceFromColor(0xff99ffcc)
 
-const sfBlue = buildAlphaSurface(0xff010101)
-const sfRed = buildAlphaSurface(0xffb3261e)
-const sfGreen = buildAlphaSurface(0xff84cc16)
+const sfBlue = buildSurface(0xff010101)
+const sfRed = buildSurface(0xffb3261e)
+const sfGreen = buildSurface(0xff84cc16)
 
-const sfBlueDark = buildAlphaSurface(0xff010101, { darkMode: true })
-const sfRedDark = buildAlphaSurface(0xffb3261e, { darkMode: true })
-const sfGreenDark = buildAlphaSurface(0xff84cc16, { darkMode: true })
+const sfBlueDark = buildSurface(0xff010101, { darkMode: true })
+const sfRedDark = buildSurface(0xffb3261e, { darkMode: true })
+const sfGreenDark = buildSurface(0xff84cc16, { darkMode: true })
 
 
 // TODO Surface system
@@ -29,7 +31,7 @@ const sfGreenDark = buildAlphaSurface(0xff84cc16, { darkMode: true })
  */
 export default function Page({ ...props })
 {
-  const sfProps:Omit<SurfaceProps, "ref"> = {
+  const sfProps: Omit<SurfaceProps, "ref"> = {
     // transition: "colors",
     // duration: 350,
     // easing: "in",
@@ -38,17 +40,34 @@ export default function Page({ ...props })
     hoverable: true
   }
 
-  return (
-    <Container center size="x2" dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
+  const darkMode = useDarkMode()
 
-      <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainInv" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainInvHovMain" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="mainLayerHovMain" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altInv" surfaceProps={sfProps} />
-      <SurfaceBlock schemeVariant="altHovMain" surfaceProps={sfProps} />
+  const blue = darkMode ? sfBlueDark : sfBlue
+  const red = darkMode ? sfRedDark : sfRed
+  const green = darkMode ? sfGreenDark : sfGreen
+
+  return (
+    <Container center size="x2" dflex flexRow gap="10">
+
+      <div dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
+        <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="mainInv" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="mainInvHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="mainLayerHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="altInv" surfaceProps={sfProps} />
+        <SurfaceBlock schemeVariant="altHovMain" surfaceProps={sfProps} />
+      </div>
+
+      <div>
+        <Palette surface="primary" py="5" />
+        <Palette surface="secondary" py="5" />
+        <Palette surface="tertiary" py="5" />
+        <Palette surface={blue} py="5" />
+        <Palette surface={red} py="5" />
+        <Palette surface={green} py="5" />
+      </div>
 
     </Container>
   );
@@ -101,6 +120,22 @@ function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
+    </div>
+  )
+}
+
+interface PaletteProps extends SoperioComponent
+{
+  surface: SurfaceScheme | ThemeSurfaceScheme
+}
+
+function Palette({ surface, ...props }: PaletteProps)
+{
+  const _surface = useSurface(surface)
+
+  return (
+    <div w="full" alignItems="center" placeContent="center" dflex flexRow {...props}>
+      {Object.values(_surface.palette).map((color, index) => <div key={index} w="10" h="10" bgColor={color} />)}
     </div>
   )
 }

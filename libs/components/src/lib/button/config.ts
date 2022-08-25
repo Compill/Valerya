@@ -1,4 +1,4 @@
-import { SurfaceSchemeSet } from "@katia/core";
+import { SurfaceScheme } from "@katia/surface";
 import { Config } from "./types";
 
 const config: Config =
@@ -58,21 +58,21 @@ const config: Config =
     },
     variant:
     {
-      default: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           schemeVariant: "main",
           border: "0",
         }
       ),
-      light: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      light: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           schemeVariant: "altHovMain",
-          // textColor: surface.main.color
+          // textColor: surface.layers.main.color
         }
       ),
-      link: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      link: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           schemeVariant: "mainLayer",
@@ -95,18 +95,18 @@ const config: Config =
           }
         }
       ),
-      outline: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           schemeVariant: "mainLayerHovMain",
           border: "2",
-          borderColor: surface.main.color,
-          hover_borderColor: surface.main.color,
+          borderColor: surface.layers.main.color,
+          hover_borderColor: surface.layers.main.color,
           stateSelected:
           {
-            bgColor: surface.main.color,
-            textColor: surface.main.onColor,
-            hover_borderColor: surface.main.selected.color
+            bgColor: surface.layers.main.color,
+            textColor: surface.layers.main.onColor,
+            hover_borderColor: surface.layers.main.selected.color
           },
           stateDisabled:
           {
@@ -123,7 +123,7 @@ const config: Config =
           }
         }
       ),
-      borderless: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+      borderless: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           schemeVariant: "mainLayer",

@@ -1,4 +1,4 @@
-import { MultiPartComponentConfig2, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig2, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, ThemeSurfaceScheme, HTMLInputProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig2, HTMLDivProps, HTMLInputProps, MultiPartComponentConfig2, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
 import { SurfaceProps, SurfaceSchemeProps } from "../surface";
 

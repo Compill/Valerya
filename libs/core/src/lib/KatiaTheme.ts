@@ -1,5 +1,5 @@
 import { Theme } from "@soperio/react";
-import { SurfaceSchemeSet } from "./surface/SurfaceScheme";
+import { SurfaceScheme } from "@katia/surface";
 
 export interface KatiaTheme extends Theme
 {
@@ -7,17 +7,17 @@ export interface KatiaTheme extends Theme
     {
         "katia.surfaces": 
         {
-            "light": SurfaceSchemeSet,
-            "dark": SurfaceSchemeSet,
-            "neutral": SurfaceSchemeSet,
-            [x:string]: SurfaceSchemeSet
+            "light": SurfaceScheme,
+            "dark": SurfaceScheme,
+            "neutral": SurfaceScheme,
+            [x:string]: SurfaceScheme
         }
         "katia.surfaces.dark": 
         {
-            "light": SurfaceSchemeSet,
-            "dark": SurfaceSchemeSet,
-            "neutral": SurfaceSchemeSet,
-            [x: string]: SurfaceSchemeSet
+            "light": SurfaceScheme,
+            "dark": SurfaceScheme,
+            "neutral": SurfaceScheme,
+            [x: string]: SurfaceScheme
         }
     }
 }

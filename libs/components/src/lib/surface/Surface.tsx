@@ -1,5 +1,5 @@
-
-import { ComponentManager, HTMLDivProps, SurfaceSchemeSet, ThemeSurfaceScheme, useComponentConfig2 } from "@katia/core";
+import { ComponentManager, HTMLDivProps, ThemeSurfaceScheme, useComponentConfig2 } from "@katia/core";
+import { SurfaceScheme } from "@katia/surface"
 import { forwardRef, SoperioComponent } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
@@ -20,14 +20,14 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface SurfaceSchemeProps extends TraitProps
 {
-  scheme?: ThemeSurfaceScheme | SurfaceSchemeSet,
+  scheme?: ThemeSurfaceScheme | SurfaceScheme,
   hoverable?: boolean
 }
 
 export interface SurfaceProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
-  // scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceSchemeSet, // TODO
-  // scheme?: "primary" | SurfaceSchemeSet,
+  // scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceScheme, // TODO
+  // scheme?: "primary" | SurfaceScheme,
   // variant is already in ComponentProps
   config?: ExtendConfig;
   hoverable?: boolean

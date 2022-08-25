@@ -23,7 +23,7 @@ export interface Layer extends LayerState
   }
 }
 
-export interface LayerVariants
+export interface LayerScheme
 {
   main: Layer,
   mainInv: Layer,
@@ -35,10 +35,10 @@ export interface LayerVariants
 
 /*
 
-Surface Interface
+interface SurfaceScheme
 {
-  palette
-  layers
+  palette: PaletteScheme,
+  layers: LayerScheme
 }
 
 Surface Component

@@ -4,7 +4,7 @@ import { ComponentConfig2, ExtendMultiPartComponentConfig2, MultiPartComponentCo
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { ComponentTheme } from "../ComponentTheme";
-import { SurfaceSchemeSet } from "../surface/SurfaceScheme";
+import { SurfaceScheme } from "@katia/surface";
 import { ThemeSurfaceScheme } from "../surface/types";
 import { useSurface } from "./useSurface";
 
@@ -45,7 +45,7 @@ function useMergedComponentConfig(component: string)
 
 export function useMultiPartComponentConfig2<T, P extends MultiPartComponentConfig2<Record<string, string>>>(
   component = "",
-  surface: ThemeSurfaceScheme | SurfaceSchemeSet | undefined,
+  surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendMultiPartComponentConfig2<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): Record<string, SoperioComponent>
@@ -91,7 +91,7 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig2>(
   config: MultiPartComponentConfig2<Record<string, string>>,
   traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
-  surface: SurfaceSchemeSet,
+  surface: SurfaceScheme,
   darkMode: boolean
 ): Record<string, T>
 {

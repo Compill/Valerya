@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { buildAlphaSurface, buildDarkSurface, buildSurfaceFromColor, buildWhiteSurface, SurfaceSchemeSet } from "@katia/core";
+import { buildSurface, buildDarkSurface, buildWhiteSurface } from "@katia/surface";
 import { extendTheme, SoperioProvider } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
@@ -34,29 +34,29 @@ const theme = extendTheme({
     // withDefaultSurface
     "katia.surfaces":
     {
-      // "primary": buildAlphaSurface(0xff16a34a),
+      // "primary": buildSurface(0xff16a34a),
       "primary": buildWhiteSurface(0xffffffff, 0xff181818),
       // "secondary": buildSurfaceFromColor(0xffff00ff),
-      "secondary": buildAlphaSurface(0xff94a3b8),
-      "tertiary": buildAlphaSurface(0xff0ea5e9),
+      "secondary": buildSurface(0xff94a3b8),
+      "tertiary": buildSurface(0xff39B8FC), 
       // "tertiary": buildSurfaceFromColor(0xff3a691e),
-      "accent": buildSurfaceFromColor(0xffb3261e)
+      "accent": buildSurface(0xffb3261e)
     },
     "katia.surfaces.dark":
     {
-      // "primary": buildAlphaSurface(0xff16a34a, { darkMode: true }),
+      // "primary": buildSurface(0xff16a34a, { darkMode: true }),
       "primary": buildDarkSurface(0xff181818, 0xffffffff),
       // "secondary": buildSurfaceFromColor(0xffff00ff, { darkMode: true }),
-      "secondary": buildAlphaSurface(0xff475569, { darkMode: true }),
-      "tertiary": buildAlphaSurface(0xff0ea5e9, { darkMode: true }),
+      "secondary": buildSurface(0xff475569, { darkMode: true }),
+      "tertiary": buildSurface(0xff39B8FC, { darkMode: true }),
       // "tertiary": buildSurfaceFromColor(0xff3a691e, { darkMode: true }),
-      "accent": buildSurfaceFromColor(0xffb3261e, { darkMode: true })
+      "accent": buildSurface(0xffb3261e, { darkMode: true })
     },
     "katia.surfaces.default":
     {
-      "light": buildAlphaSurface(0xff0ea5e9),//buildAlphaSurface(0xff06b6d4),
-      "dark": buildAlphaSurface(0xff06b6d4, { darkMode: true }),
-      "neutral": buildAlphaSurface(0xff94a3b8)
+      "light": buildSurface(0xff0ea5e9),//buildSurface(0xff06b6d4),
+      "dark": buildSurface(0xff06b6d4, { darkMode: true }),
+      "neutral": buildSurface(0xff94a3b8)
     }
   }
 })
@@ -87,31 +87,3 @@ function AppContent()
 }
 
 export default App;
-
-// const whiteSurface: SurfaceSchemeSet = {
-//   main:
-//   {
-//     color: "white-alpha-100",
-//     onColor: "black-alpha-100"
-//   },
-//   mainInv:
-//   {
-//     color: "black-alpha-100",
-//     onColor: "white-alpha-100"
-//   },
-//   mainLayer:
-//   {
-//     color: "transparent",
-//     onColor: "black-alpha-100"
-//   },
-//   alt:
-//   {
-//     color: "white-alpha-100",
-//     onColor: "black-alpha-100"
-//   },
-//   altInv:
-//   {
-//     color: "black-alpha-100"
-//     onColor: "white-alpha-100",
-//   }
-// }

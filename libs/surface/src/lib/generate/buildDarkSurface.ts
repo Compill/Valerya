@@ -1,21 +1,24 @@
 import { darken, lighten } from "@soperio/react";
 import { RGBA } from "color-blend/dist/types";
 import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
-import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "./colorUtils";
-import { SurfaceScheme, SurfaceSchemeSet } from "./SurfaceScheme";
+import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
+import { Layer, LayerScheme } from "../Layer";
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
+const blackRGBA: RGBA = { r: 0, g: 0, b: 0, a: 255 }
 
-export function buildWhiteSurface(whiteColor: number, darkColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceSchemeSet
+export function buildDarkSurface(darkColor: number, whiteColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): LayerScheme
 {
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
-    const primaryHex = RGBAToHex(intToRGBA(whiteColor))
-    const onPrimaryHex = RGBAToHex(intToRGBA(darkColor))
+    const primaryHex = RGBAToHex(intToRGBA(darkColor))
+    const onPrimaryHex = RGBAToHex(intToRGBA(whiteColor))
 
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
+    
 
-    const primaryContainerHex = darken(primaryHex, primaryBrightness * 10 * coef)
-    const onPrimaryContainerHex = lighten(onPrimaryHex, primaryBrightness * 10 * coef)
+    const primaryContainerHex = lighten(primaryHex, (1 - primaryBrightness) * 57 * coef)
+    const primaryContainerBrightness = getBrightness(hexToRGBA(primaryContainerHex))
+    const onPrimaryContainerHex = darken(primaryContainerHex, primaryContainerBrightness * 75 * coef)
 
     const states = {
         hover: options?.hoverStatePercent ?? 3,
@@ -26,7 +29,7 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         disabledContent: options?.hoverStatePercent ?? 38
     }
 
-    const mainLayer: SurfaceScheme = {
+    const mainLayer: Layer = {
         color: "transparent",
         onColor: onPrimaryHex,
         active:
@@ -52,7 +55,8 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         },
         hover: {
             // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-            color: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(onPrimaryHex), (states.hover * 3) / 100))),
+            // color: RGBAToHex(colorBlend(blackRGBA, alpha(hexToRGBA(onPrimaryHex), (states.hover * 3) / 100))),
+            color: lighten(primaryHex, states.hover + states.active),
             onColor: onPrimaryHex,
             active: {
                 color: darken(primaryHex, states.hover + states.active),
@@ -66,9 +70,10 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         }
     }
 
-    const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
+    const newOptions: BuildSurfaceOptions = options ?? {}
+    // newOptions.darkMode = true
 
-    surface.mainInv.hover.color = lighten(onPrimaryHex, states.hover)
+    const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, newOptions)
 
     return {
         ...surface,

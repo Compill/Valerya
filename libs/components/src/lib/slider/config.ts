@@ -1,4 +1,4 @@
-import { SurfaceSchemeSet } from "@katia/core";
+import { SurfaceScheme } from "@katia/surface";
 import { Surface } from "../surface";
 import { Config } from "./types";
 
@@ -235,112 +235,112 @@ const config: Config =
     {
       default:
       {
-        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        rail: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "alt"
           }
         ),
-        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "main"
           }
         ),
-        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "main",
-            focus_outlineColor: surface.alt.color,
+            focus_outlineColor: surface.layers.alt.color,
           }
         ),
-        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.main.hover.color
+            bgColor: surface.layers.main.hover.color
           }
         )
       },
       solid:
       {
-        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        rail: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "main"
           }
         ),
-        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "alt"
           }
         ),
-        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "mainInvHovMain"
           }
         ),
-        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.main.hover.color
+            bgColor: surface.layers.main.hover.color
           }
         )
       },
       alt:
       {
-        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        rail: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "altInv"
           }
         ),
-        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "alt"
           }
         ),
-        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "mainInv"
           }
         ),
-        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.mainInv.hover.color
+            bgColor: surface.layers.mainInv.hover.color
           }
         )
       },
       test:
       {
-        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        rail: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "alt"
           }
         ),
-        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "main"
           }
         ),
-        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
@@ -348,43 +348,43 @@ const config: Config =
             shadow: "none",
           }
         ),
-        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.main.hover.color
+            bgColor: surface.layers.main.hover.color
           }
         )
       },
       test2:
       {
-        rail: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        rail: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "alt"
           }
         ),
-        track: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "main"
           }
         ),
-        thumb: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
             schemeVariant: "mainInv",
             shadow: "none",
             border: "2",
-            borderColor: surface.main.color
+            borderColor: surface.layers.main.color
           }
         ),
-        thumbDragging: (surface: SurfaceSchemeSet, darkMode: boolean) =>
+        thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.mainInv.hover.color
+            bgColor: surface.layers.mainInv.hover.color
           }
         )
       }

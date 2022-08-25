@@ -1,9 +1,9 @@
+import { SurfaceScheme } from "@katia/surface";
 import { SoperioComponent } from "@soperio/react";
 import { ComponentStateProps, NoStateProps } from "./ComponentStates";
-import { SurfaceSchemeSet } from "./surface/SurfaceScheme";
 
 type Trait<T> = SoperioComponent & T
-type TraitFn<T> = (surface: SurfaceSchemeSet, darkMode: boolean) => Trait<T>
+type TraitFn<T> = (surface: SurfaceScheme, darkMode: boolean) => Trait<T>
 type TraitConfig<T> = Trait<T> | TraitFn<T>
 
 declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;

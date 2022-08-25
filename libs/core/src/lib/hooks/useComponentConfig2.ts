@@ -3,7 +3,7 @@ import deepmerge from "deepmerge";
 import { ComponentConfig2, ExtendComponentConfig2 } from "../ComponentConfig2";
 import { ComponentManager } from "../ComponentManager";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { SurfaceSchemeSet } from "../surface/SurfaceScheme";
+import { SurfaceScheme } from "@katia/surface";
 import { ThemeSurfaceScheme } from "../surface/types";
 import { useSurface } from "./useSurface";
 
@@ -45,7 +45,7 @@ function useMergedComponentConfig(component: string)
 
 export function useComponentConfig2<T extends SoperioComponent, P extends ComponentConfig2>(
   component = "",
-  surface: ThemeSurfaceScheme | SurfaceSchemeSet | undefined,
+  surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendComponentConfig2<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): T
@@ -92,7 +92,7 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig2>(
   config: ComponentConfig2,
   traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
-  surface: SurfaceSchemeSet,
+  surface: SurfaceScheme,
   darkMode: boolean
 ): OmitStates<T>
 {

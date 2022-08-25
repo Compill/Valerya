@@ -1,12 +1,12 @@
+import { SurfaceScheme } from "@katia/surface"
 import { ComponentConfig, ExtendComponentConfig } from "./ComponentConfig"
-import { SurfaceSchemeSet } from "./surface/SurfaceScheme"
 
-export type KatiaConfigSurfaces = Record<string, SurfaceSchemeSet>
+export type KatiaConfigSurfaces = Record<string, SurfaceScheme>
 export type KatiaConfigComponents = Record<string, ComponentConfig>
 export type KatiaConfigExtendComponents = Record<string, ExtendComponentConfig<ComponentConfig>>
 export type KatiaConfigDefaultSurfaces = {
-  light: SurfaceSchemeSet,
-  dark: SurfaceSchemeSet
+  light: SurfaceScheme,
+  dark: SurfaceScheme
 }
 
 export interface KatiaConfig

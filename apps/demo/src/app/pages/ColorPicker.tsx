@@ -1,5 +1,5 @@
 import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
-import { buildAlphaSurface, buildSurfaceFromColor, SurfaceSchemeSet } from "@katia/core";
+import { buildSurface, SurfaceScheme } from "@katia/surface"
 import { darken, lighten, SoperioComponent, useDarkMode } from "@soperio/react";
 import React from "react";
 import { SketchPicker } from "react-color"
@@ -18,12 +18,12 @@ import { SketchPicker } from "react-color"
 
 export default function Page({ ...props })
 {
-  const [color, setColor] = React.useState({ hex: "#0099ffff" })
+  const [color, setColor] = React.useState({ hex: "#0099ff" })
   const [coef, setCoef] = React.useState("0.00")
 
   const darkMode = useDarkMode()
 
-  const scheme = buildAlphaSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef), darkMode })
+  const scheme = buildSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef), darkMode })
 
   const handleChange = React.useCallback(color => setColor(color), [setColor])
   const handleCoefChange = React.useCallback(event => setCoef(event.target.value), [setCoef])
@@ -32,7 +32,7 @@ export default function Page({ ...props })
     <div w="full" h="full" >
       <Header color={color.hex} onChange={handleChange} />
 
-      <Palette color={color.hex} coef={coef} />
+      <Palette color={color.hex} coef={coef} mt="10" mb="5" />
 
       <div dflex flexRow w="full" alignItems="center" placeContent="center">
         <span>Adjust colors</span>
@@ -75,7 +75,7 @@ export default function Page({ ...props })
 
 interface SurfaceBlockProps extends SoperioComponent, SurfaceSchemeVariant
 {
-  scheme: SurfaceSchemeSet
+  scheme: SurfaceScheme
 }
 
 const sfProps: Omit<SurfaceProps, "ref"> = {
@@ -119,26 +119,28 @@ function Header({ color, onChange }: HeaderProps)
   )
 }
 
-interface PaletteProps
+interface PaletteProps extends SoperioComponent
 {
   color: string,
-  coef: string
+  coef?: string
 }
 
-function Palette({ color, coef }: PaletteProps)
+function Palette({ color, coef = "0", ...props }: PaletteProps)
 {
-  const transformCoef = (parseFloat(coef) + 0.5) * 5
-  const leveledCoef = 4 + transformCoef
+  const transformDarkCoef = (parseFloat(coef) + 0.5) * 8
+  const transformLightCoef = (parseFloat(coef) + 0.5) * 6
+  const leveledDarkCoef = 4 + transformDarkCoef
+  const leveledLightCoef = 4 + transformLightCoef
   const colors = [color]
 
   for (let i = 0; i < 5; i++)
-    colors.push(lighten(color, leveledCoef + leveledCoef * i))
+    colors.push(lighten(color, leveledLightCoef + leveledLightCoef * i))
 
-  for (let i = 0; i < 5; i++)
-    colors.unshift(darken(color, leveledCoef + leveledCoef * i))
+  for (let i = 0; i < 4; i++)
+    colors.unshift(darken(color, leveledDarkCoef + leveledDarkCoef * i))
 
   return (
-    <div w="full" p="10" alignItems="center" placeContent="center" dflex flexRow>
+    <div w="full" alignItems="center" placeContent="center" dflex flexRow {...props}>
       {colors.map((color, index) => <div key={index} w="10" h="10" bgColor={color} />)}
     </div>
   )

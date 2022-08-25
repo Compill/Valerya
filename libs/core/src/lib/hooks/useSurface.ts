@@ -1,16 +1,15 @@
+import { buildSurface, SurfaceScheme } from "@katia/surface";
 import { IS_DEV, useDarkMode } from "@soperio/react";
 import { useThemeExtra } from "@soperio/theming";
 import { KatiaConfigSurfaces } from "../KatiaConfig";
-import { buildSurfaceFromColor } from "../surface/buildSurface";
-import { SurfaceSchemeSet } from "../surface/SurfaceScheme";
 import { ThemeSurfaceScheme } from "../surface/types";
 
-const defaultSurface = buildSurfaceFromColor(0xFF0EA5E9)
-const defaultSurfaceDark = buildSurfaceFromColor(0xFF0EA5E9, { darkMode: true })
+const defaultSurface = buildSurface(0xFF0EA5E9)
+const defaultSurfaceDark = buildSurface(0xFF0EA5E9, { darkMode: true })
 // const defaultSurface = buildSurfaceFromColor(0xff0ea5e9)
 // const defaultSurface = buildSurfaceFromColor(0xFF0369a1)
 
-export function useSurface(surface?: ThemeSurfaceScheme | SurfaceSchemeSet): SurfaceSchemeSet
+export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): SurfaceScheme
 {
   const surfaces = useThemeExtra("katia.surfaces")
   const darkSurfaces = useThemeExtra("katia.surfaces.dark")
@@ -60,7 +59,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceSchemeSet): Sur
 
 // const CACHE_TYPE = "surfaceSheme"
 
-// function processSurface(surface: SurfaceSchemeSet)
+// function processSurface(surface: SurfaceScheme)
 // {
 //   const processedSurface = { ...surface } as any
 
