@@ -1,3 +1,4 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
@@ -45,43 +46,37 @@ export const config: Config =
       }
     },
     variant: {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: theme.default,
-
+          schemeVariant: "main",
           border: "0",
-          textColor: theme.textLight1,
           fontWeight: "500"
         }
       ),
-      light: (theme: ColorTheme, darkMode: boolean) =>
+      light: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: theme.light,
-
+          schemeVariant: "alt",
           border: "0",
-          textColor: theme.default,
           fontWeight: "500"
         }
       ),
-      outline: (theme: ColorTheme, darkMode: boolean) =>
+      outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: "transparent",
+          schemeVariant: "mainLayer",
           border: "2",
-          borderColor: theme.default,
-          textColor: theme.default,
+          borderColor: surface.layers.mainLayer.onColor,
           fontWeight: "500"
         }
       ),
-      "light-outline": (theme: ColorTheme, darkMode: boolean) =>
+      "light-outline": (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: theme.light,
+          schemeVariant: "alt",
           border: "2",
-          borderColor: theme.default,
-          textColor: theme.default,
+          borderColor: surface.layers.alt.onColor,
           fontWeight: "500"
         }
       ),

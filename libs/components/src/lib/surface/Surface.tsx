@@ -24,7 +24,10 @@ export interface SurfaceSchemeProps extends TraitProps
   hoverable?: boolean
 }
 
-export interface SurfaceProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
+export type LayerProps = TraitProps // Alias
+export type SurfaceProps = Omit<ComponentProps, "schemeVariant"> & SurfaceSchemeProps
+
+interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
   // scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceScheme, // TODO
   // scheme?: "primary" | SurfaceScheme,
@@ -40,14 +43,14 @@ export interface SurfaceProps extends ComponentProps, HTMLDivProps, SurfaceSchem
 // schemeVariant
 // "none" | "main" | "mainInverse" | "mainInverseHoverMain" | "mainLayer" | "mainLayerHoverMain" | "alt" | "altInverse" | "altHoverMain"
 
-export const Surface = forwardRef<"div", SurfaceProps>((
+export const Surface = forwardRef<"div", SurfaceComponentProps>((
   {
     scheme,// = "primary",
     hoverable,
     schemeVariant,
     config,
     ...props
-  }: SurfaceProps, ref) =>
+  }: SurfaceComponentProps, ref) =>
 {
   const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { schemeVariant }, props)
 
