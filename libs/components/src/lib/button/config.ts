@@ -61,21 +61,21 @@ const config: Config =
       default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "main",
+          layer: "main",
           border: "0",
         }
       ),
       light: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "altHovMain",
+          layer: "altHovMain",
           // textColor: surface.layers.main.color
         }
       ),
       link: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "mainLayer",
+          layer: "mainLayer",
           px: "0",
           py: "0",
           p: "0",
@@ -98,7 +98,7 @@ const config: Config =
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "mainLayerHovMain",
+          layer: "mainLayerHovMain",
           border: "2",
           borderColor: surface.layers.main.color,
           hover_borderColor: surface.layers.main.color,
@@ -126,7 +126,7 @@ const config: Config =
       borderless: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "mainLayer",
+          layer: "mainLayer",
         }
       )
     },

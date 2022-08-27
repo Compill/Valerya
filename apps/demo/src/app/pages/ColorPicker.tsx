@@ -1,4 +1,4 @@
-import { buildSurface, Container, Surface, SurfaceProps, SurfaceScheme, SurfaceSchemeVariant } from "@katia/ui";
+import { buildSurface, Container, Surface, SurfaceProps, SurfaceScheme, LayerProps } from "@katia/ui";
 import { darken, lighten, SoperioComponent, useDarkMode } from "@soperio/react";
 import React from "react";
 import { SketchPicker } from "react-color";
@@ -53,17 +53,17 @@ export default function Page({ ...props })
       <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
 
         <div dflex flexRow gap="20">
-          <SurfaceBlock scheme={scheme} schemeVariant="main" />
-          <SurfaceBlock scheme={scheme} schemeVariant="mainInv" />
-          <SurfaceBlock scheme={scheme} schemeVariant="mainInvHovMain" />
-          <SurfaceBlock scheme={scheme} schemeVariant="mainLayer" />
-          <SurfaceBlock scheme={scheme} schemeVariant="mainLayerHovMain" />
+          <SurfaceBlock scheme={scheme} layer="main" />
+          <SurfaceBlock scheme={scheme} layer="mainInv" />
+          <SurfaceBlock scheme={scheme} layer="mainInvHovMain" />
+          <SurfaceBlock scheme={scheme} layer="mainLayer" />
+          <SurfaceBlock scheme={scheme} layer="mainLayerHovMain" />
         </div>
 
         <div dflex flexRow gap="20">
-          <SurfaceBlock scheme={scheme} schemeVariant="alt" />
-          <SurfaceBlock scheme={scheme} schemeVariant="altInv" />
-          <SurfaceBlock scheme={scheme} schemeVariant="altHovMain" />
+          <SurfaceBlock scheme={scheme} layer="alt" />
+          <SurfaceBlock scheme={scheme} layer="altInv" />
+          <SurfaceBlock scheme={scheme} layer="altHovMain" />
         </div>
 
       </Container>
@@ -71,7 +71,7 @@ export default function Page({ ...props })
   );
 }
 
-interface SurfaceBlockProps extends SoperioComponent, SurfaceSchemeVariant
+interface SurfaceBlockProps extends SoperioComponent, LayerProps
 {
   scheme: SurfaceScheme
 }
@@ -85,14 +85,14 @@ const sfProps: Omit<SurfaceProps, "ref"> = {
   hoverable: true
 }
 
-function SurfaceBlock({ scheme, schemeVariant }: SurfaceBlockProps)
+function SurfaceBlock({ scheme, layer }: SurfaceBlockProps)
 {
   return (
     <div dflex flexCol gap="10">
 
-      <div trait="typo.h5" fontSize="sm" textAlign="center" w="full" dflex flexCol placeContent="center" alignItems="center">{schemeVariant}</div>
+      <div trait="typo.h5" fontSize="sm" textAlign="center" w="full" dflex flexCol placeContent="center" alignItems="center">{layer}</div>
 
-      <Surface scheme={scheme} schemeVariant={schemeVariant} {...sfProps} w="36" h="36" dflex flexCol placeContent="center">
+      <Surface scheme={scheme} layer={layer} {...sfProps} w="36" h="36" dflex flexCol placeContent="center">
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

@@ -1,14 +1,14 @@
-import { SurfaceComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, ThemeSurfaceScheme } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SurfaceComponentConfig } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
-import { SurfaceSchemeProps } from "../surface";
+import { SurfaceProps } from "../surface";
 
 
 type TraitProps = ComponentTypings<"Katia.Button">
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState & Omit<SurfaceSchemeProps, "schemeVariant" | "hoverable"> & RightJoinProps<HTMLButtonProps, HTMLDivProps>; // TODO the as property should correctly handle the right join
+export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState & SurfaceProps & RightJoinProps<HTMLButtonProps, HTMLDivProps>; // TODO the as property should correctly handle the right join
 // There is a problem either in the AS type or the forwardRef function
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps, Omit<SurfaceSchemeProps, "scheme"> { }
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
 export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

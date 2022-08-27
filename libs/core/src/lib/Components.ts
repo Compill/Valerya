@@ -94,7 +94,7 @@ export interface Components
   },
   "Soperio.Surface":
   {
-    schemeVariant?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
+    layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },
   "Soperio.Switch":
   {

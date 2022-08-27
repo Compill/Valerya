@@ -11,5 +11,3 @@ interface ConfigStateProps extends ActiveThemeProps, SelectedThemeProps, Disable
 
 export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
 export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;
-
-export type SurfaceSchemeVariant = Pick<TraitProps, "schemeVariant">

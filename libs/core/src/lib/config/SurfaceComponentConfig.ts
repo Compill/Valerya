@@ -24,7 +24,7 @@ export declare type SurfaceComponentConfig<
   S extends StateAndExtraProps = NoStateProps
   > =
   {
-    defaultProps?: TraitConfig<S>;
+    defaultProps?: TraitConfig<P & S>;
     defaultTraits?: { [Property in keyof T]: T[Property] }
     traits?: {
       // keys = traits like variant, corners, size, ...

@@ -1,7 +1,8 @@
-import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/ui";
+import { Container, Surface, SurfaceProps } from "@katia/ui";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
 import { buildSurface, SurfaceScheme } from "@katia/ui";
 import { ThemeSurfaceScheme, useSurface } from "@katia/ui";
+import { LayerProps } from "@katia/components";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
@@ -49,14 +50,14 @@ export default function Page({ ...props })
     <Container center size="x2" dflex flexRow gap="10">
 
       <div dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
-        <SurfaceBlock schemeVariant="main" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="mainInv" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="mainInvHovMain" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="mainLayer" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="mainLayerHovMain" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="alt" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="altInv" surfaceProps={sfProps} />
-        <SurfaceBlock schemeVariant="altHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="main" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainInv" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainInvHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainLayer" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainLayerHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="alt" surfaceProps={sfProps} />
+        <SurfaceBlock layer="altInv" surfaceProps={sfProps} />
+        <SurfaceBlock layer="altHovMain" surfaceProps={sfProps} />
       </div>
 
       <div>
@@ -72,12 +73,12 @@ export default function Page({ ...props })
   );
 }
 
-interface SurfaceBlockProps extends SoperioComponent, SurfaceSchemeVariant
+interface SurfaceBlockProps extends SoperioComponent, LayerProps
 {
   surfaceProps: Omit<SurfaceProps, "ref">
 }
 
-function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
+function SurfaceBlock({ layer, surfaceProps }: SurfaceBlockProps)
 {
   const darkMode = useDarkMode()
 
@@ -88,34 +89,34 @@ function SurfaceBlock({ schemeVariant, surfaceProps }: SurfaceBlockProps)
   return (
     <div dflex flexRow gap="10">
 
-      <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{schemeVariant}</div>
+      <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{layer}</div>
 
-      <Surface scheme="primary" schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme="primary" layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme="secondary" schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme="secondary" layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme="tertiary" schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme="tertiary" layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme={blue} schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme={blue} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme={red} schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme={red} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme={green} schemeVariant={schemeVariant} {...surfaceProps}>
+      <Surface scheme={green} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

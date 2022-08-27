@@ -18,14 +18,14 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 // TODO Make all component extends SurfaceSchemeProps instead of redefining the
 // scheme property
 
-export interface SurfaceSchemeProps extends TraitProps
+interface SurfaceSchemeProps extends TraitProps
 {
   scheme?: ThemeSurfaceScheme | SurfaceScheme,
   hoverable?: boolean
 }
 
 export type LayerProps = TraitProps // Alias
-export type SurfaceProps = Omit<ComponentProps, "schemeVariant"> & SurfaceSchemeProps
+export type SurfaceProps = Omit<ComponentProps, "layer"> & SurfaceSchemeProps
 
 interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
@@ -47,14 +47,14 @@ export const Surface = forwardRef<"div", SurfaceComponentProps>((
   {
     scheme,// = "primary",
     hoverable,
-    schemeVariant,
+    layer,
     config,
     ...props
   }: SurfaceComponentProps, ref) =>
 {
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { schemeVariant }, props)
+  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { layer }, props)
 
-  const filteredStyles:SoperioComponent = { ...styles }
+  const filteredStyles: SoperioComponent = { ...styles }
 
   if (!hoverable)
   {

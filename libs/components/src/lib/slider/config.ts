@@ -239,21 +239,21 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "alt"
+            layer: "alt"
           }
         ),
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "main"
+            layer: "main"
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "main",
+            layer: "main",
             focus_outlineColor: surface.layers.alt.color,
           }
         ),
@@ -270,21 +270,21 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "main"
+            layer: "main"
           }
         ),
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "alt"
+            layer: "alt"
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "mainInvHovMain"
+            layer: "mainInvHovMain"
           }
         ),
         thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>

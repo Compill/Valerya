@@ -12,11 +12,11 @@ const config:Config =
   },
   defaultTraits:
   {
-    schemeVariant: "main",
+    layer: "main",
   },
   traits:
   {
-    schemeVariant:
+    layer:
     {
       none: {
 
