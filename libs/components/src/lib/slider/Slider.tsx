@@ -1,4 +1,4 @@
-import { ComponentManager, forwardRef, useMultiPartComponentConfig2, useMultiPartStyles, MultiPartStyleProvider, splitComponentProps, createContext } from "@katia/core"
+import { ComponentManager, forwardRef, useMultiPartSurfaceComponentConfig, useMultiPartStyles, MultiPartStyleProvider, splitComponentProps, createContext } from "@katia/core"
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -33,7 +33,7 @@ export const Slider = forwardRef<SliderProps, "input">(({
     ...props
 }: SliderProps, ref) =>
 {
-    const styles = useMultiPartComponentConfig2(COMPONENT_ID, scheme, config, { variant, corners, size, orientation }, props);
+    const styles = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size, orientation }, props);
 
     const { min, max, step, value, defaultValue, id, name, disabled, readOnly } = props
 

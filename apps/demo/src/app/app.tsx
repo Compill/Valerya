@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { buildSurface, buildDarkSurface, buildWhiteSurface } from "@katia/surface";
+import { buildSurface, buildDarkSurface, buildWhiteSurface } from "@katia/ui";
 import { extendTheme, SoperioProvider } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
@@ -37,7 +37,7 @@ const theme = extendTheme({
       // "primary": buildSurface(0xff16a34a),
       "primary": buildWhiteSurface(0xffffffff, 0xff181818),
       // "secondary": buildSurfaceFromColor(0xffff00ff),
-      "secondary": buildSurface(0xff94a3b8),
+      "secondary": buildSurface(0xff475569),
       "tertiary": buildSurface(0xff39B8FC), 
       // "tertiary": buildSurfaceFromColor(0xff3a691e),
       "accent": buildSurface(0xffb3261e)

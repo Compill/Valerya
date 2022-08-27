@@ -1,9 +1,12 @@
-import { ColorTheme, IS_DEV, SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/react";
+import { IS_DEV, SoperioComponent, useDarkMode, useTheme } from "@soperio/react";
 import deepmerge from "deepmerge";
-import { ComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
-import { ComponentManager } from "../ComponentManager";
-import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { ComponentTheme } from "../ComponentTheme";
+import { SurfaceComponentConfig, ExtendSurfaceComponentConfig } from "./SurfaceComponentConfig";
+import { ComponentManager } from "./ComponentManager";
+import { ComponentState, ComponentThemeState } from "./ComponentStates";
+import { SurfaceScheme } from "@katia/surface";
+import { ThemeSurfaceScheme } from "../surface/types";
+import { useSurface } from "../hooks/useSurface";
+
 
 type KeysOf<T> =
   {
@@ -35,25 +38,26 @@ function useMergedComponentConfig(component: string)
   const sTheme = useTheme()
 
   const themeConfig = sTheme.components?.[component]
-  const defaultConfig = ComponentManager.getComponentConfig(component) as MultiPartComponentConfig<Record<string, string>>
+  const defaultConfig = ComponentManager.getComponentConfig(component) as SurfaceComponentConfig
 
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
 }
 
-export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfig<Record<string, string>>>(
+export function useSurfaceComponentConfig<T extends SoperioComponent, P extends SurfaceComponentConfig>(
   component = "",
-  theme: ComponentTheme = "default",
-  customConfig: ExtendMultiPartComponentConfig<P> | undefined,
+  surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
+  customConfig: ExtendSurfaceComponentConfig<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
-  props?: T): Record<string, SoperioComponent>
+  props?: T): T
 {
   const darkMode = useDarkMode();
-  const colorTheme = useColorTheme(theme);
+  const _surface = useSurface(surface);
 
   const defaultConfig = useMergedComponentConfig(component)
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
+
 
   let config
 
@@ -78,62 +82,56 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
   }
 
   if (config)
-    return mergeProps(config, traitsConfig, props, colorTheme, darkMode);
+    return mergeProps(config, traitsConfig, props, _surface, darkMode) as T;
 
-  return {};
+  return {} as T;
 }
 
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
-function mergeProps<T extends SoperioComponent, P extends ComponentConfig>(
-  config: MultiPartComponentConfig<Record<string, string>>,
+function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig>(
+  config: SurfaceComponentConfig,
   traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
-  colorTheme: ColorTheme,
+  surface: SurfaceScheme,
   darkMode: boolean
-): Record<string, T>
+): OmitStates<T>
 {
-  const subComponents = config.subComponents
+  // Here we must merge:
+  // - the default props from the config
+  // - the selected traits props
+  // - the state props
+  // - the user defined props on the component
 
-  const parsedConfig: any = {}
 
-  for (const subComponent of subComponents)
+  // Let's start with the component default values
+  let finalProps = { ...(config.defaultProps as T) };
+
+  const defaultTraits = config.defaultTraits
+
+  const c = config as any
+
+  const traits = c.traits
+
+  for (const key in traitsConfig)
   {
-    // Let's start with the component default values
-    let finalProps = { ...(config.defaultProps?.[subComponent] as any) };
+    const trait = traits[key]
+    const traitName = traitsConfig[key] ?? defaultTraits?.[key]
 
-    const defaultTraits = config.defaultTraits;
-
-    const c = config as any;
-
-    const traits = c.traits;
-
-    for (const key in traitsConfig)
+    if (trait && traitName)
     {
-      const variant = traits[key];
-      const variantName = traitsConfig[key] ?? defaultTraits?.[key]
+      const configProps = runIfFn(trait[traitName], surface, darkMode) as T;
 
-      if (variant && variantName)
-      {
-        const selectedVariant = variant ? variant[variantName] : null
-
-        const configProps = selectedVariant?.[subComponent];
-
-        if (configProps)
-          finalProps = deepmerge(finalProps, runIfFn(configProps, colorTheme, darkMode)) as T;
-      }
+      if (configProps)
+        finalProps = deepmerge(finalProps, configProps) as T
     }
-
-    finalProps = mergeStateProps(finalProps, props)
-
-    parsedConfig[subComponent] = finalProps;
   }
 
-  return parsedConfig
+  return mergeStateProps(finalProps, props)
 }
 
 // Final step : merge the props with the state props
 // checked, selected, disabled, ...
-function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): T
+function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
 {
   let finalProps = { ...configProps };
 
@@ -164,26 +162,35 @@ function mergeStateProps<T extends SoperioComponent>(configProps: any, props: an
   if (props[ComponentState.INVALID])
     finalProps = { ...finalProps, ...configProps[ComponentThemeState.INVALID] };
 
-  if (props[ComponentState.ACTIVE])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
-
-  if (props[ComponentState.CHECKED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
-
-  if (props[ComponentState.SELECTED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
-
   if (props[ComponentState.DISABLED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
+  {
+    if (props[ComponentState.ACTIVE] || props[ComponentState.CHECKED] || props[ComponentState.SELECTED])
+    {
+      if (props[ComponentState.ACTIVE])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.ACTIVE_DISABLED] ?? configProps[ComponentThemeState.ACTIVE]) };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.ACTIVE])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE_DISABLED] };
+      if (props[ComponentState.CHECKED])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.CHECKED_DISABLED] ?? configProps[ComponentThemeState.CHECKED]) };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.CHECKED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED_DISABLED] };
+      if (props[ComponentState.SELECTED])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.SELECTED_DISABLED] ?? configProps[ComponentThemeState.SELECTED]) };
+    }
+    else
+    {
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
+    }
+  }
+  else
+  {
+    if (props[ComponentState.ACTIVE])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.SELECTED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED_DISABLED] };
+    if (props[ComponentState.CHECKED])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
 
-  return finalProps;
+    if (props[ComponentState.SELECTED])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
+  }
+
+  return finalProps as OmitStates<T>;
 }

@@ -1,9 +1,7 @@
-import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
-import { buildSurface, SurfaceScheme } from "@katia/surface"
+import { buildSurface, Container, Surface, SurfaceProps, SurfaceScheme, SurfaceSchemeVariant } from "@katia/ui";
 import { darken, lighten, SoperioComponent, useDarkMode } from "@soperio/react";
 import React from "react";
-import { SketchPicker } from "react-color"
-
+import { SketchPicker } from "react-color";
 // TODO Surface system
 // In order to use useSurface and to get a default surface in the case
 // that none is defined in the theme, define a default surface

@@ -1,4 +1,4 @@
-import { ComponentConfig2, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig2, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, ThemeSurfaceScheme } from "@katia/core";
+import { SurfaceComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, ThemeSurfaceScheme } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
 import { SurfaceSchemeProps } from "../surface";
 
@@ -10,5 +10,12 @@ export type ComponentProps = SoperioComponent & TraitProps & SelectedState & Dis
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps, Omit<SurfaceSchemeProps, "scheme"> { }
 
-export type Config = ComponentConfig2<TraitProps, ComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendComponentConfig2<Config>;
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;
+
+
+/*
+    ComponentConfig => (theme, darkMode)
+    SurfaceComponentConfig => (theme, surface, darkMode)
+
+*/

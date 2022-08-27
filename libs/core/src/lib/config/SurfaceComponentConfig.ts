@@ -17,7 +17,7 @@ declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;
 // and then any other key to define a kind of "trait" like variant,
 // size, shape, corners, etc...
 
-export declare type ComponentConfig2<
+export declare type SurfaceComponentConfig<
   T extends Record<string, string> = Record<string, string>, // Traits
   P extends SoperioComponent = SoperioComponent, // Component Props
   S extends StateAndExtraProps = NoStateProps
@@ -37,7 +37,7 @@ export declare type ComponentConfig2<
 
 // Custom component config to extends or override the theme's
 // component config
-export interface ExtendComponentConfig2<P extends ComponentConfig2<StateAndExtraProps>>
+export interface ExtendSurfaceComponentConfig<P extends SurfaceComponentConfig<StateAndExtraProps>>
 {
   mode: "extends" | "replace";
   config: P;
@@ -48,7 +48,7 @@ export interface ExtendComponentConfig2<P extends ComponentConfig2<StateAndExtra
 
 // Multi part component
 
-export declare type MultiPartComponentConfig2<
+export declare type MultiPartSurfaceComponentConfig<
   T extends Record<string, string>,             // Traits
   P extends Record<string, SoperioComponent> = Record<string, SoperioComponent>,   // Component props
   S extends StateAndExtraProps = NoStateProps   // States
@@ -70,7 +70,7 @@ export declare type MultiPartComponentConfig2<
     }
   };
 
-export interface ExtendMultiPartComponentConfig2<P extends MultiPartComponentConfig2<Record<string, string>>>
+export interface ExtendMultiPartSurfaceComponentConfig<P extends MultiPartSurfaceComponentConfig<Record<string, string>>>
 {
   mode: "extends" | "replace";
   config: Omit<P, "subComponents">;

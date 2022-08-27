@@ -1,4 +1,4 @@
-import { ComponentManager, HTMLDivProps, ThemeSurfaceScheme, useComponentConfig2 } from "@katia/core";
+import { ComponentManager, HTMLDivProps, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@katia/core";
 import { SurfaceScheme } from "@katia/surface"
 import { forwardRef, SoperioComponent } from "@soperio/react";
 import defaultConfig from "./config";
@@ -49,7 +49,7 @@ export const Surface = forwardRef<"div", SurfaceProps>((
     ...props
   }: SurfaceProps, ref) =>
 {
-  const styles = useComponentConfig2(COMPONENT_ID, scheme, config, { schemeVariant }, props)
+  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { schemeVariant }, props)
 
   const filteredStyles:SoperioComponent = { ...styles }
 

@@ -1,4 +1,4 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig2, HTMLDivProps, HTMLInputProps, MultiPartComponentConfig2, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, HTMLDivProps, HTMLInputProps, MultiPartSurfaceComponentConfig, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
 import { SurfaceProps, SurfaceSchemeProps } from "../surface";
 
@@ -17,5 +17,5 @@ type SliderComponentProps = {
     thumbDragging: SoperioComponent & SurfaceProps 
 }
 
-export type Config = MultiPartComponentConfig2<TraitProps, SliderComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendMultiPartComponentConfig2<Config>;
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, SliderComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>;

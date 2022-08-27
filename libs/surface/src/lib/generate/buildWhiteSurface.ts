@@ -1,10 +1,9 @@
 import { darken, lighten } from "@soperio/react";
-import { RGBA } from "color-blend/dist/types";
-import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
-import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
-import { Layer, LayerScheme } from "../Layer";
+import chroma from "chroma-js";
+import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
-import { generatePalette } from "./buildPalette";
+import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils";
+import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 
@@ -77,9 +76,20 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         mainLayer
     }
 
-    const w = { ...intToRGBA(whiteColor), a: 0 }
-    const b = { ...intToRGBA(darkColor), a: 0 }
-    const palette = generatePalette(RGBAToHex({ r: Math.floor((w.r + b.r) / 2), g: Math.floor((w.g + b.g) / 2), b: Math.floor((w.b + b.b) / 2), a: 255}))
+    const colors = chroma.scale([primaryHex, onPrimaryHex]).colors(10)
+
+    const palette = {
+        "50": colors[0],
+        "100": colors[1],
+        "200": colors[2],
+        "300": colors[3],
+        "400": colors[4],
+        "500": colors[5],
+        "600": colors[6],
+        "700": colors[7],
+        "800": colors[8],
+        "900": colors[9],
+    }
 
     return {
         color: primaryHex,

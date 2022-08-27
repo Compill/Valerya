@@ -3,18 +3,19 @@ import { RGBA } from "color-blend/dist/types";
 import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
 import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
 import { Layer, LayerScheme } from "../Layer";
+import chroma from "chroma-js"
+import { SurfaceScheme } from "../SurfaceScheme";
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
-const blackRGBA: RGBA = { r: 0, g: 0, b: 0, a: 255 }
 
-export function buildDarkSurface(darkColor: number, whiteColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): LayerScheme
+export function buildDarkSurface(darkColor: number, whiteColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceScheme
 {
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
     const primaryHex = RGBAToHex(intToRGBA(darkColor))
     const onPrimaryHex = RGBAToHex(intToRGBA(whiteColor))
 
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
-    
+
 
     const primaryContainerHex = lighten(primaryHex, (1 - primaryBrightness) * 57 * coef)
     const primaryContainerBrightness = getBrightness(hexToRGBA(primaryContainerHex))
@@ -75,9 +76,31 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
 
     const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, newOptions)
 
-    return {
+    const layers = {
         ...surface,
         mainLayer
+    }
+
+    const colors = chroma.scale([primaryHex, onPrimaryHex]).colors(10)
+
+    const palette = {
+        "50": colors[0],
+        "100": colors[1],
+        "200": colors[2],
+        "300": colors[3],
+        "400": colors[4],
+        "500": colors[5],
+        "600": colors[6],
+        "700": colors[7],
+        "800": colors[8],
+        "900": colors[9],
+    }
+
+    return {
+        color: primaryHex,
+        altColor: primaryContainerHex,
+        layers,
+        palette
     }
 }
 

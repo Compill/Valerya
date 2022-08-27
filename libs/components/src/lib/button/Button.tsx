@@ -1,4 +1,4 @@
-import { ComponentManager, useComponentConfig2, useFirstRender } from "@katia/core";
+import { ComponentManager, useSurfaceComponentConfig, useFirstRender } from "@katia/core";
 import { forwardRef } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from 'react';
@@ -44,7 +44,7 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
     onClick && onClick(event);
   }, [onClick]);
 
-  const styles = useComponentConfig2(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
+  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   return (
     <Surface

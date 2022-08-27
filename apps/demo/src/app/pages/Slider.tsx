@@ -1,4 +1,4 @@
-import { Slider, Container } from "@katia/components";
+import { Slider, Container } from "@katia/ui";
 import React from "react";
 
 /**

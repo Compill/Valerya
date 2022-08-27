@@ -1,4 +1,4 @@
-import { Button, Container } from "@katia/components";
+import { Button, Container } from "@katia/ui";
 
 /**
  *

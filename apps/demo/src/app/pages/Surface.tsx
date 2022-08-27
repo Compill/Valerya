@@ -1,8 +1,7 @@
-import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/components";
+import { Container, Surface, SurfaceProps, SurfaceSchemeVariant } from "@katia/ui";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
-import { buildSurface, SurfaceScheme } from "@katia/surface";
-import { useSurface } from "libs/core/src/lib/hooks/useSurface";
-import { ThemeSurfaceScheme } from "@katia/core";
+import { buildSurface, SurfaceScheme } from "@katia/ui";
+import { ThemeSurfaceScheme, useSurface } from "@katia/ui";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)

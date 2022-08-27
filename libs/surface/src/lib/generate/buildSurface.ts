@@ -26,7 +26,7 @@ export function buildSurface(color: number, options?: BuildSurfaceOptions): Surf
     const onPrimaryContainerHex = options?.darkMode ? lighten(primaryContainerHex, (1 - primaryContainerBrightness) * 67 * coef) : darken(primaryContainerHex, primaryContainerBrightness * 75 * coef)
 
     const layers = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
-    const palette = generatePalette(primaryHex, options?.coef)
+    const palette = generatePalette(RGBAToHex(primaryRGBA), options?.coef)
 
     return {
         color: primaryHex,

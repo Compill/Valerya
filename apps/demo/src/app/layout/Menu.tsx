@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@katia/components";
+import { Button, ButtonProps } from "@katia/ui";
 import { useAppContext } from "./AppContext";
 import { menu } from "./config";
 
