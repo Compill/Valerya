@@ -1,3 +1,4 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
@@ -12,36 +13,84 @@ const config: Config =
   defaultProps:
   {
     card: {
-      mx: "2"
+      mx: "2",
+    },
+    header:
+    {
+      px: "7",
+      py: "3"
+    },
+    body:
+    {
+      px: "7",
+      py: "5",
+      fontSize: "sm"
+    },
+    footer:
+    {
+      px: "7",
+      py: "3"
+    },
+    divider:
+    {
+      h: "px",
+      // bgOpacity: "15", // Remove traits redefinition when soperio's parseProps don't have issue with prop overwriting anymore
     }
   },
-  subComponents: ["card", "header", "content", "footer"],
+  subComponents: ["card", "header", "body", "footer", "divider"],
   traits:
   {
     variant:
     {
       default:
       {
-        card: (theme: ColorTheme, darkMode: boolean) =>
+        card:
+        {
+          layer: "main",
+          border: "0",
+        },
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "0",
-            textColor: theme.textDark1
+            bgColor: surface.layers.main.onColor,
+            bgOpacity: "15",
+
           }
         )
-      }
-      ,
+      },
       bordered:
       {
-        card: (theme: ColorTheme, darkMode: boolean) =>
+        card: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
+            layer: "main",
             border: "2",
-            borderColor: theme.border1,
+            borderColor: surface.layers.main.onColor,
           }
         ),
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.main.onColor,
+            bgOpacity: "15",
+
+          }
+        )
+      },
+      light:
+      {
+        card:
+        {
+          layer: "alt",
+          border: "0",
+        },
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.alt.onColor,
+            bgOpacity: "15",
+          }
+        )
       },
     },
     corners:

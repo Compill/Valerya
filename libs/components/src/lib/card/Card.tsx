@@ -1,17 +1,17 @@
-import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
-import { ComponentTheme, HTMLDivProps, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { HTMLDivProps, OrString, ParentComponent, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Card";
+const COMPONENT_ID = "Katia.Card";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface CardProps extends ComponentProps, ParentComponent, HTMLDivProps
 {
-  theme?: ComponentTheme;
   config?: ExtendConfig
 }
 
@@ -22,7 +22,7 @@ export interface CardProps extends ComponentProps, ParentComponent, HTMLDivProps
 const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
   variant,
   corners,
-  theme = "default",
+  scheme,
   config,
   children,
   ...props
@@ -30,10 +30,11 @@ const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props);
+  const styles = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props);
 
   return (
-    <div
+    <Surface
+    scheme={scheme}
       transition={firstRender ? "none" : "all"}
       {...styles["card"]}
       {...props}
@@ -42,7 +43,7 @@ const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
       <MultiPartStyleProvider value={styles}>
         {children}
       </MultiPartStyleProvider>
-    </div>
+    </Surface>
   );
 });
 
@@ -58,25 +59,33 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
+
+  const dividerStyles: SoperioComponent = {}
+
+  if (borderWidth === "padded")
+  {
+    dividerStyles.mx = styles["header"]["px"]
+    dividerStyles.ms = styles["header"]["ps"]
+    dividerStyles.me = styles["header"]["pe"]
+  }
+  else if (borderWidth !== "full")
+  {
+    dividerStyles.w = borderWidth
+  }
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <>
       <div
-        px="7"
-        py="3"
         ref={ref}
-        borderColor={colorTheme.border1}
-        borderB={showBorder && borderWidth === "full" ? true : "0"}
         {...styles["header"]}
         {...props}
       >
         {children}
       </div>
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+      {showBorder && <Divider {...dividerStyles} />}
     </>
   );
 });
@@ -91,7 +100,11 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ child
   const styles = useMultiPartStyles();
 
   return (
-    <div px="7" py="5" fontSize="sm" {...styles["body"]} {...props} ref={ref}>
+    <div
+      {...styles["body"]}
+      {...props}
+      ref={ref}
+    >
       {children}
     </div>
   );
@@ -110,28 +123,43 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
+
+  const dividerStyles:SoperioComponent = {}
+
+  if (borderWidth === "padded")
+  {
+    dividerStyles.mx = styles["footer"]["px"]
+    dividerStyles.ms = styles["footer"]["ps"]
+    dividerStyles.me = styles["footer"]["pe"]
+  }
+  else if (borderWidth !== "full")
+  {
+    dividerStyles.w = borderWidth
+  }
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <React.Fragment>
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+    <>
+      {showBorder && <Divider {...dividerStyles} />}
       <div
-        px="7"
-        py="3"
         ref={ref}
-        borderColor={colorTheme.border1}
-        borderT={showBorder && borderWidth === "full" ? true : "0"}
         {...styles["footer"]}
         {...props}
       >
         {children}
       </div>
-    </React.Fragment>
+    </>
   );
 });
+
+function Divider(props: SoperioComponent)
+{
+  const styles = useMultiPartStyles();
+
+  return <div {...styles["divider"]} {...props}/>
+}
 
 export const Card = Object.assign(CardContainer, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
 

@@ -1,19 +1,21 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
-import { CardFooterProps } from "./Card";
+import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
+import { CardBodyProps, CardFooterProps, CardHeaderProps } from "./Card";
 
-type TraitProps = ComponentTypings<"Soperio.Card">;
+type TraitProps = ComponentTypings<"Katia.Card">;
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
+export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & SelectedState & DisabledState>
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type CardComponentProps = {
-  card: SoperioComponent,
-  header: SoperioComponent, // CardHeaderThemeProps
-  content: SoperioComponent, // CardContentThemeProps
-  footer: CardFooterProps
+  card: ComponentProps & LayerProps,
+  header: CardHeaderProps,
+  body: CardBodyProps,
+  footer: CardFooterProps,
+  divider: SoperioComponent
 }
 
-export type Config = MultiPartComponentConfig<TraitProps, CardComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, CardComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>;

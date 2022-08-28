@@ -1,11 +1,10 @@
 import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SurfaceComponentConfig } from "@katia/core";
-import { SoperioComponent } from "@soperio/react";
-import { HoverableSurfaceBasedComponent, SurfaceProps } from "../surface";
+import { HoverableSurfaceBasedComponent } from "../surface";
 
 
 type TraitProps = ComponentTypings<"Katia.Button">
 
-export type ComponentProps = HoverableSurfaceBasedComponent<SoperioComponent & TraitProps & SelectedState & DisabledState & RightJoinProps<HTMLButtonProps, HTMLDivProps>>; // TODO the as property should correctly handle the right join
+export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & SelectedState & DisabledState & RightJoinProps<HTMLButtonProps, HTMLDivProps>>; // TODO the as property should correctly handle the right join
 // There is a problem either in the AS type or the forwardRef function
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }

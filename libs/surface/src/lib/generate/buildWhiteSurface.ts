@@ -10,8 +10,8 @@ const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 export function buildWhiteSurface(whiteColor: number, darkColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceScheme
 {
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
-    const primaryHex = RGBAToHex(intToRGBA(whiteColor))
-    const onPrimaryHex = RGBAToHex(intToRGBA(darkColor))
+    const primaryHex = RGBAToHex(intToRGBA(whiteColor)).substring(0, 7)
+    const onPrimaryHex = RGBAToHex(intToRGBA(darkColor)).substring(0, 7)
 
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
 

@@ -23,7 +23,6 @@ export const config: Config =
       horizontal:
       {
         borderB: "1px",
-
         w: "100%",
       },
     },

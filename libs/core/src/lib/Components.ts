@@ -27,9 +27,9 @@ export interface Components
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     corners?: "default" | "square" | "pill";
   },
-  "Soperio.Card":
+  "Katia.Card":
   {
-    variant?: "default" | "bordered";
+    variant?: "default" | "bordered" | "light";
     corners?: "default" | "square" | "pill";
   },
   "Soperio.Divider":

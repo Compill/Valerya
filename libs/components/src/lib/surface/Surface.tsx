@@ -25,12 +25,12 @@ interface SurfaceSchemeProps extends TraitProps
 }
 
 export type LayerProps = TraitProps // Alias
-export type SurfaceProps = Omit<ComponentProps, "layer"> & SurfaceSchemeProps
+export type SurfaceProps = Omit<ComponentProps, "layer"> & Omit<SurfaceSchemeProps, "layer">
 
-export type SurfaceBasedComponent<T> = T & SurfaceProps
-export type HoverableSurfaceBasedComponent<T> = Omit<SurfaceBasedComponent<T>, "hoverable">
+export type SurfaceBasedComponent<T = {}> = T & Omit<SurfaceProps, "hoverable">
+export type HoverableSurfaceBasedComponent<T = {}> = T & SurfaceProps & { hoverable?: boolean }
 
-interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
+export interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
   // scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceScheme, // TODO
   // scheme?: "primary" | SurfaceScheme,

@@ -61,6 +61,8 @@ const theme = extendTheme({
   }
 })
 
+console.log(buildWhiteSurface(0xffffffff, 0xff181818))
+console.log(buildSurface(0xff475569))
 export function App()
 {
 

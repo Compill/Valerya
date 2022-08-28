@@ -299,21 +299,21 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "altInv"
+            layer: "altInv"
           }
         ),
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "alt"
+            layer: "alt"
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "mainInv"
+            layer: "mainInv"
           }
         ),
         thumbDragging: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -329,21 +329,21 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "alt"
+            layer: "alt"
           }
         ),
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "main"
+            layer: "main"
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "main",
+            layer: "main",
             shadow: "none",
           }
         ),
@@ -360,21 +360,21 @@ const config: Config =
         (
           {
             scheme: surface,
-            schemeVariant: "alt"
+            layer: "alt"
           }
         ),
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "main"
+            layer: "main"
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             scheme: surface,
-            schemeVariant: "mainInv",
+            layer: "mainInv",
             shadow: "none",
             border: "2",
             borderColor: surface.layers.main.color
