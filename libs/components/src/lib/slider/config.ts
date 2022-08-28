@@ -1,5 +1,4 @@
 import { SurfaceScheme } from "@katia/surface";
-import { Surface } from "../surface";
 import { Config } from "./types";
 
 const config: Config =

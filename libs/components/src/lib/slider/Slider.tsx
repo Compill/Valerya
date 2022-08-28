@@ -5,7 +5,7 @@ import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 import { useSlider, UseSliderProps } from "./useSlider";
 
-const COMPONENT_ID = "Soperio.Slider"
+const COMPONENT_ID = "Katia.Slider"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

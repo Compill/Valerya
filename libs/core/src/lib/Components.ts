@@ -15,7 +15,7 @@ export interface Components
     variant?: "default";
     corners?: "default" | "square" | "pill";
   },
-  "Soperio.Badge":
+  "Katia.Badge":
   {
     variant: "default" | "light" | "outline" | "light-outline";
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
@@ -80,7 +80,7 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Soperio.Slider":
+  "Katia.Slider":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "alt" | "test" | "test2";
@@ -108,5 +108,9 @@ export interface Components
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
+  },
+  "Katia.Tile":
+  {
+    variant: "default" | "light";
   },
 }

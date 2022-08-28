@@ -3,7 +3,7 @@ import { SoperioComponent } from "@soperio/react";
 import { SurfaceBasedComponent } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Soperio.Badge">;
+type TraitProps = ComponentTypings<"Katia.Badge">;
 
 export type ComponentProps = SurfaceBasedComponent<SoperioComponent & TraitProps>
 

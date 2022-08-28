@@ -1,5 +1,4 @@
 import { SurfaceScheme } from "@katia/surface";
-import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 export const config: Config =
@@ -45,23 +44,20 @@ export const config: Config =
         fontSize: "x2"
       }
     },
-    variant: {
-      default: (surface: SurfaceScheme, darkMode: boolean) =>
-      (
-        {
-          layer: "main",
-          border: "0",
-          fontWeight: "500"
-        }
-      ),
-      light: (surface: SurfaceScheme, darkMode: boolean) =>
-      (
-        {
-          layer: "alt",
-          border: "0",
-          fontWeight: "500"
-        }
-      ),
+    variant:
+    {
+      default:
+      {
+        layer: "main",
+        border: "0",
+        fontWeight: "500"
+      },
+      light:
+      {
+        layer: "alt",
+        border: "0",
+        fontWeight: "500"
+      },
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
@@ -81,7 +77,8 @@ export const config: Config =
         }
       ),
     },
-    shape: {
+    shape: 
+    {
       square: { rounded: "none" },
       default: { rounded: true },
       rounded: { rounded: true },

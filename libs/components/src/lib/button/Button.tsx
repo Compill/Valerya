@@ -6,7 +6,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Button2"
+const COMPONENT_ID = "Katia.Button"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

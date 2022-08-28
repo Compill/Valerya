@@ -3,7 +3,7 @@ import { SoperioComponent } from "@soperio/react";
 import { LayerProps, SurfaceBasedComponent, SurfaceProps } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Soperio.Slider">
+type TraitProps = ComponentTypings<"Katia.Slider">
 
 export type ComponentProps = SurfaceBasedComponent<SoperioComponent & TraitProps & SelectedState & DisabledState & RightJoinProps<Omit<HTMLInputProps, "size">, HTMLDivProps>>; 
 
