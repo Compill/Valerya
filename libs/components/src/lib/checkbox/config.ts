@@ -1,8 +1,18 @@
-import { ColorTheme } from "@soperio/react";
+import { SurfaceScheme } from "@katia/surface";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultTraits:
+  {
+    variant: "default",
+    shape: "default",
+    size: "lg",
+  },
+  defaultProps:
+  {
+    hoverable: true
+  },
   traits:
   {
     size:
@@ -43,37 +53,36 @@ const config: Config =
     },
     variant:
     {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: theme.background5,
-
+          layer: "alt",
           border: "0",
-          textColor: darkMode ? theme.textLight1 : theme.textDark1,
           stateChecked:
           {
-            bgColor: theme.default,
+            layer: "main"
           },
-          stateDisabled:
-          {
-            bgOpacity: "40",
-            textOpacity: "70",
-            cursor: "default"
-          }
+          // stateDisabled:
+          // {
+          //   bgOpacity: "40",
+          //   textOpacity: "70",
+          //   cursor: "default"
+          // },
+          // stateCheckedDisabled:
+          // {
+          //   layer: "main",
+          //   bgOpacity: "40",
+          //   textOpacity: "70",
+          //   cursor: "default"
+          // }
         }
       ),
-      outline: (theme: ColorTheme, darkMode: boolean) =>
+      outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: "transparent",
+          layer: "mainLayer",
           border: "2",
-          borderColor: theme.background5,
-          textColor: "transparent",
-          stateChecked:
-          {
-            borderColor: theme.default,
-            textColor: theme.default,
-          },
+          borderColor: surface.layers.main.color,
           stateDisabled:
           {
             borderOpacity: "40",

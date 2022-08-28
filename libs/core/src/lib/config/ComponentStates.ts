@@ -28,15 +28,15 @@ export interface InvalidState { invalid?: boolean; }
 export interface SelectedState { selected?: boolean; }
 export interface ValidState { valid?: boolean; }
 
-export interface ActiveThemeProps<T = SoperioComponent> { stateActive?: T; };
-export interface CheckedThemeProps<T = SoperioComponent> { stateChecked?: T; };
-export interface DisabledThemeProps<T = SoperioComponent> { stateDisabled?: T; };
-export interface InvalidThemeProps<T = SoperioComponent> { stateInvalid?: T; };
-export interface SelectedThemeProps<T = SoperioComponent> { stateSelected?: T; };
-export interface ValidThemeProps<T = SoperioComponent> { stateValid?: T; };
-export interface ActiveDisabledThemeProps<T = SoperioComponent> { stateActiveDisabled?: T; };
-export interface CheckedDisabledThemeProps<T = SoperioComponent> { stateCheckedDisabled?: T; };
-export interface SelectedDisabledThemeProps<T = SoperioComponent> { stateSelectedDisabled?: T; };
+export interface ActiveThemeProps<T = {}> { stateActive?: SoperioComponent & T; };
+export interface CheckedThemeProps<T = {}> { stateChecked?: SoperioComponent & T; };
+export interface DisabledThemeProps<T = {}> { stateDisabled?: SoperioComponent & T; };
+export interface InvalidThemeProps<T = {}> { stateInvalid?: SoperioComponent & T; };
+export interface SelectedThemeProps<T = {}> { stateSelected?: SoperioComponent & T; };
+export interface ValidThemeProps<T = {}> { stateValid?: SoperioComponent & T; };
+export interface ActiveDisabledThemeProps<T = {}> { stateActiveDisabled?: SoperioComponent & T; };
+export interface CheckedDisabledThemeProps<T = {}> { stateCheckedDisabled?: SoperioComponent & T; };
+export interface SelectedDisabledThemeProps<T = {}> { stateSelectedDisabled?: SoperioComponent & T; };
 
 export type ComponentStateProps<T = SoperioComponent> = Partial<ActiveThemeProps<T>
           & CheckedThemeProps<T>

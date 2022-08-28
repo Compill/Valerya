@@ -4,7 +4,7 @@ import { forwardRef, SoperioComponent } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
 
-const COMPONENT_ID = "Soperio.Surface"
+const COMPONENT_ID = "Katia.Surface"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

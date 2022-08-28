@@ -1,7 +1,6 @@
 import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { HTMLDivProps, OrString, ParentComponent, SoperioComponent, SpacingPositive } from "@soperio/react";
+import { forwardRef, HTMLDivProps, OrString, ParentComponent, SoperioComponent } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
-import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -19,7 +18,7 @@ export interface CardProps extends ComponentProps, ParentComponent, HTMLDivProps
  *
  *
  */
-const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
+const CardContainer = forwardRef<typeof Surface, CardProps>(({
   variant,
   corners,
   scheme,
@@ -34,7 +33,7 @@ const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
 
   return (
     <Surface
-    scheme={scheme}
+      scheme={scheme}
       transition={firstRender ? "none" : "all"}
       {...styles["card"]}
       {...props}
@@ -53,7 +52,7 @@ export interface CardHeaderProps extends SoperioComponent, ParentComponent
   borderWidth?: OrString<"full" | "padded">;
 };
 
-export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
+export const CardHeader = forwardRef<"div", CardHeaderProps>(({
   showBorder,
   borderWidth,
   children,
@@ -95,7 +94,7 @@ export interface CardBodyProps extends SoperioComponent, ParentComponent
   scrollable?: boolean, // If fixed height
 };
 
-export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ children, ...props }, ref) =>
+export const CardBody = forwardRef<"div", CardBodyProps>(({ children, ...props }, ref) =>
 {
   const styles = useMultiPartStyles();
 
@@ -117,7 +116,7 @@ export interface CardFooterProps extends SoperioComponent, ParentComponent
   align?: "right" | "left" | "center";
 };
 
-export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
+export const CardFooter = forwardRef<"div", CardFooterProps>(({
   showBorder,
   borderWidth,
   children,
@@ -125,7 +124,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
 {
   const styles = useMultiPartStyles();
 
-  const dividerStyles:SoperioComponent = {}
+  const dividerStyles: SoperioComponent = {}
 
   if (borderWidth === "padded")
   {
@@ -158,7 +157,7 @@ function Divider(props: SoperioComponent)
 {
   const styles = useMultiPartStyles();
 
-  return <div {...styles["divider"]} {...props}/>
+  return <div {...styles["divider"]} {...props} />
 }
 
 export const Card = Object.assign(CardContainer, { Header: CardHeader, Body: CardBody, Footer: CardFooter });

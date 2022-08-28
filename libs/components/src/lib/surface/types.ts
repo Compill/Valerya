@@ -3,7 +3,7 @@ import { SurfaceComponentConfig, ExtendSurfaceComponentConfig } from "@katia/cor
 import { ActiveState, ActiveThemeProps, DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { ComponentTypings } from "@katia/core";
 
-export type TraitProps = ComponentTypings<"Soperio.Surface">
+export type TraitProps = ComponentTypings<"Katia.Surface">
 
 export type ComponentProps = SoperioComponent & ParentComponent & TraitProps & ActiveState & SelectedState & DisabledState;
 

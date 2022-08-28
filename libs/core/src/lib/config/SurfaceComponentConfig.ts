@@ -24,14 +24,14 @@ export declare type SurfaceComponentConfig<
   S extends StateAndExtraProps = NoStateProps
   > =
   {
-    defaultProps?: TraitConfig<P & S> & LayerProps & { hoverable?: boolean };
+    defaultProps?: TraitConfig<P & S & LayerProps & { hoverable?: boolean }>;
     defaultTraits?: { [Property in keyof T]: T[Property] }
     traits?: {
       // keys = traits like variant, corners, size, ...
       [key in keyof T]?:
       {
         // For each trait, only allow trait possible values (like "default" for example)
-        [Property in NonNullable<T[key]>]?: TraitConfig<P & S>
+        [Property in NonNullable<T[key]>]?: TraitConfig<P & S & LayerProps & { hoverable?: boolean }>
       };
     }
   };

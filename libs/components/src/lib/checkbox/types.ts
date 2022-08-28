@@ -1,11 +1,11 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig } from "@katia/core";
-import { SoperioComponent } from "@soperio/react";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Checkbox">
+type TraitProps = ComponentTypings<"Katia.Checkbox">
 
-export type ComponentProps = SoperioComponent & TraitProps & CheckedState & DisabledState;
+export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & CheckedState & DisabledState>;
 
-interface ConfigStateProps extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps { }
+interface ConfigStateProps extends CheckedThemeProps<LayerProps>, DisabledThemeProps<LayerProps>, CheckedDisabledThemeProps<LayerProps> { }
 
-export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

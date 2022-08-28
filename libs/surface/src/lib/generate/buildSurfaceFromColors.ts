@@ -26,6 +26,8 @@ export interface BuildSurfaceOptions
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 
+// TODO Make sure all of resulting hex colors are in #ffffff form and not #ffffffff
+
 export function buildSurfaceFromColors(
     primaryHex: string,
     onPrimaryHex: string,
@@ -70,6 +72,7 @@ export function buildSurfaceFromColors(
             },
             disabled:
             {
+                // TODO Check disabled colors because they suck right now
                 color: colorBlendContainerFn(primaryContainerHex, 10),
                 onColor: onPrimaryContainerHex,
             },

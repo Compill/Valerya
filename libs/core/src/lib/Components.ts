@@ -37,7 +37,7 @@ export interface Components
     variant: "default" | "dashed";
     orientation: "horizontal" | "vertical";
   },
-  "Soperio.Checkbox":
+  "Katia.Checkbox":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";
@@ -92,7 +92,7 @@ export interface Components
     variant?: "default" | "track",
     size?: "sm" | "md" | "lg" | "xl" | "x2";
   },
-  "Soperio.Surface":
+  "Katia.Surface":
   {
     layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },

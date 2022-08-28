@@ -1,10 +1,10 @@
-import { ComponentTheme, HTMLInputProps, splitComponentProps } from "@soperio/react";
-import React from "react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
+import { Surface } from "../surface";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
-const COMPONENT_ID = "Soperio.Checkbox";
+const COMPONENT_ID = "Katia.Checkbox";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -20,20 +20,20 @@ export interface CheckboxProps extends ComponentProps, Omit<HTMLInputProps, "siz
  * For using with Formik, please use formik/Checkbox insteada surrounding form.
  * For using with Formik, please use formik/Checkbox instead
  */
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
+export const Checkbox = forwardRef<"input", CheckboxProps>((
   {
-    theme = "default",
+    scheme,
     label = "",
-    size = "lg",
-    variant = "default",
-    shape = "rounded",
+    size,
+    variant,
+    shape,
     config,
     ...props
   }, ref) =>
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props)
+  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
@@ -57,18 +57,28 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
           {...inputProps}
           ref={ref}
         />
-        <div
-          bgColor="sky-500"
-          rounded
-          color="white"
+        <Surface
+          scheme={scheme}
+          disabled={soperioProps["disabled"]}
           display="inline-block"
           transition={firstRender ? "none" : "all"}
           easing={props.checked ? "out" : "linear"}
           duration="300"
           {...styles}
         >
-          {props.checked && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2px"><polyline points="20 6 9 17 4 12"></polyline></svg>}
-        </div>
+          {props.checked && (
+            // TODO Dynamic icon
+            <svg 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2px" 
+              transition={firstRender ? "none" : "opacity"}
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          )}
+        </Surface>
       </label>
       {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
     </div>
