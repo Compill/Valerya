@@ -1,10 +1,11 @@
-import { ComponentManager, useFirstRender, useMultiPartComponentConfig } from "@katia/core";
-import { ComponentTheme, useColorTheme } from "@soperio/react";
+import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, useColorTheme } from "@soperio/react";
 import React from "react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Avatar";
+const COMPONENT_ID = "Katia.Avatar";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -29,7 +30,6 @@ const DefaultIcon = () => (
 
 export interface AvatarProps extends ComponentProps
 {
-  theme?: ComponentTheme;
   config?: ExtendConfig;
   src?: string;
   name?: string
@@ -78,30 +78,29 @@ function randomColor(str: string)
 }
 
 
-export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
-{
-  corners = "default",
-  size,
-  variant = "default",
-  theme = "default",
-  config,
-  src,
-  name,
-  icon = <DefaultIcon />,
-  getInitials = initials,
-  badge,
-  badgeColor,
-  badgePosition = "bottomEnd",
-  badgeText,
-  ...props
-}: AvatarProps, ref) =>
+export const Avatar = forwardRef<typeof Surface, AvatarProps>((
+  {
+    corners = "default",
+    size,
+    variant = "default",
+    scheme,
+    config,
+    src,
+    name,
+    icon = <DefaultIcon />,
+    getInitials = initials,
+    badge,
+    badgeColor,
+    badgePosition = "bottomEnd",
+    badgeText,
+    ...props
+  }: AvatarProps, ref) =>
 {
   const firstRender = useFirstRender();
   const [activeSrc, setActiveSrc] = React.useState(src);
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size, variant }, props);
-  const colorTheme = useColorTheme();
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { corners, size, variant }, props);
 
-  const bg = name ? randomColor(name) : colorTheme.default
+  const bg = name ? randomColor(name) : _scheme.layers.main.color
 
   const translateX = (badgePosition === "bottomStart" || badgePosition === "topStart") ? "-40%" : "40%"
   const translateY = (badgePosition === "topEnd" || badgePosition === "topStart") ? " - 40%" : "40%"
@@ -112,7 +111,8 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
   const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners === "default" ? "0" : "-5%" : false
 
   return (
-    <span
+    <Surface
+      scheme={_scheme}
       transition={firstRender ? "none" : "all"}
       ref={ref}
       bgColor={bg}
@@ -163,6 +163,6 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
           {badgeText}
         </div>}
 
-    </span >
+    </Surface >
   );
 });

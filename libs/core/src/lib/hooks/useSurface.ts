@@ -11,7 +11,6 @@ const defaultSurfaceDark = buildSurface(0xFF0EA5E9, { darkMode: true })
 
 export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): SurfaceScheme
 {
-  console.log("useSurface", surface)
   const surfaces = useThemeExtra("katia.surfaces")
   const darkSurfaces = useThemeExtra("katia.surfaces.dark")
   const defaultSurfaces = useThemeExtra("katia.surfaces.default")

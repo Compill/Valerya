@@ -9,7 +9,7 @@ export interface Components
     variant?: "default" | "bordered" | "menu";
     corners?: "default" | "square" | "pill";
   },
-  "Soperio.Avatar":
+  "Katia.Avatar":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     variant?: "default";

@@ -1,3 +1,4 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme, isDark } from "@soperio/react";
 import { Config } from "./types";
 
@@ -31,26 +32,25 @@ const config: Config =
       justifyContent: "center",
       boxSizing: 'border-box',
     }
-
   },
   defaultTraits:
   {
     size: "lg",
     corners: "default",
     variant: "default"
-
   },
   subComponents: ["avatar", "image", "initials", "badge"],
   traits:
   {
     size:
     {
+      // TODO Do better sizing
       sm:
       {
         avatar:
         {
-          w: "25px",
-          h: "25px",
+          w: "7",
+          h: "7",
         },
         initials:
         {
@@ -58,8 +58,8 @@ const config: Config =
         },
         badge:
         {
-          w: "10px",
-          h: "10px",
+          w: "2.5",
+          h: "2.5",
           fontSize: "sm"
         }
       },
@@ -67,8 +67,8 @@ const config: Config =
       {
         avatar:
         {
-          w: "50px",
-          h: "50px",
+          w: "12",
+          h: "12",
         },
         initials:
         {
@@ -76,8 +76,8 @@ const config: Config =
         },
         badge:
         {
-          w: "15px",
-          h: "15px",
+          w: "3",
+          h: "3",
           fontSize: "sm"
         }
       },
@@ -85,18 +85,18 @@ const config: Config =
       {
         avatar:
         {
-          w: "100px",
-          h: "100px",
+          w: "16",
+          h: "16",
         },
         initials:
         {
-          fontSize: "2.5rem"
+          fontSize: "x2"
         },
         badge:
         {
-          w: "25px",
-          h: "25px",
-          fontSize: "sm"
+          w: "5",
+          h: "5",
+          fontSize: "xs"
         }
       },
       xl:
@@ -141,19 +141,19 @@ const config: Config =
         avatar:
         {
           fontWeight: "500",
+          layer: "main"
         },
-        initials: (theme: ColorTheme, darkMode: boolean) =>
+        initials: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+            
           }
         ),
-        badge: (theme: ColorTheme, darkMode: boolean) =>
+        badge: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             border: "2",
-            borderColor: theme.background5,
-            textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+            borderColor: surface.layers.main.onColor,
           }
         )
       }

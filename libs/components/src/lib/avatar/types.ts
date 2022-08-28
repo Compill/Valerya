@@ -1,9 +1,10 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "@katia/core";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
+import { HoverableSurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Avatar">;
+type TraitProps = ComponentTypings<"Katia.Avatar">;
 
-export type ComponentProps = SoperioComponent & TraitProps & DisabledState & CheckedState
+export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & DisabledState & CheckedState>
 
 interface ConfigStateProps extends DisabledThemeProps, CheckedThemeProps, CheckedDisabledThemeProps { }
 
@@ -14,5 +15,5 @@ type AvatarComponentProps = {
   badge: SoperioComponent,  // SwitchContentThemeProps
 }
 
-export type Config = MultiPartComponentConfig<TraitProps, AvatarComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, AvatarComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>;
