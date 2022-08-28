@@ -62,6 +62,7 @@ const config: Config =
           {
             layer: "main"
           },
+          // TODO Check once Surface has fix its disabled colors
           // stateDisabled:
           // {
           //   bgOpacity: "40",
@@ -83,12 +84,12 @@ const config: Config =
           layer: "mainLayer",
           border: "2",
           borderColor: surface.layers.main.color,
-          stateDisabled:
-          {
-            borderOpacity: "40",
-            textOpacity: "40",
-            cursor: "default"
-          }
+          // stateDisabled:
+          // {
+          //   borderOpacity: "40",
+          //   textOpacity: "40",
+          //   cursor: "default"
+          // }
         }
       ),
     },

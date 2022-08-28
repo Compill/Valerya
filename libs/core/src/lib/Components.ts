@@ -61,7 +61,7 @@ export interface Components
     corners?: "default" | "square" | "pill";
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6";
   },
-  "Soperio.Radio":
+  "Katia.Radio":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";

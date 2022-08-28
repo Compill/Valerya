@@ -1,8 +1,19 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultTraits:
+  {
+    variant: "default",
+    shape: "default",
+    size: "lg",
+  },
+  defaultProps:
+  {
+    hoverable: true
+  },
   traits:
   {
     size:
@@ -45,42 +56,41 @@ const config: Config =
     },
     variant:
     {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: theme.background5,
+          layer: "alt",
           border: "0",
-          textColor: "white",
           stateChecked:
           {
-            bgColor: theme.default,
+            layer: "main"
           },
-          stateDisabled:
-          {
-            bgOpacity: "40",
-            textOpacity: "70",
-            cursor: "default"
-          }
+          // TODO Check once Surface has fix its disabled colors
+          // stateDisabled:
+          // {
+          //   bgOpacity: "40",
+          //   textOpacity: "70",
+          //   cursor: "default"
+          // }
         }
       ),
-      outline: (theme: ColorTheme, darkMode: boolean) =>
+      outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          bgColor: "transparent",
+          layer: "mainLayer",
           border: "2",
-          borderColor: theme.background5,
-          textColor: "transparent",
-          stateChecked:
-          {
-            borderColor: theme.default,
-            textColor: theme.default,
-          },
-          stateDisabled:
-          {
-            borderOpacity: "40",
-            textOpacity: "40",
-            cursor: "default"
-          }
+          borderColor: surface.layers.main.color,
+          // stateChecked:
+          // {
+          //   borderColor: theme.default,
+          //   textColor: theme.default,
+          // },
+          // stateDisabled:
+          // {
+          //   borderOpacity: "40",
+          //   textOpacity: "40",
+          //   cursor: "default"
+          // }
         }
       ),
     },

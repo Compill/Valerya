@@ -9,3 +9,5 @@ interface ConfigStateProps extends CheckedThemeProps<LayerProps>, DisabledThemeP
 
 export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
 export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;
+
+//TODO Transform into multipart
