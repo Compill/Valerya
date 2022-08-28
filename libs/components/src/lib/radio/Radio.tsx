@@ -36,7 +36,7 @@ export const Radio = forwardRef<"input", RadioProps>((
 {
   const firstRender = useFirstRender();
 
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
 // TODO Fix tick
@@ -62,7 +62,7 @@ export const Radio = forwardRef<"input", RadioProps>((
           ref={ref}
         />
         <Surface
-          scheme={scheme}
+          scheme={_scheme}
           disabled={soperioProps["disabled"]}
           display="inline-block"
           transition={firstRender ? "none" : "all"}

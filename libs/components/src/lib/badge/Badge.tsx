@@ -31,12 +31,12 @@ export const Badge = forwardRef<typeof Surface, BadgeProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props);
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props);
 
   return (
     <Surface
       as="span"
-      scheme={scheme}
+      scheme={_scheme}
       transition={firstRender ? "none" : "all"}
       w="auto"
       verticalAlign="middle"

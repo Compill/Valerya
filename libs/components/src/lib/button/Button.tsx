@@ -44,12 +44,12 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
     onClick && onClick(event);
   }, [onClick]);
 
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   return (
     <Surface
       as="button"
-      scheme={scheme}
+      scheme={_scheme}
       transition={firstRender ? "none" : "all"}
       type={type}
       // focus_ringOffset="2"

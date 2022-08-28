@@ -3,6 +3,7 @@ import { Config } from "./types";
 
 const config: Config =
 {
+  defaultSurface: "default",
   defaultProps: {
     slider:
     {

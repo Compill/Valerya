@@ -91,7 +91,7 @@ function SurfaceBlock({ layer, surfaceProps }: SurfaceBlockProps)
 
       <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{layer}</div>
 
-      <Surface disabled scheme="primary" layer={layer} {...surfaceProps}>
+      <Surface scheme="primary" layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

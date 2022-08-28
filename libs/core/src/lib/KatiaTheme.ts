@@ -7,6 +7,7 @@ export interface KatiaTheme extends Theme
     {
         "katia.surfaces": 
         {
+            "default": SurfaceScheme,
             "light": SurfaceScheme,
             "dark": SurfaceScheme,
             "neutral": SurfaceScheme,
@@ -14,6 +15,7 @@ export interface KatiaTheme extends Theme
         }
         "katia.surfaces.dark": 
         {
+            "default": SurfaceScheme,
             "light": SurfaceScheme,
             "dark": SurfaceScheme,
             "neutral": SurfaceScheme,

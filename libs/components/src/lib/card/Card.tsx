@@ -29,11 +29,12 @@ const CardContainer = forwardRef<typeof Surface, CardProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props);
-
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props);
+  
+  console.log("card", styles)
   return (
     <Surface
-      scheme={scheme}
+      scheme={_scheme}
       transition={firstRender ? "none" : "all"}
       {...styles["card"]}
       {...props}
@@ -64,9 +65,9 @@ export const CardHeader = forwardRef<"div", CardHeaderProps>(({
 
   if (borderWidth === "padded")
   {
-    dividerStyles.mx = styles["header"]["px"]
-    dividerStyles.ms = styles["header"]["ps"]
-    dividerStyles.me = styles["header"]["pe"]
+    dividerStyles.mx = styles["header"]?.["px"]
+    dividerStyles.ms = styles["header"]?.["ps"]
+    dividerStyles.me = styles["header"]?.["pe"]
   }
   else if (borderWidth !== "full")
   {
@@ -128,9 +129,9 @@ export const CardFooter = forwardRef<"div", CardFooterProps>(({
 
   if (borderWidth === "padded")
   {
-    dividerStyles.mx = styles["footer"]["px"]
-    dividerStyles.ms = styles["footer"]["ps"]
-    dividerStyles.me = styles["footer"]["pe"]
+    dividerStyles.mx = styles["footer"]?.["px"]
+    dividerStyles.ms = styles["footer"]?.["ps"]
+    dividerStyles.me = styles["footer"]?.["pe"]
   }
   else if (borderWidth !== "full")
   {

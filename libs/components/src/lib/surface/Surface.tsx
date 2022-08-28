@@ -32,30 +32,20 @@ export type HoverableSurfaceBasedComponent<T = {}> = T & SurfaceProps & { hovera
 
 export interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
-  // scheme?: /*Extract<keyof ThemingToken<"surfaces">, string> | */SurfaceScheme, // TODO
-  // scheme?: "primary" | SurfaceScheme,
-  // variant is already in ComponentProps
   config?: ExtendConfig;
   hoverable?: boolean
 }
 
-// scheme
-// schemePair
-// schemeMix
-// scheme
-// schemeVariant
-// "none" | "main" | "mainInverse" | "mainInverseHoverMain" | "mainLayer" | "mainLayerHoverMain" | "alt" | "altInverse" | "altHoverMain"
-
 export const Surface = forwardRef<"div", SurfaceComponentProps>((
   {
-    scheme,// = "primary",
+    scheme,
     hoverable,
     layer,
     config,
     ...props
   }: SurfaceComponentProps, ref) =>
 {
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { layer }, props)
+  const { styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { layer }, props)
 
   const filteredStyles: SoperioComponent = { ...styles }
 

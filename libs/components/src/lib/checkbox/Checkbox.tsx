@@ -33,7 +33,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
 {
   const firstRender = useFirstRender();
 
-  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
@@ -58,7 +58,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
           ref={ref}
         />
         <Surface
-          scheme={scheme}
+          scheme={_scheme}
           disabled={soperioProps["disabled"]}
           display="inline-block"
           transition={firstRender ? "none" : "all"}

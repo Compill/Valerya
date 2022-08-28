@@ -2,6 +2,7 @@ import { Config } from "./types";
 
 export const config: Config =
 {
+  defaultSurface: "light",
   defaultProps:
   {
     p: "3",

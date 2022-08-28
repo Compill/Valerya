@@ -48,18 +48,16 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendSurfaceComponentConfig<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
-  props?: T): T
+  props?: T): { scheme: SurfaceScheme, styles: Partial<T> }
 {
   const darkMode = useDarkMode();
-  const _surface = useSurface(surface);
 
   const defaultConfig = useMergedComponentConfig(component)
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
 
-
-  let config
+  let config: SurfaceComponentConfig | null = null
 
   // If we have a custom config set as a prop on this component
   // Merge it with the config merged earlier
@@ -81,10 +79,15 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
     config = defaultConfig
   }
 
-  if (config)
-    return mergeProps(config, traitsConfig, props, _surface, darkMode) as T;
+  const _surface = useSurface(surface ?? config?.defaultSurface);
 
-  return {} as T;
+  if (config)
+    return mergeProps(config, traitsConfig, props, _surface, darkMode);
+
+  return {
+    scheme: _surface,
+    styles: {}
+  }// as T;
 }
 
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
@@ -94,7 +97,7 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
   props: any,
   surface: SurfaceScheme,
   darkMode: boolean
-): OmitStates<T>
+): any
 {
   // Here we must merge:
   // - the default props from the config
@@ -126,7 +129,10 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
     }
   }
 
-  return mergeStateProps(finalProps, props)
+  return {
+    styles: mergeStateProps(finalProps, props),
+    scheme: surface
+  }
 }
 
 // Final step : merge the props with the state props

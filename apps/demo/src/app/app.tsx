@@ -35,6 +35,7 @@ const theme = extendTheme({
     "katia.surfaces":
     {
       // "primary": buildSurface(0xff16a34a),
+      "light": buildWhiteSurface(0xffffffff, 0xff181818),
       "primary": buildWhiteSurface(0xffffffff, 0xff181818),
       // "secondary": buildSurfaceFromColor(0xffff00ff),
       "secondary": buildSurface(0xff475569),

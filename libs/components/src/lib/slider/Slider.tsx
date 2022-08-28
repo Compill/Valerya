@@ -33,7 +33,7 @@ export const Slider = forwardRef <"input", SliderProps>(({
     ...props
 }: SliderProps, ref) =>
 {
-    const styles = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size, orientation }, props);
+    const { styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size, orientation }, props);
 
     const { min, max, step, value, defaultValue, id, name, disabled, readOnly } = props
 
@@ -94,8 +94,8 @@ const Rail = forwardRef < "span", RailProps>(({ orientation }: RailProps, ref) =
     return <Surface
         as="span"
         {...styles["rail"]}
-        w={orientation === "horizontal" ? "full" : styles["rail"]["w"]}
-        h={orientation === "vertical" ? "full" : styles["rail"]["h"]}
+        w={orientation === "horizontal" ? "full" : styles["rail"]?.["w"]}
+        h={orientation === "vertical" ? "full" : styles["rail"]?.["h"]}
         {...getTrackProps({}, ref)} />
 })
 
@@ -113,8 +113,8 @@ const Track = forwardRef <"span", RailProps>(({ orientation }: TrackProps, ref) 
     return <Surface
         as="span"
         {...styles["track"]}
-        w={orientation === "horizontal" ? "full" : styles["track"]["w"]}
-        h={orientation === "vertical" ? "full" : styles["track"]["h"]}
+        w={orientation === "horizontal" ? "full" : styles["track"]?.["w"]}
+        h={orientation === "vertical" ? "full" : styles["track"]?.["h"]}
         {...getInnerTrackProps({}, ref)} />
 })
 

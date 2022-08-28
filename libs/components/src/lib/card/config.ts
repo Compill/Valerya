@@ -1,9 +1,9 @@
 import { SurfaceScheme } from "@katia/surface";
-import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultSurface: "light",
   defaultTraits:
   {
     variant: "default",
@@ -66,6 +66,7 @@ const config: Config =
             layer: "main",
             border: "2",
             borderColor: surface.layers.main.onColor,
+            borderOpacity: "25"
           }
         ),
         divider: (surface: SurfaceScheme, darkMode: boolean) =>

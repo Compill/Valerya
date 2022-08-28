@@ -1,12 +1,11 @@
-import { ColorTheme, IS_DEV, SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/react";
-import deepmerge from "deepmerge";
-import { SurfaceComponentConfig, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig } from "./SurfaceComponentConfig";
-import { ComponentManager } from "../config/ComponentManager";
-import { ComponentState, ComponentThemeState } from "./ComponentStates";
-import { ComponentTheme } from "../ComponentTheme";
 import { SurfaceScheme } from "@katia/surface";
-import { ThemeSurfaceScheme } from "../surface/types";
+import { IS_DEV, SoperioComponent, useDarkMode, useTheme } from "@soperio/react";
+import deepmerge from "deepmerge";
+import { ComponentManager } from "../config/ComponentManager";
 import { useSurface } from "../hooks/useSurface";
+import { ThemeSurfaceScheme } from "../surface/types";
+import { ComponentState, ComponentThemeState } from "./ComponentStates";
+import { ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
 
 type KeysOf<T> =
   {
@@ -43,22 +42,27 @@ function useMergedComponentConfig(component: string)
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
 }
 
-export function useMultiPartSurfaceComponentConfig<T, P extends MultiPartSurfaceComponentConfig<Record<string, string>>>(
+type PartProps<P extends Record<string, SoperioComponent>> = {
+  scheme: SurfaceScheme,
+  styles: {
+    [Property in keyof P]?: SoperioComponent;
+  }
+};
+
+export function useMultiPartSurfaceComponentConfig<T, C extends Record<string, SoperioComponent>, P extends MultiPartSurfaceComponentConfig<Record<string, string>, C>>(
   component = "",
   surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendMultiPartSurfaceComponentConfig<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
-  props?: T): Record<string, SoperioComponent>
+  props?: T): { scheme: SurfaceScheme } & PartProps<C>
 {
   const darkMode = useDarkMode();
-  const _surface = useSurface(surface);
-
-  const defaultConfig = useMergedComponentConfig(component)
+  const defaultConfig = useMergedComponentConfig(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
 
-  let config
+  let config: P | null = null
 
   // If we have a custom config set as a prop on this component
   // Merge it with the config merged earlier
@@ -80,10 +84,15 @@ export function useMultiPartSurfaceComponentConfig<T, P extends MultiPartSurface
     config = defaultConfig
   }
 
-  if (config)
-    return mergeProps(config, traitsConfig, props, _surface, darkMode);
+  const _surface = useSurface(surface ?? config?.defaultSurface);
 
-  return {};
+  if (config)
+    return mergeProps(config, traitsConfig, props, _surface, darkMode)
+
+  return {
+    scheme: _surface,
+    styles: {}
+  }
 }
 
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
@@ -93,7 +102,7 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
   props: any,
   surface: SurfaceScheme,
   darkMode: boolean
-): Record<string, T>
+): any
 {
   const subComponents = config.subComponents
 
@@ -131,7 +140,10 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
     parsedConfig[subComponent] = finalProps;
   }
 
-  return parsedConfig
+  return {
+    styles: parsedConfig,
+    scheme: surface
+  }
 }
 
 // Final step : merge the props with the state props

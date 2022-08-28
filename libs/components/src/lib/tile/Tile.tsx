@@ -27,11 +27,11 @@ export const Tile = forwardRef<"div", TileProps>(({
 {
     const firstRender = useFirstRender();
 
-    const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant }, props)
+    const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant }, props)
 
     return (
         <Surface
-            scheme={scheme}
+            scheme={_scheme}
             transition={firstRender ? "none" : "all"}
             rounded
             p="3"

@@ -1,4 +1,4 @@
 // Attention, this file will be overwritten by the CLI
+import { KatiaThemeTypings } from "../KatiaThemeTypings";
 
-// TODO Replace by ThemeSurfaceScheme = Token<"surface">
-export type ThemeSurfaceScheme = "primary" | "secondary" | "tertiary" | "accent" | "danger" | "success" | "warning"
+export type ThemeSurfaceScheme = KatiaThemeTypings["surfaces"] | "primary" | "secondary" | "tertiary" | "accent"
