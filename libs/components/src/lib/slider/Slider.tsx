@@ -1,9 +1,9 @@
-import { ComponentManager, forwardRef, useMultiPartSurfaceComponentConfig, useMultiPartStyles, MultiPartStyleProvider, splitComponentProps, createContext } from "@katia/core"
+import { ComponentManager, createContext, MultiPartStyleProvider, splitComponentProps, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, SoperioComponent } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 import { useSlider, UseSliderProps } from "./useSlider";
-import { SoperioComponent } from "@soperio/react";
 
 const COMPONENT_ID = "Soperio.Slider"
 
@@ -18,7 +18,7 @@ export interface SliderProps extends UseSliderProps, Omit<ComponentProps, keyof 
     config?: ExtendConfig;
 }
 
-export const Slider = forwardRef<SliderProps, "input">(({
+export const Slider = forwardRef <"input", SliderProps>(({
     size,
     variant,
     corners,
@@ -85,7 +85,7 @@ interface RailProps
     orientation: "horizontal" | "vertical"
 }
 
-const Rail = forwardRef<RailProps, "span">(({ orientation }: RailProps, ref) => 
+const Rail = forwardRef < "span", RailProps>(({ orientation }: RailProps, ref) => 
 {
     const styles = useMultiPartStyles();
 
@@ -104,7 +104,7 @@ interface TrackProps
     orientation: "horizontal" | "vertical"
 }
 
-const Track = forwardRef<RailProps, "span">(({ orientation }: TrackProps, ref) =>
+const Track = forwardRef <"span", RailProps>(({ orientation }: TrackProps, ref) =>
 {
     const styles = useMultiPartStyles();
 
@@ -120,7 +120,7 @@ const Track = forwardRef<RailProps, "span">(({ orientation }: TrackProps, ref) =
 
 type ThumbProps = {}
 
-const Thumb = forwardRef<ThumbProps, "span">(({ }, ref) =>
+const Thumb = forwardRef <"span", ThumbProps>(({ }, ref) =>
 {
     const styles = useMultiPartStyles();
 

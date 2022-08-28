@@ -1,8 +1,9 @@
-import { ComponentTheme, ParentComponent } from "@soperio/react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, ParentComponent } from "@soperio/react";
 import React from "react";
-import { ComponentProps, ExtendConfig } from "./types";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Badge";
 
@@ -18,11 +19,11 @@ export interface BadgeProps extends ComponentProps, ParentComponent
  *
  *
  */
-export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
+export const Badge = forwardRef<typeof Surface, BadgeProps>(({
   variant = "default",
   size = "md",
   shape = "rounded",
-  theme = "default",
+  scheme,
   config,
   children,
   ...props
@@ -30,10 +31,12 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props);
+  const styles = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props);
 
   return (
-    <span
+    <Surface
+      as="span"
+      scheme={scheme}
       transition={firstRender ? "none" : "all"}
       w="auto"
       verticalAlign="middle"
@@ -42,6 +45,6 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
       ref={ref}
     >
       {children}
-    </span>
+    </Surface>
   );
 });

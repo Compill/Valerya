@@ -49,7 +49,7 @@ export const config: Config =
       default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "main",
+          layer: "main",
           border: "0",
           fontWeight: "500"
         }
@@ -57,7 +57,7 @@ export const config: Config =
       light: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "alt",
+          layer: "alt",
           border: "0",
           fontWeight: "500"
         }
@@ -65,7 +65,7 @@ export const config: Config =
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "mainLayer",
+          layer: "mainLayer",
           border: "2",
           borderColor: surface.layers.mainLayer.onColor,
           fontWeight: "500"
@@ -74,7 +74,7 @@ export const config: Config =
       "light-outline": (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          schemeVariant: "alt",
+          layer: "alt",
           border: "2",
           borderColor: surface.layers.alt.onColor,
           fontWeight: "500"

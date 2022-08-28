@@ -10,11 +10,11 @@ export default function Page({ ...props })
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
-        <Button variant="default" block mx="auto" my="5" shadow z="1001">Open Left</Button>
-        <Button variant="light" block mx="auto" my="5">Light button</Button>
-        <Button variant="link" block mx="auto" my="5">Link button</Button>
-        <Button variant="outline" block mx="auto" my="5">Outline button</Button>
-        <Button variant="borderless" block mx="auto" my="5">Borderless</Button>
+        <Button scheme="primary" variant="default" block mx="auto" my="5" shadow z="1001">Open Left</Button>
+        <Button scheme="primary" variant="light" block mx="auto" my="5">Light button</Button>
+        <Button scheme="primary" variant="link" block mx="auto" my="5">Link button</Button>
+        <Button scheme="primary" variant="outline" block mx="auto" my="5">Outline button</Button>
+        <Button scheme="primary" variant="borderless" block mx="auto" my="5">Borderless</Button>
       </div>
 
       <div flexRow>

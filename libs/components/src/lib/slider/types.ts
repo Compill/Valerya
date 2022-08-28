@@ -1,11 +1,11 @@
 import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, HTMLDivProps, HTMLInputProps, MultiPartSurfaceComponentConfig, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
-import { LayerProps, SurfaceProps } from "../surface";
+import { LayerProps, SurfaceBasedComponent, SurfaceProps } from "../surface";
 
 
 type TraitProps = ComponentTypings<"Soperio.Slider">
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState & Omit<SurfaceProps, "hoverable"> & RightJoinProps<Omit<HTMLInputProps, "size">, HTMLDivProps>; 
+export type ComponentProps = SurfaceBasedComponent<SoperioComponent & TraitProps & SelectedState & DisabledState & RightJoinProps<Omit<HTMLInputProps, "size">, HTMLDivProps>>; 
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 

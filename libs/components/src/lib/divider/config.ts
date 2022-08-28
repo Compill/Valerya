@@ -15,14 +15,14 @@ export const config: Config =
     {
       vertical:
       {
-        borderS: "2", //il faut rajouter borderS || borderE|| borderWidth ||
+        borderS: "2",
         border: "none",
         w: "1px",
         h: "100%",
       },
       horizontal:
       {
-        borderB: "1px",//il faut rajouter borderB || borderT|| borderWidth ||
+        borderB: "1px",
 
         w: "100%",
       },

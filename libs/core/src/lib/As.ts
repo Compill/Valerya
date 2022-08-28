@@ -2,7 +2,7 @@
 
 import React from "react"
 
-
+// TODO Delete this file
 export type As<Props = any> = React.ElementType<Props>
 
 /**
