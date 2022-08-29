@@ -96,11 +96,11 @@ export interface Components
   {
     layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },
-  "Soperio.Switch":
+  "Katia.Switch":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     variant?: "default" | "inverse" | "fullColor";
-    corners?: "default" | "square" | "pill";
+    corners?: "default" | "square" | "rounded";
   },
   "Katia.TextArea":
   {

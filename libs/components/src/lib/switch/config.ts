@@ -1,8 +1,10 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultScheme: "default",
   defaultProps:
   {
     switch:
@@ -17,7 +19,9 @@ const config: Config =
     },
     thumb:
     {
-      position: "absolute"
+      position: "absolute",
+      easing: "linear",
+      duration: "300",
     },
 
   },
@@ -30,24 +34,21 @@ const config: Config =
   subComponents: ["switch", "track", "thumb", "label"],
   traits:
   {
+    // TODO Whole design
     // TODO Yohan has set sizes in pixels...
     size:
     {
       sm:
       {
-        switch:
-        {
-          w: "38px",
-        },
         track:
         {
-          w: "38px",
-          h: "14px",
+          w: "8",
+          h: "4",
         },
         thumb:
         {
-          w: "10px",
-          h: "10px",
+          w: "3.5",
+          h: "3.5",
         },
         label:
         {
@@ -56,19 +57,15 @@ const config: Config =
       },
       md:
       {
-        switch:
-        {
-          w: "44px",
-        },
         track:
         {
-          w: "44px",
-          h: "20px",
+          w: "9",
+          h: "5",
         },
         thumb:
         {
-          w: "16px",
-          h: "16px",
+          w: "4",
+          h: "4",
         },
         label:
         {
@@ -78,19 +75,15 @@ const config: Config =
       },
       lg:
       {
-        switch:
-        {
-          w: "52px",
-        },
         track:
         {
-          w: "52px",
-          h: "28px",
+          w: "10",
+          h: "6",
         },
         thumb:
         {
-          w: "24px",
-          h: "24px",
+          w: "5",
+          h: "5",
         },
         label:
         {
@@ -145,35 +138,26 @@ const config: Config =
     {
       default:
       {
-        track: (theme: ColorTheme, darkMode: boolean) =>
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: theme.background5,
-            shadow: " 0 0 5px grey",
-            easing: "linear",
-            duration: "300",
-            stateChecked:
-            {
-              bgColor: theme.default,
-            },
-            stateDisabled:
-            {
-              bgOpacity: "40",
-              cursor: "default"
-            }
+            layer: "alt"
+            // TODO
+            // stateDisabled:
+            // {
+            //   bgOpacity: "40",
+            //   cursor: "default"
+            // }
           }
         ),
-        thumb: (theme: ColorTheme, darkMode: boolean) =>
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: theme.background1,
+            layer: "mainInv",
             ms: "2px",
-            mt: "2px",
-            easing: "linear",
-            duration: "300",
-
             stateChecked:
             {
+              layer: "main",
               transform: true,
               translateX: "-100%",
               ms: "calc(100% - 2px)",
@@ -188,45 +172,45 @@ const config: Config =
       },
       inverse:
       {
-        track: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
+        // track: (surface: SurfaceScheme, darkMode: boolean) =>
+        // (
+        //   {
 
-            bgColor: theme.background5,
-            shadow: " 0 0 5px grey",
-            easing: "linear",
-            duration: "300",
-            stateChecked:
-            {
-              bgColor: theme.default,
-              bgOpacity: "50",
-            },
-            stateDisabled:
-            {
-              bgOpacity: "40",
-              cursor: "default"
-            }
-          }
-        ),
-        thumb: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
-            bgColor: theme.background1,
-            ms: "2px",
-            mt: "2px",
-            easing: "linear",
-            duration: "300",
+        //     bgColor: theme.background5,
+        //     shadow: " 0 0 5px grey",
+        //     easing: "linear",
+        //     duration: "300",
+        //     stateChecked:
+        //     {
+        //       bgColor: theme.default,
+        //       bgOpacity: "50",
+        //     },
+        //     stateDisabled:
+        //     {
+        //       bgOpacity: "40",
+        //       cursor: "default"
+        //     }
+        //   }
+        // ),
+        // thumb: (surface: SurfaceScheme, darkMode: boolean) =>
+        // (
+        //   {
+        //     bgColor: theme.background1,
+        //     ms: "2px",
+        //     mt: "2px",
+        //     easing: "linear",
+        //     duration: "300",
 
-            stateChecked:
-            {
-              transform: true,
-              translateX: "-100%",
-              ms: "calc(100% - 2px)",
-              easing: "out",
-              bgColor: theme.default,
-            }
-          }
-        ),
+        //     stateChecked:
+        //     {
+        //       transform: true,
+        //       translateX: "-100%",
+        //       ms: "calc(100% - 2px)",
+        //       easing: "out",
+        //       bgColor: theme.default,
+        //     }
+        //   }
+        // ),
         label: {
           fontSize: "lg",
           textAlign: "center"
@@ -251,7 +235,7 @@ const config: Config =
           rounded: "full"
         },
       },
-      pill:
+      rounded:
       {
         switch:
         {

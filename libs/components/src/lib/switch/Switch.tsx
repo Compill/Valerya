@@ -1,10 +1,11 @@
-import { ComponentManager, useFirstRender, useMultiPartComponentConfig } from "@katia/core";
-import { ComponentTheme, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
+import { ComponentManager, useFirstRender, useMultiPartComponentConfig, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
 import React from "react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Switch";
+const COMPONENT_ID = "Katia.Switch";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -18,11 +19,11 @@ export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLI
  *
  *
  */
-export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
+export const Switch = forwardRef<"input", SwitchProps>(({
   variant,
   corners,
   size,
-  theme = "default",
+  scheme,
   config,
   children,
   onMouseDown,
@@ -44,7 +45,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
     onClick && onClick(event);
   }, [onClick]);
 
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size }, props);
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
@@ -63,16 +64,19 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
         ref={ref}
         {...inputProps} />
 
-      <span
+      <Surface
+        scheme={_scheme}
+        as="span"
         transition={firstRender ? "none" : "all"}
-        shadow=" 0 0 10px grey"
         {...styles["track"]}
       >
-        <span
+        <Surface
+          scheme={_scheme}
+          as="span"
           transition={firstRender ? "none" : "all"}
           {...styles["thumb"]}
         />
-      </span>
+      </Surface>
 
       <span {...styles["label"]}>
         {children}

@@ -11,6 +11,7 @@ const CheckboxPage = React.lazy(() => import("../pages/Checkbox"));
 const RadioPage = React.lazy(() => import("../pages/Radio"));
 const SelectPage = React.lazy(() => import("../pages/Select"));
 const SurfacePage = React.lazy(() => import("../pages/Surface"));
+const SwitchPage = React.lazy(() => import("../pages/Switch"));
 const TextAreaPage = React.lazy(() => import("../pages/TextArea"));
 const ColorPickerPage = React.lazy(() => import("../pages/ColorPicker"));
 const SliderPickerPage = React.lazy(() => import("../pages/Slider"));
@@ -27,6 +28,7 @@ export const menu = {
   "Radio": () => <RadioPage />,
   "Select": () => <SelectPage />,
   "Surface": () => <SurfacePage />,
+  "Switch": () => <SwitchPage />,
   "TextArea": () => <TextAreaPage />,
   "Color Picker": () => <ColorPickerPage />,
   "Slider Picker": () => <SliderPickerPage />,

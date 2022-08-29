@@ -1,9 +1,10 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "@katia/core";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
+import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Switch">;
+type TraitProps = ComponentTypings<"Katia.Switch">;
 
-export type ComponentProps = SoperioComponent & TraitProps  & DisabledState & CheckedState
+export type ComponentProps = SurfaceBasedComponent<TraitProps  & DisabledState & CheckedState>
 
 interface ConfigStateProps extends DisabledThemeProps, CheckedThemeProps, CheckedDisabledThemeProps { }
 
@@ -14,5 +15,5 @@ type SwitchComponentProps = {
   label: SoperioComponent, // SwitchFooterThemeProps
 }
 
-export type Config = MultiPartComponentConfig<TraitProps, SwitchComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, SwitchComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>;
