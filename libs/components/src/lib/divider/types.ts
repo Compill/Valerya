@@ -1,10 +1,10 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig } from "@katia/core";
-import { SoperioComponent } from "@soperio/react";
+import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { SurfaceBasedComponent } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Soperio.Divider">;
+type TraitProps = ComponentTypings<"Katia.Divider">;
 
-export type ComponentProps = SoperioComponent & TraitProps
+export type ComponentProps = SurfaceBasedComponent<TraitProps>
 
-export type Config = ComponentConfig<TraitProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

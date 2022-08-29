@@ -1,15 +1,16 @@
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
-import { ComponentTheme } from "@soperio/react";
-import React from "react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef } from "@soperio/react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Divider";
+const COMPONENT_ID = "Katia.Divider";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface DividerProps extends ComponentProps {
-  theme?: ComponentTheme,
+export interface DividerProps extends ComponentProps
+{
+  orientation?: "horizontal" | "vertical"
   config?: ExtendConfig;
 }
 
@@ -17,20 +18,27 @@ export interface DividerProps extends ComponentProps {
  *
  *
  */
-export const Divider = React.forwardRef<HTMLHRElement,DividerProps>(({
-  variant = "default",
-  theme = "default",
-  orientation,
+export const Divider = forwardRef<"div", DividerProps>(({
+  variant,
+  thickness,
+  scheme,
+  orientation = "horizontal",
   config,
   ...props
-}: DividerProps, ref) => {
+}: DividerProps, ref) =>
+{
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant,orientation }, props);
-  return (
-    <hr
+  const {scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, thickness }, props);
 
-    transition={firstRender ? "none" : "all"}
+  // Redefine correct values based on orientation
+  // width and height can then be overwritten by {...props}
+  styles[orientation === "horizontal" ? "w" : "h"] = "100%"
+
+  return (
+    <Surface
+      scheme={_scheme}
+      transition={firstRender ? "none" : "all"}
       {...styles}
       {...props}
       ref={ref} />

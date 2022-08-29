@@ -1,44 +1,53 @@
 import { Config } from "./types";
 
 export const config: Config =
-
 {
+  defaultSurface: "neutral",
   defaultTraits:
   {
     variant: "default",
-    orientation: "horizontal",
+    thickness: "xs"
 
   },
   traits:
   {
-    orientation:
-    {
-      vertical:
-      {
-        borderS: "2",
-        border: "none",
-        w: "1px",
-        h: "100%",
-      },
-      horizontal:
-      {
-        borderB: "1px",
-        w: "100%",
-      },
-    },
     variant:
     {
       default:
       {
-        borderStyle: "solid",
-        opacity: "30",
-        borderColor: "black"
+        layer: "main"
       },
-      dashed:
+      light:
       {
-        borderStyle: "dashed",
-        opacity: "30",
-        borderColor: "black"
+        layer: "alt"
+      }
+    },
+    thickness:
+    {
+      xs: 
+      {
+        w: "px",
+        h: "px"
+      },
+      sm:
+      {
+        w: "0.5",
+        h: "0.5"
+      },
+      md:
+      {
+        w: "1",
+        h: "1"
+      },
+      lg:
+      {
+        w: "1.5",
+        h: "1.5"
+      },
+      xl:
+      {
+        w: "2",
+        h: "2"
       }
     }
   }

@@ -32,10 +32,10 @@ export interface Components
     variant?: "default" | "bordered" | "light";
     corners?: "default" | "square" | "pill";
   },
-  "Soperio.Divider":
+  "Katia.Divider":
   {
-    variant: "default" | "dashed";
-    orientation: "horizontal" | "vertical";
+    variant: "default" | "light";
+    thickness: "xs" | "sm" | "md" | "lg" | "xl";
   },
   "Katia.Checkbox":
   {
