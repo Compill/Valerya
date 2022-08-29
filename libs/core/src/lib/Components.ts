@@ -102,7 +102,7 @@ export interface Components
     variant?: "default" | "inverse" | "fullColor";
     corners?: "default" | "square" | "pill";
   },
-  "Soperio.TextArea":
+  "Katia.TextArea":
   {
 
     size: "sm" | "md" | "lg" | "xl" | "x2";

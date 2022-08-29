@@ -1,16 +1,15 @@
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
-import { ComponentTheme, HTMLTextAreaProps } from "@soperio/react";
-import React from "react";
+import { ComponentManager, HTMLDivProps, RightJoinProps, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, HTMLTextAreaProps } from "@soperio/react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.TextArea";
+const COMPONENT_ID = "Katia.TextArea";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface TextAreaProps extends ComponentProps, HTMLTextAreaProps
+export interface TextAreaProps extends ComponentProps, RightJoinProps<HTMLTextAreaProps, HTMLDivProps>
 {
-  theme?: ComponentTheme,
   config?: ExtendConfig
 }
 
@@ -18,22 +17,24 @@ export interface TextAreaProps extends ComponentProps, HTMLTextAreaProps
  *
  *
  */
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((
+export const TextArea = forwardRef<"textarea", TextAreaProps>((
   {
-    size = "md",
-    variant = "default",
-    corners = "default",
-    theme = "default",
+    size,
+    variant,
+    corners,
+    scheme,
     config,
     ...props
   }, ref) =>
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   return (
-    <textarea
+    <Surface
+      scheme={_scheme}
+      as="textarea"
       transition={firstRender ? "none" : "all"}
       {...styles}
       {...props}
