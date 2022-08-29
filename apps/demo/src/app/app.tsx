@@ -49,6 +49,8 @@ const theme = extendTheme({
     {
       "default": buildSurface(0x12A2DF, { darkMode: true }),
       "neutral": buildSurface(0xff94a3b8, { darkMode: true }),
+      "light": buildDarkSurface(0xff181818, 0xffffffff),
+
       // "primary": buildSurface(0xff16a34a, { darkMode: true }),
       "primary": buildDarkSurface(0xff181818, 0xffffffff),
       // "secondary": buildSurfaceFromColor(0xffff00ff, { darkMode: true }),
@@ -66,8 +68,6 @@ const theme = extendTheme({
   }
 })
 
-console.log(buildWhiteSurface(0xffffffff, 0xff181818))
-console.log(buildSurface(0xff475569))
 export function App()
 {
 

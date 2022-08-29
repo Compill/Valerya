@@ -1,10 +1,12 @@
-import { ComponentManager, MultiPartStyleProvider, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
-import { ComponentTheme, createContext, HTMLDivProps, Opacity, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, createContext, forwardRef, HTMLDivProps, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Button } from "../button";
+import { Divider } from "../divider";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
@@ -13,12 +15,11 @@ const COMPONENT_ID = "Soperio.Modal";
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 
-const [ ModalContextProvider, useModalContext ] = createContext<ModalProps>()
+const [ModalContextProvider, useModalContext] = createContext<ModalProps>()
 //TODO impossible de overirder les valeurs de position de base de sopério
 
 export interface ModalProps extends Omit<ComponentProps, "position">, ParentComponent, Omit<HTMLDivProps, "position">
 {
-  theme?: ComponentTheme;
   config?: ExtendConfig,
   closeOnMaskClick?: boolean,
   closeOnEsc?: boolean,
@@ -33,11 +34,11 @@ export interface ModalProps extends Omit<ComponentProps, "position">, ParentComp
  *
  *
  */
-const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
+const ModalContainer = forwardRef<"div", ModalProps>(({
   variant,
   corners,
   size,
-  theme = "default",
+  scheme,
   config,
   onClose,
   closeOnBgClick: closeOnBackdropClick = true,
@@ -49,7 +50,7 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
   ...props
 }: ModalProps, ref) =>
 {
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props)
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size }, props)
 
   const animate = show ? "visible" : "hidden"
   const modalAnimation = {
@@ -64,7 +65,7 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
   {
     event.stopPropagation()
     if (closeOnBackdropClick) onClose?.()
-  }, [ closeOnBackdropClick, onClose ])
+  }, [closeOnBackdropClick, onClose])
 
   /**
    * Close modal on esc Key if closeOnEsc is true
@@ -75,13 +76,13 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
     const close = (e: any) =>
     {
       if (e.keyCode === 27 && closeOnEsc)
-      {
         onClose?.()
-      }
     }
+
     window.addEventListener('keydown', close)
+
     return () => window.removeEventListener('keydown', close)
-  }, [ closeOnEsc, onClose ])
+  }, [closeOnEsc, onClose])
 
   return (
     ReactDOM.createPortal(
@@ -116,7 +117,8 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
             z="1050"
             {...styles["modalWrapper"]}
             {...props}>
-            <div
+            <Surface
+              scheme={_scheme}
               onClick={(e) => e.stopPropagation()}
               bgOpacity="100"
               {...styles["modalContent"]}
@@ -127,7 +129,7 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
                   {children}
                 </MultiPartStyleProvider>
               </ModalContextProvider>
-            </div>
+            </Surface>
           </div>
         </div>
       </motion.div >
@@ -138,52 +140,64 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
 export interface ModalHeaderProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
+  borderWidth?: "full" | "padded" | Spacing
 };
 
-export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
+export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
   showBorder,
   borderWidth,
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useColorTheme();
-  const styles = useMultiPartStyles();
   const { onClose } = useModalContext()
+  const styles = useMultiPartStyles();
+
+  const dividerStyles: SoperioComponent = {}
+
+  if (borderWidth === "padded")
+  {
+    dividerStyles.mx = styles["header"]?.["px"]
+    dividerStyles.ms = styles["header"]?.["ps"]
+    dividerStyles.me = styles["header"]?.["pe"]
+  }
+  else if (borderWidth !== "full")
+  {
+    dividerStyles.w = borderWidth
+  }
 
   const closeModal = React.useCallback((event: any) =>
   {
     event.stopPropagation()
     onClose?.()
-  }, [ onClose ])
+  }, [onClose])
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <div dflex justifyContent="between" alignItems="center" {...styles["header"]}>
-      <div
-        ref={ref}
-        borderB={showBorder && borderWidth === "full" ? true : "0"}
-        {...styles["headerTitle"]}
-        {...props}
-      >
-        {children}
+    <>
+      <div dflex justifyContent="between" alignItems="center" {...styles["header"]}>
+        <div
+          ref={ref}
+          {...styles["headerTitle"]}
+          {...props}
+        >
+          {children}
+        </div>
+
+        <Button
+          {...styles["headerCloseButton"]}
+          onClick={closeModal}
+        >
+          <svg
+            w="24px"
+            h="24px"
+            viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+          </svg>
+        </Button>
       </div>
-
-      <Button
-        {...styles["headerCloseButton"]}
-        onClick={closeModal}
-      >
-        <svg
-          w="24px"
-          h="24px"
-          viewBox="0 0 24 24">
-          <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-        </svg>
-      </Button>
-
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "4" : borderWidth as SpacingPositive} />}
-    </div>
+      {showBorder && <Divider {...dividerStyles} />}
+    </>
   );
 });
 
@@ -192,7 +206,7 @@ export interface ModalBodyProps extends SoperioComponent, ParentComponent
   scrollable?: boolean, // If fixed height
 };
 
-export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(({ children, ...props }, ref) =>
+export const ModalBody = forwardRef<"div", ModalBodyProps>(({ children, ...props }, ref) =>
 {
   const styles = useMultiPartStyles();
 
@@ -206,40 +220,51 @@ export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(({ chi
 export interface ModalFooterProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
+  borderWidth?: "full" | "padded" | Spacing
   align?: "right" | "left" | "center";
 };
 
-export const ModalFooter = React.forwardRef<HTMLDivElement, ModalFooterProps>(({
+export const ModalFooter = forwardRef<"div", ModalFooterProps>(({
   showBorder,
   borderWidth,
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
+
+  const dividerStyles: SoperioComponent = {}
+
+  if (borderWidth === "padded")
+  {
+    dividerStyles.mx = styles["footer"]?.["px"]
+    dividerStyles.ms = styles["footer"]?.["ps"]
+    dividerStyles.me = styles["footer"]?.["pe"]
+  }
+  else if (borderWidth !== "full")
+  {
+    dividerStyles.w = borderWidth
+  }
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <React.Fragment>
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+    <>
+      {showBorder && <Divider {...dividerStyles} />}
       <div
         ref={ref}
-        borderT={showBorder && borderWidth === "full" ? true : "0"}
         {...styles["footer"]}
         {...props}
       >
         {children}
       </div>
-    </React.Fragment>
+    </>
   );
 });
 
 export const Modal = Object.assign(ModalContainer, { Header: ModalHeader, Body: ModalBody, Footer: ModalFooter });
 
 if (IS_DEV)
-  Modal.displayName = "Soperio Modal"
+  Modal.displayName = "Katia Modal"
 else
   Modal.displayName = "Modal"
 

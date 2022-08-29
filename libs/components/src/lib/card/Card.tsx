@@ -1,5 +1,5 @@
 import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, HTMLDivProps, OrString, ParentComponent, SoperioComponent } from "@soperio/react";
+import { forwardRef, HTMLDivProps, OrString, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -31,7 +31,6 @@ const CardContainer = forwardRef<typeof Surface, CardProps>(({
 
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props);
   
-  console.log("card", styles)
   return (
     <Surface
       scheme={_scheme}
@@ -50,7 +49,7 @@ const CardContainer = forwardRef<typeof Surface, CardProps>(({
 export interface CardHeaderProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
+  borderWidth?: "full" | "padded" | Spacing;
 };
 
 export const CardHeader = forwardRef<"div", CardHeaderProps>(({
@@ -113,7 +112,7 @@ export const CardBody = forwardRef<"div", CardBodyProps>(({ children, ...props }
 export interface CardFooterProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
+  borderWidth?: "full" | "padded" | Spacing
   align?: "right" | "left" | "center";
 };
 

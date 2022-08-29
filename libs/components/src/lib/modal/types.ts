@@ -1,10 +1,11 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
 import { ButtonProps } from "../button";
+import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Modal">;
+type TraitProps = ComponentTypings<"Katia.Modal">;
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
+export type ComponentProps = SurfaceBasedComponent<TraitProps & SelectedState & DisabledState>;
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
@@ -18,7 +19,8 @@ type ModalComponentProps = {
   headerCloseButton: ButtonProps,
   body: SoperioComponent, // ModalContentThemeProps
   footer: SoperioComponent, // ModalFooterThemeProps
+  divider: SoperioComponent, // ModalFooterThemeProps
 }
 
-export type Config = MultiPartComponentConfig<TraitProps, ModalComponentProps, ConfigStateProps>
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, ModalComponentProps, ConfigStateProps>
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>

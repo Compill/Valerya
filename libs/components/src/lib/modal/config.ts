@@ -1,8 +1,10 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultScheme: "light",
   defaultTraits:
   {
     variant: "default",
@@ -22,13 +24,13 @@ const config: Config =
       justifyContent: "center",
       // bgColor: darkMode ? theme.background2 : theme.background1,
     },
-    header: (theme: ColorTheme, darkMode: boolean) =>
-    (
-      {
-        ps: "4",
-        borderColor: theme.border1
-      }
-    ),
+    header:
+    {
+      ps: "7",
+      // px: "7",
+      py: "3",
+      minH: "16"
+    },
     headerCloseButton:
     {
       mx: "4",
@@ -43,45 +45,61 @@ const config: Config =
     },
     body:
     {
-      px: "4",
-      py: "2",
+      px: "7",
+      py: "5",
       fontSize: "sm"
     },
-    footer: (theme: ColorTheme, darkMode: boolean) =>
-    (
-      {
-        px: "4",
-        py: "2",
-        borderColor: theme.border1
-      }
-    )
+    footer:
+    {
+      px: "7",
+      py: "3",
+      minH: "16"
+    },
+    divider:
+    {
+      h: "px",
+      // bgOpacity: "15", // Remove traits redefinition when soperio's parseProps don't have issue with prop overwriting anymore
+    }
   },
-  subComponents: ["backdrop", "modalWrapper", "modalContent", "header", "headerTitle", "headerCloseButton", "body", "footer"],
+  subComponents: ["backdrop", "modalWrapper", "modalContent", "header", "headerTitle", "headerCloseButton", "body", "footer", "divider"],
   traits:
   {
     variant:
     {
       default:
       {
-        modalContent: (theme: ColorTheme, darkMode: boolean) =>
+        modalContent: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
+            layer: "main",
             border: "0",
-            textColor: theme.textDark1
+          }
+        ),
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.main.onColor,
+            bgOpacity: "15",
           }
         )
       },
       bordered:
       {
-        modalContent: (theme: ColorTheme, darkMode: boolean) =>
+        modalContent: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
+            layer: "main",
             border: "2",
-            borderColor: theme.border1,
+            borderColor: surface.layers.main.onColor,
           }
         ),
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.main.onColor,
+            bgOpacity: "15",
+          }
+        )
       },
     },
     corners:
@@ -92,13 +110,6 @@ const config: Config =
         modalContent:
         {
           rounded: true
-        }
-      },
-      pill:
-      {
-        modalContent:
-        {
-          rounded: "full"
         }
       }
     },

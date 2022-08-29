@@ -18,7 +18,8 @@ const config: Config =
     header:
     {
       px: "7",
-      py: "3"
+      py: "3",
+      minH: "16"
     },
     body:
     {
@@ -29,7 +30,8 @@ const config: Config =
     footer:
     {
       px: "7",
-      py: "3"
+      py: "3",
+      minH: "16"
     },
     divider:
     {
@@ -54,7 +56,6 @@ const config: Config =
           {
             bgColor: surface.layers.main.onColor,
             bgOpacity: "15",
-
           }
         )
       },

@@ -5,9 +5,10 @@ const AvatarPage = React.lazy(() => import("../pages/Avatar"));
 const BadgePage = React.lazy(() => import("../pages/Badge"));
 const ButtonPage = React.lazy(() => import("../pages/Button"));
 const DividerPage = React.lazy(() => import("../pages/Divider"));
-const InputPage = React.lazy(() => import("../pages/Input"));
 const CardPage = React.lazy(() => import("../pages/Card"));
 const CheckboxPage = React.lazy(() => import("../pages/Checkbox"));
+const InputPage = React.lazy(() => import("../pages/Input"));
+const ModalPage = React.lazy(() => import("../pages/Modal"));
 const RadioPage = React.lazy(() => import("../pages/Radio"));
 const SelectPage = React.lazy(() => import("../pages/Select"));
 const SurfacePage = React.lazy(() => import("../pages/Surface"));
@@ -25,6 +26,7 @@ export const menu = {
   "Button": () => <ButtonPage />,
   "Divider": () => <DividerPage />,
   "Input": () => <InputPage />,
+  "Modal": () => <ModalPage />,
   "Radio": () => <RadioPage />,
   "Select": () => <SelectPage />,
   "Surface": () => <SurfacePage />,

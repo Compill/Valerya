@@ -55,10 +55,10 @@ export interface Components
     variant?: "default" | "bordered";
     corners?: "default" | "square";
   },
-  "Soperio.Modal":
+  "Katia.Modal":
   {
     variant?: "default" | "bordered";
-    corners?: "default" | "square" | "pill";
+    corners?: "default" | "square";
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6";
   },
   "Katia.Radio":
