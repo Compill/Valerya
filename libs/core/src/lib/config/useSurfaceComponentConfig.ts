@@ -79,7 +79,7 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
     config = defaultConfig
   }
 
-  const _surface = useSurface(surface ?? config?.defaultSurface);
+  const _surface = useSurface(surface ?? config?.defaultScheme);
 
   if (config)
     return mergeProps(config, traitsConfig, props, _surface, darkMode);

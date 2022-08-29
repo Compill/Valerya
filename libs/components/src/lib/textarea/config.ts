@@ -4,7 +4,7 @@ import { Config } from "./types";
 
 const config: Config =
 {
-  defaultSurface: "neutral",
+  defaultScheme: "neutral",
   defaultTraits:
   {
     size: "md",

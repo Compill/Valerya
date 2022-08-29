@@ -84,7 +84,7 @@ export function useMultiPartSurfaceComponentConfig<T, C extends Record<string, S
     config = defaultConfig
   }
 
-  const _surface = useSurface(surface ?? config?.defaultSurface);
+  const _surface = useSurface(surface ?? config?.defaultScheme);
 
   if (config)
     return mergeProps(config, traitsConfig, props, _surface, darkMode)

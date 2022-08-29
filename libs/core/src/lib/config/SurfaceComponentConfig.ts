@@ -25,7 +25,7 @@ export declare type SurfaceComponentConfig<
   S extends StateAndExtraProps = NoStateProps
   > =
   {
-    defaultSurface?: ThemeSurfaceScheme,
+    defaultScheme?: ThemeSurfaceScheme,
     defaultProps?: TraitConfig<P & S & LayerProps & { hoverable?: boolean }>;
     defaultTraits?: { [Property in keyof T]: T[Property] }
     traits?: {
@@ -56,7 +56,7 @@ export declare type MultiPartSurfaceComponentConfig<
   P extends Record<string, SoperioComponent> = Record<string, SoperioComponent>,   // Component props
   S extends StateAndExtraProps = NoStateProps   // States
   > = {
-    defaultSurface?: ThemeSurfaceScheme,
+    defaultScheme?: ThemeSurfaceScheme,
     subComponents: (string & keyof P)[];
     defaultProps?: { [Property in keyof P]?: TraitConfig<S & P[Property]> }
     defaultTraits?: { [Property in keyof T]: T[Property] }

@@ -3,7 +3,7 @@ import { Config } from "./types";
 
 const config: Config =
 {
-  defaultSurface: "default",
+  defaultScheme: "default",
   defaultProps: {
     hover_transition: "all",
     easing: "linear",

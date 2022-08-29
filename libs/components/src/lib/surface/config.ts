@@ -3,7 +3,7 @@ import { Config } from "./types"
 
 const config:Config =
 {
-  defaultSurface: "light",
+  defaultScheme: "light",
   defaultProps:
   {
     stateDisabled:

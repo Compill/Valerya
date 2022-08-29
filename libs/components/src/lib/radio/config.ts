@@ -4,7 +4,7 @@ import { Config } from "./types";
 
 const config: Config =
 {
-  defaultSurface: "default",
+  defaultScheme: "default",
   defaultTraits:
   {
     variant: "default",
