@@ -1,17 +1,17 @@
-import { ComponentTheme, HTMLSelectProps, ParentComponent } from "@soperio/react";
+import { ComponentManager, HTMLDivProps, RightJoinProps, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, HTMLSelectProps, ParentComponent } from "@soperio/react";
 import React from "react";
+import { Surface } from "../surface";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-import defaultConfig from "./config";
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
 
-const COMPONENT_ID = "Soperio.Select";
+const COMPONENT_ID = "Katia.Select";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface SelectProps extends ComponentProps, ParentComponent, Omit<HTMLSelectProps, "size">
+export interface SelectProps extends ComponentProps, ParentComponent, RightJoinProps<Omit<HTMLSelectProps, "size">, HTMLDivProps>
 {
-  theme?: ComponentTheme,
   config?: ExtendConfig,
   length?: number;
 }
@@ -20,12 +20,12 @@ export interface SelectProps extends ComponentProps, ParentComponent, Omit<HTMLS
  *
  *
  */
-export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
+export const Select = forwardRef<"select", SelectProps>((
   {
-    size = "md",
-    variant = "default",
-    corners = "default",
-    theme = "default",
+    size,
+    variant,
+    corners,
+    scheme,
     config,
     length,
     children,
@@ -34,10 +34,12 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   return (
-    <select
+    <Surface
+      scheme={_scheme}
+      as="select"
       transition={firstRender ? "none" : "all"}
       {...(length ? { size: length } : null)}
       {...styles}
@@ -45,6 +47,6 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
       ref={ref}
     >
       {children}
-    </select>
+    </Surface>
   );
 });

@@ -74,7 +74,7 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Soperio.Select":
+  "Katia.Select":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
