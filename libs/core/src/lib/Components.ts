@@ -80,6 +80,10 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
+  "Katia.Sidebar":
+  {
+    variant: "default" | "light";
+  },
   "Katia.Slider":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";

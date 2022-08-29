@@ -1,13 +1,9 @@
-import { ParentComponent, SoperioComponent, Width, Height } from "@soperio/react";
+import { ComponentTypings, ExtendSurfaceComponentConfig, HTMLDivProps, SurfaceComponentConfig } from "@katia/core";
+import { SurfaceBasedComponent } from "../surface";
 
-export interface SidebarProps extends SoperioComponent, ParentComponent
-{
-  side?: "start" | "end" | "top" | "bottom",
-  sidebarWidth?: Width,
-  sidebarHeight?: Height,
-  closeOnMaskClick?: boolean,
-  closeOnEsc?: boolean,
-  show: boolean,
-  size?: string,
-  onClose?: () => void;
-}
+type TraitProps = ComponentTypings<"Katia.Sidebar">
+
+export type ComponentProps = SurfaceBasedComponent<HTMLDivProps & TraitProps>
+
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

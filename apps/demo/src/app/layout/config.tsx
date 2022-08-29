@@ -12,6 +12,7 @@ const ModalPage = React.lazy(() => import("../pages/Modal"));
 const RadioPage = React.lazy(() => import("../pages/Radio"));
 const SelectPage = React.lazy(() => import("../pages/Select"));
 const SurfacePage = React.lazy(() => import("../pages/Surface"));
+const SidebarPage = React.lazy(() => import("../pages/Sidebar"));
 const SwitchPage = React.lazy(() => import("../pages/Switch"));
 const TextAreaPage = React.lazy(() => import("../pages/TextArea"));
 const ColorPickerPage = React.lazy(() => import("../pages/ColorPicker"));
@@ -29,6 +30,7 @@ export const menu = {
   "Modal": () => <ModalPage />,
   "Radio": () => <RadioPage />,
   "Select": () => <SelectPage />,
+  "Sidebar": () => <SidebarPage />,
   "Surface": () => <SurfacePage />,
   "Switch": () => <SwitchPage />,
   "TextArea": () => <TextAreaPage />,

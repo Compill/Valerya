@@ -1,16 +1,45 @@
-import { useFirstRender } from "@katia/core";
-import { useDirection, usePrevious } from "@soperio/react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, Height, ParentComponent, useDirection, usePrevious, Width } from "@soperio/react";
 import React from 'react';
-import { SidebarProps } from "./types";
+import { Surface } from "../surface";
+import defaultConfig from "./config";
+import { ComponentProps, ExtendConfig } from "./types";
+
+const COMPONENT_ID = "Katia.Sidebar"
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 const DEFAULT_DURATION = "500";
 const DEFAULT_EASING = "in";
+
+export interface SidebarProps extends ComponentProps, ParentComponent
+{
+  config?: ExtendConfig,
+  side?: "start" | "end" | "top" | "bottom",
+  sidebarWidth?: Width,
+  sidebarHeight?: Height,
+  closeOnMaskClick?: boolean,
+  closeOnEsc?: boolean,
+  show: boolean,
+  size?: string,
+  onClose?: () => void;
+}
 
 /**
  *
  *
  */
-export function Sidebar({ side = "start", onClose, show = false, sidebarWidth, sidebarHeight, children, ...props }: SidebarProps)
+export const Sidebar = forwardRef<"div", SidebarProps>(({ 
+  scheme,
+  variant,
+  side = "start", 
+  onClose, 
+  show = false, 
+  sidebarWidth, 
+  sidebarHeight, 
+  config,
+  children, 
+  ...props }: SidebarProps, ref) =>
 {
   const [internalShow, setInternalShow] = React.useState(false);
   const previousSide = usePrevious(side);
@@ -30,6 +59,8 @@ export function Sidebar({ side = "start", onClose, show = false, sidebarWidth, s
   const initTranslateX = isX ? (startDirection ? "-full" : "full") : "0";
   const initTranslateY = !isX ? (side === "top" ? "-full" : "full") : "0";
   const justify = side === "start" || side === "top" ? "start" : "end";
+
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant }, props)
 
   React.useEffect(() =>
   {
@@ -61,21 +92,22 @@ export function Sidebar({ side = "start", onClose, show = false, sidebarWidth, s
       justifyContent={justify}
       alignContent={justify}
       pointerEvents={show ? "auto" : "none"}
-      {...props}
     >
-      <div
+      <Surface
+        scheme={scheme}
         w={width}
         h={height}
-        bgColor={props.bgColor || "root.bg-color-1"}
         transition={firstRender || (side === previousSide && direction === previousDirection) ? "transform" : "none"}
         transform
         easing={props.easing || DEFAULT_EASING}
         duration={props.duration || DEFAULT_DURATION}
         translateX={side === previousSide && previousDirection === direction ? translateX : initTranslateX}
         translateY={side === previousSide && previousDirection === direction ? translateY : initTranslateY}
+        {...styles}
+        {...props}
       >
         {children}
-      </div>
+      </Surface>
     </div>
   );
-}
+})
