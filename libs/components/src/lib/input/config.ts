@@ -1,10 +1,13 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultSurface: "neutral",
   defaultTraits:
   {
+    variant: "default",
     size: "md",
     corners: "default"
   },
@@ -12,6 +15,7 @@ const config: Config =
   {
     size:
     {
+      // TODO Better sizes
       "sm":
       {
         px: "2",
@@ -44,37 +48,33 @@ const config: Config =
     },
     variant:
     {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      // TODO Check design
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
+          layer: "mainLayer",
           border: "2",
-          textColor: theme.textDark2,
           fontWeight: "500",
-          bgColor: "transparent",
-          borderColor: theme.border0,
-          placeholderColor: theme.textDark4,
+          borderColor: surface.layers.mainLayer.onColor,
+          placeholderColor: surface.layers.mainLayer.onColor,
+          placeholderOpacity: "50"
         }
       ),
-      solid: (theme: ColorTheme, darkMode: boolean) =>
+      solid: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          border: "0",
-
+          layer: "alt",
           fontWeight: "500",
-          textColor: theme.textDark2,
-          bgColor: theme.background3,
         }
       ),
-      underline: (theme: ColorTheme, darkMode: boolean) =>
+      underline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           borderB: "2",
           fontWeight: "500",
           bgColor: "transparent",
-          textColor: theme.textDark2,
-          borderColor: theme.border0,
-
-          rounded: false
+          textColor: surface.layers.main.color,
+          borderColor: surface.layers.main.color,
         }
       )
     },

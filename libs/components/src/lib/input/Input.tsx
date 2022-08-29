@@ -1,6 +1,7 @@
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
-import { ComponentTheme, HTMLInputProps } from "@soperio/react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, HTMLInputProps } from "@soperio/react";
 import React from "react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
@@ -10,7 +11,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface InputProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
-    theme?: ComponentTheme,
     length?: number;
     config?: ExtendConfig;
 }
@@ -19,12 +19,12 @@ export interface InputProps extends ComponentProps, Omit<HTMLInputProps, "size">
  *
  *
  */
-export const Input = React.forwardRef<HTMLInputElement, InputProps>((
+export const Input = forwardRef<"input", InputProps>((
     {
-        size = "md",
-        variant = "default",
-        corners = "default",
-        theme = "default",
+        scheme,
+        size ,
+        variant,
+        corners,
         length,
         config,
         ...props
@@ -32,15 +32,24 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
 {
     const firstRender = useFirstRender();
 
-    const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props);
+    const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props);
 
     return (
-        <input
+        <Surface
+            scheme={_scheme}
+            as="input"
             transition={firstRender ? "none" : "all"}
             {...(length ? { size: length } : null)}
             {...styles}
             {...props}
             ref={ref}
         />
+        // <input
+        //     transition={firstRender ? "none" : "all"}
+        //     {...(length ? { size: length } : null)}
+        //     {...styles}
+        //     {...props}
+        //     ref={ref}
+        // />
     );
 });

@@ -43,7 +43,7 @@ export interface Components
     variant: "default" | "outline";
     shape: "square" | "default" | "circle";
   },
-  "Soperio.Input":
+  "Katia.Input":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";

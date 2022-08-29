@@ -1,11 +1,11 @@
-import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, InvalidState, InvalidThemeProps, ValidState, ValidThemeProps } from "@katia/core";
-import { SoperioComponent } from "@soperio/react";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, InvalidState, InvalidThemeProps, SurfaceComponentConfig, ValidState, ValidThemeProps } from "@katia/core";
+import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Input">;
+type TraitProps = ComponentTypings<"Katia.Input">;
 
-export type ComponentProps = SoperioComponent & TraitProps & ValidState & InvalidState & DisabledState;
+export type ComponentProps = SurfaceBasedComponent<TraitProps & ValidState & InvalidState & DisabledState>;
 
 interface ConfigStateProps extends ValidThemeProps, InvalidThemeProps, DisabledThemeProps { }
 
-export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;
