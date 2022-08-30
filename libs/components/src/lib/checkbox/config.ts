@@ -58,7 +58,7 @@ const config: Config =
       (
         {
           layer: "alt",
-          border: "0",
+          border: "none",
           stateChecked:
           {
             layer: "main"
@@ -83,7 +83,7 @@ const config: Config =
       (
         {
           layer: "mainLayer",
-          border: "2",
+          border: "sm",
           borderColor: surface.layers.main.color,
           // stateDisabled:
           // {

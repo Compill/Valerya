@@ -63,7 +63,7 @@ const config: Config =
       (
         {
           layer: "main",
-          border: "0",
+          border: "none",
         }
       ),
       light: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -100,7 +100,7 @@ const config: Config =
       (
         {
           layer: "mainLayerHovMain",
-          border: "2",
+          border: "sm",
           borderColor: surface.layers.main.color,
           hover_borderColor: surface.layers.main.color,
           stateSelected:

@@ -1,6 +1,6 @@
-import { ComponentManager, useComponentConfig, useFirstRender } from "@katia/core";
-import { ComponentTheme, SoperioComponent, useColor } from "@soperio/react";
-import React from "react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, SoperioComponent, useColor } from "@soperio/react";
+import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
@@ -24,12 +24,12 @@ export interface SpinnerProps extends ComponentProps//, HTMLDivProps
   config?: ExtendConfig;
 }
 
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
+export const Spinner = forwardRef<typeof Surface, SpinnerProps>(({
   thickness,
   trackColor,
-  theme = "default",
-  size = "md",
-  variant = "default",
+  scheme,
+  size,
+  variant,
   progress,
   config,
   ...props
@@ -37,7 +37,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, { trackColor, thickness, progress, ...props} as ComponentProps)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, { trackColor, thickness, progress, ...props} as ComponentProps)
 
   const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
   const parsedThickness = thickness || styles?.thickness

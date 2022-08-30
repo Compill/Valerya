@@ -55,7 +55,7 @@ const config: Config =
       {
         accordion:
         {
-          border: "0",
+          border: "none",
         },
         itemContent: (theme: ColorTheme, darkMode: boolean) => (
           {
@@ -68,8 +68,8 @@ const config: Config =
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             hover_bgColor: theme.background2,
-            borderT: "2",
-            borderB: "1",
+            borderT: "sm",
+            borderB: "xs",
             borderColor: theme.border1,
           }
         ),

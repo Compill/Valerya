@@ -52,7 +52,7 @@ const config: Config =
       (
         {
           layer: "mainLayer",
-          border: "2",
+          border: "sm",
           fontWeight: "500",
           borderColor: surface.layers.mainLayer.onColor,
           placeholderColor: surface.layers.mainLayer.onColor,
@@ -69,7 +69,7 @@ const config: Config =
       underline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          borderB: "2",
+          borderB: "sm",
           fontWeight: "500",
           bgColor: "transparent",
           textColor: surface.layers.main.color,

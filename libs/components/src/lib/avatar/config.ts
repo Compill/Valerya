@@ -152,7 +152,7 @@ const config: Config =
         badge: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            border: "2",
+            border: "sm",
             borderColor: surface.layers.main.onColor,
           }
         )

@@ -50,20 +50,20 @@ export const config: Config =
       default:
       {
         layer: "main",
-        border: "0",
+        border: "none",
         fontWeight: "500"
       },
       light:
       {
         layer: "alt",
-        border: "0",
+        border: "none",
         fontWeight: "500"
       },
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           layer: "mainLayer",
-          border: "2",
+          border: "sm",
           borderColor: surface.layers.mainLayer.onColor,
           fontWeight: "500"
         }
@@ -72,7 +72,7 @@ export const config: Config =
       (
         {
           layer: "alt",
-          border: "2",
+          border: "sm",
           borderColor: surface.layers.alt.onColor,
           fontWeight: "500"
         }

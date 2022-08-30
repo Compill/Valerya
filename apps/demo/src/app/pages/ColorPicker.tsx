@@ -1,4 +1,4 @@
-import { buildSurface, Container, Surface, SurfaceProps, SurfaceScheme, LayerProps } from "@katia/ui";
+import { buildSurface, Container, Surface, SurfaceProps, SurfaceScheme, LayerProps, Slider } from "@katia/ui";
 import { darken, lighten, SoperioComponent, useDarkMode } from "@soperio/react";
 import React from "react";
 import { SketchPicker } from "react-color";
@@ -24,7 +24,7 @@ export default function Page({ ...props })
   const scheme = buildSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef), darkMode })
 
   const handleChange = React.useCallback(color => setColor(color), [setColor])
-  const handleCoefChange = React.useCallback(event => setCoef(event.target.value), [setCoef])
+  const handleCoefChange = React.useCallback(value => setCoef(value), [setCoef])
 
   return (
     <div w="full" h="full" >
@@ -35,7 +35,16 @@ export default function Page({ ...props })
       <div dflex flexRow w="full" alignItems="center" placeContent="center">
         <span>Adjust colors</span>
 
-        <input
+        <Slider
+          mx="3"
+          w="20"
+          type="range"
+          min={-0.5}
+          max={0.5}
+          step={0.001}
+          value={parseFloat(coef)}
+          onChange={handleCoefChange} />
+        {/* <input
           mx="3"
           w="20"
           type="range"
@@ -43,7 +52,7 @@ export default function Page({ ...props })
           max={0.5}
           step={0.001}
           value={coef}
-          onChange={handleCoefChange} />
+          onChange={handleCoefChange} /> */}
 
         <span>{addZeroes(coef, 3)}</span>
 
@@ -148,5 +157,5 @@ function addZeroes(num, zeroes)
 {
   const dec = String(num).split('.')[1]
   const len = dec && dec.length > zeroes ? dec.length : zeroes
-  return Number(num).toFixed(len)
+  return (num >= 0 ? "+" : "") + Number(num).toFixed(len)
 }

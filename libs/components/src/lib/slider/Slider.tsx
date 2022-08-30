@@ -53,7 +53,7 @@ export const Slider = forwardRef <"input", SliderProps>(({
         onChangeEnd,
     })
 
-    const divProps = splitComponentProps(props)[0]
+    const [ divProps, rootProps ] = splitComponentProps(props)
 
     const padding: SoperioComponent = {}
 
@@ -63,11 +63,13 @@ export const Slider = forwardRef <"input", SliderProps>(({
         padding.h = "inherit"
     }
     else
+    {
         padding.py = "0"
         padding.w = "inherit"
+    }
 
     return (
-        <div {...styles["slider"]} {...divProps} {...getRootProps()} {...padding}>
+        <div {...styles["slider"]} {...divProps} {...getRootProps(rootProps)} {...padding}>
             <SliderProvider value={context}>
                 <MultiPartStyleProvider value={styles}>
                     <Rail orientation={orientation} />

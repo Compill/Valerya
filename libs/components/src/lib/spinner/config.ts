@@ -1,8 +1,9 @@
-import { ColorTheme } from "@soperio/react";
+import { SurfaceScheme } from "@katia/surface";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultScheme: "default",
   defaultProps:
   {
     thickness: "2px",
@@ -44,18 +45,18 @@ const config: Config =
     },
     variant:
     {
-      default: (theme: ColorTheme, darkMode: boolean) =>
+      default: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          textColor: theme.default,
+          textColor: surface.layers.main.color,
           trackColor: "transparent"
         }
       ),
-      track: (theme: ColorTheme, darkMode: boolean) =>
+      track: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
-          textColor: theme.default,
-          trackColor: theme.light
+          textColor: surface.layers.main.color,
+          trackColor: surface.layers.alt.color
         }
       ),
     },

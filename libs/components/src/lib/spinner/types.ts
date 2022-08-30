@@ -1,16 +1,17 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig } from "@katia/core";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
 import { Color, SoperioComponent, SpacingPositive } from "@soperio/react";
+import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Spinner">
+type TraitProps = ComponentTypings<"Katia.Spinner">
 
-interface CustomProps extends SoperioComponent
+interface CustomProps
 {
   trackColor?: Color,
   thickness?: SpacingPositive,
   progress?: 0 | 25 | 50 | 75 | 100
 }
 
-export type ComponentProps = TraitProps & CustomProps
+export type ComponentProps = SurfaceBasedComponent<TraitProps & CustomProps>
 
-export type Config = ComponentConfig<TraitProps, CustomProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

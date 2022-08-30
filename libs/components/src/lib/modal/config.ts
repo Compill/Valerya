@@ -72,7 +72,7 @@ const config: Config =
         (
           {
             layer: "main",
-            border: "0",
+            border: "none",
           }
         ),
         divider: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -89,7 +89,7 @@ const config: Config =
         (
           {
             layer: "main",
-            border: "2",
+            border: "sm",
             borderColor: surface.layers.main.onColor,
           }
         ),

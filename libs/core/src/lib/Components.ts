@@ -91,7 +91,7 @@ export interface Components
     corners: "square" | "default" | "pill";
     orientation: "horizontal" | "vertical";
   },
-  "Soperio.Spinner":
+  "Katia.Spinner":
   {
     variant?: "default" | "track",
     size?: "sm" | "md" | "lg" | "xl" | "x2";
