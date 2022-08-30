@@ -1,12 +1,12 @@
-import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedThemeProps } from "@katia/core";
-import { SoperioComponent } from "@soperio/react";
+// import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedThemeProps } from "@katia/core";
+// import { SoperioComponent } from "@soperio/react";
 
 
-type TraitProps = ComponentTypings<"Soperio.Scrollable">
+// type TraitProps = ComponentTypings<"Soperio.Scrollable">
 
-export type ComponentProps = SoperioComponent & TraitProps;
+// export type ComponentProps = SoperioComponent & TraitProps;
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+// interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+// export type Config = ComponentConfig<TraitProps, ConfigStateProps>;
+// export type ExtendConfig = ExtendComponentConfig<Config>;
