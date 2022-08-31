@@ -39,3 +39,4 @@ export type HTMLSpanProps = HTMLProps<"span">;
 export type HTMLTableProps = HTMLProps<"table">;
 export type HTMLTextAreaProps = HTMLProps<"textarea">;
 export type HTMLUListProps = HTMLProps<"ul">;
+export type HTMLListItemProps = HTMLProps<"li">;

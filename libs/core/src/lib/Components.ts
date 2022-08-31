@@ -49,11 +49,12 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Soperio.List":
+  "Katia.List":
   {
-    size?: "sm" | "md" | "lg" | "xl" | "x2";
-    variant?: "default" | "bordered";
-    corners?: "default" | "square";
+    size?: "sm" | "md" | "lg" | "xl";
+    variant?: "default" | "light";
+    corners?: "default" | "rounded";
+    dividerSize: "none" | "xs" | "sm" | "md" | "lg" | "xl"
   },
   "Katia.Modal":
   {

@@ -37,6 +37,7 @@ const theme = extendTheme({
       // "primary": buildSurface(0xff16a34a),
       "default": buildSurface(0xff12A2DF),
       "light": buildWhiteSurface(0xffffffff, 0xff181818),
+      "dark": buildDarkSurface(0xff181818, 0xffffffff),
       "neutral": buildSurface(0xff94a3b8),
       "primary": buildWhiteSurface(0xffffffff, 0xff181818),
       // "secondary": buildSurfaceFromColor(0xffff00ff),
@@ -50,6 +51,7 @@ const theme = extendTheme({
       "default": buildSurface(0x12A2DF, { darkMode: true }),
       "neutral": buildSurface(0xff94a3b8, { darkMode: true }),
       "light": buildDarkSurface(0xff181818, 0xffffffff),
+      "dark": buildWhiteSurface(0xffffffff, 0xff181818),
 
       // "primary": buildSurface(0xff16a34a, { darkMode: true }),
       "primary": buildDarkSurface(0xff181818, 0xffffffff),

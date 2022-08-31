@@ -1,16 +1,18 @@
-import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@katia/core";
-import { ComponentTheme, HTMLUListProps, ParentComponent, SoperioComponent, useColorTheme } from "@soperio/react";
-import { OrString } from "@soperio/utils";
+import { ComponentManager, HTMLDivProps, HTMLListItemProps, HTMLUListProps, MultiPartStyleProvider, RightJoinProps, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, ParentComponent, SoperioComponent } from "@soperio/react";
 import React from "react";
+import { Divider } from "../divider";
+import { HoverableSurfaceBasedComponent, Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.List";
+const COMPONENT_ID = "Katia.List";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface ListProps extends ComponentProps, ParentComponent, HTMLUListProps
+export interface ListProps extends ComponentProps, HTMLUListProps
 {
+  dividerStyle?: "default" | "transparent",
   theme?: ComponentTheme;
   config?: ExtendConfig
 }
@@ -19,18 +21,24 @@ export interface ListProps extends ComponentProps, ParentComponent, HTMLUListPro
  *
  *
  */
-const List = React.forwardRef<HTMLUListElement, ListProps>(({
+const List = forwardRef<"ul", ListProps>(({
   variant,
   corners,
   size,
-  theme = "default",
+  dividerSize,
+  dividerStyle = "default",
+  scheme,
   config,
   children,
   ...props
 }: ListProps, ref) =>
 {
   const firstRender = useFirstRender();
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size, dividerSize }, props);
+
+  const showDividers = dividerSize !== "none"
+
+  const _children = React.useMemo(() => React.Children.toArray(children), [children])
 
   return (
     <ul
@@ -40,36 +48,34 @@ const List = React.forwardRef<HTMLUListElement, ListProps>(({
       ref={ref}
     >
       <MultiPartStyleProvider value={styles}>
-        {children}
+        {_children?.map((item, index) => (
+          <>
+            {item}
+            {showDividers && index < _children.length - 1 && <Divider scheme={_scheme} {...styles["divider"]} {...(dividerStyle === "transparent" ? { bgColor: "transparent" } : null)} />}
+          </>
+        ))}
       </MultiPartStyleProvider>
     </ul>
   );
 });
 
-export interface ListItemProps extends SoperioComponent, ParentComponent
-{
-  showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
-};
+export type ListItemProps = HoverableSurfaceBasedComponent<RightJoinProps<HTMLListItemProps, HTMLDivProps>>
 
-export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
-  showBorder,
-  borderWidth,
+
+export const ListItem = forwardRef<typeof Surface, ListItemProps>(({
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
 
   return (
-    <li
+    <Surface
+      as="li"
       ref={ref}
-      borderColor={colorTheme.border1}
-      borderB={showBorder && borderWidth === "full" ? true : "none"}
       {...styles["listItem"]}
       {...props}
     >{children}
-    </li>
+    </Surface>
   );
 });
 
@@ -78,7 +84,7 @@ export interface ListItemIconProps extends ComponentProps, ParentComponent
 
 }
 
-export const ListItemIcon = React.forwardRef<HTMLSpanElement, ListItemIconProps>((
+export const ListItemIcon = forwardRef<"span", ListItemIconProps>((
   {
     children,
     ...props

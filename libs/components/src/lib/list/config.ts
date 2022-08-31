@@ -1,13 +1,17 @@
+import { SurfaceScheme } from "@katia/surface";
 import { ColorTheme } from "@soperio/react";
+import { mainModule } from "process";
 import { Config } from "./types";
 
 const config: Config =
 {
+  defaultScheme: "light",
   defaultTraits:
   {
     variant: "default",
     corners: "default",
-    size: "md"
+    size: "md",
+    dividerSize: "xs"
   },
   defaultProps:
   {
@@ -29,6 +33,7 @@ const config: Config =
       w: '100%',
       boxSizing: 'border-box',
       textAlign: 'start',
+      hoverable: true
     },
     listItemIcon:
     {
@@ -38,154 +43,154 @@ const config: Config =
       w: '100%',
     },
   },
-  subComponents: ["list", "listItem", "listItemIcon"],
+  subComponents: ["list", "listItem", "listItemIcon", "divider"],
   traits:
   {
     size:
     {
       sm:
       {
-        list:
-        {
-          w: "15%",
-        },
         listItem:
         {
-          fontSize: "sm"
+          fontSize: "sm",
+          px: "3",
+          py: "2",
         },
         listItemIcon:
         {
-          w: "16px",
-          h: "16px",
+          w: "5",
+          h: "5",
         }
       },
       md:
       {
-        list:
-        {
-          w: "25%",
-        },
         listItem:
         {
-          fontSize: "md"
+          fontSize: "md",
+          px: "4",
+          py: "3",
         },
         listItemIcon:
         {
-          w: "24px",
-          h: "24px",
+          w: "6",
+          h: "6",
         }
       },
       lg:
       {
-        list:
-        {
-          w: "35%",
-        },
         listItem:
         {
-          fontSize: "lg"
+          fontSize: "lg",
+          px: "5",
+          py: "4",
         },
         listItemIcon:
         {
-          w: "48px",
-          h: "48px",
+          w: "7",
+          h: "7",
         }
       },
       xl:
       {
-
-      },
-      x2:
-      {
-
+        listItem:
+        {
+          fontSize: "xl",
+          px: "6",
+          py: "5",
+        },
+        listItemIcon:
+        {
+          w: "8",
+          h: "8",
+        }
       },
     },
     variant:
     {
       default:
       {
-        list: (theme: ColorTheme, darkMode: boolean) =>
+        listItem: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "none",
-            textColor: theme.textDark1
+            scheme: surface,
+            layer: "main",
           }
         ),
-        listItem: (theme: ColorTheme, darkMode: boolean) =>
+        divider:
+        {
+          layer: "mainInv",
+          bgOpacity: "15",
+        }
+
+      },
+      light:
+      {
+        listItem: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "none",
-            textColor: theme.textDark1,
+            scheme: surface,
+            layer: "alt",
             px: "5",
             py: "3",
-            hover_bgColor: theme.background2
           }
         ),
-        listItemIcon: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "none",
-            textColor: theme.textDark1,
-            hover_bgColor: theme.background2
-          }
-        ),
-      },
-      bordered:
-      {
-        list: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "none",
-            textColor: theme.textDark1
-          }
-        ),
-        listItem: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            borderB: "sm",
-            textColor: theme.textDark1,
-            borderColor: theme.border1,
-            px: "7",
-            py: "3",
-            hover_bgColor: theme.background2
-          }
-        ),
-        listItemIcon: (theme: ColorTheme, darkMode: boolean) =>
-        (
-          {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            borderB: "sm",
-            textColor: theme.textDark1,
-            borderColor: theme.border1,
-            hover_bgColor: theme.background2
-          }
-        ),
+        divider:
+        {
+          layer: "altInv",
+          bgOpacity: "15",
+        }
+
       }
     },
     corners:
     {
-      square: {},
-      default:
+      default: {},
+      rounded:
       {
         list:
-        {
-          rounded: true
-        },
-        listItem:
-        {
-          rounded: true
-        },
-        listItemIcon:
         {
           rounded: true
         }
       },
     },
+    dividerSize:
+    {
+      xs:
+      {
+        divider:
+        {
+          thickness: "xs"
+        }
+      },
+      sm:
+      {
+        divider:
+        {
+          thickness: "sm"
+        }
+      },
+      md:
+      {
+        divider:
+        {
+          thickness: "md"
+        }
+      },
+      lg:
+      {
+        divider:
+        {
+          thickness: "lg"
+        }
+      },
+      xl:
+      {
+        divider:
+        {
+          thickness: "xl"
+        }
+      }
+    }
   }
 };
 

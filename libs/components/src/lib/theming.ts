@@ -8,7 +8,7 @@ import dividerConfig from "./divider/config"
 import inputConfig from "./input/config"
 import modalConfig from "./input/config"
 import radioConfig from "./radio/config"
-import scrollableConfig from "./scrollable/config"
+// import scrollableConfig from "./scrollable/config"
 import selectConfig from "./select/config"
 import spinnerConfig from "./spinner/config"
 import switchConfig from "./switch/config"
@@ -25,7 +25,7 @@ export const theming = {
     "Katia.Input": inputConfig,
     "Katia.Modal": modalConfig,
     "Katia.Radio": radioConfig,
-    "Katia.Scrollable": scrollableConfig,
+    // "Katia.Scrollable": scrollableConfig,
     "Katia.Select": selectConfig,
     "Katia.Switch": switchConfig,
     "Katia.Spinner": spinnerConfig,
