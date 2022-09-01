@@ -42,6 +42,11 @@ const config: Config =
       me: "10px",
       w: '100%',
     },
+    divider:
+    {
+      layer: "mainInv",
+      bgOpacity: "15",
+    }
   },
   subComponents: ["list", "listItem", "listItemIcon", "divider"],
   traits:
@@ -116,12 +121,6 @@ const config: Config =
             layer: "main",
           }
         ),
-        divider:
-        {
-          layer: "mainInv",
-          bgOpacity: "15",
-        }
-
       },
       light:
       {
@@ -134,12 +133,6 @@ const config: Config =
             py: "3",
           }
         ),
-        divider:
-        {
-          layer: "altInv",
-          bgOpacity: "15",
-        }
-
       }
     },
     corners:

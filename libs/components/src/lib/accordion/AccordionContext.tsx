@@ -1,4 +1,5 @@
-import { createContext, HTMLDivProps, ParentComponent, Rotate, SoperioComponent } from "@soperio/react";
+import { createContext } from "@katia/core";
+import { HTMLDivProps, ParentComponent, Rotate, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { ComponentProps } from "./types";
 

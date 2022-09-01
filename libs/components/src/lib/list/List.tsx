@@ -1,5 +1,5 @@
 import { ComponentManager, HTMLDivProps, HTMLListItemProps, HTMLUListProps, MultiPartStyleProvider, RightJoinProps, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, forwardRef, ParentComponent, SoperioComponent } from "@soperio/react";
+import { forwardRef, ParentComponent } from "@soperio/react";
 import React from "react";
 import { Divider } from "../divider";
 import { HoverableSurfaceBasedComponent, Surface } from "../surface";
@@ -13,7 +13,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 export interface ListProps extends ComponentProps, HTMLUListProps
 {
   dividerStyle?: "default" | "transparent",
-  theme?: ComponentTheme;
   config?: ExtendConfig
 }
 

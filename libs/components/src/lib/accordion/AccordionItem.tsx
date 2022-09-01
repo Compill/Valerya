@@ -1,10 +1,13 @@
-import { OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useFirstRender, useMultiPartStyles } from "@soperio/react";
+import { useMultiPartStyles } from "@katia/core";
+import { forwardRef, OrString, ParentComponent, SoperioComponent, useFirstRender } from "@soperio/react";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { Button } from "../button";
+import { Divider } from "../divider";
+import { Surface, SurfaceBasedComponent } from "../surface";
 import { useAccordionContext } from "./AccordionContext";
 
-export interface AccordionItemProps extends SoperioComponent, ParentComponent
+export interface AccordionItemProps extends SurfaceBasedComponent, ParentComponent
 {
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
@@ -12,7 +15,7 @@ export interface AccordionItemProps extends SoperioComponent, ParentComponent
   isOpen?: boolean
 };
 
-export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(({
+export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
   showBorder,
   borderWidth,
   label,
@@ -21,7 +24,6 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
   ...props }, ref) =>
 {
   const firstRender = useFirstRender()
-  const colorTheme = useColorTheme()
   const styles = useMultiPartStyles()
   const {
     setExpanded,
@@ -50,8 +52,25 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
 
   const show = _isOpen || expanded === id
 
+  const dividerStyles: SoperioComponent = {}
+
+  if (borderWidth === "padded")
+  {
+    dividerStyles.mx = styles["itemHeaderLabel"]?.["mx"]
+    dividerStyles.ms = styles["itemHeaderLabel"]?.["ps"]
+    dividerStyles.me = styles["itemHeaderLabel"]?.["pe"]
+  }
+  else if (borderWidth !== "full")
+  {
+    dividerStyles.w = borderWidth
+  }
+
   return (
-    <div {...styles["item"]} {...itemStyle}>
+    <Surface
+      {...styles["item"]} 
+      {...itemStyle}
+      {...props}
+    >
       <div
         onClick={handleClick}
         dflex
@@ -59,12 +78,13 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         w="full"
         alignItems="center"
         cursor="pointer"
+        title="header"
         ref={ref}
         {...styles["itemHeader"]}
         {...itemHeaderStyle}
-        {...props}>
+        {...props}
+      >
         <div
-          borderB={showBorder && borderWidth === "full" ? true : "none"}
           {...styles["itemHeaderLabel"]}
           {...itemHeaderLabelStyle}
         >
@@ -72,18 +92,19 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         </div>
 
         {children && (
-          <Button onClick={handleClick} {...styles["itemHeaderCollapseButton"]} {...itemHeaderCollapseButtonStyle}>
-            {firstRender && (
+          <Button 
+            onClick={handleClick} 
+            scheme={props.scheme ?? styles["item"]?.["scheme"]} 
+            {...styles["itemHeaderCollapseButton"]} 
+            {...itemHeaderCollapseButtonStyle}
+          >
+            {expandIcon && collapseIcon && (show ? collapseIcon : expandIcon)}
+
+            {!collapseIcon && expandIconRotationOnOpen !== undefined && (
               <>
-                {expandIcon && collapseIcon && (show ? collapseIcon : expandIcon)}
-                {!collapseIcon && expandIconRotationOnOpen !== undefined && (show ? <div transform rotateZ={expandIconRotationOnOpen}>{expandIcon}</div> : expandIcon) }
-                {!collapseIcon && expandIconRotationOnOpen === undefined && expandIcon}
-              </>
-            )}
-            {!firstRender && (
-              <>
-                {expandIcon && collapseIcon && (show ? collapseIcon : expandIcon)}
-                {!collapseIcon && expandIconRotationOnOpen !== undefined && (
+                {firstRender && (show ? <div transform rotateZ={expandIconRotationOnOpen}>{expandIcon}</div> : expandIcon)}
+
+                {!firstRender && (
                   <motion.div
                     animate={show ? "open" : "close"}
                     variants={accordionAnimation}
@@ -91,21 +112,22 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
                     {expandIcon}
                   </motion.div>
                 )}
-                {!collapseIcon && expandIconRotationOnOpen === undefined && expandIcon}
               </>
             )}
+
+            {!collapseIcon && expandIconRotationOnOpen === undefined && expandIcon}
           </Button>
         )}
-
-        {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
       </div >
+
+      {showBorder && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} />}
 
       {children && (
         <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>
           {children}
         </AccordionContent>
       )}
-    </div>
+    </Surface>
   );
 });
 

@@ -107,7 +107,7 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
 
 
   // Let's start with the component default values
-  let finalProps = { ...(config.defaultProps as T) };
+  let finalProps = { ...(runIfFn(config.defaultProps, surface, darkMode) as T) };
 
   const defaultTraits = config.defaultTraits
 

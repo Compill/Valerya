@@ -1,21 +1,24 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
 import { SoperioComponent } from "@soperio/react";
 import { ButtonProps } from "../button";
+import { DividerProps } from "../divider";
+import { SurfaceBasedComponent, SurfaceProps } from "../surface";
 
-type TraitProps = ComponentTypings<"Soperio.Accordion">;
+type TraitProps = ComponentTypings<"Katia.Accordion">;
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
+export type ComponentProps = SurfaceBasedComponent<TraitProps & SelectedState & DisabledState>;
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type AccordionComponentProps = {
   accordion: SoperioComponent,
-  item: SoperioComponent, // AccordionHeaderThemeProps
+  item: SurfaceProps, // AccordionHeaderThemeProps
   itemHeader: SoperioComponent, // AccordionHeaderThemeProps
   itemHeaderLabel: SoperioComponent, // AccordionHeaderThemeProps
   itemHeaderCollapseButton: SoperioComponent & ButtonProps,
   itemContent: SoperioComponent, // AccordionContentThemeProps
+  divider: DividerProps,
 }
 
-export type Config = MultiPartComponentConfig<TraitProps, AccordionComponentProps, ConfigStateProps>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
+export type Config = MultiPartSurfaceComponentConfig<TraitProps, AccordionComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendMultiPartSurfaceComponentConfig<Config>;

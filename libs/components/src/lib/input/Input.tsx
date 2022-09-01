@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, HTMLInputProps } from "@soperio/react";
+import { ComponentManager, useComponentConfig, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentTheme, forwardRef, HTMLInputProps } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Input";
+const COMPONENT_ID = "Katia.Input";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

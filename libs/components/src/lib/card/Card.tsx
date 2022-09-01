@@ -1,5 +1,5 @@
 import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, HTMLDivProps, OrString, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
+import { forwardRef, HTMLDivProps, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -163,7 +163,7 @@ function Divider(props: SoperioComponent)
 export const Card = Object.assign(CardContainer, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
 
 if (IS_DEV)
-  Card.displayName = "Soperio Card"
+  Card.displayName = "Katia Card"
 else
   Card.displayName = "Card"
 

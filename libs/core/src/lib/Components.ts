@@ -4,10 +4,10 @@
 // Static definition that will be overwritten by CLI
 export interface Components
 {
-  "Soperio.Accordion":
+  "Katia.Accordion":
   {
     variant?: "default" | "bordered" | "menu";
-    corners?: "default" | "square" | "pill";
+    corners?: "default" | "square";
   },
   "Katia.Avatar":
   {

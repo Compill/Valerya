@@ -1,5 +1,5 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, useMultiPartComponentConfig } from "@katia/core";
-import { ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react"
+import { ComponentManager, HTMLDivProps, MultiPartStyleProvider, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { AccordionContextProvider } from "./AccordionContext";
@@ -7,13 +7,12 @@ import { AccordionItem } from "./AccordionItem";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Accordion";
+const COMPONENT_ID = "Katia.Accordion";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDivProps
 {
-  theme?: ComponentTheme;
   config?: ExtendConfig,
   expandIcon?: React.ReactNode,
   expandIconRotationOnOpen?: Rotate,
@@ -48,7 +47,7 @@ function ExpandArrowDownSvg()
 }
 
 
-const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
+const AccordionContainer = forwardRef<"div", AccordionProps>(({
   variant,
   corners,
   expandIcon = <ExpandArrowDownSvg />,
@@ -60,14 +59,13 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   itemHeaderCollapseButtonStyle,
   itemContentStyle,
   gap,
-  theme = "default",
+  scheme,
   config,
   children,
   ...props
 }: AccordionProps, ref) =>
 {
-  const id = React.useId()
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
+  const { styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props)
   const [ expanded, setExpanded ] = React.useState<false | number | string>(0);
 
   const accordionAnimation = {
@@ -134,6 +132,6 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
 export const Accordion = Object.assign(AccordionContainer, { AccordionItem: AccordionItem });
 
 if (IS_DEV)
-  Accordion.displayName = "Soperio Accordion"
+  Accordion.displayName = "Katia Accordion"
 else
   Accordion.displayName = "Accordion"

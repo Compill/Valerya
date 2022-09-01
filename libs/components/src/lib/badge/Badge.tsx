@@ -5,7 +5,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Badge";
+const COMPONENT_ID = "Katia.Badge";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

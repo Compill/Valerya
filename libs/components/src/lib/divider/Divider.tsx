@@ -33,7 +33,7 @@ export const Divider = forwardRef<"div", DividerProps>(({
 
   // Redefine correct values based on orientation
   // width and height can then be overwritten by {...props}
-  styles[orientation === "horizontal" ? "w" : "h"] = "100%"
+  styles[orientation === "horizontal" ? "w" : "h"] = undefined
 
   return (
     <Surface

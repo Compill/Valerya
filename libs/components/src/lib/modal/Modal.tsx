@@ -10,7 +10,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Soperio.Modal";
+const COMPONENT_ID = "Katia.Modal";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

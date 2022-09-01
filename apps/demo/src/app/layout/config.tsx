@@ -1,6 +1,7 @@
 import React from "react";
 
 
+const AccordionPage = React.lazy(() => import("../pages/Accordion"));
 const AvatarPage = React.lazy(() => import("../pages/Avatar"));
 const BadgePage = React.lazy(() => import("../pages/Badge"));
 const ButtonPage = React.lazy(() => import("../pages/Button"));
@@ -22,6 +23,7 @@ const SliderPickerPage = React.lazy(() => import("../pages/Slider"));
 
 
 export const menu = {
+  "Accordion": () => <AccordionPage />,
   "Avatar": () => <AvatarPage />,
   "Card": () => <CardPage />,
   "Checkbox": () => <CheckboxPage />,
