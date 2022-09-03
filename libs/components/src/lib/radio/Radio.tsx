@@ -1,4 +1,4 @@
-import { ComponentTheme, forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
+import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 

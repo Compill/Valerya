@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, forwardRef, SoperioComponent, useColor } from "@soperio/react";
+import { forwardRef, SoperioComponent, useColor } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -20,7 +20,6 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
 
 export interface SpinnerProps extends ComponentProps//, HTMLDivProps
 {
-  theme?: ComponentTheme,
   config?: ExtendConfig;
 }
 

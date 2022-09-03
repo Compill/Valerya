@@ -1,5 +1,4 @@
-import { SoperioComponent } from "@soperio/theming";
-import { createContext } from "./createContext";
+import { SoperioComponent, createContext } from "@soperio/react";
 
 const [StylesProvider, useStyles] = createContext<Partial<Record<string, SoperioComponent>>>();
 

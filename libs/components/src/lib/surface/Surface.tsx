@@ -1,6 +1,6 @@
-import { ComponentManager, HTMLDivProps, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@katia/core";
 import { SurfaceScheme } from "@katia/surface"
-import { forwardRef, SoperioComponent } from "@soperio/react";
+import { forwardRef, SoperioComponent, HTMLDivProps } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
 

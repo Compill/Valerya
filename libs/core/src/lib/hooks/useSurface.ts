@@ -1,6 +1,5 @@
 import { buildSurface, SurfaceScheme } from "@katia/surface";
-import { IS_DEV, useDarkMode } from "@soperio/react";
-import { useThemeExtra } from "@soperio/theming";
+import { IS_DEV, useDarkMode, useThemeExtra } from "@soperio/react";
 import { KatiaConfigSurfaces } from "../KatiaConfig";
 import { ThemeSurfaceScheme } from "../surface/types";
 

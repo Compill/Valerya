@@ -1,5 +1,5 @@
-import { ComponentManager, HTMLDivProps, HTMLListItemProps, HTMLUListProps, MultiPartStyleProvider, RightJoinProps, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, ParentComponent } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, ParentComponent, HTMLDivProps, HTMLListItemProps, HTMLUListProps, RightJoinProps } from "@soperio/react";
 import React from "react";
 import { Divider } from "../divider";
 import { HoverableSurfaceBasedComponent, Surface } from "../surface";

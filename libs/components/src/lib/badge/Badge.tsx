@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, forwardRef, ParentComponent } from "@soperio/react";
+import { forwardRef, ParentComponent } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -11,7 +11,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface BadgeProps extends ComponentProps, ParentComponent
 {
-  theme?: ComponentTheme,
   config?: ExtendConfig;
 }
 

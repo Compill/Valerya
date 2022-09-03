@@ -1,11 +1,11 @@
-import { IS_DEV, SoperioComponent, useDarkMode, useTheme } from "@soperio/react";
+import { SurfaceScheme } from "@katia/surface";
+import { IS_DEV, SoperioComponent, useDarkMode, useThemeExtra } from "@soperio/react";
 import deepmerge from "deepmerge";
-import { SurfaceComponentConfig, ExtendSurfaceComponentConfig } from "./SurfaceComponentConfig";
+import { useSurface } from "../hooks/useSurface";
+import { ThemeSurfaceScheme } from "../surface/types";
 import { ComponentManager } from "./ComponentManager";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
-import { SurfaceScheme } from "@katia/surface";
-import { ThemeSurfaceScheme } from "../surface/types";
-import { useSurface } from "../hooks/useSurface";
+import { ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
 
 
 type KeysOf<T> =
@@ -35,9 +35,9 @@ function runIfFn<T>(
 
 function useMergedComponentConfig(component: string)
 {
-  const sTheme = useTheme()
+  const themeComponents = useThemeExtra("katia.components")
 
-  const themeConfig = sTheme.components?.[component]
+  const themeConfig = themeComponents?.[component]
   const defaultConfig = ComponentManager.getComponentConfig(component) as SurfaceComponentConfig
 
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig

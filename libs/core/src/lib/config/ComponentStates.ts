@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/theming";
+import { SoperioComponent } from "@soperio/react";
 
 export const ComponentState = {
   ACTIVE: "active",

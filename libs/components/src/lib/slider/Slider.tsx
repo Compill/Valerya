@@ -1,5 +1,5 @@
-import { ComponentManager, createContext, MultiPartStyleProvider, splitComponentProps, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, SoperioComponent } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { createContext, forwardRef, SoperioComponent, splitComponentProps } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";

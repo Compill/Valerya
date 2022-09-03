@@ -1,5 +1,4 @@
 import { SurfaceScheme } from "@katia/surface";
-import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config =

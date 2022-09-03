@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
+import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -11,7 +11,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 export interface CheckboxProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
   label?: string,
-  theme?: ComponentTheme;
   config?: ExtendConfig;
 }
 

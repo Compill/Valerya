@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useMultiPartComponentConfig, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, forwardRef, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
+import { forwardRef, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -11,7 +11,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLInputProps, "size">
 {
-  theme?: ComponentTheme;
   config?: ExtendConfig
 }
 

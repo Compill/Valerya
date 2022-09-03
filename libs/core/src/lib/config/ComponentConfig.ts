@@ -1,8 +1,8 @@
-import { SoperioComponent, ColorTheme } from "@soperio/react";
+import { SoperioComponent } from "@soperio/react";
 import { ComponentStateProps, NoStateProps } from "./ComponentStates";
 
 type Trait<T> = SoperioComponent & T
-type TraitFn<T> = (theme: ColorTheme, darkMode: boolean) => Trait<T>
+type TraitFn<T> = (darkMode: boolean) => Trait<T>
 type TraitConfig<T> = Trait<T> | TraitFn<T>
 
 declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;

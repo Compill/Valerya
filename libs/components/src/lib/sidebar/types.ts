@@ -1,4 +1,5 @@
-import { ComponentTypings, ExtendSurfaceComponentConfig, HTMLDivProps, SurfaceComponentConfig } from "@katia/core";
+import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { HTMLDivProps } from "@soperio/react";
 import { SurfaceBasedComponent } from "../surface";
 
 type TraitProps = ComponentTypings<"Katia.Sidebar">

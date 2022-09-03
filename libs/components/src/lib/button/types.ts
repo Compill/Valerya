@@ -1,4 +1,5 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, HTMLButtonProps, HTMLDivProps, RightJoinProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SurfaceComponentConfig } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SurfaceComponentConfig } from "@katia/core";
+import { HTMLButtonProps, HTMLDivProps, RightJoinProps } from "@soperio/react";
 import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 
 

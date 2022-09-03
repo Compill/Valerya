@@ -1,5 +1,5 @@
-import { ComponentManager, HTMLDivProps, RightJoinProps, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, HTMLSelectProps, ParentComponent } from "@soperio/react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, HTMLSelectProps, ParentComponent, HTMLDivProps, RightJoinProps } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";

@@ -1,9 +1,8 @@
-import { ColorTheme, IS_DEV, SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/react";
+import { IS_DEV, SoperioComponent, useDarkMode, useThemeExtra } from "@soperio/react";
 import deepmerge from "deepmerge";
 import { ComponentConfig, ExtendComponentConfig } from "../config/ComponentConfig";
 import { ComponentManager } from "../config/ComponentManager";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
-import { ComponentTheme } from "../ComponentTheme";
 
 
 type KeysOf<T> =
@@ -33,7 +32,8 @@ function runIfFn<T>(
 
 function useMergedComponentConfig(component: string)
 {
-  const sTheme = useTheme()
+  const themeComponents = useThemeExtra("katia.components")
+
   // const configs = useThemeExtra("katia.components") as KatiaConfigComponents
   // const extendConfigs = useThemeExtra("katia.components.extend") as KatiaConfigExtendComponents
 
@@ -42,7 +42,7 @@ function useMergedComponentConfig(component: string)
 
   // return themeConfig ? deepmerge(defaultConfig, themeConfig.config as any) : defaultConfig
 
-  const themeConfig = sTheme.components?.[component]
+  const themeConfig = themeComponents?.[component]
   const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig
 
   return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
@@ -50,13 +50,11 @@ function useMergedComponentConfig(component: string)
 
 export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig>(
   component = "",
-  theme: ComponentTheme | undefined,
   customConfig: ExtendComponentConfig<P> | undefined,
   traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): T
 {
   const darkMode = useDarkMode();
-  const colorTheme = useColorTheme(theme);
 
   const defaultConfig = useMergedComponentConfig(component)
 
@@ -87,7 +85,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
   }
 
   if (config)
-    return mergeProps(config, traitsConfig, props, colorTheme, darkMode) as T;
+    return mergeProps(config, traitsConfig, props, darkMode) as T;
 
   return {} as T;
 }
@@ -97,7 +95,6 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig>(
   config: ComponentConfig,
   traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
-  colorTheme: ColorTheme,
   darkMode: boolean
 ): OmitStates<T>
 {
@@ -124,7 +121,7 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig>(
 
     if (trait && traitName)
     {
-      const configProps = runIfFn(trait[traitName], colorTheme, darkMode) as T;
+      const configProps = runIfFn(trait[traitName], darkMode) as T;
 
       if (configProps)
         finalProps = deepmerge(finalProps, configProps) as T

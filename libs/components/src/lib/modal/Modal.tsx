@@ -1,5 +1,5 @@
 import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { ComponentTheme, createContext, forwardRef, HTMLDivProps, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
+import { createContext, forwardRef, HTMLDivProps, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
 import React from "react";

@@ -1,5 +1,5 @@
-import { useMultiPartStyles } from "@katia/core";
-import { forwardRef, OrString, ParentComponent, SoperioComponent, useFirstRender } from "@soperio/react";
+import { useFirstRender, useMultiPartStyles } from "@katia/core";
+import { forwardRef, OrString, ParentComponent, SoperioComponent } from "@soperio/react";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { Button } from "../button";
@@ -15,6 +15,7 @@ export interface AccordionItemProps extends SurfaceBasedComponent, ParentCompone
   isOpen?: boolean
 };
 
+// TODO Rename showBorder & borderWidth
 export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
   showBorder,
   borderWidth,

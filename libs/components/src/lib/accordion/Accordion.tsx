@@ -1,5 +1,5 @@
-import { ComponentManager, HTMLDivProps, MultiPartStyleProvider, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { forwardRef, HTMLDivProps, ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { AccordionContextProvider } from "./AccordionContext";

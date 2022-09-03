@@ -1,5 +1,6 @@
-import { ComponentTypings, ExtendSurfaceComponentConfig, HTMLDivProps, SurfaceComponentConfig } from "@katia/core";
+import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
 import { HoverableSurfaceBasedComponent } from "../surface";
+import { HTMLDivProps } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Katia.Tile">
 

@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@katia/core";
-import { forwardRef, useColorTheme } from "@soperio/react";
+import { forwardRef } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
