@@ -5,21 +5,22 @@ import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/col
 import { Layer, LayerScheme } from "../Layer";
 import chroma from "chroma-js"
 import { SurfaceScheme } from "../SurfaceScheme";
+import { formatSurface, nonAlphaRGB } from "./formatSurface";
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 
 export function buildDarkSurface(darkColor: number, whiteColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceScheme
 {
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
-    const primaryHex = RGBAToHex(intToRGBA(darkColor))
-    const onPrimaryHex = RGBAToHex(intToRGBA(whiteColor))
+    const primaryHex = nonAlphaRGB(RGBAToHex(intToRGBA(darkColor)))
+    const onPrimaryHex = nonAlphaRGB(RGBAToHex(intToRGBA(whiteColor)))
 
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
 
 
-    const primaryContainerHex = lighten(primaryHex, (1 - primaryBrightness) * 57 * coef)
+    const primaryContainerHex = nonAlphaRGB(lighten(primaryHex, (1 - primaryBrightness) * 57 * coef))
     const primaryContainerBrightness = getBrightness(hexToRGBA(primaryContainerHex))
-    const onPrimaryContainerHex = darken(primaryContainerHex, primaryContainerBrightness * 75 * coef)
+    const onPrimaryContainerHex = nonAlphaRGB(darken(primaryContainerHex, primaryContainerBrightness * 75 * coef))
 
     const states = {
         hover: options?.hoverStatePercent ?? 3,
@@ -96,12 +97,12 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
         "900": colors[9],
     }
 
-    return {
+    return formatSurface({
         color: primaryHex,
         altColor: primaryContainerHex,
         layers,
         palette
-    }
+    })
 }
 
 function getBrightness(color: RGBA)
