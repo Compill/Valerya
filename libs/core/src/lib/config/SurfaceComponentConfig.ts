@@ -50,7 +50,6 @@ export interface ExtendSurfaceComponentConfig<P extends SurfaceComponentConfig<S
 
 
 // Multi part component
-// TODO Should I delete this ?
 export declare type MultiPartSurfaceComponentConfig<
   T extends Record<string, string>,             // Traits
   P extends Record<string, SoperioComponent> = Record<string, SoperioComponent>,   // Component props

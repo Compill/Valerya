@@ -8,15 +8,10 @@ const COMPONENT_ID = "Katia.Surface"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-// TODO Rename folders, all in lowercase
-
 // TODO Since I now have a Surface component, I could also create a Layer component
 // That will use layer color schemes (e.g just a bg color and content color)
 // Something like <Layer depth="0"></Layer>
 // depth being the stack index/z-index of the layer
-
-// TODO Make all component extends SurfaceSchemeProps instead of redefining the
-// scheme property
 
 interface SurfaceSchemeProps extends TraitProps
 {

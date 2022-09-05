@@ -3,6 +3,7 @@ import deepmerge from "deepmerge";
 import { ComponentConfig, ExtendComponentConfig } from "../config/ComponentConfig";
 import { ComponentManager } from "../config/ComponentManager";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
+import { useMergedComponentConfig } from "./useMergeComponentConfig";
 
 
 type KeysOf<T> =
@@ -30,24 +31,6 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-function useMergedComponentConfig(component: string)
-{
-  const themeComponents = useThemeExtra("katia.components")
-
-  // const configs = useThemeExtra("katia.components") as KatiaConfigComponents
-  // const extendConfigs = useThemeExtra("katia.components.extend") as KatiaConfigExtendComponents
-
-  // const defaultConfig = configs[component]
-  // const themeConfig = extendConfigs[component]
-
-  // return themeConfig ? deepmerge(defaultConfig, themeConfig.config as any) : defaultConfig
-
-  const themeConfig = themeComponents?.[component]
-  const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig
-
-  return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
-}
-
 export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig>(
   component = "",
   customConfig: ExtendComponentConfig<P> | undefined,
@@ -56,7 +39,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 {
   const darkMode = useDarkMode();
 
-  const defaultConfig = useMergedComponentConfig(component)
+  const defaultConfig = useMergedComponentConfig<ComponentConfig>(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);

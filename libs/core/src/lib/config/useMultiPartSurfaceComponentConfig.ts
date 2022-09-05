@@ -6,6 +6,7 @@ import { useSurface } from "../hooks/useSurface";
 import { ThemeSurfaceScheme } from "../surface/types";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
 import { ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
+import { useMergedComponentConfig } from "./useMergeComponentConfig";
 
 type KeysOf<T> =
   {
@@ -32,16 +33,6 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-function useMergedComponentConfig(component: string)
-{
-  const themeComponents = useThemeExtra("katia.components")
-
-  const themeConfig = themeComponents?.[component]
-  const defaultConfig = ComponentManager.getComponentConfig(component) as MultiPartSurfaceComponentConfig<Record<string, string>>
-
-  return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
-}
-
 type PartProps<P extends Record<string, SoperioComponent>> = {
   scheme: SurfaceScheme,
   styles: {
@@ -57,7 +48,7 @@ export function useMultiPartSurfaceComponentConfig<T, C extends Record<string, S
   props?: T): { scheme: SurfaceScheme } & PartProps<C>
 {
   const darkMode = useDarkMode();
-  const defaultConfig = useMergedComponentConfig(component) as P
+  const defaultConfig = useMergedComponentConfig<MultiPartSurfaceComponentConfig<Record<string, string>>>(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);

@@ -3,6 +3,7 @@ import deepmerge from "deepmerge";
 import { ComponentManager } from "../config/ComponentManager";
 import { ComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "./ComponentConfig";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
+import { useMergedComponentConfig } from "./useMergeComponentConfig";
 
 type KeysOf<T> =
   {
@@ -29,17 +30,6 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-// TODO export to private hook and remove from all useComponentConfig hooks
-function useMergedComponentConfig(component: string)
-{
-  const themeComponents = useThemeExtra("katia.components")
-
-  const themeConfig = themeComponents?.[component]
-  const defaultConfig = ComponentManager.getComponentConfig(component) as MultiPartComponentConfig<Record<string, string>>
-
-  return themeConfig ? deepmerge(defaultConfig, themeConfig as any) : defaultConfig
-}
-
 export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfig<Record<string, string>>>(
   component = "",
   customConfig: ExtendMultiPartComponentConfig<P> | undefined,
@@ -48,7 +38,7 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
 {
   const darkMode = useDarkMode();
 
-  const defaultConfig = useMergedComponentConfig(component)
+  const defaultConfig = useMergedComponentConfig<MultiPartComponentConfig<Record<string, string>>>(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
