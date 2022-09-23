@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@katia/cli": ["libs/cli/src/index.ts"],
       "@katia/components": ["libs/components/src/index.ts"],
       "@katia/core": ["libs/core/src/index.ts"],
       "@katia/react-utils": ["libs/react-utils/src/index.ts"],

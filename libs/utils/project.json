@@ -12,6 +12,10 @@
         "outputPath": "dist/libs/utils",
         "main": "libs/utils/src/index.ts",
         "tsConfig": "libs/utils/tsconfig.lib.json",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": [
           "libs/utils/*.md"
         ]

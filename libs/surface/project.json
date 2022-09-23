@@ -10,6 +10,10 @@
         "outputPath": "dist/libs/surface",
         "main": "libs/surface/src/index.ts",
         "tsConfig": "libs/surface/tsconfig.lib.json",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": ["libs/surface/*.md"]
       }
     },

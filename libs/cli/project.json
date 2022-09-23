@@ -1,26 +1,22 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/react-utils/src",
+  "sourceRoot": "libs/cli/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/react-utils",
-        "main": "libs/react-utils/src/index.ts",
-        "tsConfig": "libs/react-utils/tsconfig.lib.json",
-        "format": [
-          "esm",
-          "cjs"
-        ],
-        "assets": ["libs/react-utils/*.md"]
+        "outputPath": "dist/libs/cli",
+        "main": "libs/cli/src/index.ts",
+        "tsConfig": "libs/cli/tsconfig.lib.json",
+        "assets": ["libs/cli/*.md"]
       }
     },
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs react-utils {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs cli {args.ver} {args.tag}"
       },
       "dependsOn": [
         {
@@ -33,14 +29,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/react-utils/**/*.ts"]
+        "lintFilePatterns": ["libs/cli/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/react-utils"],
+      "outputs": ["coverage/libs/cli"],
       "options": {
-        "jestConfig": "libs/react-utils/jest.config.ts",
+        "jestConfig": "libs/cli/jest.config.ts",
         "passWithNoTests": true
       }
     }
