@@ -63,6 +63,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "framer-motion": "^6.3.16",
     "jest": "27.5.1",
+    "ngx-deploy-npm": "^4.2.4",
     "nx": "14.5.4",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
