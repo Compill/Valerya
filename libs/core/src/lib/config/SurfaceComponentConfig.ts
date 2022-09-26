@@ -1,8 +1,8 @@
-import { LayerProps } from "@valerya/components";
 import { SurfaceScheme } from "@valerya/surface";
 import { SoperioComponent } from "@soperio/react";
 import { ThemeSurfaceScheme } from "../surface/types";
 import { ComponentStateProps, NoStateProps } from "./ComponentStates";
+import { ComponentTypings } from "../ComponentTypings";
 
 type Trait<T> = SoperioComponent & T & LayerProps
 type TraitFn<T> = (surface: SurfaceScheme, darkMode: boolean) => Trait<T>
@@ -10,6 +10,9 @@ type TraitConfig<T> = Trait<T> | TraitFn<T>
 
 declare type StateAndExtraProps = ComponentStateProps & Record<string, any>;
 
+// This type is defined in Surface component but we want to avoid 
+// a circular dependency, so we redefine it here
+type LayerProps = ComponentTypings<"Valerya.Surface">
 
 // Simple component
 
