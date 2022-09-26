@@ -4,7 +4,7 @@ import { SurfaceScheme } from "../SurfaceScheme";
 // Make sur we get something like #RRGGBB and not #RRGGBBAA
 export function nonAlphaRGB(color: string)
 {
-    return color.substring(0, 7)
+    return color.startsWith("#") ? color.substring(0, 7) : color
 }
 
 export function formatSurface(surface: SurfaceScheme): SurfaceScheme

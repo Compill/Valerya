@@ -14,7 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@material/material-color-utilities": "^0.1.2",
-    "@soperio/react": "^0.1.18",
+    "@soperio/react": "^0.1.19",
     "chroma-js": "^2.4.2",
     "color-blend": "^4.0.0",
     "core-js": "^3.6.5",
