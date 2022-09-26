@@ -23,4 +23,5 @@ export * from "./lib/hooks/useUnmountEffect";
 export * from "./lib/hooks/useUpdateEffect";
 export * from "./lib/KatiaConfig";
 export * from "./lib/MultiPartStyleProvider";
+export * from "./lib/withSurface";
 export * from "./lib/surface/types";

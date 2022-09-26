@@ -1,5 +1,4 @@
 import { darken, isDark, lighten } from "@soperio/react"
-import { PaletteScheme } from "../PaletteScheme"
 import { SurfaceScheme } from "../SurfaceScheme"
 import { hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils"
 import { generatePalette } from "./buildPalette"

@@ -10,7 +10,7 @@ export function Menu()
   const items = Object.keys(config)
 
   return (
-    <div dflex flexCol spaceY="3" h="screen" position="fixed" overflowY="auto" w="240px" py="10" px="5" bgColor="root.bg-color-1">
+    <div dflex flexCol spaceY="3" h="screen" position="fixed" overflowY="auto" w="240px" py="10" px="5" bgColor="root.bg-color-3">
       {items.map(item => <MenuItem key={item} selected={page === item} onClick={() => setPage(item)}>{item}</MenuItem>)}
     </div>
   )

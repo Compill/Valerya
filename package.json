@@ -14,7 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@material/material-color-utilities": "^0.1.2",
-    "@soperio/react": "^0.1.16",
+    "@soperio/react": "^0.1.18",
     "chroma-js": "^2.4.2",
     "color-blend": "^4.0.0",
     "core-js": "^3.6.5",
@@ -36,6 +36,7 @@
     "@nrwl/react": "14.5.4",
     "@nrwl/web": "14.5.4",
     "@nrwl/workspace": "14.5.4",
+    "@soperio/cli": "^1.0.61",
     "@testing-library/react": "13.3.0",
     "@types/jest": "27.4.1",
     "@types/node": "^18.6.3",

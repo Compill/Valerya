@@ -23,11 +23,13 @@ export function App()
 function AppContent()
 {
   return (
-    <div dflex alignItems="start">
-      <Menu />
-      <div flexGrow h="screen" ms="240px">
-        <Header />
-        <Content />
+    <div bgColor="root.bg-color-3" transition="colors">
+      <div dflex alignItems="start">
+        <Menu />
+        <div flexGrow h="screen" ms="240px">
+          <Header />
+          <Content />
+        </div>
       </div>
     </div>
   )

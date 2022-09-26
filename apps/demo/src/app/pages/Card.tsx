@@ -9,7 +9,7 @@ export default function Page({ ...props })
   return (
     <Container center size="x2" gap="20" justifyContent="center" p="20" spaceY="10" >
 
-      <Card w="50%" scheme="primary">
+      <Card w="50%" scheme="primary" shadow>
         <Card.Header dflex alignItems="center">
           <span fontSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
