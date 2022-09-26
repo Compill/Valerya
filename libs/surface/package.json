@@ -1,5 +1,23 @@
 {
   "name": "@valerya/surface",
   "version": "0.0.1",
-  "type": "commonjs"
+  "description": "UI component framework for Soperio",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "framework",
+    "soperio"
+  ],
+  "homepage": "https://github.com/Compill/Valerya",
+  "bugs": {
+    "url": "https://github.com/Compill/Valerya/issues",
+    "email": "dev@compill.com"
+  },
+  "license": "MIT",
+  "author": "Jonathan Gerbaud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Compill/Valerya.git"
+  }
 }
