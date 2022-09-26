@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@katia/ui";
+import { Button, ButtonProps } from "@valerya/ui";
 import { useAppContext } from "./AppContext";
 import { menu } from "./config";
 

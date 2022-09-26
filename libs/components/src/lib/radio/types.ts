@@ -1,7 +1,7 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Radio">;
+type TraitProps = ComponentTypings<"Valerya.Radio">;
 
 export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & CheckedState & DisabledState>;
 

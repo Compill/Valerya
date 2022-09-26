@@ -1,4 +1,4 @@
-import { Checkbox, Container, Input } from "@katia/components";
+import { Checkbox, Container, Input } from "@valerya/components";
 import { useDarkMode } from "@soperio/react";
 
 

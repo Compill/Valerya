@@ -1,11 +1,11 @@
 import { Theme } from "@soperio/react";
-import { SurfaceScheme } from "@katia/surface";
+import { SurfaceScheme } from "@valerya/surface";
 
-export interface KatiaTheme extends Theme
+export interface ValeryaTheme extends Theme
 {
     extras:
     {
-        "katia.surfaces": 
+        "valerya.surfaces": 
         {
             "default": SurfaceScheme,
             "light": SurfaceScheme,
@@ -13,7 +13,7 @@ export interface KatiaTheme extends Theme
             "neutral": SurfaceScheme,
             [x:string]: SurfaceScheme
         }
-        "katia.surfaces.dark": 
+        "valerya.surfaces.dark": 
         {
             "default": SurfaceScheme,
             "light": SurfaceScheme,

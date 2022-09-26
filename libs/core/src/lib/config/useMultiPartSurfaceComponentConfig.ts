@@ -1,4 +1,4 @@
-import { SurfaceScheme } from "@katia/surface";
+import { SurfaceScheme } from "@valerya/surface";
 import { IS_DEV, SoperioComponent, useDarkMode, useThemeExtra } from "@soperio/react";
 import deepmerge from "deepmerge";
 import { ComponentManager } from "../config/ComponentManager";

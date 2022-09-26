@@ -1,4 +1,4 @@
-import { ComponentManager, useSurfaceComponentConfig, useFirstRender } from "@katia/core";
+import { ComponentManager, useSurfaceComponentConfig, useFirstRender } from "@valerya/core";
 import { forwardRef } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from 'react';
@@ -6,7 +6,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Button"
+const COMPONENT_ID = "Valerya.Button"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -67,5 +67,5 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
 
 if (IS_DEV)
 {
-  Button.displayName = "Katia Button"
+  Button.displayName = "Valerya Button"
 }

@@ -1,5 +1,5 @@
 
-import { Accordion, AccordionItem, Container } from "@katia/components";
+import { Accordion, AccordionItem, Container } from "@valerya/components";
 import React from "react";
 
 function ExpandArrowDownSvg() {

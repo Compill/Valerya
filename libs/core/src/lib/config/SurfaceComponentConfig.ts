@@ -1,5 +1,5 @@
-import { LayerProps } from "@katia/components";
-import { SurfaceScheme } from "@katia/surface";
+import { LayerProps } from "@valerya/components";
+import { SurfaceScheme } from "@valerya/surface";
 import { SoperioComponent } from "@soperio/react";
 import { ThemeSurfaceScheme } from "../surface/types";
 import { ComponentStateProps, NoStateProps } from "./ComponentStates";

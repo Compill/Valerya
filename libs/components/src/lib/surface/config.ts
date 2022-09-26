@@ -1,4 +1,4 @@
-import { SurfaceScheme } from "@katia/surface"
+import { SurfaceScheme } from "@valerya/surface"
 import { Config } from "./types"
 
 const config:Config =

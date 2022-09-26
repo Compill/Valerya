@@ -1,8 +1,8 @@
-import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { SurfaceBasedComponent } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Katia.Divider">;
+type TraitProps = ComponentTypings<"Valerya.Divider">;
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps>
 

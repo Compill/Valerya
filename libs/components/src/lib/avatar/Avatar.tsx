@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Avatar";
+const COMPONENT_ID = "Valerya.Avatar";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

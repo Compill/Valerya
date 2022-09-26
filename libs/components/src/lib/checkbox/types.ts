@@ -1,7 +1,7 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Checkbox">
+type TraitProps = ComponentTypings<"Valerya.Checkbox">
 
 export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & CheckedState & DisabledState>;
 

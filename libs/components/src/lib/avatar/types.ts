@@ -1,8 +1,8 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig } from "@katia/core";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig } from "@valerya/core";
 import { SoperioComponent } from "@soperio/react";
 import { HoverableSurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Avatar">;
+type TraitProps = ComponentTypings<"Valerya.Avatar">;
 
 export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & DisabledState & CheckedState>
 

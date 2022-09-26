@@ -23,7 +23,7 @@ export function App()
 function AppContent()
 {
   return (
-    <div bgColor="root.bg-color-3" transition="colors">
+    <div bgColor="--bg-color-3" transition="colors">
       <div dflex alignItems="start">
         <Menu />
         <div flexGrow h="screen" ms="240px">

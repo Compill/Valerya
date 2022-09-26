@@ -1,12 +1,27 @@
-import { SurfaceScheme } from "@katia/surface"
+import { SurfaceScheme } from "@valerya/surface"
 
 export function withSurface(name: string, surface: SurfaceScheme)
 {
     return {
         "extras": {
-            "katia.surfaces":
+            "valerya.surfaces":
             {
                 [name]: surface
+            }
+        }
+    }
+}
+
+export function withDarkModeSurface(name: string, surface: SurfaceScheme)
+{
+    return {
+        "darkModeOverride":
+        {
+            "extras": {
+                "valerya.surfaces":
+                {
+                    [name]: surface
+                }
             }
         }
     }
@@ -16,7 +31,7 @@ export function withDefaultSurface(name: string, surface: SurfaceScheme)
 {
     return {
         "extras": {
-            "katia.surfaces.default":
+            "valerya.surfaces.default":
             {
                 [name]: surface
             }

@@ -1,4 +1,4 @@
-import { Button, Card, Container } from "@katia/components";
+import { Button, Card, Container } from "@valerya/components";
 
 /**
  *

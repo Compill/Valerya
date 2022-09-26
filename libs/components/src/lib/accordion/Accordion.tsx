@@ -1,4 +1,4 @@
-import { ComponentManager, MultiPartStyleProvider, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLDivProps, ParentComponent, Rotate, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
@@ -7,7 +7,7 @@ import { AccordionItem } from "./AccordionItem";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Accordion";
+const COMPONENT_ID = "Valerya.Accordion";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -132,6 +132,6 @@ const AccordionContainer = forwardRef<"div", AccordionProps>(({
 export const Accordion = Object.assign(AccordionContainer, { AccordionItem: AccordionItem });
 
 if (IS_DEV)
-  Accordion.displayName = "Katia Accordion"
+  Accordion.displayName = "Valerya Accordion"
 else
   Accordion.displayName = "Accordion"

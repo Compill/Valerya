@@ -1,4 +1,4 @@
-import { SurfaceScheme } from "@katia/surface";
+import { SurfaceScheme } from "@valerya/surface";
 import { Config } from "./types";
 
 const config: Config =
@@ -14,7 +14,7 @@ const config: Config =
   {
     backdrop:
     {
-      bgColor: "black",
+      bgColor: "#000000",
       bgOpacity: "50"
     },
     modalWrapper:

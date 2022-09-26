@@ -1,4 +1,4 @@
-import { Slider, Container } from "@katia/ui";
+import { Slider, Container } from "@valerya/ui";
 import React from "react";
 
 /**

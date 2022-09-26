@@ -1,4 +1,4 @@
-// import { ComponentManager, useComponentConfig } from "@katia/core";
+// import { ComponentManager, useComponentConfig } from "@valerya/core";
 // import { ComponentTheme, HTMLDivProps } from "@soperio/react";
 // import defaultConfig from "./config";
 // import { ComponentProps, ExtendConfig } from "./types";

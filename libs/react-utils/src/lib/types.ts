@@ -1,4 +1,4 @@
-import { EventKeys, Merge } from "@katia/utils"
+import { EventKeys, Merge } from "@valerya/utils"
 
 export type MaybeRenderProp<P> =
     | React.ReactNode

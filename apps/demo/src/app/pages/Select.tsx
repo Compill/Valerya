@@ -1,4 +1,4 @@
-import { Checkbox, Container, Select } from "@katia/components";
+import { Checkbox, Container, Select } from "@valerya/components";
 
 /**
  *

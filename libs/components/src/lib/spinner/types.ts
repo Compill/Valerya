@@ -1,8 +1,8 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { Color, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Spinner">
+type TraitProps = ComponentTypings<"Valerya.Spinner">
 
 interface CustomProps
 {

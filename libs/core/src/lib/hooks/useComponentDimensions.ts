@@ -1,4 +1,4 @@
-import { getBox, BoxModel } from "@katia/utils"
+import { getBox, BoxModel } from "@valerya/utils"
 import { useRef, useState } from "react"
 import { useSafeLayoutEffect } from "./useSafeLayoutEffect"
 

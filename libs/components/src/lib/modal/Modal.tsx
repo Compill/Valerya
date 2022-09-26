@@ -1,4 +1,4 @@
-import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { createContext, forwardRef, HTMLDivProps, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
@@ -10,7 +10,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Modal";
+const COMPONENT_ID = "Valerya.Modal";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
@@ -264,7 +264,7 @@ export const ModalFooter = forwardRef<"div", ModalFooterProps>(({
 export const Modal = Object.assign(ModalContainer, { Header: ModalHeader, Body: ModalBody, Footer: ModalFooter });
 
 if (IS_DEV)
-  Modal.displayName = "Katia Modal"
+  Modal.displayName = "Valerya Modal"
 else
   Modal.displayName = "Modal"
 

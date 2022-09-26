@@ -1,4 +1,4 @@
-import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, ParentComponent, HTMLDivProps, HTMLListItemProps, HTMLUListProps, RightJoinProps } from "@soperio/react";
 import React from "react";
 import { Divider } from "../divider";
@@ -6,7 +6,7 @@ import { HoverableSurfaceBasedComponent, Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.List";
+const COMPONENT_ID = "Valerya.List";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

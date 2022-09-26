@@ -1,4 +1,4 @@
-// import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedThemeProps } from "@katia/core";
+// import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedThemeProps } from "@valerya/core";
 // import { SoperioComponent } from "@soperio/react";
 
 

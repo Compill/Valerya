@@ -4,7 +4,7 @@ import deepmerge from "deepmerge";
 
 export function useMergedComponentConfig<T>(component: string)
 {
-    const themeComponents = useThemeExtra("katia.components")
+    const themeComponents = useThemeExtra("valerya.components")
 
     const themeConfig = themeComponents?.[component]
     const defaultConfig = ComponentManager.getComponentConfig(component) as T

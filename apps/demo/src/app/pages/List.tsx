@@ -1,4 +1,4 @@
-import { Container, List, } from "@katia/components";
+import { Container, List, } from "@valerya/components";
 import { ReactComponent as Inbox } from "../../assets/inbox-svgrepo-com.svg"
 import { ReactComponent as Web } from "../../assets/web-link-svgrepo-com.svg"
 

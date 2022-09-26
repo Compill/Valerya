@@ -1,4 +1,4 @@
-import { Checkbox, Container, TextArea } from "@katia/components";
+import { Checkbox, Container, TextArea } from "@valerya/components";
 
 type Side = "left" | "right" | "top" | "bottom";
 

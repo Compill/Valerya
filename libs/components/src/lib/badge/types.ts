@@ -1,8 +1,8 @@
-import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@katia/core";
+import { ComponentTypings, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { SurfaceBasedComponent } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Katia.Badge">;
+type TraitProps = ComponentTypings<"Valerya.Badge">;
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps>
 

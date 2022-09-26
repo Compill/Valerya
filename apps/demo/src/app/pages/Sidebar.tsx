@@ -1,4 +1,4 @@
-import { Button, Container, Sidebar } from "@katia/ui";
+import { Button, Container, Sidebar } from "@valerya/ui";
 import React from "react";
 
 type Side = "start" | "end" | "top" | "bottom";

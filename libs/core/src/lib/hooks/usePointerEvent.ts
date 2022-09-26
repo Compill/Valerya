@@ -3,7 +3,7 @@
  * License can be found here: https://github.com/framer/motion
  */
 
-import { EventListenerWithPointInfo, getPointerEventName, wrapPointerEventHandler } from "@katia/utils"
+import { EventListenerWithPointInfo, getPointerEventName, wrapPointerEventHandler } from "@valerya/utils"
 import { EventListenerEnv, useEventListener } from "./useEventListener"
 
 /**

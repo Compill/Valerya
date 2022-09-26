@@ -1,11 +1,11 @@
-import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { createContext, forwardRef, SoperioComponent, splitComponentProps } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 import { useSlider, UseSliderProps } from "./useSlider";
 
-const COMPONENT_ID = "Katia.Slider"
+const COMPONENT_ID = "Valerya.Slider"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

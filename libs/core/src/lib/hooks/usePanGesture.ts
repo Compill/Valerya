@@ -1,4 +1,4 @@
-import { AnyPointerEvent, noop, PanEventHandler, PanSession, PanSessionHandlers } from "@katia/utils"
+import { AnyPointerEvent, noop, PanEventHandler, PanSession, PanSessionHandlers } from "@valerya/utils"
 import React from "react"
 import { usePointerEvent } from "./usePointerEvent"
 import { useUnmountEffect } from "./useUnmountEffect"

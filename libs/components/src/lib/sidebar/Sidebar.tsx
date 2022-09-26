@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, usePrevious, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, usePrevious, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, Height, ParentComponent, useDirection, Width } from "@soperio/react";
 import React from 'react';
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Sidebar"
+const COMPONENT_ID = "Valerya.Sidebar"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

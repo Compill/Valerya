@@ -1,4 +1,4 @@
-import { Button, Modal } from "@katia/components";
+import { Button, Modal } from "@valerya/components";
 import React from "react";
 
 /**

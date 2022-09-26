@@ -4,65 +4,65 @@
 // Static definition that will be overwritten by CLI
 export interface Components
 {
-  "Katia.Accordion":
+  "Valerya.Accordion":
   {
     variant?: "default" | "bordered" | "menu";
     corners?: "default" | "square";
   },
-  "Katia.Avatar":
+  "Valerya.Avatar":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     variant?: "default";
     corners?: "default" | "square" | "pill";
   },
-  "Katia.Badge":
+  "Valerya.Badge":
   {
     variant: "default" | "light" | "outline" | "light-outline";
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
     shape: "default" | "rounded" | "pill" | "square";
   },
-  "Katia.Button":
+  "Valerya.Button":
   {
     variant?: "default" | "light" | "outline" | "link" | "borderless";
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     corners?: "default" | "square" | "pill";
   },
-  "Katia.Card":
+  "Valerya.Card":
   {
     variant?: "default" | "bordered" | "light";
     corners?: "default" | "square" | "pill";
   },
-  "Katia.Divider":
+  "Valerya.Divider":
   {
     variant: "default" | "light";
     thickness: "xs" | "sm" | "md" | "lg" | "xl";
   },
-  "Katia.Checkbox":
+  "Valerya.Checkbox":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";
     shape: "square" | "default" | "circle";
   },
-  "Katia.Input":
+  "Valerya.Input":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Katia.List":
+  "Valerya.List":
   {
     size?: "sm" | "md" | "lg" | "xl";
     variant?: "default" | "light";
     corners?: "default" | "rounded";
     dividerSize: "none" | "xs" | "sm" | "md" | "lg" | "xl"
   },
-  "Katia.Modal":
+  "Valerya.Modal":
   {
     variant?: "default" | "bordered";
     corners?: "default" | "square";
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6";
   },
-  "Katia.Radio":
+  "Valerya.Radio":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";
@@ -75,46 +75,46 @@ export interface Components
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Katia.Select":
+  "Valerya.Select":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Katia.Sidebar":
+  "Valerya.Sidebar":
   {
     variant: "default" | "light";
   },
-  "Katia.Slider":
+  "Valerya.Slider":
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "alt" | "test" | "test2";
     corners: "square" | "default" | "pill";
     orientation: "horizontal" | "vertical";
   },
-  "Katia.Spinner":
+  "Valerya.Spinner":
   {
     variant?: "default" | "track",
     size?: "sm" | "md" | "lg" | "xl" | "x2";
   },
-  "Katia.Surface":
+  "Valerya.Surface":
   {
     layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },
-  "Katia.Switch":
+  "Valerya.Switch":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     variant?: "default" | "inverse" | "fullColor";
     corners?: "default" | "square" | "rounded";
   },
-  "Katia.TextArea":
+  "Valerya.TextArea":
   {
 
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },
-  "Katia.Tile":
+  "Valerya.Tile":
   {
     variant: "default" | "light";
   },

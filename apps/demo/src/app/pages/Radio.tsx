@@ -1,4 +1,4 @@
-import { Container, Radio } from "@katia/components";
+import { Container, Radio } from "@valerya/components";
 import React from "react";
 
 

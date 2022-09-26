@@ -1,6 +1,6 @@
-import { buildSurface, SurfaceScheme } from "@katia/surface";
+import { buildSurface, SurfaceScheme } from "@valerya/surface";
 import { IS_DEV, useDarkMode, useThemeExtra } from "@soperio/react";
-import { KatiaConfigSurfaces } from "../KatiaConfig";
+import { ValeryaConfigSurfaces } from "../ValeryaConfig";
 import { ThemeSurfaceScheme } from "../surface/types";
 
 const defaultSurface = buildSurface(0xFF0EA5E9)
@@ -10,23 +10,23 @@ const defaultSurfaceDark = buildSurface(0xFF0EA5E9, { darkMode: true })
 
 export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): SurfaceScheme
 {
-  const surfaces = useThemeExtra("katia.surfaces")
-  const darkSurfaces = useThemeExtra("katia.surfaces.dark")
-  const defaultSurfaces = useThemeExtra("katia.surfaces.default")
+  const surfaces = useThemeExtra("valerya.surfaces")
+  const darkSurfaces = useThemeExtra("valerya.surfaces.dark")
+  const defaultSurfaces = useThemeExtra("valerya.surfaces.default")
 
   const darkMode = useDarkMode();
 
   if (typeof surface === "string")
   {
     if (!surfaces)
-      throw new Error("You're trying to useSurface but the theme doesn't contains any surface. Add some in the theme configuration under extras -> katia.surfaces")
+      throw new Error("You're trying to useSurface but the theme doesn't contains any surface. Add some in the theme configuration under extras -> valerya.surfaces")
 
-    const s = surfaces as KatiaConfigSurfaces
+    const s = surfaces as ValeryaConfigSurfaces
 
     // If dark mode and dark mode surface exists, return it
     if (darkMode)
     {
-      const ds = darkSurfaces as KatiaConfigSurfaces
+      const ds = darkSurfaces as ValeryaConfigSurfaces
       const darkSurface = ds?.[surface];
 
       if (darkSurface)
@@ -41,7 +41,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): Surfac
     if (!indexedSurface)
     {
       if (IS_DEV)
-        console.warn(`[Katia UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme. Add it in the theme configuration under extras -> katia.surfaces`);
+        console.warn(`[Valerya UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme. Add it in the theme configuration under extras -> valerya.surfaces`);
 
       // Avoid crashing, return default surface
       return darkMode ? (defaultSurfaces?.dark ?? defaultSurfaceDark) : (defaultSurfaces?.light ?? defaultSurface)

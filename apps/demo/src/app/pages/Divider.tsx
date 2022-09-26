@@ -1,4 +1,4 @@
-import { Container, Divider } from "@katia/components";
+import { Container, Divider } from "@valerya/components";
 
 /**
  *

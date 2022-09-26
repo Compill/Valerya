@@ -1,4 +1,4 @@
-// import { buildDarkSurface, buildSurface, buildWhiteSurface } from "@katia/surface"
+// import { buildDarkSurface, buildSurface, buildWhiteSurface } from "@valerya/surface"
 import { extendTheme } from "@soperio/react"
 
 const theme = extendTheme({
@@ -12,7 +12,7 @@ const theme = extendTheme({
     //     // withLightSurface
     //     // withDarkSurface
     //     // withDefaultSurface
-    //     "katia.surfaces":
+    //     "valerya.surfaces":
     //     {
     //         // "primary": buildSurface(0xff16a34a),
     //         "default": buildSurface(0xff12A2DF),
@@ -26,7 +26,7 @@ const theme = extendTheme({
     //         // "tertiary": buildSurfaceFromColor(0xff3a691e),
     //         "accent": buildSurface(0xffb3261e)
     //     },
-    //     "katia.surfaces.dark":
+    //     "valerya.surfaces.dark":
     //     {
     //         "default": buildSurface(0x12A2DF, { darkMode: true }),
     //         "neutral": buildSurface(0xff94a3b8, { darkMode: true }),
@@ -41,7 +41,7 @@ const theme = extendTheme({
     //         // "tertiary": buildSurfaceFromColor(0xff3a691e, { darkMode: true }),
     //         "accent": buildSurface(0xffb3261e, { darkMode: true })
     //     },
-    //     "katia.surfaces.default":
+    //     "valerya.surfaces.default":
     //     {
     //         "light": buildSurface(0xff0ea5e9),//buildSurface(0xff06b6d4),
     //         "dark": buildSurface(0xff06b6d4, { darkMode: true }),

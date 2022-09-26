@@ -1,7 +1,7 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, InvalidState, InvalidThemeProps, SurfaceComponentConfig, ValidState, ValidThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendSurfaceComponentConfig, InvalidState, InvalidThemeProps, SurfaceComponentConfig, ValidState, ValidThemeProps } from "@valerya/core";
 import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.TextArea">;
+type TraitProps = ComponentTypings<"Valerya.TextArea">;
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps & ValidState & InvalidState & DisabledState>;
 

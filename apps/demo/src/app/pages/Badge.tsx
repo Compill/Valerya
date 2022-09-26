@@ -1,4 +1,4 @@
-import { Badge, Container } from "@katia/components";
+import { Badge, Container } from "@valerya/components";
 
 /**
  *

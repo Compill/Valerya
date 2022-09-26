@@ -1,9 +1,9 @@
 import { ParentComponent, SoperioComponent } from "@soperio/react";
-import { SurfaceComponentConfig, ExtendSurfaceComponentConfig } from "@katia/core";
-import { ActiveState, ActiveThemeProps, DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
-import { ComponentTypings } from "@katia/core";
+import { SurfaceComponentConfig, ExtendSurfaceComponentConfig } from "@valerya/core";
+import { ActiveState, ActiveThemeProps, DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@valerya/core";
+import { ComponentTypings } from "@valerya/core";
 
-export type TraitProps = ComponentTypings<"Katia.Surface">
+export type TraitProps = ComponentTypings<"Valerya.Surface">
 
 export type ComponentProps = SoperioComponent & ParentComponent & TraitProps & ActiveState & SelectedState & DisabledState;
 

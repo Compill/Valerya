@@ -1,4 +1,4 @@
-import { Container, Spinner } from "@katia/components";
+import { Container, Spinner } from "@valerya/components";
 
 
 /**

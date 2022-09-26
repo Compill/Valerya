@@ -1,4 +1,4 @@
-import { Container, Stack, Switch } from "@katia/components";
+import { Container, Stack, Switch } from "@valerya/components";
 import React from "react";
 
 

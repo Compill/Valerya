@@ -1,4 +1,4 @@
-import { Checkbox, Container } from "@katia/components";
+import { Checkbox, Container } from "@valerya/components";
 import React from "react";
 
 /**

@@ -3,10 +3,10 @@ import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
 import defaultConfig from "./config";
-import { ComponentManager, useComponentConfig, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useComponentConfig, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
 
-const COMPONENT_ID = "Katia.Radio";
+const COMPONENT_ID = "Valerya.Radio";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

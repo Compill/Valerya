@@ -1,10 +1,10 @@
-import { ComponentManager, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@katia/core";
-import { SurfaceScheme } from "@katia/surface"
+import { ComponentManager, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@valerya/core";
+import { SurfaceScheme } from "@valerya/surface"
 import { forwardRef, SoperioComponent, HTMLDivProps } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
 
-const COMPONENT_ID = "Katia.Surface"
+const COMPONENT_ID = "Valerya.Surface"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

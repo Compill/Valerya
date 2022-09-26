@@ -1,9 +1,9 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@valerya/core";
 import { SoperioComponent } from "@soperio/react";
 import { ButtonProps } from "../button";
 import { SurfaceBasedComponent } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Modal">;
+type TraitProps = ComponentTypings<"Valerya.Modal">;
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps & SelectedState & DisabledState>;
 

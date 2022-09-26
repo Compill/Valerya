@@ -1,4 +1,4 @@
-import { useFirstRender, useMultiPartStyles } from "@katia/core";
+import { useFirstRender, useMultiPartStyles } from "@valerya/core";
 import { forwardRef, OrString, ParentComponent, SoperioComponent } from "@soperio/react";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";

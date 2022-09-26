@@ -1,4 +1,4 @@
-import { Button, Container } from "@katia/ui";
+import { Button, Container } from "@valerya/ui";
 
 /**
  *

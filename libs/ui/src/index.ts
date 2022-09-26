@@ -1,3 +1,3 @@
-export * from "@katia/core"
-export * from "@katia/components"
-export * from "@katia/surface"
+export * from "@valerya/core"
+export * from "@valerya/components"
+export * from "@valerya/surface"

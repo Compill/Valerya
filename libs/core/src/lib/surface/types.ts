@@ -1,5 +1,5 @@
 // Attention, this file will be overwritten by the CLI
-import { KatiaThemeTypings } from "../KatiaThemeTypings";
+import { ValeryaThemeTypings } from "../ValeryaThemeTypings";
 
 // TODO Remove extras primary, secondary, tertiary, accent
-export type ThemeSurfaceScheme = KatiaThemeTypings["surfaces"] | "primary" | "secondary" | "tertiary" | "accent"
+export type ThemeSurfaceScheme = ValeryaThemeTypings["surfaces"] | "primary" | "secondary" | "tertiary" | "accent"

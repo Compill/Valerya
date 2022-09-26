@@ -1,6 +1,6 @@
-import { useBoolean, useCallbackRef, useComponentDimensions, useControllableState, useIds, usePanGesture, useUpdateEffect } from "@katia/core";
-import { EventKeyMap, mergeRefs, PropGetter, ReactRef } from "@katia/react-utils";
-import { AnyPointerEvent, callAllHandlers, clampValue, getBox, normalizeEventKey, percentToValue, roundValueToStep, valueToPercent } from "@katia/utils";
+import { useBoolean, useCallbackRef, useComponentDimensions, useControllableState, useIds, usePanGesture, useUpdateEffect } from "@valerya/core";
+import { EventKeyMap, mergeRefs, PropGetter, ReactRef } from "@valerya/react-utils";
+import { AnyPointerEvent, callAllHandlers, clampValue, getBox, normalizeEventKey, percentToValue, roundValueToStep, valueToPercent } from "@valerya/utils";
 import { SoperioComponent, useDirection } from "@soperio/react";
 import React from "react";
 import { getIsReversed, getStyles, orient } from "./sliderUtils";

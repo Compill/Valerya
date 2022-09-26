@@ -1,9 +1,9 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig,  MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig,  MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@valerya/core";
 import { SoperioComponent, HTMLDivProps, HTMLInputProps, RightJoinProps } from "@soperio/react";
 import { LayerProps, SurfaceBasedComponent, SurfaceProps } from "../surface";
 
 
-type TraitProps = ComponentTypings<"Katia.Slider">
+type TraitProps = ComponentTypings<"Valerya.Slider">
 
 export type ComponentProps = SurfaceBasedComponent<SoperioComponent & TraitProps & SelectedState & DisabledState & RightJoinProps<Omit<HTMLInputProps, "size">, HTMLDivProps>>; 
 

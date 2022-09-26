@@ -1,10 +1,10 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLTextAreaProps, HTMLDivProps, RightJoinProps } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.TextArea";
+const COMPONENT_ID = "Valerya.TextArea";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

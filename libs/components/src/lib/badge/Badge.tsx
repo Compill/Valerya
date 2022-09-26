@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, ParentComponent } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Badge";
+const COMPONENT_ID = "Valerya.Badge";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

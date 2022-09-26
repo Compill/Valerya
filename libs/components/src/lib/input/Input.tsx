@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLInputProps } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Input";
+const COMPONENT_ID = "Valerya.Input";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

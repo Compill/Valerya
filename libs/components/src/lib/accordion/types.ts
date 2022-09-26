@@ -1,10 +1,10 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@katia/core";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartSurfaceComponentConfig, MultiPartSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "@valerya/core";
 import { SoperioComponent } from "@soperio/react";
 import { ButtonProps } from "../button";
 import { DividerProps } from "../divider";
 import { SurfaceBasedComponent, SurfaceProps } from "../surface";
 
-type TraitProps = ComponentTypings<"Katia.Accordion">;
+type TraitProps = ComponentTypings<"Valerya.Accordion">;
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps & SelectedState & DisabledState>;
 

@@ -1,8 +1,8 @@
-import { Container, Surface, SurfaceProps } from "@katia/ui";
+import { Container, Surface, SurfaceProps } from "@valerya/ui";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
-import { buildSurface, SurfaceScheme } from "@katia/ui";
-import { ThemeSurfaceScheme, useSurface } from "@katia/ui";
-import { LayerProps } from "@katia/components";
+import { buildSurface, SurfaceScheme } from "@valerya/ui";
+import { ThemeSurfaceScheme, useSurface } from "@valerya/ui";
+import { LayerProps } from "@valerya/components";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
@@ -20,7 +20,7 @@ const sfGreenDark = buildSurface(0xff84cc16, { darkMode: true })
 // TODO Surface system
 // In order to use useSurface and to get a default surface in the case
 // that none is defined in the theme, define a default surface
-// in the code (not the theme, because user may not add Katia config in the theme)
+// in the code (not the theme, because user may not add Valerya config in the theme)
 // This way, since we don't know what semantic the user will use, we have at least
 // one existing surface to fallback to
 

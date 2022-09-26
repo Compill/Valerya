@@ -1,4 +1,4 @@
-import { Button } from "@katia/ui"
+import { Button } from "@valerya/ui"
 import { useToggleDarkMode } from "@soperio/react"
 
 export function Header()

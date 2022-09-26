@@ -1,11 +1,11 @@
-import { ComponentManager, useFirstRender, useMultiPartComponentConfig, useMultiPartSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useMultiPartComponentConfig, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Switch";
+const COMPONENT_ID = "Valerya.Switch";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

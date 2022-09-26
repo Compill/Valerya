@@ -1,10 +1,10 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@katia/core";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-const COMPONENT_ID = "Katia.Checkbox";
+const COMPONENT_ID = "Valerya.Checkbox";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 

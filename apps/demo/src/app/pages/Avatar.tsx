@@ -1,4 +1,4 @@
-import { Avatar, Container, } from "@katia/components";
+import { Avatar, Container, } from "@valerya/components";
 
 
 
