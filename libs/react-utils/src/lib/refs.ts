@@ -1,9 +1,10 @@
 import { isFunction } from "@soperio/utils"
+import { MutableRefObject, Ref, RefObject } from "react"
 
 export type ReactRef<T> =
-    | React.Ref<T>
-    | React.RefObject<T>
-    | React.MutableRefObject<T>
+    | Ref<T>
+    | RefObject<T>
+    | MutableRefObject<T>
 
 /**
  * Assigns a value to a ref function or object
