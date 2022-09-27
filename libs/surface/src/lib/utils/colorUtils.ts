@@ -76,3 +76,10 @@ function normalizeColorBlendAlpha(color: RGBA): RGBA
 {
     return {...color, a: color.a / 255 }
 }
+
+export function alphaOnBackground(colorHex: string, opacity: number):string
+{
+    const rgba = hexToRGBA(colorHex)
+
+    return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${opacity})`
+}

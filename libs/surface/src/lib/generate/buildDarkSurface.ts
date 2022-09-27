@@ -1,7 +1,7 @@
 import { darken, lighten } from "@soperio/react";
 import { RGBA } from "color-blend/dist/types";
 import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
-import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
+import { alpha, alphaOnBackground, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
 import { Layer, LayerScheme } from "../Layer";
 import chroma from "chroma-js"
 import { SurfaceScheme } from "../SurfaceScheme";
@@ -27,8 +27,8 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
         pressed: options?.hoverStatePercent ?? 5,
         selected: options?.hoverStatePercent ?? 5,
         active: options?.hoverStatePercent ?? 7,
-        disabledLayer: options?.hoverStatePercent ?? 12,
-        disabledContent: options?.hoverStatePercent ?? 38
+        disabledLayer: options?.hoverStatePercent ?? 30,
+        disabledContent: options?.hoverStatePercent ?? 70
     }
 
     const mainLayer: Layer = {
@@ -53,7 +53,7 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
             color: "transparent",
             // onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
             // TODO Make a function for this repetitive ugly code
-            onColor: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(onPrimaryHex), 0.3))),
+            onColor: alphaOnBackground(onPrimaryHex, states.disabledContent / 100),
         },
         hover: {
             // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
@@ -76,6 +76,12 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
     // newOptions.darkMode = true
 
     const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, newOptions)
+
+    surface.altInv.disabled =
+    {
+        color: alphaOnBackground(onPrimaryContainerHex, states.disabledLayer / 100),
+        onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
+    }
 
     const layers = {
         ...surface,

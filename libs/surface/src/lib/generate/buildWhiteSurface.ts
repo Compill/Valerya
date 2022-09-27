@@ -2,7 +2,7 @@ import { darken, lighten } from "@soperio/react";
 import chroma from "chroma-js";
 import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
-import { alpha, colorBlend, hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils";
+import { alpha, alphaOnBackground, colorBlend, hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils";
 import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
 import { formatSurface, nonAlphaRGB } from "./formatSurface";
 
@@ -48,13 +48,10 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         disabled:
         {
             color: "transparent",
-            // onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
-            // TODO Make a function for this repetitive ugly code
-            onColor: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(onPrimaryHex), 0.3))),
+            onColor: alphaOnBackground(onPrimaryHex, states.disabledContent / 100),
         },
         hover: {
-            // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-            color: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(onPrimaryHex), (states.hover * 3) / 100))),
+            color: alphaOnBackground(onPrimaryHex, (states.hover * 3) / 100),
             onColor: onPrimaryHex,
             active: {
                 color: darken(primaryHex, states.hover + states.active),

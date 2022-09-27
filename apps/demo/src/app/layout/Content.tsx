@@ -9,7 +9,7 @@ export function Content()
   const reactElement = menu[page as keyof typeof menu]()
 
   return (
-    <div minH="calc(100% - 64px)" >
+    <div minH="calc(100% - 64px)" bgColor="--bg-color-3">
       <React.Suspense>
         {reactElement}
       </React.Suspense>

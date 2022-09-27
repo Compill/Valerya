@@ -1,5 +1,5 @@
 import { darken, isDark, lighten } from "@soperio/react"
-import { alpha, colorBlend, hexToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils"
+import { alpha, alphaOnBackground, colorBlend, hexToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils"
 import { Layer, LayerScheme } from "../Layer"
 
 interface States
@@ -24,7 +24,6 @@ export interface BuildSurfaceOptions
     disabledContentStatePercent?: number
 }
 
-const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 
 
 export function buildSurfaceFromColors(
@@ -38,11 +37,11 @@ export function buildSurfaceFromColors(
 
     const states = {
         hover: options?.hoverStatePercent ?? 3,
-        pressed: options?.hoverStatePercent ?? 5,
-        selected: options?.hoverStatePercent ?? 5,
-        active: options?.hoverStatePercent ?? 7,
-        disabledLayer: options?.hoverStatePercent ?? 12,
-        disabledContent: options?.hoverStatePercent ?? 38
+        pressed: options?.pressedStatePercent ?? 5,
+        selected: options?.selectedStatePercent ?? 5,
+        active: options?.activeStatePercent ?? 7,
+        disabledLayer: options?.disabledStatePercent ?? 30,
+        disabledContent: options?.disabledContentStatePercent ?? 70
     }
 
     let hoverPercent = Math.round(2 * (states.hover / 100) * 255).toString(16)
@@ -50,7 +49,7 @@ export function buildSurfaceFromColors(
         hoverPercent = "0" + hoverPercent
 
     return {
-        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states, options?.darkMode ?? false),
+        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states),
         alt:
         {
             color: primaryContainerHex,
@@ -71,9 +70,8 @@ export function buildSurfaceFromColors(
             },
             disabled:
             {
-                // TODO Check disabled colors because they suck right now
-                color: colorBlendContainerFn(primaryContainerHex, 10),
-                onColor: onPrimaryContainerHex,
+                color: alphaOnBackground(primaryContainerHex, states.disabledLayer / 100),
+                onColor: alphaOnBackground(onPrimaryContainerHex, states.disabledContent / 100),
             },
             hover: {
                 color: colorBlendContainerFn(primaryContainerHex, states.hover),
@@ -108,14 +106,11 @@ export function buildSurfaceFromColors(
             },
             disabled:
             {
-                // TODO
-                color: "transparent",
-                // onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
-                onColor: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(primaryHex), 0.3))),
+                color: alphaOnBackground(onPrimaryHex, states.disabledLayer / 100),
+                onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
             },
             hover: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(darken(primaryHex, states.hover)), (states.hover * 5) / 100))),
-                // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (states.hover * 2.55) / 100)),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
                     color: lighten(onPrimaryHex, states.hover + states.active),
@@ -128,7 +123,15 @@ export function buildSurfaceFromColors(
                 }
             }
         },
-        altInv: buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states, options?.darkMode ?? false),
+        altInv: 
+        {
+            ...buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
+            disabled:
+            {
+                color: alphaOnBackground(onPrimaryContainerHex, (states.disabledLayer * 1.66) / 100),
+                onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
+            },
+        },
         mainLayer: {
             color: "transparent",
             onColor: primaryHex,
@@ -149,12 +152,11 @@ export function buildSurfaceFromColors(
             disabled:
             {
                 color: "transparent",
-                // onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
-                onColor: RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(primaryHex), 0.3))),
+                onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
             },
             hover: {
                 // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(darken(primaryHex, states.hover)), (states.hover * 5) / 100))),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
                     color: lighten(primaryHex, states.hover + states.active),
@@ -170,7 +172,7 @@ export function buildSurfaceFromColors(
     }
 }
 
-function buildSurfaceScheme(color: string, onColor: string, states: States, darkMode: boolean): Layer
+function buildSurfaceScheme(color: string, onColor: string, states: States): Layer
 {
     const isDarkColor = isDark(color)
     const colorBlendFn = /*isDarkColor ? whiten : */darken
@@ -195,8 +197,8 @@ function buildSurfaceScheme(color: string, onColor: string, states: States, dark
         },
         disabled:
         {
-            color: colorBlendFn(color, 10),
-            onColor: onColor,
+            color: alphaOnBackground(color, states.disabledLayer / 100),
+            onColor: alphaOnBackground(onColor, states.disabledContent / 100),
         },
         hover: {
             color: colorBlendFn(color, states.hover),

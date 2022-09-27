@@ -44,7 +44,7 @@ export const Surface = forwardRef<"div", SurfaceComponentProps>((
 
   const filteredStyles: SoperioComponent = { ...styles }
 
-  if (!hoverable)
+  if (props.disabled || !hoverable)
   {
     Object.keys(filteredStyles).forEach((key) =>
     {

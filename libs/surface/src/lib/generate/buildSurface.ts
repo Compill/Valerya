@@ -8,6 +8,8 @@ import { formatSurface, nonAlphaRGB } from "./formatSurface"
 
 export function buildSurface(color: number, options?: BuildSurfaceOptions): SurfaceScheme
 {
+    // This code is a mess...
+
     // Coef is between -0.5 and +0.5
     // Default is 0
     // Add 1 to make it a multiplier (0.5 > 1.5)
@@ -19,8 +21,6 @@ export function buildSurface(color: number, options?: BuildSurfaceOptions): Surf
 
     const primaryContainerHex = nonAlphaRGB(options?.darkMode ? darken(primaryHex, primaryBrightness * 70 * coef) : lighten(primaryHex, (1 - primaryBrightness) * 57 * coef))
     const primaryContainerBrightness = getBrightness(hexToRGBA(primaryContainerHex))
-
-    const isDarkPrimaryColor = isDark(primaryHex)
 
     const onPrimaryHex = nonAlphaRGB(options?.darkMode ? darken(primaryHex, primaryBrightness * 70 * coef) : "#ffffff") //(isDarkPrimaryColor ? "#ffffff" : darken(primaryHex, primaryBrightness * 75))
     const onPrimaryContainerHex = nonAlphaRGB(options?.darkMode ? lighten(primaryContainerHex, (1 - primaryContainerBrightness) * 67 * coef) : darken(primaryContainerHex, primaryContainerBrightness * 75 * coef))

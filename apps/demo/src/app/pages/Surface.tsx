@@ -1,4 +1,4 @@
-import { Container, Surface, SurfaceProps } from "@valerya/ui";
+import { buildDarkSurface, Container, Surface, SurfaceProps } from "@valerya/ui";
 import { SoperioComponent, useDarkMode } from "@soperio/react";
 import { buildSurface, SurfaceScheme } from "@valerya/ui";
 import { ThemeSurfaceScheme, useSurface } from "@valerya/ui";
@@ -8,11 +8,12 @@ import { LayerProps } from "@valerya/components";
 // const red = buildSurfaceFromColor(0xffff3300)
 // const sfGreen = buildSurfaceFromColor(0xff99ffcc)
 
+// const sfBlue = buildDarkSurface(0xff010101, 0xffffff)
 const sfBlue = buildSurface(0xff010101)
 const sfRed = buildSurface(0xffb3261e)
 const sfGreen = buildSurface(0xff84cc16)
 
-const sfBlueDark = buildSurface(0xff010101, { darkMode: true })
+const sfBlueDark = buildDarkSurface(0xff010101, 0xffffff)
 const sfRedDark = buildSurface(0xffb3261e, { darkMode: true })
 const sfGreenDark = buildSurface(0xff84cc16, { darkMode: true })
 
@@ -51,13 +52,21 @@ export default function Page({ ...props })
 
       <div dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
         <SurfaceBlock layer="main" surfaceProps={sfProps} />
+        <SurfaceBlock layer="main" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="mainInv" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainInv" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="mainInvHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainInvHovMain" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="mainLayer" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainLayer" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="mainLayerHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="mainLayerHovMain" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="alt" surfaceProps={sfProps} />
+        <SurfaceBlock layer="alt" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="altInv" surfaceProps={sfProps} />
+        <SurfaceBlock layer="altInv" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="altHovMain" surfaceProps={sfProps} />
+        <SurfaceBlock layer="altHovMain" surfaceProps={{...sfProps, disabled: true}} />
       </div>
 
       <div>
@@ -89,7 +98,7 @@ function SurfaceBlock({ layer, surfaceProps }: SurfaceBlockProps)
   return (
     <div dflex flexRow gap="10">
 
-      <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{layer}</div>
+      <div trait="typo.h5" dflex flexCol placeContent="center" w="32">{layer + (surfaceProps.disabled ? " (disabled)" : "")}</div>
 
       <Surface scheme="default" layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
