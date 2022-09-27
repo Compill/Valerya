@@ -49,6 +49,16 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
         {
             color: "transparent",
             onColor: alphaOnBackground(onPrimaryHex, states.disabledContent / 100),
+            selected:
+            {
+                color: alphaOnBackground(darken(primaryHex, states.selected), states.disabledLayer / 100),
+                onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
+            },
+            active:
+            {
+                color: alphaOnBackground(darken(primaryHex, states.active), states.disabledLayer / 100),
+                onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
+            }
         },
         hover: {
             color: alphaOnBackground(onPrimaryHex, (states.hover * 3) / 100),

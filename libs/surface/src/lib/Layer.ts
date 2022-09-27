@@ -15,7 +15,11 @@ export interface Layer extends LayerState
   selected: LayerState
   active: LayerState,
   pressed: LayerState,
-  disabled: LayerState,
+  disabled: LayerState &
+  {
+    selected: LayerState,
+    active: LayerState,
+  },
   hover: LayerState &
   {
     selected: LayerState,

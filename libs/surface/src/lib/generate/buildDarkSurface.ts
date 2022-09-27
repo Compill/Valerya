@@ -51,13 +51,19 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
         disabled:
         {
             color: "transparent",
-            // onColor: RGBAToHex(alpha(primaryRGBA, 0.3)),
-            // TODO Make a function for this repetitive ugly code
             onColor: alphaOnBackground(onPrimaryHex, states.disabledContent / 100),
+            selected:
+            {
+                color: alphaOnBackground(darken(primaryHex, states.selected), states.disabledLayer / 100),
+                onColor: alphaOnBackground(onPrimaryHex, states.disabledContent / 100),
+            },
+            active:
+            {
+                color: alphaOnBackground(darken(primaryHex, states.active), states.disabledLayer / 100),
+                onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
+            },
         },
         hover: {
-            // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-            // color: RGBAToHex(colorBlend(blackRGBA, alpha(hexToRGBA(onPrimaryHex), (states.hover * 3) / 100))),
             color: lighten(primaryHex, states.hover + states.active),
             onColor: onPrimaryHex,
             active: {
@@ -81,6 +87,15 @@ export function buildDarkSurface(darkColor: number, whiteColor: number, options?
     {
         color: alphaOnBackground(onPrimaryContainerHex, states.disabledLayer / 100),
         onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
+        active: {
+            color: alphaOnBackground(darken(onPrimaryContainerHex, states.active), (states.disabledLayer * 1.66) / 100),
+            onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
+        },
+        selected:
+        {
+            color: alphaOnBackground(darken(onPrimaryContainerHex, states.selected), (states.disabledLayer * 1.66) / 100),
+            onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
+        }
     }
 
     const layers = {

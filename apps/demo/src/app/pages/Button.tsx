@@ -10,7 +10,7 @@ export default function Page({ ...props })
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
-        <Button scheme="primary" variant="default" selected block mx="auto" my="5" shadow z="1001">Open Left</Button>
+        <Button scheme="primary" variant="default" block mx="auto" my="5">Open Left</Button>
         <Button scheme="primary" variant="light" block mx="auto" my="5">Light button</Button>
         <Button scheme="primary" variant="link" block mx="auto" my="5">Link button</Button>
         <Button scheme="primary" variant="outline" block mx="auto" my="5">Outline button</Button>
@@ -18,7 +18,7 @@ export default function Page({ ...props })
       </div>
 
       <div flexRow>
-        <Button scheme="secondary" variant="default" block mx="auto" my="5" shadow z="1001">Open Left</Button>
+        <Button scheme="secondary" variant="default" block mx="auto" my="5">Open Left</Button>
         <Button scheme="secondary" variant="light" block mx="auto" my="5">Light button</Button>
         <Button scheme="secondary" variant="link" block mx="auto" my="5">Link button</Button>
         <Button scheme="secondary" variant="outline" block mx="auto" my="5">Outline button</Button>
@@ -34,11 +34,11 @@ export default function Page({ ...props })
       </div>
 
       <div flexRow>
-        <Button scheme="accent" variant="default" block mx="auto" my="5" textTransform="uppercase">Open Top</Button>
-        <Button scheme="accent" variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
-        <Button scheme="accent" variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
-        <Button scheme="accent" variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>
-        <Button scheme="accent" variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
+        <Button scheme="dark" variant="default" block mx="auto" my="5" textTransform="uppercase">Open Top</Button>
+        <Button scheme="dark" variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
+        <Button scheme="dark" variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
+        <Button scheme="dark" variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>
+        <Button scheme="dark" variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
       </div>
 
       <div flexRow>
@@ -66,11 +66,11 @@ export default function Page({ ...props })
       </div>
 
       <div flexRow>
-        <Button variant="default" block mx="auto" my="5" disabled>Default button</Button>
-        <Button variant="light" block mx="auto" my="5" selected disabled>Light button</Button>
-        <Button variant="link" block mx="auto" my="5" selected disabled>Link button</Button>
-        <Button variant="outline" block mx="auto" my="5" disabled>Outline button</Button>
-        <Button variant="borderless" block mx="auto" my="5" disabled>Borderless</Button>
+        <Button scheme="tertiary" selected variant="default" block mx="auto" my="5" disabled>Default button</Button>
+        <Button scheme="tertiary" selected variant="light" block mx="auto" my="5" disabled>Light button</Button>
+        <Button scheme="tertiary" selected variant="link" block mx="auto" my="5" disabled>Link button</Button>
+        <Button scheme="tertiary" selected variant="outline" block mx="auto" my="5" disabled>Outline button</Button>
+        <Button scheme="tertiary" selected variant="borderless" block mx="auto" my="5" disabled>Borderless</Button>
       </div>
     </Container>
   );

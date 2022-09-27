@@ -23,7 +23,7 @@ const theme = extendTheme(
     },
     withSurface("default", buildSurface(0xff12A2DF)),
     withSurface("light", buildWhiteSurface(0xffffffff, 0xff181818)),
-    withSurface("dark", buildDarkSurface(0xff181818, 0xffffffff)),
+    withSurface("dark", buildSurface(0xff181818)),
     withSurface("neutral", buildSurface(0xff94a3b8)),
     withSurface("primary", buildWhiteSurface(0xffffffff, 0xff181818)),
     withSurface("secondary", buildSurface(0xff475569)),

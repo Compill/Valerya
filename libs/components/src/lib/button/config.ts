@@ -70,7 +70,6 @@ const config: Config =
       (
         {
           layer: "altHovMain",
-          // textColor: surface.layers.main.color
         }
       ),
       link: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -111,16 +110,15 @@ const config: Config =
           },
           stateDisabled:
           {
-            textOpacity: "70",
-            borderOpacity: "70",
-            bgOpacity: "70",
-            // hover_textColor: theme.default,
-            hover_bgColor: "transparent",
+            borderColor: surface.layers.main.disabled.color,
+            hover_borderColor: surface.layers.main.disabled.color,
             cursor: "default"
           },
           stateSelectedDisabled:
           {
-            textOpacity: "85"
+            textOpacity: "85",
+            borderColor: "transparent",
+            hover_borderColor: "transparent"
           }
         }
       ),

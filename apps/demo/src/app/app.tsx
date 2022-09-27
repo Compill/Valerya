@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SoperioProvider } from "@soperio/react";
+import { SoperioProvider, useTheme } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
 import { Header } from "./layout/Header";
@@ -22,6 +22,8 @@ export function App()
 
 function AppContent()
 {
+  const theme = useTheme()
+  console.log(theme)
   return (
     <div bgColor="--bg-color-3" transition="colors">
       <div dflex alignItems="start">
