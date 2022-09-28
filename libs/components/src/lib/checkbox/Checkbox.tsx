@@ -1,5 +1,5 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -30,14 +30,12 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
     ...props
   }, ref) =>
 {
-  const firstRender = useFirstRender();
-
   const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
   return (
-    <div display="flex" flexRow  alignItems="center" {...soperioProps}>
+    <div display="flex" flexRow alignItems="center" {...soperioProps}>
       <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
         <input
           border="none"
@@ -58,25 +56,26 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         />
         <Surface
           scheme={_scheme}
-          disabled={soperioProps["disabled"]}
+          disabled={inputProps["disabled"]}
           display="inline-block"
-          transition={firstRender ? "none" : "all"}
+          transition="colors"
           easing={props.checked ? "out" : "linear"}
           duration="300"
           {...styles}
         >
-          {props.checked && (
-            // TODO Dynamic icon
-            <svg 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2px" 
-              transition={firstRender ? "none" : "opacity"}
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          )}
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2px"
+              opacity={props.checked ? "100" : "0"}
+              transition="opacity"
+              easing={props.checked ? "out" : "linear"}
+              duration="300"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </Surface>
       </label>
       {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
