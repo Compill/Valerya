@@ -65,13 +65,6 @@ const config: Config =
           {
             layer: "main"
           },
-          // TODO Check once Surface has fix its disabled colors
-          // stateDisabled:
-          // {
-          //   bgOpacity: "40",
-          //   textOpacity: "70",
-          //   cursor: "default"
-          // }
         }
       ),
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -80,17 +73,14 @@ const config: Config =
           layer: "mainLayer",
           border: "sm",
           borderColor: surface.layers.main.color,
-          // stateChecked:
-          // {
-          //   borderColor: theme.default,
-          //   textColor: theme.default,
-          // },
-          // stateDisabled:
-          // {
-          //   borderOpacity: "40",
-          //   textOpacity: "40",
-          //   cursor: "default"
-          // }
+          stateDisabled:
+          {
+            borderColor: surface.layers.main.disabled.color
+          },
+          stateCheckedDisabled:
+          {
+            borderColor: surface.layers.main.disabled.color
+          }
         }
       ),
     },

@@ -69,10 +69,10 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
             fill="none"
             stroke="currentColor"
             strokeWidth="2px"
-              opacity={props.checked ? "100" : "0"}
-              transition="opacity"
-              easing={props.checked ? "out" : "linear"}
-              duration="300"
+            opacity={props.checked ? "100" : "0"}
+            transition="opacity"
+            easing={props.checked ? "out" : "linear"}
+            duration="300"
           >
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>

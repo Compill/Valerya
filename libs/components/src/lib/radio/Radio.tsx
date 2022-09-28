@@ -39,10 +39,10 @@ export const Radio = forwardRef<"input", RadioProps>((
   const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
-// TODO Fix tick
+  // TODO Fix tick
   return (
-    <div display="flex" flexRow  alignItems="center" {...soperioProps}>
-      <label  userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
+    <div display="flex" flexRow alignItems="center" {...soperioProps}>
+      <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
         <input
           border="none"
           h="px"
@@ -63,7 +63,7 @@ export const Radio = forwardRef<"input", RadioProps>((
         />
         <Surface
           scheme={_scheme}
-          disabled={soperioProps["disabled"]}
+          disabled={inputProps["disabled"]}
           display="inline-block"
           transition={firstRender ? "none" : "all"}
           easing={props.checked ? "out" : "linear"}
@@ -71,18 +71,43 @@ export const Radio = forwardRef<"input", RadioProps>((
           rounded="full"
           {...styles}
         >
-          {props.checked && (
-            <>
-              {/* TODO Use multipart component properties to set width & height on svg */}
-              {/* Use circle svg if shape is circle, square svg if shape is square */}
-              {props.checked && dotSize === "sm" && <svg viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" /></svg>}
-              {props.checked && dotSize === "md" && <svg viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" /></svg>}
-              {props.checked && dotSize === "lg" && <svg viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" /></svg>}
-            </>
+
+          {/* TODO Use multipart component properties to set width & height on svg */}
+          {/* Use circle svg if shape is circle, square svg if shape is square */}
+          {dotSize === "sm" && (
+            <svg
+              viewBox="0 0 24 24"
+              opacity={props.checked ? "100" : "0"}
+              transition="opacity"
+              easing={props.checked ? "out" : "linear"}
+              duration="300">
+              <path fill="currentColor" stroke="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" />
+            </svg>
+          )}
+
+          {dotSize === "md" && (
+            <svg
+              viewBox="0 0 24 24"
+              opacity={props.checked ? "100" : "0"}
+              transition="opacity"
+              easing={props.checked ? "out" : "linear"}
+              duration="300">
+              <path fill="currentColor" stroke="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
+            </svg>
+          )}
+          {dotSize === "lg" && (
+            <svg
+              viewBox="0 0 24 24"
+              opacity={props.checked ? "100" : "0"}
+              transition="opacity"
+              easing={props.checked ? "out" : "linear"}
+              duration="300">
+              <path fill="currentColor" stroke="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" />
+            </svg>
           )}
         </Surface>
       </label>
       {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
-    </div>
+    </div >
   );
 });
