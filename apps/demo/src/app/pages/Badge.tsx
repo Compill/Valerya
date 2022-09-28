@@ -10,26 +10,26 @@ export default function Page({ ...props })
     <Container center size="x2" gap="20" justifyContent="center" py="20">
 
       <div mb="10">
-        <Badge size="xs" mx="2" my="2">Badge</Badge>
-        <Badge size="sm" mx="2" my="2">Badge</Badge>
-        <Badge size="md" mx="2" my="2">Badge</Badge>
-        <Badge size="lg" mx="2" my="2">Badge</Badge>
-        <Badge size="xl" mx="2" my="2">Badge</Badge>
-        <Badge size="x2" mx="2" my="2">Badge</Badge>
+        <Badge size="xs" mx="2" my="2">Small</Badge>
+        <Badge size="sm" mx="2" my="2">Small</Badge>
+        <Badge size="md" mx="2" my="2">Small</Badge>
+        <Badge size="lg" mx="2" my="2">Small</Badge>
+        <Badge size="xl" mx="2" my="2">Small</Badge>
+        <Badge size="x2" mx="2" my="2">Small</Badge>
       </div>
 
       <div mb="10">
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="xs" mx="2" my="2">Badge</Badge>
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="sm" mx="2" my="2">Badge</Badge>
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="md" mx="2" my="2">Badge</Badge>
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="lg" mx="2" my="2">Badge</Badge>
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="xl" mx="2" my="2">Badge</Badge>
-        <Badge scheme="primary" shape="pill" textTransform="uppercase" size="x2" mx="2" my="2">Badge</Badge>
+        <Badge shape="pill" size="xs" mx="2" my="2">Small</Badge>
+        <Badge shape="pill" size="sm" mx="2" my="2"><span>Small</span></Badge>
+        <Badge shape="pill" size="md" mx="2" my="2">Small</Badge>
+        <Badge shape="pill" size="lg" mx="2" my="2">Small</Badge>
+        <Badge shape="pill" size="xl" mx="2" my="2">Small</Badge>
+        <Badge shape="pill" size="x2" mx="2" my="2">Small</Badge>
       </div>
 
       <div mb="10">
         <Badge scheme="secondary" size="xs" mx="2" my="2">Badge</Badge>
-        <Badge scheme="secondary" size="sm" mx="2" my="2">Badge</Badge>
+        <Badge scheme="secondary" size="sm" mx="2" my="2"><span>Badge</span></Badge>
         <Badge scheme="secondary" size="md" mx="2" my="2">Badge</Badge>
         <Badge scheme="secondary" size="lg" mx="2" my="2">Badge</Badge>
         <Badge scheme="secondary" size="xl" mx="2" my="2">Badge</Badge>

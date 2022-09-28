@@ -25,10 +25,10 @@ const SliderPickerPage = React.lazy(() => import("../pages/Slider"));
 export const menu = {
   "Accordion": () => <AccordionPage />,
   "Avatar": () => <AvatarPage />,
-  "Card": () => <CardPage />,
-  "Checkbox": () => <CheckboxPage />,
   "Badge": () => <BadgePage />,
   "Button": () => <ButtonPage />,
+  "Card": () => <CardPage />,
+  "Checkbox": () => <CheckboxPage />,
   "Divider": () => <DividerPage />,
   "Input": () => <InputPage />,
   "List": () => <ListPage />,

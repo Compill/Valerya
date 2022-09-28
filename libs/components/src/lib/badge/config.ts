@@ -4,44 +4,50 @@ import { Config } from "./types";
 export const config: Config =
 {
   defaultScheme: "default",
+  defaultProps:
+  {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   traits:
   {
     size:
     {
       "xs":
       {
-        px: "2.5",
-        py: "0.5",
+        px: "2",
+        minH: "5",
         fontSize: "xs"
       },
       "sm":
       {
-        px: "3",
-        py: "0.5",
+        px: "2",
+        minH: "6",
         fontSize: "sm"
       },
       "md":
       {
-        px: "3.5",
-        py: "0.5",
+        px: "2.5",
+        minH: "7",
         fontSize: "md"
       },
       "lg":
       {
-        px: "4",
-        py: "0.5",
+        px: "3",
+        minH: "8",
         fontSize: "lg"
       },
       "xl":
       {
-        px: "5",
-        py: "1",
+        px: "3.5",
+        minH: "9",
         fontSize: "xl"
       },
       "x2":
       {
-        px: "6",
-        py: "1",
+        px: "4",
+        minH: "10",
         fontSize: "x2"
       }
     },
@@ -51,13 +57,11 @@ export const config: Config =
       {
         layer: "main",
         border: "none",
-        fontWeight: "500"
       },
       light:
       {
         layer: "alt",
         border: "none",
-        fontWeight: "500"
       },
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
