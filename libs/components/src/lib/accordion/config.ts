@@ -63,7 +63,21 @@ const config: Config =
         {
           layer: "mainLayer"
         },
+        itemHeaderCollapseButton:
+        {
+          variant: "borderless"
+        }
       },
+      bordered:
+      {
+        item: (surface: SurfaceScheme, darkMode: boolean) => (
+          {
+            border: "xs",
+            borderColor: surface.layers.mainInv.color,
+            borderOpacity: "15"
+          }
+        )
+      }
     },
     corners:
     {

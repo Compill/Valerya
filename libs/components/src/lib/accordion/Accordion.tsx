@@ -19,10 +19,12 @@ export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDiv
   collapseIcon?: React.ReactNode,
   allowMultiple?: boolean,
   gap?: false | SpacingPositive,
+  itemStyle?: SoperioComponent,
   itemHeaderStyle?: SoperioComponent,
   itemHeaderLabelStyle?: SoperioComponent,
   itemHeaderCollapseButtonStyle?: SoperioComponent,
   itemContentStyle?: SoperioComponent,
+  itemDividerStyle?: SoperioComponent,
 }
 
 function ExpandAddSvg()
@@ -54,10 +56,12 @@ const AccordionContainer = forwardRef<"div", AccordionProps>(({
   expandIconRotationOnOpen = "180",
   collapseIcon = false,
   allowMultiple = false,
+  itemStyle,
   itemHeaderStyle,
   itemHeaderLabelStyle,
   itemHeaderCollapseButtonStyle,
   itemContentStyle,
+  itemDividerStyle,
   gap,
   scheme,
   config,
@@ -107,10 +111,12 @@ const AccordionContainer = forwardRef<"div", AccordionProps>(({
     expandIcon,
     collapseIcon,
     allowMultiple,
+    itemStyle,
     itemHeaderStyle,
     itemHeaderLabelStyle,
     itemHeaderCollapseButtonStyle,
     itemContentStyle,
+    itemDividerStyle,
   }
 
   return (

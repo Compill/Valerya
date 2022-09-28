@@ -38,7 +38,8 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
     itemHeaderStyle,
     itemHeaderLabelStyle,
     itemHeaderCollapseButtonStyle,
-    itemContentStyle
+    itemContentStyle,
+    itemDividerStyle
   } = useAccordionContext()
   const [ _isOpen, setIsOpen ] = React.useState(isOpen ?? false)
   const id = React.useId()
@@ -121,7 +122,7 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
         )}
       </div >
 
-      {showBorder && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} />}
+      {_isOpen && showBorder && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
 
       {children && (
         <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>

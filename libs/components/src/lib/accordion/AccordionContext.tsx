@@ -20,4 +20,5 @@ export interface AccordionContext extends ComponentProps, ParentComponent, HTMLD
   itemHeaderLabelStyle?: SoperioComponent,
   itemHeaderCollapseButtonStyle?: SoperioComponent,
   itemContentStyle?: SoperioComponent,
+  itemDividerStyle?: SoperioComponent,
 }
