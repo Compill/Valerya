@@ -11,9 +11,9 @@ export interface Components
   },
   "Valerya.Avatar":
   {
-    size?: "sm" | "md" | "lg" | "xl" | "x2";
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6" | "x7";
     variant?: "default";
-    corners?: "default" | "square" | "pill";
+    corners?: "square" | "rounded" | "pill";
   },
   "Valerya.Badge":
   {

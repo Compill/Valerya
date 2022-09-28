@@ -1,5 +1,5 @@
 import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef } from "@soperio/react";
+import { forwardRef, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -28,6 +28,8 @@ const DefaultIcon = () => (
   </svg>
 )
 
+type BadgePosition = "bottomEnd" | "bottomStart" | "topEnd" | "topStart" | "centerEnd" | "centerStart"
+
 export interface AvatarProps extends ComponentProps
 {
   config?: ExtendConfig;
@@ -37,7 +39,7 @@ export interface AvatarProps extends ComponentProps
   icon?: React.ReactElement
   badge?: boolean,
   badgeColor?: string,
-  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart" | "centerEnd" | "centerStart",
+  badgePosition?: BadgePosition,
   badgeText?: string | number
 }
 
@@ -77,10 +79,56 @@ function randomColor(str: string)
   return color
 }
 
+const badgePositionStylesMap: Record<BadgePosition, SoperioComponent> = {
+  "topStart":
+  {
+    top: "0",
+    start:"0",
+    translateX: "-25%",
+    translateY: "-25%",
+    css: {
+      insetEnd: "0"
+    }
+  },
+  "topEnd":
+  {
+    top: "0",
+    end: "0",
+    translateX: "25%",
+    translateY: "-25%",
+  },
+  "centerStart":
+  {
+    start: "0",
+    translateX: "-50%",
+    verticalAlign: "middle"
+  },
+  "centerEnd":
+  {
+    end: "0",
+    translateX: "50%",
+    verticalAlign: "middle"
+  },
+  "bottomStart":
+  {
+    bottom: "0",
+    start:"0",
+    translateX: "-25%",
+    translateY: "25%",
+  },
+  "bottomEnd":
+  {
+    bottom: "0",
+    end: "0",
+    translateX: "25%",
+    translateY: "25%",
+  }
+}
+
 
 export const Avatar = forwardRef<typeof Surface, AvatarProps>((
   {
-    corners = "default",
+    corners = "pill",
     size,
     variant = "default",
     scheme,
@@ -91,7 +139,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
     getInitials = initials,
     badge,
     badgeColor,
-    badgePosition = "bottomEnd",
+    badgePosition = "topEnd",
     badgeText,
     ...props
   }: AvatarProps, ref) =>
@@ -101,14 +149,6 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { corners, size, variant }, props);
 
   const bg = name ? randomColor(name) : _scheme.layers.main.color
-
-  const translateX = (badgePosition === "bottomStart" || badgePosition === "topStart") ? "-40%" : "40%"
-  const translateY = (badgePosition === "topEnd" || badgePosition === "topStart") ? " - 40%" : "40%"
-
-  const top = (badgePosition === "topEnd" || badgePosition === "topStart") ? corners === "default" ? "0" : "-5%" : false
-  const bottom = (badgePosition === "bottomEnd" || badgePosition === "bottomStart") ? corners === "default" ? "0" : "-5%" : false
-  const start = (badgePosition === "bottomStart" || badgePosition === "topStart") ? corners === "default" ? "0" : "-5%" : false
-  const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners === "default" ? "0" : "-5%" : false
 
   return (
     <Surface
@@ -149,16 +189,10 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
 
       {badge &&
         <div
-          top={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? "40%" : top}
-          bottom={bottom}
-          start={badgePosition === "centerStart" ? "-15%" : start}
-          end={badgePosition === "centerEnd" ? "-15%" : end}
-          translateX={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? false : translateX}
-          translateY={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? false : translateY}
-          rounded="full"
-          transform={true}
-          bgColor={badgeColor || "green"}
-          {...styles["badge"]}
+        rounded="full"
+        bgColor={badgeColor || "green"}
+        {...styles["badge"]}
+        {...badgePositionStylesMap[badgePosition]}
         >
           {badgeText}
         </div>}

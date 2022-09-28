@@ -30,12 +30,13 @@ const config: Config =
       alignItems: "center",
       justifyContent: "center",
       boxSizing: 'border-box',
+      transform: true
     }
   },
   defaultTraits:
   {
     size: "lg",
-    corners: "default",
+    corners: "pill",
     variant: "default"
   },
   subComponents: ["avatar", "image", "initials", "badge"],
@@ -43,13 +44,31 @@ const config: Config =
   {
     size:
     {
-      // TODO Do better sizing
+      xs:
+      {
+        avatar:
+        {
+          w: "6",
+          h: "6",
+        },
+        initials:
+        {
+          fontSize: "xs"
+        },
+        badge:
+        {
+          w: "2.5",
+          h: "2.5",
+          fontSize: "xs",
+          border: "xs",
+        }
+      },
       sm:
       {
         avatar:
         {
-          w: "7",
-          h: "7",
+          w: "8",
+          h: "8",
         },
         initials:
         {
@@ -57,12 +76,32 @@ const config: Config =
         },
         badge:
         {
-          w: "2.5",
-          h: "2.5",
-          fontSize: "sm"
+          w: "3",
+          h: "3",
+          fontSize: "xs",
+          border: "sm",
         }
       },
       md:
+      {
+        avatar:
+        {
+          w: "10",
+          h: "10",
+        },
+        initials:
+        {
+          fontSize: "md"
+        },
+        badge:
+        {
+          w: "3.5",
+          h: "3.5",
+          fontSize: "xs",
+          border: "sm",
+        }
+      },
+      lg:
       {
         avatar:
         {
@@ -71,16 +110,36 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "md"
+          fontSize: "lg"
         },
         badge:
         {
-          w: "3",
-          h: "3",
-          fontSize: "sm"
+          w: "4",
+          h: "4",
+          fontSize: "xs",
+          border: "sm",
         }
       },
-      lg:
+      xl:
+      {
+        avatar:
+        {
+          w: "14",
+          h: "14",
+        },
+        initials:
+        {
+          fontSize: "xl"
+        },
+        badge:
+        {
+          w: "5",
+          h: "5",
+          fontSize: "xs",
+          border: "sm",
+        }
+      },
+      x2:
       {
         avatar:
         {
@@ -93,43 +152,105 @@ const config: Config =
         },
         badge:
         {
-          w: "5",
-          h: "5",
-          fontSize: "xs"
+          w: "6",
+          h: "6",
+          fontSize: "sm",
+          border: "sm",
         }
       },
-      xl:
+      x3:
       {
         avatar:
         {
-          w: "150px",
-          h: "150px",
+          w: "20",
+          h: "20",
         },
         initials:
         {
-          fontSize: "3.5rem"
+          fontSize: "x3"
         },
         badge:
         {
-          w: "30px",
-          h: "30px",
+          w: "7",
+          h: "7",
+          fontSize: "md",
+          border: "sm",
         }
       },
-      x2:
+      x4:
       {
         avatar:
         {
-          w: "200px",
-          h: "200px",
+          w: "24",
+          h: "24",
         },
         initials:
         {
-          fontSize: "4rem"
+          fontSize: "x4"
         },
         badge:
         {
-          w: "40px",
-          h: "40px",
+          w: "8",
+          h: "8",
+          fontSize: "md",
+          border: "md",
+        }
+      },
+      x5:
+      {
+        avatar:
+        {
+          w: "28",
+          h: "28",
+        },
+        initials:
+        {
+          fontSize: "x5"
+        },
+        badge:
+        {
+          w: "9",
+          h: "9",
+          fontSize: "lg",
+          border: "md",
+        }
+      },
+      x6:
+      {
+        avatar:
+        {
+          w: "32",
+          h: "32",
+        },
+        initials:
+        {
+          fontSize: "x6"
+        },
+        badge:
+        {
+          w: "10",
+          h: "10",
+          fontSize: "lg",
+          border: "md",
+        }
+      },
+      x7:
+      {
+        avatar:
+        {
+          w: "36",
+          h: "36",
+        },
+        initials:
+        {
+          fontSize: "x7"
+        },
+        badge:
+        {
+          w: "11",
+          h: "11",
+          fontSize: "xl",
+          border: "lg",
         }
       },
     },
@@ -145,13 +266,12 @@ const config: Config =
         initials: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            
+
           }
         ),
         badge: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            border: "sm",
             borderColor: surface.layers.main.onColor,
           }
         )
@@ -160,31 +280,27 @@ const config: Config =
     corners:
     {
       square: {},
-      default:
+      rounded:
       {
         avatar:
         {
-          rounded: "full"
+          rounded: true
         },
         image:
         {
-          rounded: "full"
+          rounded: true
         },
-        initials:
-        {
-          rounded: "full"
-        }
       },
       pill:
       {
         avatar:
         {
-          rounded: "lg"
+          rounded: "full"
         },
         image:
         {
-          rounded: "lg"
-        }
+          rounded: "full"
+        },
       }
     }
   }
