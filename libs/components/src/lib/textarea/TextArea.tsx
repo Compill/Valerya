@@ -29,7 +29,7 @@ export const TextArea = forwardRef<"textarea", TextAreaProps>((
 {
   const firstRender = useFirstRender();
 
-  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { size, corners, variant }, props)
 
   return (
     <Surface
