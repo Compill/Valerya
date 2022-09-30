@@ -53,7 +53,7 @@ export const Spinner = forwardRef<typeof Surface, SpinnerProps>(({
       {...getBorders(parsedTrackColor, parsedProgress)}
       borderStyle="solid"
       rounded="full"
-      animate={parsedProgress > 0 && parsedProgress < 100 ? "spin" : "none"}
+      animate={!props.disabled && parsedProgress > 0 && parsedProgress < 100 ? "spin" : "none"}
       {...styles}
       border={parsedThickness}
       {...props}

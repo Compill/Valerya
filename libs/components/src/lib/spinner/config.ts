@@ -49,14 +49,23 @@ const config: Config =
       (
         {
           textColor: surface.layers.main.color,
-          trackColor: "transparent"
+          trackColor: "transparent",
+          stateDisabled:
+          {
+            textColor: surface.layers.main.disabled.color
+          }
         }
       ),
       track: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
           textColor: surface.layers.main.color,
-          trackColor: surface.layers.alt.color
+          trackColor: surface.layers.alt.color,
+          stateDisabled:
+          {
+            textColor: surface.layers.main.disabled.color,
+            trackColor: surface.layers.alt.disabled.color,
+          }
         }
       ),
     },

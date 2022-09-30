@@ -1,4 +1,4 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
+import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { Color, SoperioComponent, SpacingPositive } from "@soperio/react";
 import { SurfaceBasedComponent } from "../surface";
 
@@ -13,5 +13,7 @@ interface CustomProps
 
 export type ComponentProps = SurfaceBasedComponent<TraitProps & CustomProps>
 
-export type Config = SurfaceComponentConfig<TraitProps, ComponentProps>;
+interface ConfigStateProps extends DisabledThemeProps { }
+
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
 export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;

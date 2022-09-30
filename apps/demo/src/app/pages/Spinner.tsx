@@ -21,17 +21,17 @@ export default function Page({ ...props })
                 <div mb="10">
                     <Spinner variant="track" size="sm" me="5" />
                     <Spinner variant="track" size="md" me="5" />
-                    <Spinner variant="track" size="lg" me="5" />
+                    <Spinner variant="track" disabled size="lg" me="5" />
                     <Spinner variant="track" size="xl" me="5" />
                     <Spinner variant="track" size="x2" me="5" />
                 </div>
 
                 <div mb="10">
-                    <Spinner size="sm" me="5" theme="pink" />
-                    <Spinner size="md" me="5" theme="pink" />
-                    <Spinner size="lg" me="5" theme="pink" />
-                    <Spinner size="xl" me="5" theme="pink" />
-                    <Spinner size="x2" me="5" theme="pink" />
+                    <Spinner size="sm" me="5" scheme="accent" />
+                    <Spinner size="md" me="5" scheme="accent" />
+                    <Spinner size="lg" me="5" scheme="accent" disabled/>
+                    <Spinner size="xl" me="5" scheme="accent" />
+                    <Spinner size="x2" me="5" scheme="accent" />
                 </div>
 
                 <div mb="10">
