@@ -97,6 +97,7 @@ const config: Config =
           borderOpacity: "50",
           focus_borderOpacity: "100",
           rounded: "0",
+          px: "0",
           stateDisabled:
           {
             borderOpacity: "25",

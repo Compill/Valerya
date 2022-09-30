@@ -77,7 +77,7 @@ export interface Components
   },
   "Valerya.Select":
   {
-    size: "sm" | "md" | "lg" | "xl" | "x2";
+    size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "solid" | "underline";
     corners: "square" | "default" | "pill";
   },

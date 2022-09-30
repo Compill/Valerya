@@ -10,16 +10,36 @@ export default function Page({ ...props })
   return (
     <Container center size="x2" gap="20" justifyContent="center" py="20">
       <div mb="10">
+        <Select scheme="default" block size="xs" variant="default" mb="5" defaultValue="tenerife">
+          <option value="tenerife">Tenerife</option>
+          <option value="grandcanaria">Gran Canaria</option>
+          <option value="laspalmas">Las Palmas</option>
+        </Select>
+
         <Select scheme="default" block size="sm" variant="default" mb="5" defaultValue="tenerife">
           <option value="tenerife">Tenerife</option>
           <option value="grandcanaria">Gran Canaria</option>
           <option value="laspalmas">Las Palmas</option>
         </Select>
-        <Select scheme="default"block size="sm" variant="solid" mb="5" defaultValue="tenerife">
+
+        <Select scheme="default" disabled block size="sm" variant="default" mb="5" defaultValue="tenerife">
           <option value="tenerife">Tenerife</option>
           <option value="grandcanaria">Gran Canaria</option>
           <option value="laspalmas">Las Palmas</option>
         </Select>
+
+        <Select scheme="default" block size="sm" variant="solid" mb="5" defaultValue="tenerife">
+          <option value="tenerife">Tenerife</option>
+          <option value="grandcanaria">Gran Canaria</option>
+          <option value="laspalmas">Las Palmas</option>
+        </Select>
+
+        <Select scheme="default" disabled block size="sm" variant="solid" mb="5" defaultValue="tenerife">
+          <option value="tenerife">Tenerife</option>
+          <option value="grandcanaria">Gran Canaria</option>
+          <option value="laspalmas">Las Palmas</option>
+        </Select>
+
         <Select scheme="default" corners="square" block size="sm" variant="underline" mb="5" defaultValue="tenerife">
           <option value="tenerife">Tenerife</option>
           <option value="grandcanaria">Gran Canaria</option>

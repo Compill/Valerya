@@ -33,9 +33,6 @@ export const Input = forwardRef<"input", InputProps>((
 
     const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { size, corners, variant }, props);
 
-    if (variant == "underline")
-        styles.px = "0"
-
     return (
         <Surface
             scheme={_scheme}
