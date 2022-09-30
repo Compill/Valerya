@@ -4,6 +4,10 @@ import { Config } from "./types";
 const config: Config =
 {
   defaultScheme: "neutral",
+  defaultProps:
+  {
+    focus_outline: "none"
+  },
   defaultTraits:
   {
     variant: "default",
@@ -14,7 +18,12 @@ const config: Config =
   {
     size:
     {
-      // TODO Better sizes
+      "xs":
+      {
+        px: "1.5",
+        py: "1",
+        fontSize: "xs"
+      },
       "sm":
       {
         px: "2",
@@ -45,6 +54,12 @@ const config: Config =
         fontSize: "x2"
       }
     },
+    corners:
+    {
+      square: {},
+      default: { rounded: true },
+      pill: { rounded: "full" }
+    },
     variant:
     {
       // TODO Check design
@@ -55,8 +70,10 @@ const config: Config =
           border: "sm",
           fontWeight: "500",
           borderColor: surface.layers.mainLayer.onColor,
+          borderOpacity: "50",
+          focus_borderOpacity: "100",
           placeholderColor: surface.layers.mainLayer.onColor,
-          placeholderOpacity: "50"
+          placeholderOpacity: "50",
         }
       ),
       solid: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -64,6 +81,9 @@ const config: Config =
         {
           layer: "alt",
           fontWeight: "500",
+          placeholderColor: surface.layers.alt.onColor,
+          placeholderOpacity: "50",
+          focus_bgColor: surface.layers.alt.hover.color
         }
       ),
       underline: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -72,16 +92,15 @@ const config: Config =
           borderB: "sm",
           fontWeight: "500",
           bgColor: "transparent",
+          placeholderColor: surface.layers.main.color,
+          placeholderOpacity: "50",
           textColor: surface.layers.main.color,
           borderColor: surface.layers.main.color,
+          borderOpacity: "50",
+          focus_borderOpacity: "100",
+          rounded: "0"
         }
       )
-    },
-    corners:
-    {
-      square: {},
-      default: { rounded: true },
-      pill: { rounded: "full" }
     }
   }
 }

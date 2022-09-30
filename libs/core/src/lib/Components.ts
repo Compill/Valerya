@@ -45,9 +45,9 @@ export interface Components
   },
   "Valerya.Input":
   {
-    size: "sm" | "md" | "lg" | "xl" | "x2";
-    variant: "default" | "solid" | "underline";
+    size: "xs" |"sm" | "md" | "lg" | "xl" | "x2";
     corners: "square" | "default" | "pill";
+    variant: "default" | "solid" | "underline";
   },
   "Valerya.List":
   {

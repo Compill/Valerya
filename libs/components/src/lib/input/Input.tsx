@@ -1,6 +1,5 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef, HTMLInputProps } from "@soperio/react";
-import React from "react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -32,7 +31,10 @@ export const Input = forwardRef<"input", InputProps>((
 {
     const firstRender = useFirstRender();
 
-    const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props);
+    const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { size, corners, variant }, props);
+
+    if (variant == "underline")
+        styles.px = "0"
 
     return (
         <Surface
@@ -44,12 +46,5 @@ export const Input = forwardRef<"input", InputProps>((
             {...props}
             ref={ref}
         />
-        // <input
-        //     transition={firstRender ? "none" : "all"}
-        //     {...(length ? { size: length } : null)}
-        //     {...styles}
-        //     {...props}
-        //     ref={ref}
-        // />
     );
 });

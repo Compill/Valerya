@@ -33,13 +33,14 @@ const config: Config =
       boxSizing: "border-box",
       shadow: "sm",
       shadowColor: "#666",
-      transition: "transform",
+      transition: "colors",
+      easing: "out",
       duration: "300"
     },
     thumbDragging:
     {
       transform: true,
-      scale: "125"
+      scale: "125",
     }
   },
   defaultTraits:
