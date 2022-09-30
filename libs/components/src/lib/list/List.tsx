@@ -29,6 +29,7 @@ const List = forwardRef<"ul", ListProps>(({
   scheme,
   config,
   children,
+  disabled,
   ...props
 }: ListProps, ref) =>
 {
@@ -38,6 +39,9 @@ const List = forwardRef<"ul", ListProps>(({
   const showDividers = dividerSize !== "none"
 
   const _children = React.useMemo(() => React.Children.toArray(children), [children])
+
+  if (styles["list"])
+    styles["list"]["disabled"] = disabled
 
   return (
     <ul
@@ -63,6 +67,7 @@ export type ListItemProps = HoverableSurfaceBasedComponent<RightJoinProps<HTMLLi
 
 export const ListItem = forwardRef<typeof Surface, ListItemProps>(({
   children,
+  disabled,
   ...props }, ref) =>
 {
   const styles = useMultiPartStyles();
@@ -72,6 +77,7 @@ export const ListItem = forwardRef<typeof Surface, ListItemProps>(({
       as="li"
       ref={ref}
       {...styles["listItem"]}
+      disabled={styles["list"]?.["disabled"] ?? disabled}
       {...props}
     >{children}
     </Surface>

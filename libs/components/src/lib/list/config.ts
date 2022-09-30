@@ -1,5 +1,4 @@
 import { SurfaceScheme } from "@valerya/surface";
-import { mainModule } from "process";
 import { Config } from "./types";
 
 const config: Config =
@@ -52,6 +51,20 @@ const config: Config =
   {
     size:
     {
+      xs:
+      {
+        listItem:
+        {
+          fontSize: "xs",
+          px: "2",
+          py: "1",
+        },
+        listItemIcon:
+        {
+          w: "4",
+          h: "4",
+        }
+      },
       sm:
       {
         listItem:
@@ -127,9 +140,17 @@ const config: Config =
         (
           {
             scheme: surface,
-            layer: "alt",
-            px: "5",
-            py: "3",
+            layer: "altHovMain",
+          }
+        ),
+      },
+      menu:
+      {
+        listItem: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            scheme: surface,
+            layer: "mainLayerHovMain",
           }
         ),
       }

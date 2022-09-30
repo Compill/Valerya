@@ -23,33 +23,127 @@ export default function Page({ ...props })
     )
 
     return (
-        <Container center size="x2" dflex gap="5" justifyContent="center" py="20">
-            <List w="64" dividerSize="xl" corners="rounded" dividerStyle="transparent">
-                <List.ListItem key="0" rounded>
-                    <List.ListItemIcon>
-                        <Inbox />
-                    </List.ListItemIcon>
-                    Inbox
-                </List.ListItem>
-                <List.ListItem key="1" rounded>
-                    <List.ListItemIcon>
-                        <Web />
-                    </List.ListItemIcon>
-                    Web
-                </List.ListItem>
-                <List.ListItem key="2" rounded>
-                    <List.ListItemIcon>
-                        <DefaultIcon />
-                    </List.ListItemIcon>
-                    User
-                </List.ListItem>
-            </List>
+        <Container center size="x2" dflex flexCol gap="5" justifyContent="center" py="20">
+            <div dflex flexRow gap="10">
+                <List w="64" dividerSize="xl" corners="rounded" dividerStyle="transparent">
+                    <List.ListItem key="0" rounded>
+                        <List.ListItemIcon>
+                            <Inbox />
+                        </List.ListItemIcon>
+                        Inbox
+                    </List.ListItem>
+                    <List.ListItem key="1" rounded>
+                        <List.ListItemIcon>
+                            <Web />
+                        </List.ListItemIcon>
+                        Web
+                    </List.ListItem>
+                    <List.ListItem key="2" rounded>
+                        <List.ListItemIcon>
+                            <DefaultIcon />
+                        </List.ListItemIcon>
+                        User
+                    </List.ListItem>
+                </List>
 
-            <List w="64" scheme="default" size="sm" >
-                <List.ListItem key="0">Item 1</List.ListItem>
-                <List.ListItem key="1">Item 2</List.ListItem>
-                <List.ListItem key="2">Item 3</List.ListItem>
-            </List>
+                <List w="64" scheme="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1">Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+            </div>
+
+            <div dflex flexRow gap="10">
+                <List w="64" variant="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="light" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="menu" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+            </div>
+
+            <div dflex flexRow gap="10">
+                <List w="64" variant="default" scheme="accent" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="light" scheme="accent" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="menu" scheme="accent" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+            </div>
+
+            <div dflex flexRow gap="10">
+                <List w="64" variant="default" scheme="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="light" scheme="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="menu" scheme="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+            </div>
+
+            <div dflex flexRow gap="10">
+                <List w="64" variant="default" scheme="default" size="xs" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="default" scheme="default" size="sm" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="light" disabled scheme="default" size="md" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="menu" scheme="default" size="lg" >
+                    <List.ListItem key="0" disabled>Item 1</List.ListItem>
+                    <List.ListItem key="1" selected disabled>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+
+                <List w="64" variant="menu" scheme="default" size="xl" >
+                    <List.ListItem key="0">Item 1</List.ListItem>
+                    <List.ListItem key="1" selected>Item 2</List.ListItem>
+                    <List.ListItem key="2">Item 3</List.ListItem>
+                </List>
+            </div>
 
         </Container>
 

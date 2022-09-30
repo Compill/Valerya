@@ -51,8 +51,8 @@ export interface Components
   },
   "Valerya.List":
   {
-    size?: "sm" | "md" | "lg" | "xl";
-    variant?: "default" | "light";
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    variant?: "default" | "light" | "menu";
     corners?: "default" | "rounded";
     dividerSize: "none" | "xs" | "sm" | "md" | "lg" | "xl"
   },
