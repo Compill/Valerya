@@ -68,6 +68,10 @@ const config: Config =
           focus_borderOpacity: "100",
           placeholderColor: surface.layers.mainLayer.onColor,
           placeholderOpacity: "50",
+          stateDisabled:
+          {
+            borderOpacity: "25",
+          }
         }
       ),
       solid: (surface: SurfaceScheme, darkMode: boolean) =>
@@ -92,7 +96,11 @@ const config: Config =
           borderColor: surface.layers.main.color,
           borderOpacity: "50",
           focus_borderOpacity: "100",
-          rounded: "0"
+          rounded: "0",
+          stateDisabled:
+          {
+            borderOpacity: "25",
+          }
         }
       )
     },

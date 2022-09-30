@@ -28,6 +28,12 @@ export default function Page({ ...props })
       </div>
 
       <div mb="10">
+        <Input scheme="accent" disabled value="Hola que tal" block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
+        <Input scheme="accent" disabled block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
+        <Input scheme="accent" disabled block size="sm" variant="underline" corners="square" mb="5" length={50} placeholder="Hello" />
+      </div>
+
+      <div mb="10">
         <Input block variant="default" mb="5" length={50} placeholder="Hello" />
         <Input block variant="solid" mb="5" length={50} placeholder="Hello" />
         <Input block variant="underline" mb="5" length={50} placeholder="Hello" />
