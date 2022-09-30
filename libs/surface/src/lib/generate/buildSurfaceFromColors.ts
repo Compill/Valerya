@@ -1,6 +1,6 @@
 import { darken, lighten } from "@soperio/react"
 import { Layer, LayerScheme } from "../Layer"
-import { alphaOnBackground } from "../utils/colorUtils"
+import { alphaOnBackground, alphaOnWhiteBackground } from "../utils/colorUtils"
 
 interface States
 {
@@ -48,6 +48,13 @@ export function buildSurfaceFromColors(
     if (hoverPercent.length == 1)
         hoverPercent = "0" + hoverPercent
 
+    // Rule of thumb:
+    // use alphaOnWhiteBackground for all colors
+    // only use alphaOnBackground for disabled colors
+    // 
+    // alphaOnWhiteBackground generates hex RGB colors
+    // alphaOnBackground generates rgba() RGBA colors
+    
     return {
         main: buildSurfaceScheme(primaryHex, onPrimaryHex, states),
         alt:
@@ -130,7 +137,7 @@ export function buildSurfaceFromColors(
                 }
             },
             hover: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
                     color: lighten(onPrimaryHex, states.hover + states.active),
@@ -170,7 +177,7 @@ export function buildSurfaceFromColors(
                 onColor: primaryHex,
             },
             selected: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
                 onColor: primaryHex
             },
             pressed:
@@ -195,7 +202,7 @@ export function buildSurfaceFromColors(
             },
             hover: {
                 // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
+                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
                     color: lighten(primaryHex, states.hover + states.active),
@@ -203,7 +210,7 @@ export function buildSurfaceFromColors(
                 },
                 selected:
                 {
-                    color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
                     onColor: primaryHex
                 }
             }

@@ -2,7 +2,7 @@ import { darken, lighten } from "@soperio/react";
 import chroma from "chroma-js";
 import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
-import { alpha, alphaOnBackground, colorBlend, hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils";
+import { alpha, alphaOnBackground, alphaOnWhiteBackground, colorBlend, hexToRGBA, intToRGBA, RGBA, RGBAToHex } from "../utils/colorUtils";
 import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
 import { formatSurface, nonAlphaRGB } from "./formatSurface";
 
@@ -61,7 +61,7 @@ export function buildWhiteSurface(whiteColor: number, darkColor: number, options
             }
         },
         hover: {
-            color: alphaOnBackground(onPrimaryHex, (states.hover * 3) / 100),
+            color: alphaOnWhiteBackground(onPrimaryHex, (states.hover * 3) / 100),
             onColor: onPrimaryHex,
             active: {
                 color: darken(primaryHex, states.hover + states.active),

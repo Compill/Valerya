@@ -83,3 +83,11 @@ export function alphaOnBackground(colorHex: string, opacity: number):string
 
     return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${opacity})`
 }
+
+const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
+// const whiteRGBA: RGBA = { r: 0, g: 0, b: 0, a: 255 }
+
+export function alphaOnWhiteBackground(colorHex: string, opacity: number)
+{
+    return RGBAToHex(colorBlend(whiteRGBA, alpha(hexToRGBA(colorHex), opacity)))
+}
