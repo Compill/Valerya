@@ -139,12 +139,12 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
 
 export interface ModalHeaderProps extends SoperioComponent, ParentComponent
 {
-  showBorder?: boolean;
+  showDivider?: boolean;
   borderWidth?: "full" | "padded" | Spacing
 };
 
 export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
-  showBorder,
+  showDivider,
   borderWidth,
   children,
   ...props }, ref) =>
@@ -152,7 +152,7 @@ export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
   const { onClose } = useModalContext()
   const styles = useMultiPartStyles();
 
-  const dividerStyles: SoperioComponent = {}
+  const dividerStyles: SoperioComponent = styles["divider"] ?? {}
 
   if (borderWidth === "padded")
   {
@@ -196,7 +196,7 @@ export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
           </svg>
         </Button>
       </div>
-      {showBorder && <Divider {...dividerStyles} />}
+      {showDivider && <Divider {...dividerStyles} />}
     </>
   );
 });
@@ -219,20 +219,20 @@ export const ModalBody = forwardRef<"div", ModalBodyProps>(({ children, ...props
 
 export interface ModalFooterProps extends SoperioComponent, ParentComponent
 {
-  showBorder?: boolean;
+  showDivider?: boolean;
   borderWidth?: "full" | "padded" | Spacing
   align?: "right" | "left" | "center";
 };
 
 export const ModalFooter = forwardRef<"div", ModalFooterProps>(({
-  showBorder,
+  showDivider,
   borderWidth,
   children,
   ...props }, ref) =>
 {
   const styles = useMultiPartStyles();
 
-  const dividerStyles: SoperioComponent = {}
+  const dividerStyles: SoperioComponent = styles["divider"] ?? {}
 
   if (borderWidth === "padded")
   {
@@ -249,7 +249,7 @@ export const ModalFooter = forwardRef<"div", ModalFooterProps>(({
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <>
-      {showBorder && <Divider {...dividerStyles} />}
+      {showDivider && <Divider {...dividerStyles} />}
       <div
         ref={ref}
         {...styles["footer"]}

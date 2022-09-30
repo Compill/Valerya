@@ -15,18 +15,16 @@ const config: Config =
     backdrop:
     {
       bgColor: "#000000",
-      bgOpacity: "50"
+      bgOpacity: "75"
     },
     modalWrapper:
     {
       display: "flex",
       justifyContent: "center",
-      // bgColor: darkMode ? theme.background2 : theme.background1,
     },
     header:
     {
       ps: "7",
-      // px: "7",
       py: "3",
       minH: "16"
     },
@@ -57,7 +55,7 @@ const config: Config =
     divider:
     {
       h: "px",
-      // bgOpacity: "15", // Remove traits redefinition when soperio's parseProps don't have issue with prop overwriting anymore
+      bgOpacity: "15", // Remove traits redefinition when soperio's parseProps don't have issue with prop overwriting anymore
     }
   },
   subComponents: ["backdrop", "modalWrapper", "modalContent", "header", "headerTitle", "headerCloseButton", "body", "footer", "divider"],
@@ -78,7 +76,6 @@ const config: Config =
         (
           {
             bgColor: surface.layers.main.onColor,
-            bgOpacity: "15",
           }
         )
       },
@@ -96,7 +93,6 @@ const config: Config =
         (
           {
             bgColor: surface.layers.main.onColor,
-            bgOpacity: "15",
           }
         )
       },
