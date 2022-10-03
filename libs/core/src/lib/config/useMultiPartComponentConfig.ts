@@ -1,6 +1,5 @@
-import { IS_DEV, SoperioComponent, useDarkMode, useThemeExtra } from "@soperio/react";
+import { IS_DEV, SoperioComponent, useDarkMode } from "@soperio/react";
 import deepmerge from "deepmerge";
-import { ComponentManager } from "../config/ComponentManager";
 import { ComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "./ComponentConfig";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
 import { useMergedComponentConfig } from "./useMergeComponentConfig";

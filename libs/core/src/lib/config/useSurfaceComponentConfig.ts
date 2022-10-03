@@ -1,9 +1,8 @@
+import { IS_DEV, SoperioComponent, useDarkMode } from "@soperio/react";
 import { SurfaceScheme } from "@valerya/surface";
-import { IS_DEV, SoperioComponent, useDarkMode, useThemeExtra } from "@soperio/react";
 import deepmerge from "deepmerge";
 import { useSurface } from "../hooks/useSurface";
 import { ThemeSurfaceScheme } from "../surface/types";
-import { ComponentManager } from "./ComponentManager";
 import { ComponentState, ComponentThemeState } from "./ComponentStates";
 import { ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
 import { useMergedComponentConfig } from "./useMergeComponentConfig";

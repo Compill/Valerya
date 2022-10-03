@@ -4,7 +4,7 @@ import fs from "fs"
 import * as tsNode from "ts-node"
 import * as tsConfigPaths from "tsconfig-paths"
 import moduleAlias from "module-alias"
-import { createThemeTypingsInterface } from "../command/tokens/create-theme-typings-interface"
+import { createComponentsTypingsInterface } from "../command/tokens/create-components-typings-interface"
 import { themeKeyConfiguration } from "../command/tokens/config"
 import { isObject } from "../utils/is-object"
 
@@ -128,10 +128,7 @@ async function run()
         throw new Error("Theme not found in default or named `theme` export")
     }
 
-    const template = await createThemeTypingsInterface(theme, {
-        config: themeKeyConfiguration,
-        format,
-    })
+    const template = await createComponentsTypingsInterface(theme)
 
     if (process.send)
     {

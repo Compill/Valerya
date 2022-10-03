@@ -6,10 +6,10 @@ const exists = promisify(fs.exists)
 
 export const themeInterfaceDestination = [
     "node_modules",
-    "@soperio", 
-    "theming", 
+    "@valerya", 
+    "core", 
     "lib", 
-    "ThemeTypings.d.ts"
+    "Components.d.ts"
 ]
 
 /**

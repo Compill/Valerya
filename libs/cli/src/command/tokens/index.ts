@@ -65,7 +65,7 @@ export async function generateThemeTypings({
     onError?: () => void
 })
 {
-    const spinner = ora("Generating soperio theme typings").start()
+    const spinner = ora("Generating valerya components typings").start()
     try
     {
         const template = await runTemplateWorker({

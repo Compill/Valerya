@@ -18,7 +18,7 @@ export async function run()
     await initCLI()
 
     program
-        .command("tokens <source>")
+        .command("components <source>")
         .option(
             "--out <path>",
             `output file e.g. ${path.join(...themeInterfaceDestination)}`,
@@ -63,7 +63,7 @@ export async function run()
     program.on("--help", () =>
     {
         console.info(`Example call:
-  $ soperio-cli tokens theme.ts
+  $ valerya-cli components theme.ts
 `)
     })
 

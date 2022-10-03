@@ -9,7 +9,6 @@ const COMPONENT_ID = "Valerya.Avatar";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-
 const DefaultIcon = () => (
   <svg
     viewBox="0 0 128 128"
