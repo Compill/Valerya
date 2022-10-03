@@ -63,23 +63,29 @@ export const Switch = forwardRef<"input", SwitchProps>(({
         ref={ref}
         {...inputProps} />
 
+      {/* Track */}
       <Surface
         scheme={_scheme}
         as="span"
         transition={firstRender ? "none" : "all"}
         {...styles["track"]}
+        disabled={inputProps["disabled"]}
       >
+        {/* Thumb */}
         <Surface
           scheme={_scheme}
           as="span"
           transition={firstRender ? "none" : "all"}
+          disabled={inputProps["disabled"]}
           {...styles["thumb"]}
         />
       </Surface>
 
-      <span {...styles["label"]}>
-        {children}
-      </span>
+      {children && (
+        <span {...styles["label"]}>
+          {children}
+        </span>
+      )}
     </label>
   );
 });

@@ -8,19 +8,19 @@ const config: Config =
   {
     switch:
     {
-
+      dflex: true,
+      placeItems: "center"
     },
     track:
     {
-      display: "inline-block",
-      position: "relative",
-      cursor: "pointer"
+      stateDisabled:
+      {
+        cursor: "default"
+      }
     },
     thumb:
     {
-      position: "absolute",
-      easing: "linear",
-      duration: "300",
+      
     },
 
   },
@@ -33,16 +33,16 @@ const config: Config =
   subComponents: ["switch", "track", "thumb", "label"],
   traits:
   {
-    // TODO Whole design
-    // TODO Yohan has set sizes in pixels...
     size:
     {
+      // Track height & thumb height should be the same
       sm:
       {
         track:
         {
-          w: "8",
-          h: "4",
+          w: "7",
+          h: "3.5",
+          p: "0.5",
         },
         thumb:
         {
@@ -51,15 +51,17 @@ const config: Config =
         },
         label:
         {
-
+          fontSize: "sm",
+          ps: "2"
         },
       },
       md:
       {
         track:
         {
-          w: "9",
-          h: "5",
+          w: "8",
+          h: "4",
+          p: "0.5",
         },
         thumb:
         {
@@ -68,7 +70,8 @@ const config: Config =
         },
         label:
         {
-
+          fontSize: "md",
+          ps: "2.5"
         },
 
       },
@@ -77,7 +80,8 @@ const config: Config =
         track:
         {
           w: "10",
-          h: "6",
+          h: "5",
+          p: "1",
         },
         thumb:
         {
@@ -86,50 +90,47 @@ const config: Config =
         },
         label:
         {
-
+          fontSize: "lg",
+          ps: "3"
         },
 
       },
       xl:
       {
-        switch:
-        {
-          w: "52px",
-        },
         track:
         {
-          w: "52px",
-          h: "28px",
+          w: "12",
+          h: "6",
+          p: "1",
         },
         thumb:
         {
-          w: "24px",
-          h: "24px",
+          w: "6",
+          h: "6",
         },
         label:
         {
-
+          fontSize: "xl",
+          ps: "3.5"
         },
       },
       x2:
       {
-        switch:
-        {
-          w: "52px",
-        },
         track:
         {
-          w: "52px",
-          h: "28px",
+          w: "14",
+          h: "7",
+          p: "1",
         },
         thumb:
         {
-          w: "24px",
-          h: "24px",
+          w: "7",
+          h: "7",
         },
         label:
         {
-
+          fontSize: "x2",
+          ps: "4"
         },
       },
     },
@@ -140,27 +141,40 @@ const config: Config =
         track: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            layer: "alt"
-            // TODO
-            // stateDisabled:
-            // {
-            //   bgOpacity: "40",
-            //   cursor: "default"
-            // }
+            layer: "alt",
+            display: "inline-flex",
+            justifyContent: "start",
+            flexShrink: "0",
+            cursor: "pointer",
+            duration: "150",
+            boxSizing: "content-box",
+            stateChecked:
+            {
+              layer: "main"
+            }
           }
         ),
         thumb: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            layer: "mainInv",
-            ms: "2px",
+            bgColor: darkMode ? surface.layers.alt.onColor : surface.layers.main.onColor,
+            easing: "linear",
+            duration: "300",
+            position: "relative",
+            start: "0%",
             stateChecked:
             {
-              layer: "main",
-              transform: true,
-              translateX: "-100%",
-              ms: "calc(100% - 2px)",
+              start: "50%",
               easing: "out",
+              bgColor: surface.layers.main.onColor,
+            },
+            stateDisabled:
+            {
+              bgColor: darkMode ? surface.layers.alt.disabled.onColor : surface.layers.main.disabled.onColor,
+            },
+            stateCheckedDisabled:
+            {
+              bgColor: surface.layers.main.disabled.onColor,
             }
           }
         ),
@@ -171,45 +185,46 @@ const config: Config =
       },
       inverse:
       {
-        // track: (surface: SurfaceScheme, darkMode: boolean) =>
-        // (
-        //   {
-
-        //     bgColor: theme.background5,
-        //     shadow: " 0 0 5px grey",
-        //     easing: "linear",
-        //     duration: "300",
-        //     stateChecked:
-        //     {
-        //       bgColor: theme.default,
-        //       bgOpacity: "50",
-        //     },
-        //     stateDisabled:
-        //     {
-        //       bgOpacity: "40",
-        //       cursor: "default"
-        //     }
-        //   }
-        // ),
-        // thumb: (surface: SurfaceScheme, darkMode: boolean) =>
-        // (
-        //   {
-        //     bgColor: theme.background1,
-        //     ms: "2px",
-        //     mt: "2px",
-        //     easing: "linear",
-        //     duration: "300",
-
-        //     stateChecked:
-        //     {
-        //       transform: true,
-        //       translateX: "-100%",
-        //       ms: "calc(100% - 2px)",
-        //       easing: "out",
-        //       bgColor: theme.default,
-        //     }
-        //   }
-        // ),
+        track: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            layer: "altInv",
+            display: "inline-flex",
+            justifyContent: "start",
+            flexShrink: "0",
+            cursor: "pointer",
+            duration: "150",
+            boxSizing: "content-box",
+            stateChecked:
+            {
+              layer: darkMode ? "mainInv" : "main"
+            }
+          }
+        ),
+        thumb: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.altInv.onColor,
+            easing: "linear",
+            duration: "300",
+            position: "relative",
+            start: "0%",
+            stateChecked:
+            {
+              start: "50%",
+              easing: "out",
+              bgColor: darkMode ? surface.layers.mainInv.onColor : surface.layers.main.onColor,
+            },
+            stateDisabled:
+            {
+              bgColor: surface.layers.altInv.disabled.onColor,
+            },
+            stateCheckedDisabled:
+            {
+              bgColor: darkMode ? surface.layers.mainInv.disabled.onColor : surface.layers.main.disabled.onColor,
+            }
+          }
+        ),
         label: {
           fontSize: "lg",
           textAlign: "center"

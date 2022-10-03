@@ -16,7 +16,7 @@ export default function Page({ ...props })
         <Checkbox scheme="neutral" label="Hello" size="md" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" size="lg" label="Hello" checked={checked} onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" size="xl" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
-        <Checkbox scheme="neutral" size="x2" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
+        <Checkbox  size="x2" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
       </div>
 
       <div dflex gap="20">
