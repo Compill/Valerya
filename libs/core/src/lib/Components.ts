@@ -104,7 +104,7 @@ export interface Components
   "Valerya.Switch":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";
-    variant?: "default" | "inverse" | "fullColor";
+    variant?: "default" | "inverse";
     corners?: "default" | "square" | "rounded";
   },
   "Valerya.TextArea":
