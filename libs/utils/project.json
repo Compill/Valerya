@@ -2,22 +2,31 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/utils/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": [
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/libs/utils",
-        "main": "libs/utils/src/index.ts",
-        "tsConfig": "libs/utils/tsconfig.lib.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "format": [
           "esm",
           "cjs"
         ],
+        "outputPath": "dist/libs/utils",
+        "tsConfig": "libs/utils/tsconfig.lib.json",
+        "project": "libs/utils/package.json",
+        "entryFile": "libs/utils/src/index.ts",
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
-          "libs/utils/*.md"
+          {
+            "glob": "libs/utils/README.md",
+            "input": ".",
+            "output": "."
+          }
         ]
       }
     },
@@ -60,6 +69,5 @@
         "access": "public"
       }
     }
-  },
-  "tags": []
+  }
 }

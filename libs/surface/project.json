@@ -18,10 +18,6 @@
         "tsConfig": "libs/surface/tsconfig.lib.json",
         "project": "libs/surface/package.json",
         "entryFile": "libs/surface/src/index.ts",
-        "external": [
-          "react/jsx-runtime",
-          "@ctrl/tinycolor"
-        ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {
