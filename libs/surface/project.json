@@ -2,19 +2,34 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/surface/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/surface",
-        "main": "libs/surface/src/index.ts",
-        "tsConfig": "libs/surface/tsconfig.lib.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "format": [
           "esm",
           "cjs"
         ],
-        "assets": ["libs/surface/*.md"]
+        "outputPath": "dist/libs/surface",
+        "tsConfig": "libs/surface/tsconfig.lib.json",
+        "project": "libs/surface/package.json",
+        "entryFile": "libs/surface/src/index.ts",
+        "external": [
+          "react/jsx-runtime",
+          "@ctrl/tinycolor"
+        ],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "libs/surface/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "publish": {
@@ -50,6 +65,5 @@
         "access": "public"
       }
     }
-  },
-  "tags": []
+  }
 }
