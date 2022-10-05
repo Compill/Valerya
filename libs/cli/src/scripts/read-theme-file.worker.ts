@@ -120,7 +120,6 @@ async function run()
         throw new Error("No path to theme file provided.")
     }
 
-    console.log(themeFile)
     const theme = await readTheme(themeFile)
 
     if (!isObject(theme))

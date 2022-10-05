@@ -4,7 +4,7 @@ import { extractPropertyPaths, printUnions } from "./extract-property-paths"
 
 
 
-export function extractComponentTypes(theme: Record<string, unknown>)
+export function extractComponentTypes(theme: Record<string, any>)
 {
     const components = theme["extras"]?.["valerya.components"]
 
@@ -13,9 +13,12 @@ export function extractComponentTypes(theme: Record<string, unknown>)
         return {}
     }
 
+    // console.log("components", components)
+
     return Object.entries(components).reduce(
         (allDefs, [componentName, definition]) =>
         {
+            // console.log("componentName", componentName, definition)
             if (definition) 
             {
                 // Config can be a function with params ColorTheme, darkMode

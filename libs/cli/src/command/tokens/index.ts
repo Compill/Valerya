@@ -39,6 +39,7 @@ async function runTemplateWorker({
         worker.on("message", (message: ErrorRecord | Serializable) =>
         {
             const errMessage = (message as ErrorRecord)?.err
+            console.log(errMessage) 
 
             if (errMessage)
             {
@@ -47,7 +48,22 @@ async function runTemplateWorker({
 
             return resolve(String(message))
         })
-        worker.on("error", reject)
+
+        worker.on('error', (error) =>
+        {
+            console.log("error", error);
+            reject(error);
+        });
+
+        worker.stdout?.on('data', (data) =>
+        {
+            console.log(`child stdout:\n${data}`);
+        });
+
+        worker.stderr?.on('data', (data) =>
+        {
+            console.error(`child stderr:\n${data}`);
+        });
     })
 }
 

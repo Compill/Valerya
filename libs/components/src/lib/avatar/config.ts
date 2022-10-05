@@ -252,7 +252,7 @@ const config: Config =
           fontSize: "xl",
           border: "lg",
         }
-      },
+      }
     },
     variant:
     {
