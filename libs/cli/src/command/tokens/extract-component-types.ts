@@ -1,5 +1,5 @@
 
-import { isObject } from "lodash"
+import { isObject } from "../../utils/is-object"
 import { extractPropertyPaths, printUnions } from "./extract-property-paths"
 
 
