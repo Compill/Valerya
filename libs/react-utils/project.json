@@ -4,17 +4,29 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nrwl/web:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/libs/react-utils",
-        "main": "libs/react-utils/src/index.ts",
-        "tsConfig": "libs/react-utils/tsconfig.lib.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "format": [
           "esm",
           "cjs"
         ],
-        "assets": ["libs/react-utils/*.md"]
+        "outputPath": "dist/libs/react-utils",
+        "tsConfig": "libs/react-utils/tsconfig.lib.json",
+        "project": "libs/react-utils/package.json",
+        "entryFile": "libs/react-utils/src/index.ts",
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "libs/react-utils/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "publish": {
