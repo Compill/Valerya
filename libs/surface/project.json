@@ -14,6 +14,9 @@
           "esm",
           "cjs"
         ],
+        "external": [
+          "@emotion/react"
+        ],
         "outputPath": "dist/libs/surface",
         "tsConfig": "libs/surface/tsconfig.lib.json",
         "project": "libs/surface/package.json",
