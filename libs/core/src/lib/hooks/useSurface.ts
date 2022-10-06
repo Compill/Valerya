@@ -18,6 +18,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): Surfac
 
   if (typeof surface === "string")
   {
+    // TODO Set as warning, use default surface instead
     if (!surfaces)
       throw new Error("You're trying to useSurface but the theme doesn't contains any surface. Add some in the theme configuration under extras -> valerya.surfaces")
 
