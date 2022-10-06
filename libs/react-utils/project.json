@@ -15,6 +15,9 @@
           "esm",
           "cjs"
         ],
+        "external": [
+          "@soperio/utils"
+        ],
         "outputPath": "dist/libs/react-utils",
         "tsConfig": "libs/react-utils/tsconfig.lib.json",
         "project": "libs/react-utils/package.json",
@@ -43,14 +46,20 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/react-utils/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/react-utils/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/react-utils"],
+      "outputs": [
+        "coverage/libs/react-utils"
+      ],
       "options": {
         "jestConfig": "libs/react-utils/jest.config.ts",
         "passWithNoTests": true

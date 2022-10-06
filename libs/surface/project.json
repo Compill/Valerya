@@ -15,7 +15,8 @@
           "cjs"
         ],
         "external": [
-          "@emotion/react"
+          "@emotion/react",
+          "@soperio/react"
         ],
         "outputPath": "dist/libs/surface",
         "tsConfig": "libs/surface/tsconfig.lib.json",

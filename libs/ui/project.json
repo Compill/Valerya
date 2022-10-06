@@ -16,7 +16,8 @@
         "entryFile": "libs/ui/src/index.ts",
         "external": [
           "react/jsx-runtime",
-          "@emotion/react"
+          "@emotion/react",
+          "@soperio/react"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",

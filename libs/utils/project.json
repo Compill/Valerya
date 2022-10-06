@@ -16,6 +16,7 @@
           "esm",
           "cjs"
         ],
+        "external": [ "@soperio/utils"],
         "outputPath": "dist/libs/utils",
         "tsConfig": "libs/utils/tsconfig.lib.json",
         "project": "libs/utils/package.json",
