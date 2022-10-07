@@ -15,9 +15,12 @@
         "project": "libs/components/package.json",
         "entryFile": "libs/components/src/index.ts",
         "external": [
+          "react",
           "react/jsx-runtime",
           "@emotion/react",
-          "@soperio/react"
+          "@soperio/react",
+          "framer-motion",
+          "lodash"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
