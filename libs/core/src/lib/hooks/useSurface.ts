@@ -37,7 +37,7 @@ export function useSurface(surface?: ThemeSurfaceScheme | SurfaceScheme): Surfac
 
     if (!indexedSurface)
     {
-      if (IS_DEV)
+      if (IS_DEV && surface !== "default")
         console.warn(`[Valerya UI]: You're trying to use useSurface() with the param "${surface}" but this surface does not exist in your theme. Add it in the theme configuration under extras -> valerya.surfaces`);
 
       // Avoid crashing, return default surface
