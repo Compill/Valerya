@@ -1,4 +1,4 @@
-import { runIfFn } from "@soperio/utils"
+import { runIfFn } from "@soperio/react"
 import { useCallback, useState } from "react"
 import { useCallbackRef } from "./useCallbackRef"
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 // import { isFunction, isNumber } from "@soperio/utils"
-import { isFunction, isNumber } from "@soperio/utils"
+import { isFunction, isNumber } from "@soperio/react"
 import { IS_DEV } from "./assertion"
 import { AnyFunction, FunctionArguments } from "./types"
 

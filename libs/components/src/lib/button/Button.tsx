@@ -1,6 +1,5 @@
-import { ComponentManager, useSurfaceComponentConfig, useFirstRender } from "@valerya/core";
-import { forwardRef } from "@soperio/react";
-import { IS_DEV } from "@soperio/utils";
+import { forwardRef, IS_DEV } from "@soperio/react";
+import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import React from 'react';
 import { Surface } from "../surface";
 import defaultConfig from "./config";

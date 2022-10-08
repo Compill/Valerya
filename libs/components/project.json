@@ -16,9 +16,12 @@
         "entryFile": "libs/components/src/index.ts",
         "external": [
           "react",
+          "react-dom",
           "react/jsx-runtime",
           "@emotion/react",
           "@soperio/react",
+          "@soperio/jsx-runtime",
+          "@soperio/jsx-dev-runtime",
           "framer-motion",
           "lodash"
         ],

@@ -1,4 +1,4 @@
-import { isObject } from "@soperio/utils"
+import { isObject } from "@soperio/react"
 
 export function isCssVar(value: string): boolean
 {

@@ -1,4 +1,4 @@
-import { isFunction } from "@soperio/utils"
+import { isFunction } from "@soperio/react"
 import { MutableRefObject, Ref, RefObject } from "react"
 
 export type ReactRef<T> =

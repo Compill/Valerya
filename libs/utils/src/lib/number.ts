@@ -1,4 +1,4 @@
-import { isNotNumber } from "@soperio/utils"
+import { isNotNumber } from "@soperio/react"
 import { warn } from "./function"
 
 export const minSafeInteger = Number.MIN_SAFE_INTEGER || -9007199254740991

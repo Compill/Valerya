@@ -1,6 +1,5 @@
+import { createContext, forwardRef, HTMLDivProps, IS_DEV, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { createContext, forwardRef, HTMLDivProps, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
-import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
 import React from "react";
 import ReactDOM from "react-dom";

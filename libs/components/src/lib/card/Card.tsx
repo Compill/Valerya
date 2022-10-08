@@ -1,6 +1,5 @@
+import { forwardRef, HTMLDivProps, IS_DEV, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
 import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, HTMLDivProps, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
-import { IS_DEV } from "@soperio/utils";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
