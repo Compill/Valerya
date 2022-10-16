@@ -8,3 +8,13 @@ export interface StackProps extends SoperioComponent, Responsive, ParentComponen
 {
 
 }
+
+export interface VStackProps extends SoperioComponent, ParentComponent, HTMLDivProps
+{
+
+}
+
+export interface HStackProps extends SoperioComponent, ParentComponent, HTMLDivProps
+{
+
+}

@@ -18,9 +18,9 @@ export default function Page({ ...props })
             </div>
 
             <div mb="10">
-                <TextArea scheme="accent" block variant="default" mb="5" rows={3} placeholder="Hello" />
-                <TextArea scheme="accent" block variant="solid" mb="5" rows={3} placeholder="Hello" />
-                <TextArea scheme="accent" block variant="underline" corners="square" mb="5" rows={3} placeholder="Hello" />
+                <TextArea block variant="default" mb="5" rows={3} placeholder="Hello" />
+                <TextArea block variant="solid" mb="5" rows={3} placeholder="Hello" />
+                <TextArea block variant="underline" corners="square" mb="5" rows={3} placeholder="Hello" />
             </div>
 
             <div mb="10">

@@ -1,6 +1,6 @@
 import { useResponsiveProp } from "@soperio/react";
 import React from 'react';
-import { StackProps } from "./types";
+import { HStackProps, StackProps, VStackProps } from "./types";
 
 /**
  *
@@ -16,6 +16,32 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>(({ direction =
             display="flex"
             flexDirection={responsiveDirection}
             {..._props}
+            ref={ref}>
+            {children}
+        </div>
+    );
+});
+
+export const VStack = React.forwardRef<HTMLDivElement, VStackProps>(({ className, children, ...props }: StackProps, ref) =>
+{
+    return (
+        <div
+            display="flex"
+            flexDirection="column"
+            {...props}
+            ref={ref}>
+            {children}
+        </div>
+    );
+});
+
+export const HStack = React.forwardRef<HTMLDivElement, HStackProps>(({ className, children, ...props }: StackProps, ref) =>
+{
+    return (
+        <div
+            display="flex"
+            flexDirection="row"
+            {...props}
             ref={ref}>
             {children}
         </div>
