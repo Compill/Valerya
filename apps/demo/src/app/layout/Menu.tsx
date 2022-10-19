@@ -24,7 +24,7 @@ function MenuItem({ selected, children,...props }: Omit<ButtonProps, "ref">)
       rounded
       px="5"
       py="2"
-      fontSize="lg"
+      textSize="lg"
       {...props}
     >
       {children}

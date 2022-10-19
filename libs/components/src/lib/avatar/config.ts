@@ -53,13 +53,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "xs"
+          textSize: "xs"
         },
         badge:
         {
           w: "2.5",
           h: "2.5",
-          fontSize: "xs",
+          textSize: "xs",
           border: "xs",
         }
       },
@@ -72,13 +72,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "sm"
+          textSize: "sm"
         },
         badge:
         {
           w: "3",
           h: "3",
-          fontSize: "xs",
+          textSize: "xs",
           border: "sm",
         }
       },
@@ -91,13 +91,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "md"
+          textSize: "md"
         },
         badge:
         {
           w: "3.5",
           h: "3.5",
-          fontSize: "xs",
+          textSize: "xs",
           border: "sm",
         }
       },
@@ -110,13 +110,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "lg"
+          textSize: "lg"
         },
         badge:
         {
           w: "4",
           h: "4",
-          fontSize: "xs",
+          textSize: "xs",
           border: "sm",
         }
       },
@@ -129,13 +129,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "xl"
+          textSize: "xl"
         },
         badge:
         {
           w: "5",
           h: "5",
-          fontSize: "xs",
+          textSize: "xs",
           border: "sm",
         }
       },
@@ -148,13 +148,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x2"
+          textSize: "x2"
         },
         badge:
         {
           w: "6",
           h: "6",
-          fontSize: "sm",
+          textSize: "sm",
           border: "sm",
         }
       },
@@ -167,13 +167,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x3"
+          textSize: "x3"
         },
         badge:
         {
           w: "7",
           h: "7",
-          fontSize: "md",
+          textSize: "md",
           border: "sm",
         }
       },
@@ -186,13 +186,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x4"
+          textSize: "x4"
         },
         badge:
         {
           w: "8",
           h: "8",
-          fontSize: "md",
+          textSize: "md",
           border: "md",
         }
       },
@@ -205,13 +205,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x5"
+          textSize: "x5"
         },
         badge:
         {
           w: "9",
           h: "9",
-          fontSize: "lg",
+          textSize: "lg",
           border: "md",
         }
       },
@@ -224,13 +224,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x6"
+          textSize: "x6"
         },
         badge:
         {
           w: "10",
           h: "10",
-          fontSize: "lg",
+          textSize: "lg",
           border: "md",
         }
       },
@@ -243,13 +243,13 @@ const config: Config =
         },
         initials:
         {
-          fontSize: "x7"
+          textSize: "x7"
         },
         badge:
         {
           w: "11",
           h: "11",
-          fontSize: "xl",
+          textSize: "xl",
           border: "lg",
         }
       }

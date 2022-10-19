@@ -59,7 +59,7 @@ export default function Page({ ...props })
       </div>
 
 
-      <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" fontSize="x4">
+      <Container center size="x2" dflex flexCol gap="20" alignItems="center" justifyContent="center" py="20" fontWeight="600" textSize="x4">
 
         <div dflex flexRow gap="20">
           <SurfaceBlock scheme={scheme} layer="main" />
@@ -99,7 +99,7 @@ function SurfaceBlock({ scheme, layer }: SurfaceBlockProps)
   return (
     <div dflex flexCol gap="10">
 
-      <div trait="typo.h5" fontSize="sm" textAlign="center" w="full" dflex flexCol placeContent="center" alignItems="center">{layer}</div>
+      <div trait="typo.h5" textSize="sm" textAlign="center" w="full" dflex flexCol placeContent="center" alignItems="center">{layer}</div>
 
       <Surface scheme={scheme} layer={layer} {...sfProps} w="36" h="36" dflex flexCol placeContent="center">
         <div trait="typo.h3">Title</div>

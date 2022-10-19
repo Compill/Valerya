@@ -11,7 +11,7 @@ export default function Page({ ...props })
 
       <Card w="50%" scheme="primary" shadow>
         <Card.Header dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -26,7 +26,7 @@ export default function Page({ ...props })
 
       <Card w="50%" shadow scheme="primary">
         <Card.Header showBorder dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -41,7 +41,7 @@ export default function Page({ ...props })
 
       <Card w="50%" shadow>
         <Card.Header showBorder dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -56,7 +56,7 @@ export default function Page({ ...props })
 
       <Card w="50%" shadow>
         <Card.Header showBorder borderWidth="padded" dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -71,7 +71,7 @@ export default function Page({ ...props })
 
       <Card w="50%" shadow shadowColor="sky-500">
         <Card.Header dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -86,7 +86,7 @@ export default function Page({ ...props })
 
       <Card w="50%" variant="bordered">
         <Card.Header dflex alignItems="center">
-          <span fontSize="lg" fontWeight="600">Basic Card</span>
+          <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
         <Card.Body>

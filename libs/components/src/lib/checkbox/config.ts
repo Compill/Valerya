@@ -20,34 +20,34 @@ const config: Config =
     {
       "sm":
       {
-        fontSize: "sm",
+        textSize: "sm",
         w: "3",
         h: "3",
       },
       "md":
       {
 
-        fontSize: "md",
+        textSize: "md",
         w: "4",
         h: "4",
       },
       "lg":
       {
 
-        fontSize: "lg",
+        textSize: "lg",
         w: "5",
         h: "5",
       },
       "xl":
       {
 
-        fontSize: "xl",
+        textSize: "xl",
         w: "6",
         h: "6",
       },
       "x2":
       {
-        fontSize: "x2",
+        textSize: "x2",
         w: "7",
         h: "7",
       }

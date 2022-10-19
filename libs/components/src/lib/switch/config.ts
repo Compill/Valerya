@@ -51,7 +51,7 @@ const config: Config =
         },
         label:
         {
-          fontSize: "sm",
+          textSize: "sm",
           ps: "2"
         },
       },
@@ -70,7 +70,7 @@ const config: Config =
         },
         label:
         {
-          fontSize: "md",
+          textSize: "md",
           ps: "2.5"
         },
 
@@ -90,7 +90,7 @@ const config: Config =
         },
         label:
         {
-          fontSize: "lg",
+          textSize: "lg",
           ps: "3"
         },
 
@@ -110,7 +110,7 @@ const config: Config =
         },
         label:
         {
-          fontSize: "xl",
+          textSize: "xl",
           ps: "3.5"
         },
       },
@@ -129,7 +129,7 @@ const config: Config =
         },
         label:
         {
-          fontSize: "x2",
+          textSize: "x2",
           ps: "4"
         },
       },
@@ -179,7 +179,7 @@ const config: Config =
           }
         ),
         label: {
-          fontSize: "lg",
+          textSize: "lg",
           textAlign: "center"
         }
       },
@@ -226,7 +226,7 @@ const config: Config =
           }
         ),
         label: {
-          fontSize: "lg",
+          textSize: "lg",
           textAlign: "center"
         }
       },

@@ -55,7 +55,7 @@ const config: Config =
       {
         listItem:
         {
-          fontSize: "xs",
+          textSize: "xs",
           px: "2",
           py: "1",
         },
@@ -69,7 +69,7 @@ const config: Config =
       {
         listItem:
         {
-          fontSize: "sm",
+          textSize: "sm",
           px: "3",
           py: "2",
         },
@@ -83,7 +83,7 @@ const config: Config =
       {
         listItem:
         {
-          fontSize: "md",
+          textSize: "md",
           px: "4",
           py: "3",
         },
@@ -97,7 +97,7 @@ const config: Config =
       {
         listItem:
         {
-          fontSize: "lg",
+          textSize: "lg",
           px: "5",
           py: "4",
         },
@@ -111,7 +111,7 @@ const config: Config =
       {
         listItem:
         {
-          fontSize: "xl",
+          textSize: "xl",
           px: "6",
           py: "5",
         },

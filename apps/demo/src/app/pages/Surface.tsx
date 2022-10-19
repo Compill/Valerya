@@ -50,7 +50,7 @@ export default function Page({ ...props })
   return (
     <Container center size="x2" dflex flexRow gap="10">
 
-      <div dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" fontSize="x4">
+      <div dflex flexCol gap="4" alignItems="center" justifyContent="center" py="5" fontWeight="600" textSize="x4">
         <SurfaceBlock layer="main" surfaceProps={sfProps} />
         <SurfaceBlock layer="main" surfaceProps={{...sfProps, disabled: true}} />
         <SurfaceBlock layer="mainInv" surfaceProps={sfProps} />

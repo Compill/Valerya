@@ -44,7 +44,7 @@ const config: Config =
     {
       px: "7",
       py: "5",
-      fontSize: "sm"
+      textSize: "sm"
     },
     footer:
     {

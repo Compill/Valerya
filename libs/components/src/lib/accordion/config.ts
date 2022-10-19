@@ -37,7 +37,7 @@ const config: Config =
     {
       px: "4",
       py: "4",
-      fontSize: "sm"
+      textSize: "sm"
     },
     divider:
     {

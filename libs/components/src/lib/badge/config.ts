@@ -18,37 +18,37 @@ export const config: Config =
       {
         px: "2",
         minH: "5",
-        fontSize: "xs"
+        textSize: "xs"
       },
       "sm":
       {
         px: "2",
         minH: "6",
-        fontSize: "sm"
+        textSize: "sm"
       },
       "md":
       {
         px: "2.5",
         minH: "7",
-        fontSize: "md"
+        textSize: "md"
       },
       "lg":
       {
         px: "3",
         minH: "8",
-        fontSize: "lg"
+        textSize: "lg"
       },
       "xl":
       {
         px: "3.5",
         minH: "9",
-        fontSize: "xl"
+        textSize: "xl"
       },
       "x2":
       {
         px: "4",
         minH: "10",
-        fontSize: "x2"
+        textSize: "x2"
       }
     },
     variant:

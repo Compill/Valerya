@@ -78,7 +78,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
           </svg>
         </Surface>
       </label>
-      {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
+      {label && <span textSize={styles.textSize} ms="3">{label}</span>}
     </div>
   );
 });

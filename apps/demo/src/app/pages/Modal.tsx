@@ -15,7 +15,7 @@ export default function Page({ ...props }) {
 
       <Modal show={showModal}  onClose={() => setShowModal(false)} closeOnEsc={false} size="md" >
         <Modal.Header dflex alignItems="center" showDivider>
-          <span fontSize="lg" fontWeight="600">Basic Modal</span>
+          <span textSize="lg" fontWeight="600">Basic Modal</span>
         </Modal.Header>
         <Modal.Body >
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..

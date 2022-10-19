@@ -165,7 +165,7 @@ const config: Config =
         {
           px: "3",
           py: "2",
-          fontSize: "lg"
+          textSize: "lg"
         },
         rail:
         {
@@ -189,7 +189,7 @@ const config: Config =
         {
           px: "3.5",
           py: "2.5",
-          fontSize: "xl"
+          textSize: "xl"
         },
         rail:
         {
@@ -213,7 +213,7 @@ const config: Config =
         {
           px: "4",
           py: "2.5",
-          fontSize: "x2"
+          textSize: "x2"
         },
         rail:
         {

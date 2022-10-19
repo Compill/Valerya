@@ -107,7 +107,7 @@ export const Radio = forwardRef<"input", RadioProps>((
           )}
         </Surface>
       </label>
-      {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
+      {label && <span textSize={styles.textSize} ms="3">{label}</span>}
     </div >
   );
 });

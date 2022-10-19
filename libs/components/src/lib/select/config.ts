@@ -22,37 +22,37 @@ const config: Config =
       {
         px: "1.5",
         py: "1",
-        fontSize: "xs"
+        textSize: "xs"
       },
       "sm":
       {
         px: "2",
         py: "1.5",
-        fontSize: "sm"
+        textSize: "sm"
       },
       "md":
       {
         px: "2.5",
         py: "1.5",
-        fontSize: "md"
+        textSize: "md"
       },
       "lg":
       {
         px: "3",
         py: "2",
-        fontSize: "lg"
+        textSize: "lg"
       },
       "xl":
       {
         px: "3.5",
         py: "2.5",
-        fontSize: "xl"
+        textSize: "xl"
       },
       "x2":
       {
         px: "4",
         py: "2.5",
-        fontSize: "x2"
+        textSize: "x2"
       }
     },
     variant:
