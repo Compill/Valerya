@@ -4,14 +4,6 @@
         "@babel/preset-typescript"
     ],
     "plugins": [
-        [
-            "module-resolver",
-            {
-                "alias": {
-                    "@soperio/theming": "../theming/index.ts",
-                    "@soperio/utils": "./theming/index.ts"
-                }
-            }
-        ]
+        
     ]
 }
