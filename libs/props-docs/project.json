@@ -5,27 +5,9 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-script",
       "options": {
-        "script": "build",
-        "outputPath": "dist/libs/props-docs",
-        "tsConfig": "libs/props-docs/tsconfig.lib.json",
-        "project": "libs/props-docs/package.json",
-        "entryFile": "libs/props-docs/src/index.ts",
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "format": [
-          "esm",
-          "cjs"
-        ],
-        "assets": [
-          {
-            "glob": "libs/props-docs/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
+        "script": "build"
       }
     },
     "lint": {
