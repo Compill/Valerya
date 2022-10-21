@@ -21,14 +21,14 @@
   "devDependencies": {
     "@types/glob": "^7.1.3"
   },
-  "main": "valerya-ui-props-docs.cjs.js",
-  "module": "valerya-ui-props-docs.esm.js",
-  "types": "valerya-ui-props-docs.cjs.d.ts",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.cjs.d.ts",
   "files": [
     "components",
-    "valerya-ui-props-docs.cjs.js",
-    "valerya-ui-props-docs.esm.js",
-    "valerya-ui-props-docs.cjs.d.ts"
+    "index.cjs.js",
+    "index.esm.js",
+    "index.cjs.d.ts"
   ],
   "sideEffects": false,
   "scripts": {

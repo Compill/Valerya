@@ -39,9 +39,9 @@ const outPath = path.join(rootDir, "dist", "libs", "props-docs")
 const outputPath = path.join(outPath, "components")
 
 
-const cjsIndexFilePath = path.join(outPath, "valerya-ui-props-docs.cjs.js")
-const esmIndexFilePath = path.join(outPath, "valerya-ui-props-docs.esm.js")
-const typeFilePath = path.join(outPath, "valerya-ui-props-docs.cjs.d.ts")
+const cjsIndexFilePath = path.join(outPath, "index.cjs.js")
+const esmIndexFilePath = path.join(outPath, "index.esm.js")
+const typeFilePath = path.join(outPath, "index.cjs.d.ts")
 
 const tsConfigPath = path.join(sourcePath, "tsconfig.json")
 
