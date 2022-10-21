@@ -7,10 +7,11 @@
     "build": {
       "executor": "nx:run-script",
       "outputs": [
-        "dist/libs/props-docs"
+        "{options.outputPath}"
       ],
       "options": {
-        "script": "build"
+        "script": "build",
+        "outputPath": "dist/libs/props-docs"
       }
     },
     "lint": {
