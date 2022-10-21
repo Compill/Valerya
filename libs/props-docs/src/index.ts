@@ -7,7 +7,7 @@ import * as docgen from "react-docgen-typescript"
 import { ComponentDoc } from "react-docgen-typescript"
 import mkdirp from "mkdirp"
 import fs from "fs"
-import { CSSPropKeys } from "../../theming/src/lib/CSSProps"
+import { CSSPropKeys } from "@soperio/theming"
 
 type ComponentInfo = {
   def: ComponentDoc
@@ -31,7 +31,7 @@ const excludedPropNames = CSSPropKeys.concat([
 const rootDir = path.join(__dirname, "..", "..", "..")
 
 
-const sourcePath = path.join(rootDir, "libs", "ui")
+const sourcePath = path.join(rootDir, "libs", "components")
 
 const outPath = path.join(rootDir, "dist", "libs", "props-docs")
 
@@ -39,9 +39,9 @@ const outPath = path.join(rootDir, "dist", "libs", "props-docs")
 const outputPath = path.join(outPath, "components")
 
 
-const cjsIndexFilePath = path.join(outPath, "soperio-ui-props-docs.cjs.js")
-const esmIndexFilePath = path.join(outPath, "soperio-ui-props-docs.esm.js")
-const typeFilePath = path.join(outPath, "soperio-ui-props-docs.cjs.d.ts")
+const cjsIndexFilePath = path.join(outPath, "valerya-ui-props-docs.cjs.js")
+const esmIndexFilePath = path.join(outPath, "valerya-ui-props-docs.esm.js")
+const typeFilePath = path.join(outPath, "valerya-ui-props-docs.cjs.d.ts")
 
 const tsConfigPath = path.join(sourcePath, "tsconfig.json")
 
@@ -49,8 +49,10 @@ const tsConfigPath = path.join(sourcePath, "tsconfig.json")
 export async function main()
 {
   const componentFiles = await findComponentFiles()
+
   if (componentFiles.length)
   {
+    log("Creating output directory...")
     await mkdirp.sync(outputPath)
   }
 
@@ -88,6 +90,8 @@ async function findComponentFiles()
   const tsFiles = await globAsync("src/**/*.@(tsx)", {
     cwd: sourcePath,
   })
+
+  log("tsx files found ", tsFiles)
 
   return tsFiles.filter((f) => !f.includes("stories"))
 }

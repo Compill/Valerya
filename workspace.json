@@ -7,7 +7,7 @@
     "core": "libs/core",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
-    "prop-docs": "libs/props-docs",
+    "props-docs": "libs/props-docs",
     "react-utils": "libs/react-utils",
     "surface": "libs/surface",
     "ui": "libs/ui",
