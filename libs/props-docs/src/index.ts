@@ -96,7 +96,7 @@ async function findComponentFiles()
   return tsFiles.filter((f) => !f.includes("stories"))
 }
 
-const responsivePrefixes = ["sm_", "md_", "lg_", "xl_", "x2_", "hover_", "focus_", "groupHover_"]
+const responsivePrefixes = ["sm_", "md_", "lg_", "xl_", "x2_"]
 
 /**
  * Parse files with react-doc-gen-typescript
@@ -129,7 +129,11 @@ function parseInfo(filePaths: string[])
         return false
 
       // Component use ResponsiveProps<> type to make a prop responsive dynamically
-      const isResponsiveProp = responsivePrefixes.includes(prop.name.substring(0, 3))
+      const potentialPrefix = prop.name.substring(0, 3)
+      const isResponsiveProp = responsivePrefixes.includes(potentialPrefix) 
+                                    || prop.name.startsWith("hover_")
+                                    || prop.name.startsWith("focus_")
+                                    || prop.name.startsWith("groupHover_")
 
       if (isResponsiveProp)
         return false
