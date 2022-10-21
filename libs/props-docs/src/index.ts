@@ -96,7 +96,7 @@ async function findComponentFiles()
   return tsFiles.filter((f) => !f.includes("stories"))
 }
 
-const responsivePrefixes = ["sm_", "md_", "lg_", "xl_", "x2_"]
+const responsivePrefixes = ["sm_", "md_", "lg_", "xl_", "x2_", "hover_", "focus_", "groupHover_"]
 
 /**
  * Parse files with react-doc-gen-typescript
