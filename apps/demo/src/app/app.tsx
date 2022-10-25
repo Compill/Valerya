@@ -1,11 +1,20 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SoperioProvider, useTheme } from "@soperio/react";
+import { SoperioProvider, Theme, useTheme } from "@soperio/react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
 import { Header } from "./layout/Header";
 import { Menu } from "./layout/Menu";
 import theme from "./theme";
 
+declare module "@valerya/core"
+{
+  export interface ValeryaThemeTypings extends Theme
+  {
+    surfaces: "default" | "light" | "dark" | "neutral" | "primary" | "secondary" | "tertiary"
+    darkSurfaces: "default" | "light" | "dark" | "neutral"
+  }
+
+}
 
 
 export function App()

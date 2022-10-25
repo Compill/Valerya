@@ -1,6 +1,6 @@
 import React from "react"
 
-function useHover()
+export function useHover()
 {
     const [value, setValue] = React.useState(false);
     const ref = React.useRef(null);
