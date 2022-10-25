@@ -1,16 +1,15 @@
-import React from "react"
+import React, { RefObject } from "react"
 
-export function useHover()
+export function useHover<T extends HTMLElement = HTMLElement>(elementRef: RefObject<T>): boolean
 {
-    const [value, setValue] = React.useState(false);
-    const ref = React.useRef(null);
+    const [hover, setHover] = React.useState<boolean>(false);
 
-    const handleMouseOver = () => setValue(true);
-    const handleMouseOut = () => setValue(false);
+    const handleMouseOver = () => setHover(true);
+    const handleMouseOut = () => setHover(false);
 
     React.useEffect(() =>
     {
-        const node = ref.current;
+        const node = elementRef.current;
 
         if (node)
         {
@@ -26,7 +25,7 @@ export function useHover()
 
         return () => { }
 
-    }, [ref.current]);
+    }, [elementRef.current]);
 
-    return [ref, value];
+    return hover;
 }
