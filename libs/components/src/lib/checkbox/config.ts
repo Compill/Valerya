@@ -7,7 +7,7 @@ const config: Config =
   defaultTraits:
   {
     variant: "default",
-    shape: "default",
+    corners: "default",
     size: "lg",
   },
   defaultProps:
