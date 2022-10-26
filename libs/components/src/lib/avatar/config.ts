@@ -291,7 +291,7 @@ const config: Config =
           rounded: true
         },
       },
-      pill:
+      circle:
       {
         avatar:
         {
