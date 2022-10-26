@@ -36,7 +36,7 @@ const config: Config =
   defaultTraits:
   {
     size: "lg",
-    corners: "pill",
+    corners: "circle",
     variant: "default"
   },
   subComponents: ["avatar", "image", "initials", "badge"],
