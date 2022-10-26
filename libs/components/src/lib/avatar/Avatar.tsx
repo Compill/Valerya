@@ -29,32 +29,13 @@ const DefaultIcon = () => (
 
 type BadgePosition = "bottomEnd" | "bottomStart" | "topEnd" | "topStart" | "centerEnd" | "centerStart"
 
-export interface AvatarProps extends ComponentProps
-{
-  config?: ExtendConfig;
-  src?: string;
-  name?: string
-  getInitials?: (name: string) => string
-  icon?: React.ReactElement
-  badge?: boolean,
-  badgeColor?: string,
-  badgePosition?: BadgePosition,
-  badgeText?: string | number
-}
-
 function initials(name: string)
 {
   const [firstName, lastName] = name.split(" ")
-  return firstName && lastName
-    ? `${firstName.charAt(0)}${lastName.charAt(0)}`
-    : firstName.charAt(0)
+
+  return firstName && lastName ? `${firstName.charAt(0)}${lastName.charAt(0)}` : firstName.charAt(0)
 }
 
-/**
- *
- *
- *
- */
 function randomColor(str: string)
 {
   let hash = 0
@@ -72,17 +53,30 @@ function randomColor(str: string)
   for (let j = 0; j < 3; j += 1)
   {
     const value = (hash >> (j * 8)) & 255
-    color += `00${value.toString(16)}`.substr(-2)
+    color += `00${value.toString(16)}`.substring(-2)
   }
 
   return color
+}
+
+export interface AvatarProps extends ComponentProps
+{
+  config?: ExtendConfig;
+  src?: string;
+  name?: string
+  getInitials?: (name: string) => string
+  icon?: React.ReactElement
+  badge?: boolean,
+  badgeColor?: string,
+  badgePosition?: BadgePosition,
+  badgeText?: string | number
 }
 
 const badgePositionStylesMap: Record<BadgePosition, SoperioComponent> = {
   "topStart":
   {
     top: "0",
-    start:"0",
+    start: "0",
     translateX: "-25%",
     translateY: "-25%",
     css: {
@@ -111,7 +105,7 @@ const badgePositionStylesMap: Record<BadgePosition, SoperioComponent> = {
   "bottomStart":
   {
     bottom: "0",
-    start:"0",
+    start: "0",
     translateX: "-25%",
     translateY: "25%",
   },
@@ -127,9 +121,9 @@ const badgePositionStylesMap: Record<BadgePosition, SoperioComponent> = {
 
 export const Avatar = forwardRef<typeof Surface, AvatarProps>((
   {
-    corners = "pill",
+    corners,
     size,
-    variant = "default",
+    variant,
     scheme,
     config,
     src,
@@ -137,7 +131,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
     icon = <DefaultIcon />,
     getInitials = initials,
     badge,
-    badgeColor,
+    badgeColor = "green",
     badgePosition = "topEnd",
     badgeText,
     ...props
@@ -188,10 +182,10 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
 
       {badge &&
         <div
-        rounded="full"
-        bgColor={badgeColor || "green"}
-        {...styles["badge"]}
-        {...badgePositionStylesMap[badgePosition]}
+          rounded="full"
+          bgColor={badgeColor}
+          {...styles["badge"]}
+          {...badgePositionStylesMap[badgePosition]}
         >
           {badgeText}
         </div>}
