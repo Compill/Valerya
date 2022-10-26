@@ -19,7 +19,7 @@ interface SurfaceSchemeProps extends TraitProps
   hoverable?: boolean
 }
 
-export type LayerProps = Required<TraitProps> // Alias
+export type LayerProps = TraitProps // Alias
 export type SurfaceProps = Omit<ComponentProps, "layer"> & Omit<SurfaceSchemeProps, "layer">
 
 export type SurfaceBasedComponent<T = {}> = T & Omit<SurfaceProps, "hoverable">
