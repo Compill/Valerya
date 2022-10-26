@@ -19,7 +19,7 @@ export interface Components
   {
     variant: "default" | "light" | "outline" | "light-outline";
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
-    shape: "default" | "rounded" | "pill" | "square";
+    corners: "default" | "rounded" | "pill" | "square";
   },
   "Valerya.Button":
   {

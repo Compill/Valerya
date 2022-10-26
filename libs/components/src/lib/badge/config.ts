@@ -10,6 +10,12 @@ export const config: Config =
     alignItems: "center",
     justifyContent: "center"
   },
+  defaultTraits:
+  {
+    size: "md",
+    corners: "default",
+    variant: "default"
+  },
   traits:
   {
     size:
@@ -82,7 +88,7 @@ export const config: Config =
         }
       ),
     },
-    shape: 
+    corners: 
     {
       square: { rounded: "none" },
       default: { rounded: true },

@@ -10,9 +10,9 @@ interface ConfigStateProps extends DisabledThemeProps, CheckedThemeProps, Checke
 
 type AvatarComponentProps = {
   avatar: SoperioComponent,
-  image: SoperioComponent, // SwitchHeaderThemeProps
+  image: SoperioComponent,
   initials: SoperioComponent,
-  badge: SoperioComponent,  // SwitchContentThemeProps
+  badge: SoperioComponent,
 }
 
 export type Config = MultiPartSurfaceComponentConfig<TraitProps, AvatarComponentProps, ConfigStateProps>;

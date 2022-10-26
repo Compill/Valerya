@@ -19,9 +19,9 @@ export interface BadgeProps extends ComponentProps, ParentComponent
  *
  */
 export const Badge = forwardRef<typeof Surface, BadgeProps>(({
-  variant = "default",
-  size = "md",
-  shape = "rounded",
+  variant,
+  size,
+  corners,
   scheme,
   config,
   children,
@@ -30,7 +30,7 @@ export const Badge = forwardRef<typeof Surface, BadgeProps>(({
 {
   const firstRender = useFirstRender();
 
-  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props);
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props);
 
   return (
     <Surface
