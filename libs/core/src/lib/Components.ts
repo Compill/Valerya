@@ -41,7 +41,7 @@ export interface Components
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";
-    shape: "square" | "default" | "circle";
+    corners: "square" | "default" | "circle";
   },
   "Valerya.Input":
   {
@@ -66,7 +66,7 @@ export interface Components
   {
     size: "sm" | "md" | "lg" | "xl" | "x2";
     variant: "default" | "outline";
-    shape: "square" | "default" | "circle";
+    corners: "square" | "default" | "circle";
     dotSize?: "sm" | "md" | "lg";
   },
   "Soperio.Scrollable":

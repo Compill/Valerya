@@ -29,14 +29,14 @@ export const Radio = forwardRef<"input", RadioProps>((
     size,
     variant,
     dotSize = "lg",
-    shape,
+    corners,
     config,
     ...props
   }, ref) =>
 {
   const firstRender = useFirstRender();
 
-  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
   // TODO Fix tick

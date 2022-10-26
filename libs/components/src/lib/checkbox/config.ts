@@ -84,7 +84,7 @@ const config: Config =
         }
       ),
     },
-    shape:
+    corners:
     {
       square: { rounded: "none" },
       default: { rounded: true },

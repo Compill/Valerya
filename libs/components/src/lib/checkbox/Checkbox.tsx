@@ -25,12 +25,12 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
     label = "",
     size,
     variant,
-    shape,
+    corners,
     config,
     ...props
   }, ref) =>
 {
-  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, shape }, props)
+  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
