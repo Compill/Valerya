@@ -135,7 +135,7 @@ async function run()
 
     if (process.send)
     {
-        process.send([componentTypings, surfaceTypings])
+        process.send( {components: componentTypings, surfaces: surfaceTypings })
     } else
     {
         process.stdout.write(componentTypings ?? "")

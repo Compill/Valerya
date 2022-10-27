@@ -21,7 +21,7 @@ async function runTemplateWorker({
     themeFile: string
     strictComponentTypes?: boolean
     format?: boolean
-}): Promise<string>
+}): Promise<any>
 {
     const worker = fork(
         path.join(__dirname, "..", "..", "scripts", "read-theme-file.worker.js"),
@@ -46,7 +46,7 @@ async function runTemplateWorker({
                 reject(new Error(errMessage))
             }
 
-            return resolve(String(message))
+            return resolve(message)
         })
 
         worker.on('error', (error) =>
@@ -84,7 +84,7 @@ export async function generateThemeTypings({
     const spinner = ora("Generating valerya typings").start()
     try
     {
-        const [componentTypings, surfaceTypings] = await runTemplateWorker({
+        const { components: componentTypings, surfaces: surfaceTypings } = await runTemplateWorker({
             themeFile,
             strictComponentTypes,
             format,
@@ -110,7 +110,7 @@ export async function generateThemeTypings({
             const outPath = await resolveOutputPath("ValeryaThemeTypings.d.ts", out)
             console.log("path for ValeryaThemeTypings.d.ts", outPath)
             spinner.text = `Write file "${outPath}"...`
-            console.log("template for ValeryaThemeTypings.d.ts", componentTypings)
+            console.log("template for ValeryaThemeTypings.d.ts", surfaceTypings)
             await writeFileAsync(outPath, surfaceTypings, "utf8")
         }
         else
