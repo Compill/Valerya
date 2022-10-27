@@ -53,7 +53,7 @@ function randomColor(str: string)
   for (let j = 0; j < 3; j += 1)
   {
     const value = (hash >> (j * 8)) & 255
-    color += `00${value.toString(16)}`.substring(-2)
+    color += `00${value.toString(16)}`.substr(-2)
   }
 
   return color
