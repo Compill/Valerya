@@ -11,12 +11,15 @@ import modalConfig from "./input/config"
 import radioConfig from "./radio/config"
 // import scrollableConfig from "./scrollable/config"
 import selectConfig from "./select/config"
+import sidebarConfig from "./sidebar/config"
 import sliderConfig from "./slider/config"
 import spinnerConfig from "./spinner/config"
+import surfaceConfig from "./surface/config"
 import switchConfig from "./switch/config"
 import textAreaConfig from "./textarea/config"
+import tileConfig from "./tile/config"
 
-// TODO Is it useful or should I delete it?
+// Used mainly for regenerating typings
 export const theming = {
     "Valerya.Accordion": accordionConfig,
     "Valerya.Avatar": avatarConfig,
@@ -31,8 +34,11 @@ export const theming = {
     "Valerya.Radio": radioConfig,
     // "Valerya.Scrollable": scrollableConfig,
     "Valerya.Select": selectConfig,
+    "Valerya.Sidebar": sidebarConfig,
     "Valerya.Slider": sliderConfig,
     "Valerya.Spinner": spinnerConfig,
+    "Valerya.Surface": surfaceConfig,
     "Valerya.Switch": switchConfig,
     "Valerya.TextArea": textAreaConfig,
+    "Valerya.Tile": tileConfig,
 }
