@@ -74,9 +74,9 @@ export const Slider = forwardRef <"input", SliderProps>(({
         <div {...styles["slider"]} {...divProps} {...getRootProps(rootProps)} {...padding}>
             <SliderProvider value={context}>
                 <MultiPartStyleProvider value={styles}>
-                    <Rail orientation={orientation} />
-                    <Track orientation={orientation} />
-                    <Thumb />
+                    <Rail orientation={orientation} disabled={disabled} />
+                    <Track orientation={orientation} disabled={disabled} />
+                    <Thumb disabled={disabled} />
                     <input hidden {...getInputProps({}, ref)} />
                 </MultiPartStyleProvider>
             </SliderProvider>
@@ -86,10 +86,11 @@ export const Slider = forwardRef <"input", SliderProps>(({
 
 interface RailProps
 {
-    orientation: "horizontal" | "vertical"
+    orientation: "horizontal" | "vertical",
+    disabled?: boolean
 }
 
-const Rail = forwardRef < "span", RailProps>(({ orientation }: RailProps, ref) => 
+const Rail = forwardRef < "span", RailProps>(({ orientation, ...props }: RailProps, ref) => 
 {
     const styles = useMultiPartStyles();
 
@@ -100,15 +101,17 @@ const Rail = forwardRef < "span", RailProps>(({ orientation }: RailProps, ref) =
         {...styles["rail"]}
         w={orientation === "horizontal" ? "full" : styles["rail"]?.["w"]}
         h={orientation === "vertical" ? "full" : styles["rail"]?.["h"]}
-        {...getTrackProps({}, ref)} />
+        {...getTrackProps({}, ref)} 
+        {...props} />
 })
 
 interface TrackProps
 {
-    orientation: "horizontal" | "vertical"
+    orientation: "horizontal" | "vertical",
+    disabled?: boolean
 }
 
-const Track = forwardRef <"span", RailProps>(({ orientation }: TrackProps, ref) =>
+const Track = forwardRef <"span", RailProps>(({ orientation, ...props }: TrackProps, ref) =>
 {
     const styles = useMultiPartStyles();
 
@@ -119,16 +122,19 @@ const Track = forwardRef <"span", RailProps>(({ orientation }: TrackProps, ref) 
         {...styles["track"]}
         w={orientation === "horizontal" ? "full" : styles["track"]?.["w"]}
         h={orientation === "vertical" ? "full" : styles["track"]?.["h"]}
-        {...getInnerTrackProps({}, ref)} />
+        {...getInnerTrackProps({}, ref)}
+        {...props} />
 })
 
-type ThumbProps = {}
+type ThumbProps = {
+    disabled?: boolean
+}
 
-const Thumb = forwardRef <"span", ThumbProps>(({ }, ref) =>
+const Thumb = forwardRef <"span", ThumbProps>(({ ...props }, ref) =>
 {
     const styles = useMultiPartStyles();
 
     const { getThumbProps, state } = useSliderContext();
 
-    return <Surface {...styles["thumb"]} {...(state.isDragging ? styles["thumbDragging"] : {})} {...getThumbProps({}, ref)} hoverable />
+    return <Surface {...styles["thumb"]} {...(state.isDragging ? styles["thumbDragging"] : {})} {...getThumbProps({}, ref)} hoverable {...props} />
 })

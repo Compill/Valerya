@@ -17,6 +17,7 @@ export default function Page({ ...props })
 
       <div dflex flexCol gap="10" w="64">
         <Slider variant="default" step={10}/>
+        <Slider variant="default" step={10} disabled/>
         <Slider variant="solid"/>
         <Slider variant="test"/>
         <Slider variant="test2"/>

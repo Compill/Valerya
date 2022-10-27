@@ -52,7 +52,7 @@ export default function Page({ ...props })
       <div dflex flexRow gap="4">
         <Avatar src="../assets/photo.jpg" size="sm" name="Yohan Gerbaud" badge badgePosition="centerStart" />
         <Avatar badgePosition="centerEnd" size="md" badge />
-        <Avatar name="Yohan Gerbaud" badge badgePosition="topStart" corners="pill" />
+        <Avatar name="Yohan Gerbaud" badge badgePosition="topStart" corners="circle" />
         <Avatar src="../assets/pho.jpg" badge badgePosition="topEnd" badgeText={5} />
         <Avatar src="../assets/pho.jpg" name="Yohan Gerbaud" badge />
         <Avatar src="../assets/photo.jpg" size="xl" name="albin erd" badge badgeColor="red" />

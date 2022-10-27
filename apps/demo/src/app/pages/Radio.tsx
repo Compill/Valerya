@@ -25,11 +25,11 @@ export default function Page({ ...props })
   return (
     <Container center size="x2" gap="4" justifyContent="center" py="20">
       <div mb="10">
-        <Radio name="sm" size="sm" shape="circle" label="Accept the terms and conditions" checked={checked == "sm"} onClick={handleClick} onChange={handleChange} />
-        <Radio name="md" size="md" shape="circle" label="Accept the terms and conditions" checked={checked == "md"} onClick={handleClick} onChange={handleChange} />
-        <Radio name="lg" size="lg" shape="circle" label="Accept the terms and conditions" checked={checked == "lg"} onClick={handleClick} onChange={handleChange} />
-        <Radio name="xl" size="xl" shape="circle" label="Accept the terms and conditions" checked={checked == "xl"} onClick={handleClick} onChange={handleChange} />
-        <Radio name="x2" size="x2" shape="circle" label="Accept the terms and conditions" checked={checked == "x2"} onClick={handleClick} onChange={handleChange} />
+        <Radio name="sm" size="sm" corners="circle" label="Accept the terms and conditions" checked={checked == "sm"} onClick={handleClick} onChange={handleChange} />
+        <Radio name="md" size="md" corners="circle" label="Accept the terms and conditions" checked={checked == "md"} onClick={handleClick} onChange={handleChange} />
+        <Radio name="lg" size="lg" corners="circle" label="Accept the terms and conditions" checked={checked == "lg"} onClick={handleClick} onChange={handleChange} />
+        <Radio name="xl" size="xl" corners="circle" label="Accept the terms and conditions" checked={checked == "xl"} onClick={handleClick} onChange={handleChange} />
+        <Radio name="x2" size="x2" corners="circle" label="Accept the terms and conditions" checked={checked == "x2"} onClick={handleClick} onChange={handleChange} />
       </div>
 
       {/* <div mb="10" dflex flexCol spaceY="20">

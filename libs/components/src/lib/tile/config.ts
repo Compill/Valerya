@@ -2,7 +2,7 @@ import { Config } from "./types";
 
 export const config: Config =
 {
-  defaultScheme: "light",
+  defaultScheme: "default",
   defaultProps:
   {
     p: "3",
