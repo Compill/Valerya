@@ -130,6 +130,9 @@ async function run()
     const componentTypings = await createComponentsTypingsInterface(theme)
     const surfaceTypings = await createSurfaceTypingsInterface(theme)
 
+    process.stdout.write(componentTypings ?? "component typings template is null")
+    process.stdout.write(surfaceTypings ?? "surface typings template is null")
+
     if (process.send)
     {
         process.send([componentTypings, surfaceTypings])
