@@ -18,10 +18,10 @@ export async function run()
     await initCLI()
 
     program
-        .command("components <source>")
+        .command("typings <source>")
         .option(
             "--out <path>",
-            `output file e.g. ${path.join(...themeInterfaceDestination)}`,
+            `output dir e.g. ${path.join(...themeInterfaceDestination)}`,
         )
         .option("--no-format", "Disable auto formatting")
         .option("--watch [path]", "Watch directory for changes and rebuild")

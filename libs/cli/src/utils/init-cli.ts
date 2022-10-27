@@ -9,8 +9,8 @@ export async function initCLI()
     checkNode(`12`)
     await unhandledError()
     welcome({
-        title: "Soperio UI CLI",
-        tagLine: `by Compill\nA CLI to create custom themes`,
+        title: "Valerya UI CLI",
+        tagLine: `by Compill\nA CLI to generate typings for components and surfaces`,
         // tagLine: `by Compill\n${pkgJSON.description}`,
         bgColor: `#319795`,
         color: `#FFFFFF`,

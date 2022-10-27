@@ -1,11 +1,11 @@
-import "regenerator-runtime/runtime"
-import path from "path"
 import fs from "fs"
+import moduleAlias from "module-alias"
+import path from "path"
+import "regenerator-runtime/runtime"
 import * as tsNode from "ts-node"
 import * as tsConfigPaths from "tsconfig-paths"
-import moduleAlias from "module-alias"
 import { createComponentsTypingsInterface } from "../command/tokens/create-components-typings-interface"
-import { themeKeyConfiguration } from "../command/tokens/config"
+import { createSurfaceTypingsInterface } from "../command/tokens/create-surface-typings-interface"
 import { isObject } from "../utils/is-object"
 
 const bold = (text: string) => `\x1b[1m${text}\x1b[22m`
@@ -127,14 +127,15 @@ async function run()
         throw new Error("Theme not found in default or named `theme` export")
     }
 
-    const template = await createComponentsTypingsInterface(theme)
+    const componentTypings = await createComponentsTypingsInterface(theme)
+    const surfaceTypings = await createSurfaceTypingsInterface(theme)
 
     if (process.send)
     {
-        process.send(template)
+        process.send([componentTypings, surfaceTypings])
     } else
     {
-        process.stdout.write(template)
+        process.stdout.write(componentTypings ?? "")
     }
 }
 

@@ -7,7 +7,7 @@ function wrapWithQuotes(value: unknown)
     return `"${value}"`
 }
 
-function printUnionType(values: string[], strict = false)
+export function printUnionType(values: string[], strict = false)
 {
     if (!values.length)
     {

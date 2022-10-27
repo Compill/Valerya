@@ -84,19 +84,39 @@ export async function generateThemeTypings({
     const spinner = ora("Generating valerya components typings").start()
     try
     {
-        const template = await runTemplateWorker({
+        const [componentTypings, surfaceTypings] = await runTemplateWorker({
             themeFile,
             strictComponentTypes,
             format,
         })
-        const outPath = await resolveOutputPath(out)
-
+        
         spinner.info()
-        spinner.text = `Write file "${outPath}"...`
+        
+        if (componentTypings)
+        {
+            const outPath = await resolveOutputPath("Components.d.ts", out)
+            spinner.text = `Write file "${outPath}"...`
+            await writeFileAsync(outPath, componentTypings, "utf8")
+        }
+        else
+        {
+            spinner.text = "No components in theme, skipping."
+        }
 
-        await writeFileAsync(outPath, template, "utf8")
+        if (surfaceTypings)
+        {
+            const outPath = await resolveOutputPath("ValeryaThemeTypings.d.ts", out)
+            spinner.text = `Write file "${outPath}"...`
+            await writeFileAsync(outPath, surfaceTypings, "utf8")
+        }
+        else
+        {
+            spinner.text = "No surfaces in theme, skipping."
+        }
+
         spinner.succeed("Done")
-    } catch (e)
+    } 
+    catch (e)
     {
         spinner.fail("An error occurred")
         if (e instanceof Error)
@@ -105,7 +125,8 @@ export async function generateThemeTypings({
         }
         spinner.stop()
         onError?.()
-    } finally
+    } 
+    finally
     {
         spinner.stop()
     }

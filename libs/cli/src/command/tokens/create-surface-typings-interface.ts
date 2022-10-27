@@ -1,6 +1,7 @@
 
-import { extractComponentTypes, printComponentTypes } from "./extract-component-types"
+import { extractSurfaceTypes } from "./extract-surface-types"
 import { formatWithPrettierIfAvailable } from "../../utils/format-with-prettier"
+import { printUnionType } from "./extract-property-paths"
 
 export interface ThemeKeyOptions
 {
@@ -32,26 +33,26 @@ export interface ThemeKeyOptions
     flatMap?: (value: string) => string | string[]
 }
 
-export async function createComponentsTypingsInterface(
+export async function createSurfaceTypingsInterface(
     theme: Record<string, unknown>,
 )
 {
 
-    const componentTypes = extractComponentTypes(theme)
+    const surfaceTypes = extractSurfaceTypes(theme)
 
     const template =
         // language=ts
         `// regenerate by running
 // npx @valerya/cli typings path/to/your/theme.(js|ts)
 
-export interface Components {
-${printComponentTypes(componentTypes)}
+export interface ValeryaThemeTypings {
+    surfaces: ${printUnionType(surfaceTypes)}
 
 }
 `
 
     // Only override file if definition is not empty
-    if (Object.keys(componentTypes).length > 0)
+    if (surfaceTypes.length > 0)
         return formatWithPrettierIfAvailable(template)
 
     return undefined

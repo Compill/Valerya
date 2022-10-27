@@ -1,6 +1,4 @@
-import { Theme } from "@soperio/react";
-
-export interface ValeryaThemeTypings extends Theme
+export interface ValeryaThemeTypings
 {
     surfaces: "default" | "light" | "dark" | "neutral"
     darkSurfaces: "default" | "light" | "dark" | "neutral"

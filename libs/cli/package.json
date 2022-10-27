@@ -16,8 +16,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "devValeryia": "clear & node bin/index.js components ./src/test/theme.ts",
-    "devValeryaOut": "clear & node bin/index.js components ./src/test/theme.ts  --out ./src/test/out.ts"
+    "devValeryia": "clear & node bin/index.js typings ./src/test/theme.ts",
+    "devValeryaOut": "clear & node bin/index.js typings ./src/test/theme.ts  --out ./src/test"
   },
   "dependencies": {
     "@swc/core": "^1.2.177",
