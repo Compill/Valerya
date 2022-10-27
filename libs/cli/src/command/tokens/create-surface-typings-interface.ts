@@ -46,7 +46,7 @@ export async function createSurfaceTypingsInterface(
 // npx @valerya/cli typings path/to/your/theme.(js|ts)
 
 export interface ValeryaThemeTypings {
-    surfaces: ${printUnionType(surfaceTypes)}
+    surfaces: ${printUnionType(surfaceTypes, true)}
 
 }
 `

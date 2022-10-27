@@ -95,9 +95,7 @@ export async function generateThemeTypings({
         if (componentTypings)
         {
             const outPath = await resolveOutputPath("Components.d.ts", out)
-            console.log("path for Components.d.ts", outPath)
             spinner.text = `Write file "${outPath}"...`
-            console.log("template for Components.d.ts", componentTypings)
             await writeFileAsync(outPath, componentTypings, "utf8")
         }
         else
@@ -108,9 +106,7 @@ export async function generateThemeTypings({
         if (surfaceTypings)
         {
             const outPath = await resolveOutputPath("ValeryaThemeTypings.d.ts", out)
-            console.log("path for ValeryaThemeTypings.d.ts", outPath)
             spinner.text = `Write file "${outPath}"...`
-            console.log("template for ValeryaThemeTypings.d.ts", surfaceTypings)
             await writeFileAsync(outPath, surfaceTypings, "utf8")
         }
         else

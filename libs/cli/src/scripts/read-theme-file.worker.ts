@@ -130,16 +130,10 @@ async function run()
     const componentTypings = await createComponentsTypingsInterface(theme)
     const surfaceTypings = await createSurfaceTypingsInterface(theme)
 
-    process.stdout.write(componentTypings ?? "component typings template is null")
-    process.stdout.write(surfaceTypings ?? "surface typings template is null")
-
     if (process.send)
-    {
         process.send( {components: componentTypings, surfaces: surfaceTypings })
-    } else
-    {
+    else
         process.stdout.write(componentTypings ?? "")
-    }
 }
 
 run().catch((e: Error) =>
@@ -147,11 +141,9 @@ run().catch((e: Error) =>
     const err = `${e.toString()}\n${e.stack}`
 
     if (process.send)
-    {
         process.send({ err })
-    } else
-    {
+    else
         process.stderr.write(err)
-    }
+    
     process.exit(1)
 })
