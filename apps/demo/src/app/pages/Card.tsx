@@ -56,7 +56,7 @@ export default function Page({ ...props })
 
       <Card w="50%" shadow>
         <Card.Header showDivider dividerWidth="32" dflex alignItems="center">
-          <span textSize="lg" fontWeight="600">Basic Card</span>
+          Basic Card
         </Card.Header>
 
         <Card.Body>

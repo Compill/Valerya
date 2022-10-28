@@ -20,6 +20,8 @@ const config: Config =
       px: "7",
       py: "3",
       minH: "16",
+      dflex: true,
+      alignItems: "center",
       textSize: "lg",
       fontWeight: "600"
     },
@@ -33,7 +35,9 @@ const config: Config =
     {
       px: "7",
       py: "3",
-      minH: "16"
+      minH: "16",
+      dflex: true,
+      alignItems: "center",
     },
     divider:
     {
