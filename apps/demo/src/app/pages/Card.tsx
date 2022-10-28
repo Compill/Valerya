@@ -11,7 +11,7 @@ export default function Page({ ...props })
 
       <Card w="50%" scheme="primary" shadow>
         <Card.Header dflex alignItems="center">
-          <span textSize="lg" fontWeight="600">Basic Card</span>
+          <span>Basic Card</span>
         </Card.Header>
 
         <Card.Body>
@@ -25,7 +25,7 @@ export default function Page({ ...props })
       </Card>
 
       <Card w="50%" shadow scheme="primary">
-        <Card.Header showBorder dflex alignItems="center">
+        <Card.Header showDivider dflex alignItems="center">
           <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
@@ -33,14 +33,14 @@ export default function Page({ ...props })
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
         </Card.Body>
 
-        <Card.Footer showBorder dflex placeContent="end" alignItems="center">
+        <Card.Footer showDivider dflex placeContent="end" alignItems="center">
           <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
           <Button scheme="secondary" variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 
       <Card w="50%" shadow>
-        <Card.Header showBorder dflex alignItems="center">
+        <Card.Header showDivider dflex alignItems="center">
           <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
@@ -48,14 +48,14 @@ export default function Page({ ...props })
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
         </Card.Body>
 
-        <Card.Footer showBorder dflex placeContent="end" alignItems="center">
+        <Card.Footer showDivider dflex placeContent="end" alignItems="center">
           <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
           <Button scheme="secondary" variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 
       <Card w="50%" shadow>
-        <Card.Header showBorder borderWidth="padded" dflex alignItems="center">
+        <Card.Header showDivider dividerWidth="32" dflex alignItems="center">
           <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
 
@@ -63,7 +63,7 @@ export default function Page({ ...props })
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
         </Card.Body>
 
-        <Card.Footer showBorder borderWidth="padded" dflex placeContent="end" alignItems="center">
+        <Card.Footer showDivider dividerWidth="32" dflex placeContent="end" alignItems="center">
           <Button variant="borderless" theme="neutral" me="3">Cancel</Button>
           <Button variant="borderless">Save</Button>
         </Card.Footer>

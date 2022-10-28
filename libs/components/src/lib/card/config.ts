@@ -19,7 +19,9 @@ const config: Config =
     {
       px: "7",
       py: "3",
-      minH: "16"
+      minH: "16",
+      textSize: "lg",
+      fontWeight: "600"
     },
     body:
     {
@@ -67,7 +69,8 @@ const config: Config =
             layer: "main",
             border: "sm",
             borderColor: surface.layers.main.onColor,
-            borderOpacity: "25"
+            borderOpacity: "25",
+            boxSizing: "content-box"
           }
         ),
         divider: (surface: SurfaceScheme, darkMode: boolean) =>

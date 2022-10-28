@@ -47,13 +47,13 @@ const CardContainer = forwardRef<typeof Surface, CardProps>(({
 
 export interface CardHeaderProps extends SoperioComponent, ParentComponent
 {
-  showBorder?: boolean;
-  borderWidth?: "full" | "padded" | Spacing;
+  showDivider?: boolean;
+  dividerWidth?: "full" | "padded" | Spacing;
 };
 
 export const CardHeader = forwardRef<"div", CardHeaderProps>(({
-  showBorder,
-  borderWidth,
+  showDivider,
+  dividerWidth,
   children,
   ...props }, ref) =>
 {
@@ -61,15 +61,15 @@ export const CardHeader = forwardRef<"div", CardHeaderProps>(({
 
   const dividerStyles: SoperioComponent = {}
 
-  if (borderWidth === "padded")
+  if (dividerWidth === "padded")
   {
     dividerStyles.mx = styles["header"]?.["px"]
     dividerStyles.ms = styles["header"]?.["ps"]
     dividerStyles.me = styles["header"]?.["pe"]
   }
-  else if (borderWidth !== "full")
+  else if (dividerWidth !== "full")
   {
-    dividerStyles.w = borderWidth
+    dividerStyles.w = dividerWidth
   }
 
   return (
@@ -83,14 +83,14 @@ export const CardHeader = forwardRef<"div", CardHeaderProps>(({
       >
         {children}
       </div>
-      {showBorder && <Divider {...dividerStyles} />}
+      {showDivider && <Divider {...dividerStyles} />}
     </>
   );
 });
 
 export interface CardBodyProps extends SoperioComponent, ParentComponent
 {
-  scrollable?: boolean, // If fixed height
+  scrollable?: boolean, // TODO If fixed height
 };
 
 export const CardBody = forwardRef<"div", CardBodyProps>(({ children, ...props }, ref) =>
@@ -110,14 +110,14 @@ export const CardBody = forwardRef<"div", CardBodyProps>(({ children, ...props }
 
 export interface CardFooterProps extends SoperioComponent, ParentComponent
 {
-  showBorder?: boolean;
-  borderWidth?: "full" | "padded" | Spacing
+  showDivider?: boolean;
+  dividerWidth?: "full" | "padded" | Spacing
   align?: "right" | "left" | "center";
 };
 
 export const CardFooter = forwardRef<"div", CardFooterProps>(({
-  showBorder,
-  borderWidth,
+  showDivider,
+  dividerWidth,
   children,
   ...props }, ref) =>
 {
@@ -125,22 +125,22 @@ export const CardFooter = forwardRef<"div", CardFooterProps>(({
 
   const dividerStyles: SoperioComponent = {}
 
-  if (borderWidth === "padded")
+  if (dividerWidth === "padded")
   {
     dividerStyles.mx = styles["footer"]?.["px"]
     dividerStyles.ms = styles["footer"]?.["ps"]
     dividerStyles.me = styles["footer"]?.["pe"]
   }
-  else if (borderWidth !== "full")
+  else if (dividerWidth !== "full")
   {
-    dividerStyles.w = borderWidth
+    dividerStyles.w = dividerWidth
   }
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <>
-      {showBorder && <Divider {...dividerStyles} />}
+      {showDivider && <Divider {...dividerStyles} />}
       <div
         ref={ref}
         {...styles["footer"]}
@@ -156,7 +156,7 @@ function Divider(props: SoperioComponent)
 {
   const styles = useMultiPartStyles();
 
-  return <div {...styles["divider"]} {...props} />
+  return <div m="auto" clear="both" {...styles["divider"]} {...props} />
 }
 
 export const Card = Object.assign(CardContainer, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
