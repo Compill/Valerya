@@ -1,4 +1,4 @@
-import { SurfaceScheme } from "@valerya/surface"
+import { buildDarkSurface, buildSurface, buildWhiteSurface, SurfaceScheme } from "@valerya/surface"
 
 export function withSurface(name: string, surface: SurfaceScheme)
 {
@@ -34,6 +34,29 @@ export function withDefaultSurface(name: string, surface: SurfaceScheme)
             "valerya.surfaces.default":
             {
                 [name]: surface
+            }
+        }
+    }
+}
+
+export function withDefaultSurfaces()
+{
+    return {
+        "extras": {
+            "valerya.surfaces":
+            {
+                light: buildWhiteSurface(0xFFFFFFFF, 0xff181818),
+                neutral: buildSurface(0xff94a3b8)
+            }
+        },
+        "darkModeOverride":
+        {
+            "extras": {
+                "valerya.surfaces":
+                {
+                    light: buildDarkSurface(0xff181818, 0xffffffff),
+                    neutral: buildSurface(0xff94a3b8, { darkMode: true })
+                }
             }
         }
     }
