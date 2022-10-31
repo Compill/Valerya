@@ -45,8 +45,8 @@ export function withDefaultSurfaces()
         "extras": {
             "valerya.surfaces":
             {
-                light: buildWhiteSurface(0xFFFFFFFF, 0xff181818),
-                neutral: buildSurface(0xff94a3b8)
+                light: buildWhiteSurface("#FFFFFF", "#181818"),
+                neutral: buildSurface("#94a3b8")
             }
         },
         "darkModeOverride":
@@ -54,8 +54,8 @@ export function withDefaultSurfaces()
             "extras": {
                 "valerya.surfaces":
                 {
-                    light: buildDarkSurface(0xff181818, 0xffffffff),
-                    neutral: buildSurface(0xff94a3b8, { darkMode: true })
+                    light: buildDarkSurface("#181818", "#ffffff"),
+                    neutral: buildSurface("#94a3b8", { darkMode: true })
                 }
             }
         }

@@ -9,13 +9,13 @@ import { LayerProps } from "@valerya/components";
 // const sfGreen = buildSurfaceFromColor(0xff99ffcc)
 
 // const sfBlue = buildDarkSurface(0xff010101, 0xffffff)
-const sfBlue = buildSurface(0xff010101)
-const sfRed = buildSurface(0xffb3261e)
-const sfGreen = buildSurface(0xff84cc16)
+const sfBlue = buildSurface("#010101")
+const sfRed = buildSurface("#b3261e")
+const sfGreen = buildSurface("#84cc16")
 
-const sfBlueDark = buildDarkSurface(0xff010101, 0xffffff)
-const sfRedDark = buildSurface(0xffb3261e, { darkMode: true })
-const sfGreenDark = buildSurface(0xff84cc16, { darkMode: true })
+const sfBlueDark = buildDarkSurface("#010101", "#ffffff")
+const sfRedDark = buildSurface("#b3261e", { darkMode: true })
+const sfGreenDark = buildSurface("#84cc16", { darkMode: true })
 
 
 // TODO Surface system

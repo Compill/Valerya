@@ -3,8 +3,8 @@ import { IS_DEV, useDarkMode, useThemeExtra } from "@soperio/react";
 import { ValeryaConfigSurfaces } from "../ValeryaConfig";
 import { ThemeSurfaceScheme } from "../surface/types";
 
-const defaultSurface = buildSurface(0xFF0EA5E9)
-const defaultSurfaceDark = buildSurface(0xFF0EA5E9, { darkMode: true })
+const defaultSurface = buildSurface("#0EA5E9")
+const defaultSurfaceDark = buildSurface("#0EA5E9", { darkMode: true })
 // const defaultSurface = buildSurfaceFromColor(0xff0ea5e9)
 // const defaultSurface = buildSurfaceFromColor(0xFF0369a1)
 

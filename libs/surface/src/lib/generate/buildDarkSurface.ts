@@ -1,19 +1,19 @@
 import { darken, lighten } from "@soperio/react";
+import chroma from "chroma-js";
 import { RGBA } from "color-blend/dist/types";
-import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
-import { alpha, alphaOnBackground, colorBlend, hexToRGBA, intToRGBA, RGBAToHex } from "../utils/colorUtils";
-import { Layer, LayerScheme } from "../Layer";
-import chroma from "chroma-js"
+import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
+import { alphaOnBackground, hexToRGBA } from "../utils/colorUtils";
+import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromColors";
 import { formatSurface, nonAlphaRGB } from "./formatSurface";
 
 const whiteRGBA: RGBA = { r: 255, g: 255, b: 255, a: 255 }
 
-export function buildDarkSurface(darkColor: number, whiteColor: number, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceScheme
+export function buildDarkSurface(darkColor: string, whiteColor: string, options?: Omit<BuildSurfaceOptions, "darkMode">): SurfaceScheme
 {
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
-    const primaryHex = nonAlphaRGB(RGBAToHex(intToRGBA(darkColor)))
-    const onPrimaryHex = nonAlphaRGB(RGBAToHex(intToRGBA(whiteColor)))
+    const primaryHex = nonAlphaRGB(darkColor)
+    const onPrimaryHex = nonAlphaRGB(whiteColor)
 
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))
 

@@ -6,7 +6,7 @@ import { buildSurfaceFromColors, BuildSurfaceOptions } from "./buildSurfaceFromC
 import { formatSurface, nonAlphaRGB } from "./formatSurface"
 
 
-export function buildSurface(color: number, options?: BuildSurfaceOptions): SurfaceScheme
+export function buildSurface(color: string, options?: BuildSurfaceOptions): SurfaceScheme
 {
     // This code is a mess...
 
@@ -14,7 +14,7 @@ export function buildSurface(color: number, options?: BuildSurfaceOptions): Surf
     // Default is 0
     // Add 1 to make it a multiplier (0.5 > 1.5)
     const coef = 1 + Math.min(Math.max(options?.coef ?? 0, -0.5), 0.5)
-    const primaryRGBA = intToRGBA(color)
+    const primaryRGBA = hexToRGBA(color)
 
     const primaryHex = nonAlphaRGB(options?.darkMode ? lighten(RGBAToHex(primaryRGBA), (1 - getBrightness(primaryRGBA)) * 50 * coef) : RGBAToHex(primaryRGBA))
     const primaryBrightness = getBrightness(hexToRGBA(primaryHex))

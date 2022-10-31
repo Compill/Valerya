@@ -21,7 +21,7 @@ export default function Page({ ...props })
 
   const darkMode = useDarkMode()
 
-  const scheme = buildSurface(parseInt("ff" + color.hex.substring(1), 16), { coef: parseFloat(coef), darkMode })
+  const scheme = buildSurface(color.hex, { coef: parseFloat(coef), darkMode })
 
   const handleChange = React.useCallback(color => setColor(color), [setColor])
   const handleCoefChange = React.useCallback(value => setCoef(value), [setCoef])
