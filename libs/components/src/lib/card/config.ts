@@ -82,7 +82,6 @@ const config: Config =
           {
             bgColor: surface.layers.main.onColor,
             bgOpacity: "15",
-
           }
         )
       },
