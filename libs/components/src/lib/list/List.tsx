@@ -108,6 +108,6 @@ export const ListItemIcon = forwardRef<"span", ListItemIconProps>((
   );
 });
 
-const ListNamespace = Object.assign(List, { ListItem: ListItem, ListItemIcon: ListItemIcon });
+const ListNamespace = Object.assign(List, { Item: ListItem, ItemIcon: ListItemIcon });
 
 export { ListNamespace as List };
