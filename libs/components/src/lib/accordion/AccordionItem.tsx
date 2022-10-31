@@ -122,7 +122,7 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
         )}
       </div >
 
-      {_isOpen && showDivider && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
+      {_isOpen && showDivider && <Divider m="auto" clear="both" scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
 
       {children && (
         <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>
