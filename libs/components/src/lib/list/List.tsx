@@ -1,5 +1,5 @@
 import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, ParentComponent, HTMLDivProps, HTMLListItemProps, HTMLUListProps, RightJoinProps } from "@soperio/react";
+import { forwardRef, ParentComponent, HTMLDivProps, HTMLListItemProps, HTMLUListProps, RightJoinProps, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { Divider } from "../divider";
 import { HoverableSurfaceBasedComponent, Surface } from "../surface";
@@ -84,7 +84,7 @@ export const ListItem = forwardRef<typeof Surface, ListItemProps>(({
   );
 });
 
-export interface ListItemIconProps extends ComponentProps, ParentComponent
+export interface ListItemIconProps extends SoperioComponent, ParentComponent
 {
 
 }
