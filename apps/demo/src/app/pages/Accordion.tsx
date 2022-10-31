@@ -18,11 +18,11 @@ export default function AccordionPage({ ...props }) {
   return (
     <Container dflex center size="x2" justifyContent="center" py="48" w="50%" flexRow gap="5">
       <Accordion w="350px" allowMultiple={true} gap="4" >
-        <AccordionItem label="test1" showBorder scheme="default" borderWidth="padded">
+        <AccordionItem label="test1" showDivider scheme="default" dividerWidth="padded">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
-        <AccordionItem label="test2" isOpen showBorder>
+        <AccordionItem label="test2" isOpen showDivider>
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
@@ -32,11 +32,11 @@ export default function AccordionPage({ ...props }) {
       </Accordion>
 
       <Accordion w="350px" variant="bordered" allowMultiple={true} gap="4" itemStyle={{borderColor: "#ffff00", borderOpacity: "100", bgColor:"#00ffff"}} itemDividerStyle={{bgColor: "#00ff00", bgOpacity: "100"}}>
-        <AccordionItem label="test1" showBorder scheme="default" borderWidth="padded">
+        <AccordionItem label="test1" showDivider scheme="default" dividerWidth="padded">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
-        <AccordionItem label="test2" isOpen showBorder>
+        <AccordionItem label="test2" isOpen showDivider>
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
@@ -46,11 +46,11 @@ export default function AccordionPage({ ...props }) {
       </Accordion>
 
       <Accordion w="350px" variant="menu" allowMultiple={true} gap="4" >
-        <AccordionItem label="test1" showBorder scheme="default" borderWidth="padded">
+        <AccordionItem label="test1" showDivider scheme="default" dividerWidth="padded">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
-        <AccordionItem label="test2" isOpen showBorder>
+        <AccordionItem label="test2" isOpen showDivider>
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 

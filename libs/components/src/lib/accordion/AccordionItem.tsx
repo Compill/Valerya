@@ -9,16 +9,16 @@ import { useAccordionContext } from "./AccordionContext";
 
 export interface AccordionItemProps extends SurfaceBasedComponent, ParentComponent
 {
-  showBorder?: boolean;
-  borderWidth?: OrString<"full" | "padded">;
+  showDivider?: boolean;
+  dividerWidth?: OrString<"full" | "padded">;
   label: React.ReactNode,
   isOpen?: boolean
 };
 
-// TODO Rename showBorder & borderWidth
+// TODO Rename showDivider & dividerWidth
 export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
-  showBorder,
-  borderWidth,
+  showDivider,
+  dividerWidth,
   label,
   isOpen,
   children,
@@ -56,15 +56,15 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
 
   const dividerStyles: SoperioComponent = {}
 
-  if (borderWidth === "padded")
+  if (dividerWidth === "padded")
   {
     dividerStyles.mx = styles["itemHeaderLabel"]?.["mx"]
     dividerStyles.ms = styles["itemHeaderLabel"]?.["ps"]
     dividerStyles.me = styles["itemHeaderLabel"]?.["pe"]
   }
-  else if (borderWidth !== "full")
+  else if (dividerWidth !== "full")
   {
-    dividerStyles.w = borderWidth
+    dividerStyles.w = dividerWidth
   }
 
   return (
@@ -122,7 +122,7 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
         )}
       </div >
 
-      {_isOpen && showBorder && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
+      {_isOpen && showDivider && <Divider scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
 
       {children && (
         <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>
