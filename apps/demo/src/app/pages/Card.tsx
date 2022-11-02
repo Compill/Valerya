@@ -1,5 +1,6 @@
 import { Button, Card, Container } from "@valerya/components";
 import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
+import { useSecondaryScheme } from "../hooks/useSecondaryScheme";
 
 /**
  *
@@ -8,6 +9,7 @@ import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
 export default function Page({ ...props })
 {
   const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
 
   return (
     <Container center size="x2" gap="20" justifyContent="center" p="20" spaceY="10" >
@@ -37,8 +39,8 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer showDivider dflex placeContent="end" alignItems="center">
-          <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
-          <Button scheme="secondary" variant="borderless">Save</Button>
+          <Button scheme={secondaryScheme} variant="borderless" me="3">Cancel</Button>
+          <Button scheme={secondaryScheme} variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 
@@ -52,8 +54,8 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer showDivider dflex placeContent="end" alignItems="center">
-          <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
-          <Button scheme="secondary" variant="borderless">Save</Button>
+          <Button scheme={secondaryScheme} variant="borderless" me="3">Cancel</Button>
+          <Button scheme={secondaryScheme} variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 

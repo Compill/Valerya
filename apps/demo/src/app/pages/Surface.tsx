@@ -50,6 +50,10 @@ export default function Page({ ...props })
   const red = darkMode ? sfRedDark : sfRed
   const green = darkMode ? sfGreenDark : sfGreen
 
+  const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
+  const tertiaryScheme = useTertiaryScheme()
+
   return (
     <Container center size="x2" dflex flexRow gap="10">
 
@@ -73,9 +77,9 @@ export default function Page({ ...props })
       </div>
 
       <div>
-        <Palette surface="primary" py="5" />
-        <Palette surface="secondary" py="5" />
-        <Palette surface="tertiary" py="5" />
+        <Palette surface={primaryScheme} py="5" />
+        <Palette surface={secondaryScheme} py="5" />
+        <Palette surface={tertiaryScheme} py="5" />
         <Palette surface={blue} py="5" />
         <Palette surface={red} py="5" />
         <Palette surface={green} py="5" />
