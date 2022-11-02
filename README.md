@@ -1,94 +1,82 @@
+Valerya is a UI component framework for React based on [Soperio](https://soperio-ui.com).
 
+You can find the documentation website at [https://valerya-ui.com](https://valerya-ui.com)
 
-# ValeryaUi
+Here is an example of code you can use with Valerya:
 
-This project was generated using [Nx](https://nx.dev).
+```tsx
+import { Badge, Card, Container, HStack } from "@valerya/ui"
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<Container 
+    bgColor="slate-100" 
+    p="8" 
+    dflex 
+    flexRow 
+    placeContent="center"
+>
+    <Card w="80" shadow>
+        <img 
+            src="/images/landscape.jpg" 
+            w="full"
+            h="40"
+            objectFit="cover"
+            roundedT
+            alt="landscape"
+        />
+        <div
+            py="4"
+            px="5"
+            fontWeight="400"
+            textColor="slate-700"
+        >
+            <HStack gap="2" mb="2">
+                <Badge scheme="default">React</Badge>
+                <Badge scheme="primary">CSS-IN-JS</Badge>
+                <Badge scheme="secondary">UI</Badge>
+            </HStack>
 
-🔎 **Smart, Fast and Extensible Build System**
+            <p>
+                This is a sample card designed with <span textColor="sky-500" fontWeight="500">Soperio</span>. You can see that I'm applying design props <span fontWeight="500" textDecoration="underline">directly on the HTML tags</span>. 
+            </p>
+            
+            <p mt="2">
+                Properties like margin top, horizontal and vertical padding, flex box, rounded corners, width, height, font weight, shadow, text decoration, text and background color are easily defined without the need to write silly CSS.
+            </p>
+        </div>
+    </Card>
+</Container>
+```
 
-## Adding capabilities to your workspace
+## Installation
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```bash
+# using npm
+npm install @valerya/ui @soperio/react framer-motion
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+# using yarn
+yarn add @valerya/ui @soperio/react framer-motion
+```
 
-Below are our core plugins:
+## Setup
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+While most of Valerya's components work out of the box if you have setup [Soperio](https://soperio-ui.com) in your project, a few of them need an additional configuration.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+You need to create a custom theme for Soperio (if you're not already using one) and add `withDefaultSurfaces()` to it.
 
-## Generate an application
+```tsx
+import { extendTheme, SoperioProvider } from "@soperio/react"
+import { withDefaultSurfaces } from "@valerya/ui"
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+const myTheme = extendTheme(
+  ..., // your Soperio theme customization
+  withDefaultSurfaces()
+)
 
-> You can use any of the plugins above to generate applications as well.
+<SoperioProvider theme={myTheme}>
+  <MyApp />
+</SoperioProvider>
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+## LICENSE
 
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@valerya-ui/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+MIT © [Jonathan Gerbaud](https://github.com/jonathangerbaud)
