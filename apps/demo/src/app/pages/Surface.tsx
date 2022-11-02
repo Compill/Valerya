@@ -3,6 +3,9 @@ import { SoperioComponent, useDarkMode } from "@soperio/react";
 import { buildSurface, SurfaceScheme } from "@valerya/ui";
 import { ThemeSurfaceScheme, useSurface } from "@valerya/ui";
 import { LayerProps } from "@valerya/components";
+import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
+import { useSecondaryScheme } from "../hooks/useSecondaryScheme";
+import { useTertiaryScheme } from "../hooks/useTertiaryScheme";
 
 // const blue = buildSurfaceFromColor(0xff0099ff)
 // const red = buildSurfaceFromColor(0xffff3300)
@@ -47,6 +50,10 @@ export default function Page({ ...props })
   const red = darkMode ? sfRedDark : sfRed
   const green = darkMode ? sfGreenDark : sfGreen
 
+  const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
+  const tertiaryScheme = useTertiaryScheme()
+
   return (
     <Container center size="x2" dflex flexRow gap="10">
 
@@ -70,9 +77,9 @@ export default function Page({ ...props })
       </div>
 
       <div>
-        <Palette surface="primary" py="5" />
-        <Palette surface="secondary" py="5" />
-        <Palette surface="tertiary" py="5" />
+        <Palette surface={primaryScheme} py="5" />
+        <Palette surface={secondaryScheme} py="5" />
+        <Palette surface={tertiaryScheme} py="5" />
         <Palette surface={blue} py="5" />
         <Palette surface={red} py="5" />
         <Palette surface={green} py="5" />
@@ -95,6 +102,11 @@ function SurfaceBlock({ layer, surfaceProps }: SurfaceBlockProps)
   const red = darkMode ? sfRedDark : sfRed
   const green = darkMode ? sfGreenDark : sfGreen
 
+  const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
+  const tertiaryScheme = useTertiaryScheme()
+
+
   return (
     <div dflex flexRow gap="10">
 
@@ -105,17 +117,17 @@ function SurfaceBlock({ layer, surfaceProps }: SurfaceBlockProps)
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme="primary" layer={layer} {...surfaceProps}>
+      <Surface scheme={primaryScheme} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface  scheme="secondary" layer={layer} {...surfaceProps}>
+      <Surface  scheme={secondaryScheme} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>
 
-      <Surface scheme="tertiary" layer={layer} {...surfaceProps}>
+      <Surface scheme={tertiaryScheme} layer={layer} {...surfaceProps}>
         <div trait="typo.h3">Title</div>
         <div trait="typo.subtitle1">Subtitle</div>
       </Surface>

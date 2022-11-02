@@ -1,10 +1,12 @@
 import { Container, Stack, Switch } from "@valerya/components";
 import React from "react";
+import { useAccentScheme } from "../hooks/useAccentScheme";
 
 
 export default function Page({ ...props })
 {
   const [checked, setChecked] = React.useState(true);
+  const accentScheme = useAccentScheme()
 
   function handleClick(e: any)
   {
@@ -22,7 +24,7 @@ export default function Page({ ...props })
       <Stack lg_direction="row" gap='24px' alignItems="end">
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="md"></Switch>
-        <Switch checked={checked} scheme="accent" onClick={handleClick} onChange={handleChange} size="lg"></Switch>
+        <Switch checked={checked} scheme={accentScheme} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="xl"></Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="x2"></Switch>
       </Stack>
@@ -30,7 +32,7 @@ export default function Page({ ...props })
       <Stack lg_direction="row" gap='24px' alignItems="end">
         <Switch disabled checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>
         <Switch disabled checked={checked} onClick={handleClick} onChange={handleChange} size="md"></Switch>
-        <Switch disabled checked={checked} scheme="accent" onClick={handleClick} onChange={handleChange} size="lg"></Switch>
+        <Switch disabled checked={checked} scheme={accentScheme} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
         <Switch disabled checked={checked} onClick={handleClick} onChange={handleChange} size="xl"></Switch>
         <Switch disabled checked={checked} onClick={handleClick} onChange={handleChange} size="x2"></Switch>
       </Stack>
@@ -54,7 +56,7 @@ export default function Page({ ...props })
       <Stack lg_direction="row" gap='24px' alignItems="end">
         <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>
         <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} size="md"></Switch>
-        <Switch variant="inverse" scheme="accent" checked={checked} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
+        <Switch variant="inverse" scheme={accentScheme} checked={checked} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
         <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} size="xl"></Switch>
         <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} size="x2"></Switch>
       </Stack>
@@ -62,7 +64,7 @@ export default function Page({ ...props })
       <Stack lg_direction="row" gap='24px' alignItems="end">
         <Switch variant="inverse" disabled checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>
         <Switch variant="inverse" disabled checked={checked} onClick={handleClick} onChange={handleChange} size="md"></Switch>
-        <Switch variant="inverse" disabled scheme="accent" checked={checked} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
+        <Switch variant="inverse" disabled scheme={accentScheme} checked={checked} onClick={handleClick} onChange={handleChange} size="lg"></Switch>
         <Switch variant="inverse" disabled checked={checked} onClick={handleClick} onChange={handleChange} size="xl"></Switch>
         <Switch variant="inverse" disabled checked={checked} onClick={handleClick} onChange={handleChange} size="x2"></Switch>
       </Stack>
@@ -70,7 +72,7 @@ export default function Page({ ...props })
       <Stack gap='24px'>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="sm" >Label</Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="md">Label</Switch>
-        <Switch scheme="accent" checked={checked} onClick={handleClick} onChange={handleChange} size="lg">Label</Switch>
+        <Switch scheme={accentScheme} checked={checked} onClick={handleClick} onChange={handleChange} size="lg">Label</Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="xl">Label</Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="x2">Label</Switch>
       </Stack>

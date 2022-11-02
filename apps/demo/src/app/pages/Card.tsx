@@ -1,4 +1,6 @@
 import { Button, Card, Container } from "@valerya/components";
+import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
+import { useSecondaryScheme } from "../hooks/useSecondaryScheme";
 
 /**
  *
@@ -6,10 +8,13 @@ import { Button, Card, Container } from "@valerya/components";
  */
 export default function Page({ ...props })
 {
+  const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
+
   return (
     <Container center size="x2" gap="20" justifyContent="center" p="20" spaceY="10" >
 
-      <Card w="50%" scheme="primary" shadow>
+      <Card w="50%" scheme={primaryScheme} shadow>
         <Card.Header dflex alignItems="center">
           <span>Basic Card</span>
         </Card.Header>
@@ -24,7 +29,7 @@ export default function Page({ ...props })
         </Card.Footer>
       </Card>
 
-      <Card w="50%" shadow scheme="primary">
+      <Card w="50%" shadow scheme={primaryScheme}>
         <Card.Header showDivider dflex alignItems="center">
           <span textSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
@@ -34,8 +39,8 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer showDivider dflex placeContent="end" alignItems="center">
-          <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
-          <Button scheme="secondary" variant="borderless">Save</Button>
+          <Button scheme={secondaryScheme} variant="borderless" me="3">Cancel</Button>
+          <Button scheme={secondaryScheme} variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 
@@ -49,8 +54,8 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer showDivider dflex placeContent="end" alignItems="center">
-          <Button scheme="secondary" variant="borderless" me="3">Cancel</Button>
-          <Button scheme="secondary" variant="borderless">Save</Button>
+          <Button scheme={secondaryScheme} variant="borderless" me="3">Cancel</Button>
+          <Button scheme={secondaryScheme} variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
 
