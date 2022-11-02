@@ -1,4 +1,7 @@
 import { Button, Container } from "@valerya/ui";
+import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
+import { useSecondaryScheme } from "../hooks/useSecondaryScheme";
+import { useTertiaryScheme } from "../hooks/useTertiaryScheme";
 
 /**
  *
@@ -6,31 +9,35 @@ import { Button, Container } from "@valerya/ui";
  */
 export default function Page({ ...props })
 {
+  const primaryScheme = usePrimaryScheme()
+  const secondaryScheme = useSecondaryScheme()
+  const tertiaryScheme = useTertiaryScheme()
+
   return (
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
-        <Button scheme="primary" variant="default" block mx="auto" my="5">Open Left</Button>
-        <Button scheme="primary" variant="light" block mx="auto" my="5">Light button</Button>
-        <Button scheme="primary" variant="link" block mx="auto" my="5">Link button</Button>
-        <Button scheme="primary" variant="outline" block mx="auto" my="5">Outline button</Button>
-        <Button scheme="primary" variant="borderless" block mx="auto" my="5">Borderless</Button>
+        <Button scheme={primaryScheme} variant="default" block mx="auto" my="5">Open Left</Button>
+        <Button scheme={primaryScheme} variant="light" block mx="auto" my="5">Light button</Button>
+        <Button scheme={primaryScheme} variant="link" block mx="auto" my="5">Link button</Button>
+        <Button scheme={primaryScheme} variant="outline" block mx="auto" my="5">Outline button</Button>
+        <Button scheme={primaryScheme} variant="borderless" block mx="auto" my="5">Borderless</Button>
       </div>
 
       <div flexRow>
-        <Button scheme="secondary" variant="default" block mx="auto" my="5">Open Left</Button>
-        <Button scheme="secondary" variant="light" block mx="auto" my="5">Light button</Button>
-        <Button scheme="secondary" variant="link" block mx="auto" my="5">Link button</Button>
-        <Button scheme="secondary" variant="outline" block mx="auto" my="5">Outline button</Button>
-        <Button scheme="secondary" variant="borderless" block mx="auto" my="5">Borderless</Button>
+        <Button scheme={secondaryScheme} variant="default" block mx="auto" my="5">Open Left</Button>
+        <Button scheme={secondaryScheme} variant="light" block mx="auto" my="5">Light button</Button>
+        <Button scheme={secondaryScheme} variant="link" block mx="auto" my="5">Link button</Button>
+        <Button scheme={secondaryScheme} variant="outline" block mx="auto" my="5">Outline button</Button>
+        <Button scheme={secondaryScheme} variant="borderless" block mx="auto" my="5">Borderless</Button>
       </div>
 
       <div flexRow>
-        <Button scheme="tertiary" variant="default" block mx="auto" my="5" textTransform="uppercase" >Open Right</Button>
-        <Button scheme="tertiary" variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
-        <Button scheme="tertiary" variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
-        <Button scheme="tertiary" variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>
-        <Button scheme="tertiary" variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
+        <Button scheme={tertiaryScheme} variant="default" block mx="auto" my="5" textTransform="uppercase" >Open Right</Button>
+        <Button scheme={tertiaryScheme} variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
+        <Button scheme={tertiaryScheme} variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
+        <Button scheme={tertiaryScheme} variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>
+        <Button scheme={tertiaryScheme} variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
       </div>
 
       <div flexRow>
@@ -66,11 +73,11 @@ export default function Page({ ...props })
       </div>
 
       <div flexRow>
-        <Button scheme="tertiary" selected variant="default" block mx="auto" my="5" disabled>Default button</Button>
-        <Button scheme="tertiary" selected variant="light" block mx="auto" my="5" disabled>Light button</Button>
-        <Button scheme="tertiary" selected variant="link" block mx="auto" my="5" disabled>Link button</Button>
-        <Button scheme="tertiary" selected variant="outline" block mx="auto" my="5" disabled>Outline button</Button>
-        <Button scheme="tertiary" selected variant="borderless" block mx="auto" my="5" disabled>Borderless</Button>
+        <Button scheme={tertiaryScheme} selected variant="default" block mx="auto" my="5" disabled>Default button</Button>
+        <Button scheme={tertiaryScheme} selected variant="light" block mx="auto" my="5" disabled>Light button</Button>
+        <Button scheme={tertiaryScheme} selected variant="link" block mx="auto" my="5" disabled>Link button</Button>
+        <Button scheme={tertiaryScheme} selected variant="outline" block mx="auto" my="5" disabled>Outline button</Button>
+        <Button scheme={tertiaryScheme} selected variant="borderless" block mx="auto" my="5" disabled>Borderless</Button>
       </div>
     </Container>
   );

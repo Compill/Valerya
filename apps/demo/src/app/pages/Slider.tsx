@@ -1,5 +1,6 @@
 import { Slider, Container } from "@valerya/ui";
 import React from "react";
+import { usePrimaryScheme } from "../hooks/usePrimaryScheme";
 
 /**
  *
@@ -11,6 +12,7 @@ export default function Page({ ...props })
   const cbEnd = React.useCallback(value => console.log("change end", value), [])
   const cb = React.useCallback(value => console.log("change", value), [])
 
+  const primaryScheme = usePrimaryScheme()
 
   return (
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
@@ -21,9 +23,9 @@ export default function Page({ ...props })
         <Slider variant="solid"/>
         <Slider variant="test"/>
         <Slider variant="test2"/>
-        <Slider scheme="primary" />
-        <Slider scheme="primary" variant="solid" />
-        <Slider scheme="primary" variant="test" mb="20" />
+        <Slider scheme={primaryScheme} />
+        <Slider scheme={primaryScheme} variant="solid" />
+        <Slider scheme={primaryScheme} variant="test" mb="20" />
         <Slider variant="default" w="full" orientation="horizontal" defaultValue={30} onChange={cb} onChangeStart={cbStart} onChangeEnd={cbEnd}/>
         <Slider variant="solid" isReversed size="sm"/>
         <Slider variant="solid" isReversed size="md"/>

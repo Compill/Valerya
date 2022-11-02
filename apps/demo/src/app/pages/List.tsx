@@ -1,6 +1,7 @@
 import { Container, List, } from "@valerya/components";
 import { ReactComponent as Inbox } from "../../assets/inbox-svgrepo-com.svg"
 import { ReactComponent as Web } from "../../assets/web-link-svgrepo-com.svg"
+import { useAccentScheme } from "../hooks/useAccentScheme";
 
 
 export default function Page({ ...props })
@@ -21,6 +22,8 @@ export default function Page({ ...props })
             />
         </svg>
     )
+
+    const accentScheme = useAccentScheme()
 
     return (
         <Container center size="x2" dflex flexCol gap="5" justifyContent="center" py="20">
@@ -74,19 +77,19 @@ export default function Page({ ...props })
             </div>
 
             <div dflex flexRow gap="10">
-                <List w="64" variant="default" scheme="accent" size="sm" >
+                <List w="64" variant="default" scheme={accentScheme} size="sm" >
                     <List.Item key="0">Item 1</List.Item>
                     <List.Item key="1" selected>Item 2</List.Item>
                     <List.Item key="2">Item 3</List.Item>
                 </List>
 
-                <List w="64" variant="light" scheme="accent" size="sm" >
+                <List w="64" variant="light" scheme={accentScheme} size="sm" >
                     <List.Item key="0">Item 1</List.Item>
                     <List.Item key="1" selected>Item 2</List.Item>
                     <List.Item key="2">Item 3</List.Item>
                 </List>
 
-                <List w="64" variant="menu" scheme="accent" size="sm" >
+                <List w="64" variant="menu" scheme={accentScheme} size="sm" >
                     <List.Item key="0">Item 1</List.Item>
                     <List.Item key="1" selected>Item 2</List.Item>
                     <List.Item key="2">Item 3</List.Item>

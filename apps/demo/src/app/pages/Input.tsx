@@ -1,5 +1,6 @@
 import { Checkbox, Container, Input } from "@valerya/components";
 import { useDarkMode } from "@soperio/react";
+import { useAccentScheme } from "../hooks/useAccentScheme";
 
 
 type Side = "left" | "right" | "top" | "bottom";
@@ -12,6 +13,8 @@ export default function Page({ ...props })
 {
   const darkMode = useDarkMode();
 
+  const accentScheme = useAccentScheme()
+
   return (
     <Container center size="x2" gap="20" px="10" justifyContent="center" py="20">
 
@@ -22,15 +25,15 @@ export default function Page({ ...props })
       </div>
 
       <div mb="10">
-        <Input scheme="accent" block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
-        <Input scheme="accent" block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
-        <Input scheme="accent" block size="sm" variant="underline" corners="square" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} block size="sm" variant="underline" corners="square" mb="5" length={50} placeholder="Hello" />
       </div>
 
       <div mb="10">
-        <Input scheme="accent" disabled value="Hola que tal" block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
-        <Input scheme="accent" disabled block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
-        <Input scheme="accent" disabled block size="sm" variant="underline" corners="square" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} disabled value="Hola que tal" block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} disabled block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
+        <Input scheme={accentScheme} disabled block size="sm" variant="underline" corners="square" mb="5" length={50} placeholder="Hello" />
       </div>
 
       <div mb="10">

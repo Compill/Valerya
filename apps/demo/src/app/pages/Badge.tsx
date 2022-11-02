@@ -1,4 +1,6 @@
 import { Badge, Container } from "@valerya/components";
+import { useSecondaryScheme } from "../hooks/useSecondaryScheme";
+import { useTertiaryScheme } from "../hooks/useTertiaryScheme";
 
 /**
  *
@@ -6,6 +8,9 @@ import { Badge, Container } from "@valerya/components";
  */
 export default function Page({ ...props })
 {
+  const secondaryScheme = useSecondaryScheme()
+  const tertiaryScheme = useTertiaryScheme()
+
   return (
     <Container center size="x2" gap="20" justifyContent="center" py="20">
 
@@ -28,12 +33,12 @@ export default function Page({ ...props })
       </div>
 
       <div mb="10">
-        <Badge scheme="secondary" size="xs" mx="2" my="2">Badge</Badge>
-        <Badge scheme="secondary" size="sm" mx="2" my="2"><span>Badge</span></Badge>
-        <Badge scheme="secondary" size="md" mx="2" my="2">Badge</Badge>
-        <Badge scheme="secondary" size="lg" mx="2" my="2">Badge</Badge>
-        <Badge scheme="secondary" size="xl" mx="2" my="2">Badge</Badge>
-        <Badge scheme="secondary" size="x2" mx="2" my="2">Badge</Badge>
+        <Badge scheme={secondaryScheme} size="xs" mx="2" my="2">Badge</Badge>
+        <Badge scheme={secondaryScheme} size="sm" mx="2" my="2"><span>Badge</span></Badge>
+        <Badge scheme={secondaryScheme} size="md" mx="2" my="2">Badge</Badge>
+        <Badge scheme={secondaryScheme} size="lg" mx="2" my="2">Badge</Badge>
+        <Badge scheme={secondaryScheme} size="xl" mx="2" my="2">Badge</Badge>
+        <Badge scheme={secondaryScheme} size="x2" mx="2" my="2">Badge</Badge>
       </div>
 
       <div mb="10">
@@ -55,12 +60,12 @@ export default function Page({ ...props })
       </div>
 
       <div mb="10">
-        <Badge scheme="tertiary" variant="light" size="xs" mx="2" my="2">Badge</Badge>
-        <Badge scheme="tertiary" variant="light" size="sm" mx="2" my="2">Badge</Badge>
-        <Badge scheme="tertiary" variant="light" size="md" mx="2" my="2">Badge</Badge>
-        <Badge scheme="tertiary" variant="light" size="lg" mx="2" my="2">Badge</Badge>
-        <Badge scheme="tertiary" variant="light" size="xl" mx="2" my="2">Badge</Badge>
-        <Badge scheme="tertiary" variant="light" size="x2" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="xs" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="sm" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="md" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="lg" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="xl" mx="2" my="2">Badge</Badge>
+        <Badge scheme={tertiaryScheme} variant="light" size="x2" mx="2" my="2">Badge</Badge>
       </div>
 
       <div mb="10">

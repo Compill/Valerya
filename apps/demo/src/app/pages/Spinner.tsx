@@ -1,4 +1,5 @@
 import { Container, Spinner } from "@valerya/components";
+import { useAccentScheme } from "../hooks/useAccentScheme";
 
 
 /**
@@ -7,6 +8,7 @@ import { Container, Spinner } from "@valerya/components";
  */
 export default function Page({ ...props })
 {
+    const accentScheme = useAccentScheme()
 
     return (
       <Container center size="x2" gap="20" justifyContent="center" py="20">
@@ -27,11 +29,11 @@ export default function Page({ ...props })
                 </div>
 
                 <div mb="10">
-                    <Spinner size="sm" me="5" scheme="accent" />
-                    <Spinner size="md" me="5" scheme="accent" />
-                    <Spinner size="lg" me="5" scheme="accent" disabled/>
-                    <Spinner size="xl" me="5" scheme="accent" />
-                    <Spinner size="x2" me="5" scheme="accent" />
+                    <Spinner size="sm" me="5" scheme={accentScheme} />
+                    <Spinner size="md" me="5" scheme={accentScheme} />
+                    <Spinner size="lg" me="5" scheme={accentScheme} disabled/>
+                    <Spinner size="xl" me="5" scheme={accentScheme} />
+                    <Spinner size="x2" me="5" scheme={accentScheme} />
                 </div>
 
                 <div mb="10">

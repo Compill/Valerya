@@ -31,16 +31,16 @@ const theme = extendTheme(
     withSurface("accent", buildSurface("#b3261e")),
 
     withDefaultSurface("light", buildSurface("#0ea5e9")),
-    withDefaultSurface("dark", buildSurface("#06b6d4", { darkMode: true }),),
+    withDefaultSurface("dark", buildSurface("#06b6d4", { darkMode: true })),
     withDefaultSurface("neutral", buildSurface("#94a3b8")),
 
     withDarkModeSurface("default", buildSurface("#12A2DF", { darkMode: true })),
-    withDarkModeSurface("neutral", buildSurface("#94a3b8", { darkMode: true }),),
-    withDarkModeSurface("light", buildDarkSurface("#181818", "#ffffff"),),
-    withDarkModeSurface("dark", buildWhiteSurface("#ffffff", "#181818"),),
-    withDarkModeSurface("primary", buildDarkSurface("#181818", "#ffffff"),),
-    withDarkModeSurface("secondary", buildSurface("#475569", { darkMode: true }),),
-    withDarkModeSurface("tertiary", buildSurface("#39B8FC", { darkMode: true }),),
+    withDarkModeSurface("neutral", buildSurface("#94a3b8", { darkMode: true })),
+    withDarkModeSurface("light", buildDarkSurface("#181818", "#ffffff")),
+    withDarkModeSurface("dark", buildWhiteSurface("#ffffff", "#181818")),
+    withDarkModeSurface("primary", buildDarkSurface("#181818", "#ffffff")),
+    withDarkModeSurface("secondary", buildSurface("#475569", { darkMode: true })),
+    withDarkModeSurface("tertiary", buildSurface("#39B8FC", { darkMode: true })),
     withDarkModeSurface("accent", buildSurface("#b3261e", { darkMode: true })),
 )
 
