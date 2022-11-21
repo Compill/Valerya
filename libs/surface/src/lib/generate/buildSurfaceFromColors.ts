@@ -214,12 +214,12 @@ export function buildSurfaceFromColors(
                 color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
-                    color: lighten(primaryHex, states.hover + states.active),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 6) / 100),
                     onColor: primaryHex,
                 },
                 selected:
                 {
-                    color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
                     onColor: primaryHex
                 }
             }
