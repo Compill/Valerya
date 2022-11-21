@@ -99,7 +99,7 @@ export function buildSurfaceFromColors(
                 },
                 selected:
                 {
-                    color: colorBlendContainerFn(primaryHex, states.hover + states.selected),
+                    color: colorBlendContainerFn(primaryContainerHex, states.hover + states.selected),
                     onColor: onPrimaryHex,
                 }
             }
@@ -140,12 +140,12 @@ export function buildSurfaceFromColors(
                 color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
-                    color: lighten(onPrimaryHex, states.hover + states.active),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.hover + states.active) : alphaOnWhiteBackground(darken(primaryHex, states.hover + states.active), (states.hover + states.active * 5) / 100),
                     onColor: primaryHex,
                 },
                 selected:
                 {
-                    color: lighten(onPrimaryHex, states.hover + states.selected),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.hover + states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.hover + states.selected), (states.hover + states.selected * 5) / 100),
                     onColor: primaryHex,
                 }
             }
