@@ -109,11 +109,11 @@ export function buildSurfaceFromColors(
             onColor: primaryHex,
             active:
             {
-                color: lighten(onPrimaryHex, states.active),
+                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
                 onColor: primaryHex,
             },
             selected: {
-                color: lighten(onPrimaryHex, states.selected),
+                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
                 onColor: primaryHex
             },
             pressed:
@@ -153,6 +153,15 @@ export function buildSurfaceFromColors(
         altInv: 
         {
             ...buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
+            active:
+            {
+                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
+                onColor: primaryHex,
+            },
+            selected: {
+                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
+                onColor: primaryHex
+            },
             disabled:
             {
                 color: alphaOnBackground(onPrimaryContainerHex, (states.disabledLayer * 1.66) / 100),
@@ -173,11 +182,11 @@ export function buildSurfaceFromColors(
             onColor: primaryHex,
             active:
             {
-                color: lighten(primaryHex, states.active),
+                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
                 onColor: primaryHex,
             },
             selected: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
+                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
                 onColor: primaryHex
             },
             pressed:
