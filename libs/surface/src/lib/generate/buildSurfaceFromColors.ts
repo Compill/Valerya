@@ -155,12 +155,12 @@ export function buildSurfaceFromColors(
             ...buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
             active:
             {
-                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
-                onColor: primaryHex,
+                color: options?.darkMode ? darken(onPrimaryContainerHex, states.active) : alphaOnWhiteBackground(darken(onPrimaryContainerHex, states.active), (states.active * 5) / 100),
+                onColor: primaryContainerHex,
             },
             selected: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
-                onColor: primaryHex
+                color: options?.darkMode ? darken(onPrimaryContainerHex, states.selected) : alphaOnWhiteBackground(darken(onPrimaryContainerHex, states.selected), (states.selected * 5) / 100),
+                onColor: primaryContainerHex
             },
             disabled:
             {
