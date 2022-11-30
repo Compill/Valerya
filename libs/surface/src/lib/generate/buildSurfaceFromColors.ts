@@ -27,6 +27,8 @@ export interface BuildSurfaceOptions
 
 
 export function buildSurfaceFromColors(
+    basePrimaryHex: string,
+    baseOnPrimaryHex: string,
     primaryHex: string,
     onPrimaryHex: string,
     primaryContainerHex: string,
@@ -40,7 +42,7 @@ export function buildSurfaceFromColors(
         pressed: options?.pressedStatePercent ?? 5,
         selected: options?.selectedStatePercent ?? 5,
         active: options?.activeStatePercent ?? 7,
-        disabledLayer: options?.disabledStatePercent ?? 30,
+        disabledLayer: options?.disabledStatePercent ?? (options?.darkMode ? 50 : 40),
         disabledContent: options?.disabledContentStatePercent ?? 70
     }
 
@@ -56,7 +58,7 @@ export function buildSurfaceFromColors(
     // alphaOnBackground generates rgba() RGBA colors
     
     return {
-        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states),
+        main: buildSurfaceScheme(basePrimaryHex, baseOnPrimaryHex, states),
         alt:
         {
             color: primaryContainerHex,
@@ -164,15 +166,15 @@ export function buildSurfaceFromColors(
             },
             disabled:
             {
-                color: alphaOnBackground(onPrimaryContainerHex, (states.disabledLayer * 1.66) / 100),
+                color: alphaOnBackground(onPrimaryContainerHex, (100 - states.disabledLayer) / 100),
                 onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 active: {
-                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.active), (states.disabledLayer * 1.66) / 100),
+                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.active), (100 - states.disabledLayer) / 100),
                     onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 },
                 selected:
                 {
-                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.selected), (states.disabledLayer * 1.66) / 100),
+                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.selected), (100 - states.disabledLayer) / 100),
                     onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 }
             },

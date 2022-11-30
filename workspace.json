@@ -10,8 +10,6 @@
     "props-docs": "libs/props-docs",
     "react-utils": "libs/react-utils",
     "surface": "libs/surface",
-    "surfacebuilder": "apps/surfacebuilder",
-    "surfacebuilder-e2e": "apps/surfacebuilder-e2e",
     "ui": "libs/ui",
     "utils": "libs/utils"
   }

@@ -8,7 +8,15 @@ const config:Config =
   {
     stateDisabled:
     {
-      cursor: "default"
+      cursor: "not-allowed"
+    },
+    stateSelectedDisabled:
+    {
+      cursor: "not-allowed"
+    },
+    stateActiveDisabled:
+    {
+      cursor: "not-allowed"
     }
   },
   defaultTraits:
