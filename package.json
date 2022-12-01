@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve demo --port 4230",
-    "start surface builder": "nx serve surfacebuilder --port 4231",
     "[DEPLOY] ALL": "node deploy surface core components ui",
     "[DEPLOY] 1 - surface": "node deploy.js surface",
     "[DEPLOY] 2 - core": "node deploy.js core",
@@ -57,7 +56,7 @@
   "peerDependencies": {
     "@soperio/react": "^0.1.34",
     "react": "^18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@nrwl/cli": "14.5.4",
