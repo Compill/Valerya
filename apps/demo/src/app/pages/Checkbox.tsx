@@ -15,8 +15,11 @@ export default function Page({ ...props })
         <Checkbox scheme="neutral" label="Hello" size="sm" checked={checked} onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" label="Hello" size="md" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" size="lg" label="Hello" checked={checked} onChange={() => setChecked(!checked)} />
+        <Checkbox scheme="neutral" size="lg" label="Hello" disabled checked={checked} onChange={() => setChecked(!checked)} />
+        
         <Checkbox scheme="neutral" size="xl" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
         <Checkbox  size="x2" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
+        <Checkbox  size="x2" label="Hello" disabled checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
       </div>
 
       <div dflex gap="20">
@@ -25,6 +28,7 @@ export default function Page({ ...props })
         <Checkbox scheme="neutral" corners="circle" size="lg" label="Hello" checked={checked} onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" corners="circle" size="xl" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
         <Checkbox scheme="neutral" corners="circle" size="x2" label="Hello" checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
+        <Checkbox scheme="neutral" corners="circle" size="x2" label="Hello" disabled checked={checked} variant="outline" onChange={() => setChecked(!checked)} />
       </div>
 
       <div dflex gap="20">

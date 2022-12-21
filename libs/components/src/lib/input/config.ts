@@ -22,7 +22,7 @@ const config: Config =
       {
         px: "1.5",
         py: "1",
-        textSize: "xs"
+        textSize: "xs" 
       },
       "sm":
       {
