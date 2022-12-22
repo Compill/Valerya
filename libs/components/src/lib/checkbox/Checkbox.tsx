@@ -29,8 +29,6 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 
-  const a = omitComponentProps({ ...styles["checkboxIcon"] })
-
   return (
     <label {...soperioProps} {...styles["root"]}>
       <input
@@ -50,22 +48,21 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         {...inputProps}
         ref={ref}
       />
+
       <Surface
         scheme={_scheme}
         disabled={inputProps["disabled"]}
         easing={props["checked"] ? "out" : "linear"}
         {...styles["checkboxSurface"]}
       >
-        <svg
-          easing={props["checked"] ? "out" : "linear"}
-          // If I don't cast as Record<string, any>, typescript will
-          // complain about incompatibility for the svg type
-          // which differs from a regular html tag type
-          {...styles["checkboxIcon"] as Record<string, any>}
-        >
-
-        </svg>
+        {/*
+          If I don't cast as Record<string, any>, typescript will
+          complain about incompatibility for the svg type
+          which differs from a regular html tag type 
+        */}
+        <svg {...styles["checkboxIcon"] as Record<string, any>} />
       </Surface>
+      
       {label && <span {...styles["label"]}>{label}</span>}
     </label>
   );

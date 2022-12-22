@@ -1,9 +1,6 @@
 import { Container, Radio } from "@valerya/components";
 import React from "react";
 
-
-type Side = "left" | "right" | "top" | "bottom";
-
 /**
  *
  *
@@ -14,13 +11,17 @@ export default function Page({ ...props })
 
   function handleClick(e: any)
   {
+    console.log("handle click ", e.target.name)
     setChecked(e.target.name);
   }
 
   function handleChange(e: any)
   {
+    console.log("handle change ", e.target.name)
     setChecked(e.target.name);
   }
+
+  console.log("checked value", checked)
 
   return (
     <Container center size="x2" gap="4" justifyContent="center" py="20">
@@ -39,15 +40,15 @@ export default function Page({ ...props })
       </div> */}
 
       <div mb="10" dflex flexCol spaceY="2">
-        <Radio name="a" label="Answer A" value="a" dotSize="lg" disabled checked={checked == "a"} onChange={handleChange} />
-        <Radio name="b" label="Answer B" value="b" dotSize="lg" disabled checked={checked == "b"} onChange={handleChange} />
-        <Radio name="c" label="Answer C" value="c" dotSize="lg" checked={checked == "c"} onClick={handleClick} />
+        <Radio name="a" label="Answer A" value="a" dotSize="lg" disabled checked={checked === "a"} onChange={handleChange} />
+        <Radio name="b" label="Answer B" value="b" dotSize="lg" disabled checked={checked === "b"} onChange={handleChange} />
+        <Radio name="c" label="Answer C" value="c" dotSize="lg" checked={checked === "c"} onClick={handleClick} />
       </div>
 
       <div mb="10" dflex flexCol spaceY="2">
-        <Radio name="a" variant="outline" label="Answer A" value="a" checked={checked == "a"} dotSize="sm" onChange={handleChange} />
-        <Radio name="b" variant="outline" label="Answer B" value="b" checked={checked == "b"} dotSize="md" onChange={handleChange} />
-        <Radio name="c" variant="outline" label="Answer C" value="c" checked={checked == "c"} dotSize="lg" onChange={handleChange} />
+        <Radio name="a" variant="outline" label="Answer A" value="a" checked={checked === "a"} dotSize="sm" onChange={handleChange} />
+        <Radio name="b" variant="outline" label="Answer B" value="b" checked={checked === "b"} dotSize="md" onChange={handleChange} />
+        <Radio name="c" variant="outline" label="Answer C" value="c" checked={checked === "c"} dotSize="lg" onChange={handleChange} />
       </div>
 
       <div mb="10" dflex flexCol spaceY="2">

@@ -7,10 +7,11 @@ const config: Config =
   defaultTraits:
   {
     variant: "default",
-    corners: "default",
+    corners: "circle",
     size: "lg",
+    dotSize: "lg"
   },
-  subComponents: ["root", "checkboxSurface", "checkboxIcon", "label"],
+  subComponents: ["root", "radioSurface", "radioIcon", "label"],
   defaultProps:
   {
     root:
@@ -25,14 +26,15 @@ const config: Config =
         cursor: "not-allowed"
       }
     },
-    checkboxSurface:
+    radioSurface:
     {
       hoverable: true,
       display: "inline-block",
       transition: "colors",
-      duration: "300"
+      duration: "300",
+      rounded: "full"
     },
-    checkboxIcon:
+    radioIcon:
     {
       viewBox: "0 0 24 24",
       fill: "none",
@@ -40,7 +42,6 @@ const config: Config =
       strokeWidth: "2px",
       transition: "opacity",
       duration: "300",
-      children: <polyline points="20 6 9 17 4 12"> </polyline>,
       opacity: "0",
       easing: "linear",
       stateChecked:
@@ -68,7 +69,7 @@ const config: Config =
         {
           textSize: "sm"
         },
-        checkboxSurface:
+        radioSurface:
         {
           w: "3",
           h: "3"
@@ -81,7 +82,7 @@ const config: Config =
         {
           textSize: "md"
         },
-        checkboxSurface:
+        radioSurface:
         {
           w: "4",
           h: "4"
@@ -94,7 +95,7 @@ const config: Config =
         {
           textSize: "lg"
         },
-        checkboxSurface:
+        radioSurface:
         {
           w: "5",
           h: "5",
@@ -107,7 +108,7 @@ const config: Config =
         {
           textSize: "xl"
         },
-        checkboxSurface:
+        radioSurface:
         {
           w: "6",
           h: "6",
@@ -119,7 +120,7 @@ const config: Config =
         {
           textSize: "x2"
         },
-        checkboxSurface:
+        radioSurface:
         {
           textSize: "x2",
           w: "7",
@@ -131,7 +132,7 @@ const config: Config =
     {
       default:
       {
-        checkboxSurface: (surface: SurfaceScheme, darkMode: boolean) =>
+        radioSurface: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             layer: "alt",
@@ -154,7 +155,7 @@ const config: Config =
       },
       outline:
       {
-        checkboxSurface: (surface: SurfaceScheme, darkMode: boolean) =>
+        radioSurface: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
             layer: "mainLayer",
@@ -171,13 +172,37 @@ const config: Config =
             }
           }
         ),
-      },
+      }
     },
     corners:
     {
-      square: { checkboxSurface: { rounded: "none" } },
-      default: { checkboxSurface: { rounded: true } },
-      circle: { checkboxSurface: { rounded: "full" } }
+      square: { radioSurface: { rounded: "none" } },
+      default: { radioSurface: { rounded: true } },
+      circle: { radioSurface: { rounded: "full" } }
+    },
+    dotSize:
+    {
+      sm:
+      {
+        radioIcon:
+        {
+          children: <path fill="currentColor" stroke="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" />
+        }
+      },
+      md:
+      {
+        radioIcon:
+        {
+          children: <path fill="currentColor" stroke="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
+        }
+      },
+      lg:
+      {
+        radioIcon:
+        {
+          children: <path fill="currentColor" stroke="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" />
+        }
+      }
     }
   }
 }

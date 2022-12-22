@@ -3,7 +3,7 @@ import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
 import defaultConfig from "./config";
-import { ComponentManager, useComponentConfig, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useComponentConfig, useFirstRender, useMultiPartSurfaceComponentConfig, useSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
 
 const COMPONENT_ID = "Valerya.Radio";
@@ -28,7 +28,7 @@ export const Radio = forwardRef<"input", RadioProps>((
     label = "",
     size,
     variant,
-    dotSize = "lg",
+    dotSize,
     corners,
     config,
     ...props
@@ -36,78 +36,52 @@ export const Radio = forwardRef<"input", RadioProps>((
 {
   const firstRender = useFirstRender();
 
-  const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props)
+  const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners, dotSize }, props)
+
 
   const [soperioProps, inputProps] = splitComponentProps(props);
-  // TODO Fix tick
+  
+  console.log("styles for svg icon of radio ", props["name"], styles["radioIcon"])
+
+
   return (
-    <div display="flex" flexRow alignItems="center" {...soperioProps}>
-      <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
-        <input
-          border="none"
-          h="px"
-          w="px"
-          m="-px"
-          overflow="hidden"
-          p="0"
-          position="absolute"
-          whiteSpace="nowrap"
-          // TODO CSS prop
-          style={{
-            clip: "rect(0 0 0 0)",
-            clipPath: "inset(50%)"
-          }}
-          type="radio"
-          {...inputProps}
-          ref={ref}
-        />
-        <Surface
-          scheme={_scheme}
-          disabled={inputProps["disabled"]}
-          display="inline-block"
-          transition={firstRender ? "none" : "all"}
-          easing={props.checked ? "out" : "linear"}
-          duration="300"
-          rounded="full"
-          {...styles}
-        >
+    <label {...soperioProps} {...styles["root"]}>
+      <input
+        border="none"
+        h="px"
+        w="px"
+        m="-px"
+        overflow="hidden"
+        p="0"
+        position="absolute"
+        whiteSpace="nowrap"
+        // TODO CSS prop
+        style={{
+          clip: "rect(0 0 0 0)",
+          clipPath: "inset(50%)"
+        }}
+        type="radio"
+        {...inputProps}
+        ref={ref}
+      />
 
-          {/* TODO Use multipart component properties to set width & height on svg */}
-          {/* Use circle svg if shape is circle, square svg if shape is square */}
-          {dotSize === "sm" && (
-            <svg
-              viewBox="0 0 24 24"
-              opacity={props.checked ? "100" : "0"}
-              transition="opacity"
-              easing={props.checked ? "out" : "linear"}
-              duration="300">
-              <path fill="currentColor" stroke="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" />
-            </svg>
-          )}
+      <Surface
+        scheme={_scheme}
+        disabled={inputProps["disabled"]}
+        // transition={firstRender ? "none" : "all"}
+        easing={props.checked ? "out" : "linear"}
+        {...styles["radioSurface"]}
+      >
+        {/*
+          If I don't cast as Record<string, any>, typescript will
+          complain about incompatibility for the svg type
+          which differs from a regular html tag type 
+        */}
+        <svg 
+          {...styles["radioIcon"] as Record<string, any>} />
+      </Surface>
 
-          {dotSize === "md" && (
-            <svg
-              viewBox="0 0 24 24"
-              opacity={props.checked ? "100" : "0"}
-              transition="opacity"
-              easing={props.checked ? "out" : "linear"}
-              duration="300">
-              <path fill="currentColor" stroke="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
-            </svg>
-          )}
-          {dotSize === "lg" && (
-            <svg
-              viewBox="0 0 24 24"
-              opacity={props.checked ? "100" : "0"}
-              transition="opacity"
-              easing={props.checked ? "out" : "linear"}
-              duration="300">
-              <path fill="currentColor" stroke="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" />
-            </svg>
-          )}
-        </Surface>
-      </label>
-      {label && <span textSize={styles.textSize} ms="3">{label}</span>}
-    </div >
+      {label && <span {...styles["label"]}>{label}</span>}
+    </label>
   );
 });
