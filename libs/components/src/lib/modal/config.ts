@@ -120,70 +120,70 @@ const config: Config =
       {
         modalContent:
         {
-          maxW: "20rem"
+          w: "20rem"
         }
       },
       sm:
       {
         modalContent:
         {
-          maxW: "24rem"
+          w: "24rem"
         }
       },
       md:
       {
         modalContent:
         {
-          maxW: "28rem"
+          w: "28rem"
         }
       },
       lg:
       {
         modalContent:
         {
-          maxW: "32rem"
+          w: "32rem"
         }
       },
       xl:
       {
         modalContent:
         {
-          maxW: "36rem"
+          w: "36rem"
         }
       },
       x2:
       {
         modalContent:
         {
-          maxW: "40rem"
+          w: "40rem"
         }
       },
       x3:
       {
         modalContent:
         {
-          maxW: "44rem"
+          w: "44rem"
         }
       },
       x4:
       {
         modalContent:
         {
-          maxW: "48rem"
+          w: "48rem"
         }
       },
       x5:
       {
         modalContent:
         {
-          maxW: "52rem"
+          w: "52rem"
         }
       },
       x6:
       {
         modalContent:
         {
-          maxW: "56rem"
+          w: "56rem"
         }
       },
     }
