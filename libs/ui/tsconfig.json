@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ESNext",
-    "allowJs": true,
+    "allowJs": false,
     "strict": false,
     "noImplicitAny": false,
     "esModuleInterop": true,
