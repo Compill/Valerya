@@ -43,6 +43,7 @@ const config: Config =
     {
       position: "relative",
       z: 1200,
+      overflow: "hidden"
     },
     body:
     {

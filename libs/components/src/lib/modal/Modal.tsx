@@ -106,7 +106,6 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
           ref={ref}>
           <div
             alignItems={position === "center" ? position : positionX}
-            mt={position}
             position="fixed"
             w="100%"
             h="full"
