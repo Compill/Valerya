@@ -48,7 +48,9 @@ const config: Config =
     {
       px: "7",
       py: "5",
-      textSize: "sm"
+      textSize: "sm",
+      overflow: "auto",
+      maxH: "calc(100vh - 200px)"
     },
     footer:
     {

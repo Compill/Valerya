@@ -24,7 +24,7 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer  dflex placeContent="end" alignItems="center">
-          <Button variant="borderless" theme="neutral" me="3">Cancel</Button>
+          <Button variant="borderless" scheme="neutral" me="3">Cancel</Button>
           <Button variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
@@ -69,7 +69,7 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer showDivider dividerWidth="32" dflex placeContent="end" alignItems="center">
-          <Button variant="borderless" theme="neutral" me="3">Cancel</Button>
+          <Button variant="borderless" scheme="neutral" me="3">Cancel</Button>
           <Button variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
@@ -84,7 +84,7 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer dflex placeContent="end" alignItems="center">
-          <Button variant="borderless" theme="neutral" me="3">Cancel</Button>
+          <Button variant="borderless" scheme="neutral" me="3">Cancel</Button>
           <Button variant="borderless">Save</Button>
         </Card.Footer>
       </Card>
@@ -99,7 +99,7 @@ export default function Page({ ...props })
         </Card.Body>
 
         <Card.Footer dflex placeContent="end" alignItems="center">
-          <Button variant="borderless" theme="neutral" me="3">Cancel</Button>
+          <Button variant="borderless" scheme="neutral" me="3">Cancel</Button>
           <Button variant="borderless">Save</Button>
         </Card.Footer>
       </Card>

@@ -24,12 +24,12 @@ export default function Page({ ...props })
       </div>
 
       <div mb="10">
-        <Badge shape="pill" size="xs" mx="2" my="2">Small</Badge>
-        <Badge shape="pill" size="sm" mx="2" my="2"><span>Small</span></Badge>
-        <Badge shape="pill" size="md" mx="2" my="2">Small</Badge>
-        <Badge shape="pill" size="lg" mx="2" my="2">Small</Badge>
-        <Badge shape="pill" size="xl" mx="2" my="2">Small</Badge>
-        <Badge shape="pill" size="x2" mx="2" my="2">Small</Badge>
+        <Badge corners="pill" size="xs" mx="2" my="2">Small</Badge>
+        <Badge corners="pill" size="sm" mx="2" my="2"><span>Small</span></Badge>
+        <Badge corners="pill" size="md" mx="2" my="2">Small</Badge>
+        <Badge corners="pill" size="lg" mx="2" my="2">Small</Badge>
+        <Badge corners="pill" size="xl" mx="2" my="2">Small</Badge>
+        <Badge corners="pill" size="x2" mx="2" my="2">Small</Badge>
       </div>
 
       <div mb="10">
