@@ -21,6 +21,7 @@ const config: Config =
     {
       display: "flex",
       justifyContent: "center",
+      overflow: "hidden",
     },
     header:
     {
@@ -43,7 +44,10 @@ const config: Config =
     {
       position: "relative",
       z: 1200,
-      overflow: "hidden"
+      overflow: "hidden",
+      dflex: true,
+      flexCol: true,
+      maxH: "calc(100% - 6rem)",
     },
     body:
     {
@@ -51,7 +55,7 @@ const config: Config =
       py: "5",
       textSize: "sm",
       overflow: "auto",
-      maxH: "calc(100vh - 200px)"
+      flex: "1"
     },
     footer:
     {
