@@ -101,7 +101,6 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
           start="0"
           z="1000"
           {...styles["backdrop"]}
-          {...props}
           bgOpacity={backdropOpacity}
           ref={ref}>
           <div
