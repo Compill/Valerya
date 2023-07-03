@@ -1,6 +1,6 @@
 import { ComponentManager, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
 import { SurfaceScheme } from "@valerya/surface"
-import { forwardRef, SoperioComponent, HTMLDivProps, ResponsiveProps, useResponsiveProp } from "@soperio/react";
+import { forwardRefWithAs, SoperioComponent, HTMLDivProps, ResponsiveProps, useResponsiveProp } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
 import { mergeRefs } from "@valerya/react-utils";
@@ -34,7 +34,7 @@ export interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, Sur
   hoverable?: boolean
 }
 
-export const Surface = forwardRef<"div", SurfaceComponentProps>((
+export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
   {
     hoverable,
     layer,

@@ -54,7 +54,7 @@
     "update-notifier": "^5.0.1"
   },
   "peerDependencies": {
-    "@soperio/react": "^0.1.45",
+    "@soperio/react": "^0.1.51",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
