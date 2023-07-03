@@ -59,15 +59,17 @@ export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
     })
   }
 
+  const Component = props.as ?? "div"
+
   return (
-    <div
+    <Component
       {...(!props.disabled && (hoverable || props.onClick) ? { cursor: "pointer" } : null)}
       {...filteredStyles}
       {...props}
       ref={mergeRefs(ref, hoverRef)}
     >
       {props.children}
-    </div>
+    </Component>
   )
 })
 
