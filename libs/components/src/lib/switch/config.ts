@@ -11,6 +11,7 @@ const config: Config =
       dflex: true,
       placeItems: "center",
       cursor: "pointer",
+      w: "full",
       stateDisabled:
       {
         cursor: "not-allowed"
@@ -34,7 +35,7 @@ const config: Config =
   {
     size: "lg",
     corners: "default",
-    variant: "default"
+    variant: "default",
   },
   subComponents: ["switch", "track", "thumb", "label"],
   traits:
