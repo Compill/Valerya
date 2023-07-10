@@ -186,7 +186,6 @@ const config: Config =
         ),
         label: {
           textSize: "lg",
-          textAlign: "center"
         }
       },
       inverse:
@@ -233,7 +232,6 @@ const config: Config =
         ),
         label: {
           textSize: "lg",
-          textAlign: "center"
         }
       },
     },
