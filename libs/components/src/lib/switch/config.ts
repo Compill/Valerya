@@ -130,7 +130,8 @@ const config: Config =
         label:
         {
           textSize: "x2",
-          ps: "4"
+          ps: "4",
+          flexGrow: "1"
         },
       },
     },

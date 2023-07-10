@@ -1,5 +1,5 @@
-import { ComponentManager, useFirstRender, useMultiPartComponentConfig, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, HTMLInputProps, ParentComponent, splitComponentProps } from "@soperio/react";
+import { HTMLInputProps, forwardRef, splitComponentProps } from "@soperio/react";
+import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import React from "react";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -9,8 +9,9 @@ const COMPONENT_ID = "Valerya.Switch";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLInputProps, "size">
+export interface SwitchProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
+  label?: string,
   config?: ExtendConfig
 }
 
@@ -21,6 +22,7 @@ export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLI
 export const Switch = forwardRef<"input", SwitchProps>(({
   variant,
   corners,
+  label = "",
   size,
   scheme,
   config,
@@ -63,6 +65,9 @@ export const Switch = forwardRef<"input", SwitchProps>(({
         ref={ref}
         {...inputProps} />
 
+      {label && <span {...styles["label"]}>{label}</span>}
+
+
       {/* Track */}
       <Surface
         scheme={_scheme}
@@ -80,12 +85,6 @@ export const Switch = forwardRef<"input", SwitchProps>(({
           {...styles["thumb"]}
         />
       </Surface>
-
-      {children && (
-        <span {...styles["label"]}>
-          {children}
-        </span>
-      )}
     </label>
   );
 });
