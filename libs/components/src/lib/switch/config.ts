@@ -184,9 +184,6 @@ const config: Config =
             }
           }
         ),
-        label: {
-          textSize: "lg",
-        }
       },
       inverse:
       {
@@ -230,9 +227,6 @@ const config: Config =
             }
           }
         ),
-        label: {
-          textSize: "lg",
-        }
       },
     },
     corners:
