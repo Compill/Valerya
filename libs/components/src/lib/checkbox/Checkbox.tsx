@@ -32,18 +32,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
   return (
     <label {...soperioProps} {...styles["root"]}>
       <input
-        border="none"
-        h="px"
-        w="px"
-        m="-px"
-        overflow="hidden"
-        p="0"
-        position="absolute"
-        whiteSpace="nowrap"
-        style={{
-          clip: "rect(0 0 0 0)",
-          clipPath: "inset(50%)"
-        }}
+        visible={false}
         type="checkbox"
         {...inputProps}
         ref={ref}
