@@ -32,7 +32,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
   return (
     <label {...soperioProps} {...styles["root"]}>
       <input
-        visible={false}
+        invisible
         type="checkbox"
         {...inputProps}
         ref={ref}
