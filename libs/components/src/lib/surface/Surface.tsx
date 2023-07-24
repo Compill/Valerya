@@ -15,7 +15,7 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 // Something like <Layer depth="0"></Layer>
 // depth being the stack index/z-index of the layer
 
-interface SurfaceSchemeProps extends TraitProps
+type SurfaceSchemeProps = TraitProps &
 {
   scheme?: ThemeSurfaceScheme | SurfaceScheme,
   hover_scheme?: ThemeSurfaceScheme | SurfaceScheme,
