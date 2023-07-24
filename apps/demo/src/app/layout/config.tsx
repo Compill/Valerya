@@ -11,6 +11,7 @@ const CheckboxPage = React.lazy(() => import("../pages/Checkbox"));
 const InputPage = React.lazy(() => import("../pages/Input"));
 const ListPage = React.lazy(() => import("../pages/List"));
 const ModalPage = React.lazy(() => import("../pages/Modal"));
+const PopoverPage = React.lazy(() => import("../pages/Popover"));
 const RadioPage = React.lazy(() => import("../pages/Radio"));
 const SelectPage = React.lazy(() => import("../pages/Select"));
 const SurfacePage = React.lazy(() => import("../pages/Surface"));
@@ -34,6 +35,7 @@ export const menu = {
   "Input": () => <InputPage />,
   "List": () => <ListPage />,
   "Modal": () => <ModalPage />,
+  "Popover": () => <PopoverPage />,
   "Radio": () => <RadioPage />,
   "Select": () => <SelectPage />,
   "Sidebar": () => <SidebarPage />,
