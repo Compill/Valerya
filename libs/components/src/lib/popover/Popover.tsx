@@ -3,16 +3,16 @@ import { HTMLDivProps, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { usePopover } from "./usePopover";
 
-export interface PopoverProps extends Omit<SoperioComponent, "position">, Omit<HTMLDivProps, "position">
+export interface PopoverProps extends SoperioComponent, HTMLDivProps
 {
-    position?: Placement;
+    side?: Placement;
     modal?: boolean
     children: React.ReactElement<any>[]
 }
 
-export function Popover({ position = "bottom", modal, children, ...props }: PopoverProps)
+export function Popover({ side = "bottom", modal, children, ...props }: PopoverProps)
 {
-    const { refs, getReferenceProps, floatingStyles, getFloatingProps, labelId, context, open } = usePopover({ modal, placement: position });
+    const { refs, getReferenceProps, floatingStyles, getFloatingProps, labelId, context, open } = usePopover({ modal, placement: side });
 
     if (children.length != 2)
         throw new Error("Popover component must have exactly two children")
