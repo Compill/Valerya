@@ -1,40 +1,24 @@
-import
-{
-    FloatingFocusManager,
-    Placement,
-    autoUpdate,
-    flip,
-    offset,
-    shift,
-    useClick,
-    useDismiss,
-    useFloating,
-    useId,
-    useInteractions,
-    useRole
-} from "@floating-ui/react";
+import { FloatingFocusManager, Placement } from "@floating-ui/react";
+import { SoperioComponent } from "@soperio/react";
 import React from "react";
 import { usePopover } from "./usePopover";
 
-export interface PopoverProps
+export interface PopoverProps extends Omit<SoperioComponent, "position">
 {
     position?: Placement;
     modal?: boolean
     children: React.ReactElement<any>[]
 }
 
-export function Popover({ position = "bottom", modal, children }: PopoverProps)
+export function Popover({ position = "bottom", modal, children, ...props }: PopoverProps)
 {
     const { refs, getReferenceProps, floatingStyles, getFloatingProps, labelId, context, open } = usePopover({ modal, placement: position });
 
     if (children.length != 2)
         throw new Error("Popover component must have exactly two children")
 
-    // Let's figure out positioning later
-    console.log("props", getReferenceProps())
-
     return (
-        <>
+        <div {...props}>
             {React.cloneElement(children[0], { ref: refs.setReference, ...getReferenceProps() })}
 
             {
@@ -52,6 +36,6 @@ export function Popover({ position = "bottom", modal, children }: PopoverProps)
                     </FloatingFocusManager>
                 )
             }
-        </>
+        </div>
     )
 }
