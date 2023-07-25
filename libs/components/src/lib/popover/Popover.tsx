@@ -1,9 +1,9 @@
 import { FloatingFocusManager, Placement } from "@floating-ui/react";
-import { SoperioComponent } from "@soperio/react";
+import { HTMLDivProps, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { usePopover } from "./usePopover";
 
-export interface PopoverProps extends Omit<SoperioComponent, "position">
+export interface PopoverProps extends Omit<SoperioComponent, "position">, Omit<HTMLDivProps, "position">
 {
     position?: Placement;
     modal?: boolean
