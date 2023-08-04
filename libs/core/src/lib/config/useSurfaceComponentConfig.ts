@@ -3,8 +3,8 @@ import { SurfaceScheme } from "@valerya/surface";
 import deepmerge from "deepmerge";
 import { useSurface } from "../hooks/useSurface";
 import { ThemeSurfaceScheme } from "../surface/types";
-import { ComponentState, ComponentThemeState } from "./ComponentStates";
 import { ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
+import { mergeStateProps } from "./mergeStateProps";
 import { useMergedComponentConfig } from "./useMergeComponentConfig";
 
 
@@ -12,8 +12,6 @@ type KeysOf<T> =
   {
     [Property in keyof T]: string
   }
-
-type OmitStates<T> = Omit<T, "active" | "checked" | "disabled" | "invalid" | "selected" | "valid" | "activeDisabled" | "checkedDisabled" | "selectedDisabled">
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction<T extends Function = Function>(
@@ -123,70 +121,4 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
     styles: mergeStateProps(finalProps, props),
     scheme: surface
   }
-}
-
-// Final step : merge the props with the state props
-// checked, selected, disabled, ...
-function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
-{
-  let finalProps = { ...configProps };
-
-  // Remove theme states from final props
-  // Soperio props don't have stateActive, stateDisabled, etc
-  // only their html counterparts like disabled, selected, checked, ...
-  //
-  // Theme props :
-  // stateDisabled: {
-  //  // bunch of soperio props
-  // }
-  //
-  // Soperio props
-  // disabled: true
-  delete finalProps[ComponentThemeState.VALID]
-  delete finalProps[ComponentThemeState.INVALID]
-  delete finalProps[ComponentThemeState.ACTIVE]
-  delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
-  delete finalProps[ComponentThemeState.CHECKED]
-  delete finalProps[ComponentThemeState.CHECKED_DISABLED]
-  delete finalProps[ComponentThemeState.SELECTED]
-  delete finalProps[ComponentThemeState.SELECTED_DISABLED]
-  delete finalProps[ComponentThemeState.DISABLED]
-
-  if (props[ComponentState.VALID])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.VALID] };
-
-  if (props[ComponentState.INVALID])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.INVALID] };
-
-  if (props[ComponentState.DISABLED])
-  {
-    if (props[ComponentState.ACTIVE] || props[ComponentState.CHECKED] || props[ComponentState.SELECTED])
-    {
-      if (props[ComponentState.ACTIVE])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.ACTIVE_DISABLED] ?? configProps[ComponentThemeState.ACTIVE]) };
-
-      if (props[ComponentState.CHECKED])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.CHECKED_DISABLED] ?? configProps[ComponentThemeState.CHECKED]) };
-
-      if (props[ComponentState.SELECTED])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.SELECTED_DISABLED] ?? configProps[ComponentThemeState.SELECTED]) };
-    }
-    else
-    {
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
-    }
-  }
-  else
-  {
-    if (props[ComponentState.ACTIVE])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
-
-    if (props[ComponentState.CHECKED])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
-
-    if (props[ComponentState.SELECTED])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
-  }
-
-  return finalProps as OmitStates<T>;
 }
