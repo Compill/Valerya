@@ -48,15 +48,19 @@ export function buildSurfaceFromColors(
     if (hoverPercent.length == 1)
         hoverPercent = "0" + hoverPercent
 
+  const glassColorHex = options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100)
+
     // Rule of thumb:
     // use alphaOnWhiteBackground for all colors
     // only use alphaOnBackground for disabled colors
-    // 
+    //
     // alphaOnWhiteBackground generates hex RGB colors
     // alphaOnBackground generates rgba() RGBA colors
-    
+
+  const main = buildSurfaceScheme(primaryHex, onPrimaryHex, states)
+
     return {
-        main: buildSurfaceScheme(primaryHex, onPrimaryHex, states),
+        main: main,
         alt:
         {
             color: primaryContainerHex,
@@ -150,7 +154,7 @@ export function buildSurfaceFromColors(
                 }
             }
         },
-        altInv: 
+        altInv:
         {
             ...buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
             disabled:
@@ -167,6 +171,22 @@ export function buildSurfaceFromColors(
                     onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 }
             },
+        },
+        mainGlass:
+        {
+          color: glassColorHex,
+          onColor: primaryHex,
+          selected: main.selected,
+          active: main.active,
+          pressed: main.pressed,
+          hover: main.hover,
+          disabled:
+          {
+            color: alphaOnBackground(glassColorHex, states.disabledLayer / 100),
+            onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
+            active: main.disabled.active,
+            selected: main.disabled.selected
+          },
         },
         mainLayer: {
             color: "transparent",
@@ -192,17 +212,17 @@ export function buildSurfaceFromColors(
                 active:
                 {
                     color: options?.darkMode ? alphaOnBackground(darken(onPrimaryHex, states.active), states.disabledLayer / 100) : alphaOnBackground(darken(primaryHex, states.active), ((states.active * 5) / 100) * (states.disabledLayer / 100)),
-                    onColor: alphaOnBackground(primaryHex, states.disabledContent / 100), 
+                    onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
                 },
                 selected:
                 {
                     color: options?.darkMode ? alphaOnBackground(darken(onPrimaryHex, states.selected), states.disabledLayer / 100) : alphaOnBackground(darken(primaryHex, states.selected), ((states.selected * 5) / 100) * (states.disabledLayer / 100)),
-                    onColor: alphaOnBackground(primaryHex, states.disabledContent / 100), 
+                    onColor: alphaOnBackground(primaryHex, states.disabledContent / 100),
                 }
             },
             hover: {
                 // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
+              color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(glassColorHex, states.hover), (states.hover * 5 * 2) / 100),
                 onColor: primaryHex,
                 active: {
                     color: lighten(primaryHex, states.hover + states.active),

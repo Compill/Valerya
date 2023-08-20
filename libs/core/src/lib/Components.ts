@@ -23,7 +23,7 @@ export interface Components
   },
   "Valerya.Button":
   {
-    variant?: "default" | "light" | "outline" | "link" | "borderless";
+    variant?: "default" | "light" | "outline" | "link" | "borderless" | "glass";
     size?: "sm" | "md" | "lg" | "xl" | "x2";
     corners?: "default" | "square" | "pill";
   },
@@ -99,7 +99,7 @@ export interface Components
   },
   "Valerya.Surface":
   {
-    layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
+    layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainGlass" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },
   "Valerya.Switch":
   {

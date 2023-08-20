@@ -154,6 +154,50 @@ const config:Config =
           }
         }
       ),
+      mainGlass: (surface: SurfaceScheme, darkMode: boolean) =>
+      (
+        {
+          bgColor: surface.layers.mainGlass.color,
+          hover_bgColor: surface.layers.mainGlass.hover.color,
+          textColor: surface.layers.mainGlass.onColor,
+          hover_textColor: surface.layers.mainGlass.hover.onColor,
+          stateSelected:
+          {
+            bgColor: surface.layers.mainGlass.selected.color,
+            hover_bgColor: surface.layers.mainGlass.hover.selected.color,
+            textColor: surface.layers.mainGlass.selected.onColor,
+            hover_textColor: surface.layers.mainGlass.hover.selected.onColor,
+          },
+          stateSelectedDisabled:
+          {
+            bgColor: surface.layers.mainGlass.disabled.selected.color,
+            textColor: surface.layers.mainGlass.disabled.selected.onColor,
+            hover_bgColor: surface.layers.mainGlass.disabled.selected.color,
+            hover_textColor: surface.layers.mainGlass.disabled.selected.onColor,
+          },
+          stateActive:
+          {
+            bgColor: surface.layers.mainGlass.active.color,
+            hover_bgColor: surface.layers.mainGlass.hover.active.color,
+            textColor: surface.layers.mainGlass.active.onColor,
+            hover_textColor: surface.layers.mainGlass.hover.active.onColor,
+          },
+          stateActiveDisabled:
+          {
+            bgColor: surface.layers.mainGlass.disabled.active.color,
+            textColor: surface.layers.mainGlass.disabled.active.onColor,
+            hover_bgColor: surface.layers.mainGlass.disabled.active.color,
+            hover_textColor: surface.layers.mainGlass.disabled.active.onColor,
+          },
+          stateDisabled:
+          {
+            bgColor: surface.layers.mainGlass.disabled.color,
+            hover_bgColor: surface.layers.mainGlass.disabled.color,
+            textColor: surface.layers.mainGlass.disabled.onColor,
+            hover_textColor: surface.layers.mainGlass.disabled.onColor,
+          }
+        }
+      ),
       mainLayer: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {

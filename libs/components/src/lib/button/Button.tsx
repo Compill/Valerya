@@ -24,7 +24,7 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
   corners,
   scheme,
   config,
-  type = "button",
+  // type = "button",
   onMouseDown,
   onClick,
   ...props
@@ -50,7 +50,7 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
       as="button"
       scheme={_scheme}
       transition={firstRender ? "none" : "all"}
-      type={type}
+      // type={type}
       // focus_ringOffset="2"
       // focus_ringOffsetColor="blue-300"
       // focus_ringWidth="2"

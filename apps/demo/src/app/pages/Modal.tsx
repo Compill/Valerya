@@ -22,7 +22,7 @@ export default function Page({ ...props }) {
         </Modal.Body>
 
         <Modal.Footer dflex placeContent="end" alignItems="center" showDivider>
-          <Button variant="borderless" theme="neutral" me="3" onClick={() => setShowModal(false)}>Close</Button>
+          <Button variant="borderless" scheme="neutral" me="3" onClick={() => setShowModal(false)}>Close</Button>
           <Button variant="borderless" onClick={() => console.log("save")}>Save</Button>
         </Modal.Footer>
       </Modal>
