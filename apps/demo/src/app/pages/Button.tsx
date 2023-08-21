@@ -52,14 +52,14 @@ export default function Page({ ...props })
         <Button scheme="dark" variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
       </div>
 
-      <div flexRow>
+      {/* <div flexRow>
         <Button scheme="accent" variant="default" block mx="auto" my="5" textTransform="uppercase">Open Bottom</Button>
         <Button scheme="accent" variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
         <Button scheme="accent" variant="glass" block mx="auto" my="5" textTransform="uppercase">Glass button</Button>
         <Button scheme="accent" variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
         <Button scheme="accent" variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>
         <Button scheme="accent" variant="borderless" block mx="auto" my="5" textTransform="uppercase">Borderless</Button>
-      </div>
+      </div> */}
 
       {/* <div flexRow>
                     <Button variant="default" corners="square" block mx="auto" my="5">Default button</Button>

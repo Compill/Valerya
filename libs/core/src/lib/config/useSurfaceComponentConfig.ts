@@ -1,10 +1,10 @@
-import { IS_DEV, SoperioComponent, splitComponentProps, useDarkMode } from "@soperio/react";
+import { IS_DEV, SoperioComponent, useDarkMode } from "@soperio/react";
 import { SurfaceScheme } from "@valerya/surface";
 import deepmerge from "deepmerge";
 import { useSurface } from "../hooks/useSurface";
 import { ThemeSurfaceScheme } from "../surface/types";
-import { ComponentState, ComponentThemeState } from "./ComponentStates";
 import { ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "./SurfaceComponentConfig";
+import { mergeStateProps } from "./mergeStateProps";
 import { useMergedComponentConfig } from "./useMergeComponentConfig";
 
 
@@ -12,8 +12,6 @@ type KeysOf<T> =
   {
     [Property in keyof T]: string
   }
-
-type OmitStates<T> = Omit<T, "active" | "checked" | "disabled" | "invalid" | "selected" | "valid" | "activeDisabled" | "checkedDisabled" | "selectedDisabled">
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction<T extends Function = Function>(
@@ -33,13 +31,11 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-// Step 1 : get rid of traitsConfig, I don't need it
-// Step 2 : When merging traits, make sure to add prefix to responsive trait variants props
-
 export function useSurfaceComponentConfig<T extends SoperioComponent, P extends SurfaceComponentConfig>(
   component = "",
   surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendSurfaceComponentConfig<P> | undefined,
+  traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): { scheme: SurfaceScheme, styles: Partial<T> }
 {
   const darkMode = useDarkMode();
@@ -74,7 +70,7 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   const _surface = useSurface(surface ?? config?.defaultScheme);
 
   if (config)
-    return mergeProps(config, props, _surface, darkMode);
+    return mergeProps(config, traitsConfig, props, _surface, darkMode);
 
   return {
     scheme: _surface,
@@ -82,11 +78,10 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   }// as T;
 }
 
-const breakpoints = ["sm", "md", "lg", "xl", "x2"]
-
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
 function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig>(
   config: SurfaceComponentConfig,
+  traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
   surface: SurfaceScheme,
   darkMode: boolean
@@ -98,52 +93,20 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
   // - the state props
   // - the user defined props on the component
 
-  const traits = Object.keys(config.traits ?? {})
-
 
   // Let's start with the component default values
   let finalProps = { ...(runIfFn(config.defaultProps, surface, darkMode) as T) };
 
-  const c = config as any
   const defaultTraits = config.defaultTraits
-  const configTraits = c.traits
 
+  const c = config as any
 
-  // traits = ["variant", "size", "corners"]
-  // key = "variant"
-  for (const key of traits)
-  {
-    // Config trait for "variant"
-    const trait = configTraits[key]
-    // traitName = "default"
-    const traitName = props[trait] ?? defaultTraits?.[trait]
+  const traits = c.traits
 
-    if (trait && traitName)
-    {
-      const configProps = runIfFn(trait[traitName], surface, darkMode) as T;
-
-      if (configProps)
-      {
-        const [soperioProps, nonSoperioProps] = splitComponentProps(configProps)
-
-        // Add prefix to soperioProps
-        const prefixedProps = {}
-        for (const k in soperioProps)
-        {
-          prefixedProps[`${breakpoint}_${k}`] = soperioProps[k]
-        }
-
-        finalProps = deepmerge(finalProps, nonSoperioProps, prefixedProps) as T
-      }
-    }
-  }
-
-  // const traits = c.traits
-
-  for (const key of traits)
+  for (const key in traitsConfig)
   {
     const trait = traits[key]
-    const traitName = props[key] ?? defaultTraits?.[key]
+    const traitName = traitsConfig[key] ?? defaultTraits?.[key]
 
     if (trait && traitName)
     {
@@ -158,70 +121,4 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
     styles: mergeStateProps(finalProps, props),
     scheme: surface
   }
-}
-
-// Final step : merge the props with the state props
-// checked, selected, disabled, ...
-function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
-{
-  let finalProps = { ...configProps };
-
-  // Remove theme states from final props
-  // Soperio props don't have stateActive, stateDisabled, etc
-  // only their html counterparts like disabled, selected, checked, ...
-  //
-  // Theme props :
-  // stateDisabled: {
-  //  // bunch of soperio props
-  // }
-  //
-  // Soperio props
-  // disabled: true
-  delete finalProps[ComponentThemeState.VALID]
-  delete finalProps[ComponentThemeState.INVALID]
-  delete finalProps[ComponentThemeState.ACTIVE]
-  delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
-  delete finalProps[ComponentThemeState.CHECKED]
-  delete finalProps[ComponentThemeState.CHECKED_DISABLED]
-  delete finalProps[ComponentThemeState.SELECTED]
-  delete finalProps[ComponentThemeState.SELECTED_DISABLED]
-  delete finalProps[ComponentThemeState.DISABLED]
-
-  if (props[ComponentState.VALID])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.VALID] };
-
-  if (props[ComponentState.INVALID])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.INVALID] };
-
-  if (props[ComponentState.DISABLED])
-  {
-    if (props[ComponentState.ACTIVE] || props[ComponentState.CHECKED] || props[ComponentState.SELECTED])
-    {
-      if (props[ComponentState.ACTIVE])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.ACTIVE_DISABLED] ?? configProps[ComponentThemeState.ACTIVE]) };
-
-      if (props[ComponentState.CHECKED])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.CHECKED_DISABLED] ?? configProps[ComponentThemeState.CHECKED]) };
-
-      if (props[ComponentState.SELECTED])
-        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.SELECTED_DISABLED] ?? configProps[ComponentThemeState.SELECTED]) };
-    }
-    else
-    {
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
-    }
-  }
-  else
-  {
-    if (props[ComponentState.ACTIVE])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
-
-    if (props[ComponentState.CHECKED])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
-
-    if (props[ComponentState.SELECTED])
-      finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
-  }
-
-  return finalProps as OmitStates<T>;
 }
