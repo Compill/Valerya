@@ -43,6 +43,10 @@ export interface Components
     variant: "default" | "outline";
     corners: "square" | "default" | "circle";
   },
+  "Valerya.Icon":
+  {
+    size: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6" | "x7";
+  },
   "Valerya.Input":
   {
     size: "xs" |"sm" | "md" | "lg" | "xl" | "x2";

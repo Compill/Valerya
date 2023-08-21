@@ -5,6 +5,7 @@ import buttonConfig from "./button/config"
 import cardConfig from "./card/config"
 import checkboxConfig from "./checkbox/config"
 import dividerConfig from "./divider/config"
+import iconConfig from "./icon/config"
 import inputConfig from "./input/config"
 import listConfig from "./list/config"
 import modalConfig from "./modal/config"
@@ -28,6 +29,7 @@ export const theming = {
     "Valerya.Card": cardConfig,
     "Valerya.Checkbox": checkboxConfig,
     "Valerya.Divider": dividerConfig,
+    "Valerya.Icon": iconConfig,
     "Valerya.Input": inputConfig,
     "Valerya.List": listConfig,
     "Valerya.Modal": modalConfig,
