@@ -38,7 +38,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 {
   const darkMode = useDarkMode();
 
-  const defaultConfig = useMergedComponentConfig<ComponentConfig>(component) as P
+  const defaultConfig = useMergedComponentConfig(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);

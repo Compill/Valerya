@@ -17,7 +17,7 @@ export default function Page({ ...props })
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
-        <Button scheme={primaryScheme} variant="default" block mx="auto" my="5">Open Left</Button>
+        <Button scheme={primaryScheme} hover_scheme={tertiaryScheme} variant="default" block mx="auto" my="5">Open Left</Button>
         <Button scheme={primaryScheme} variant="light" block mx="auto" my="5">Light button</Button>
         <Button scheme={primaryScheme} variant="glass" block mx="auto" my="5">Glass button</Button>
         <Button scheme={primaryScheme} variant="link" block mx="auto" my="5">Link button</Button>

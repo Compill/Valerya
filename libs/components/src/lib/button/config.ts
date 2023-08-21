@@ -10,10 +10,6 @@ const config: Config =
     duration: "300",
     hover_duration: "300",
     fontWeight: "500",
-    stateDisabled:
-    {
-      cursor: "default"
-    },
     hoverable: true
   },
   defaultTraits:

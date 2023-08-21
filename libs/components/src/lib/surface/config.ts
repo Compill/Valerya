@@ -8,7 +8,15 @@ const config:Config =
   {
     stateDisabled:
     {
-      cursor: "default"
+      cursor: "not-allowed"
+    },
+    stateSelectedDisabled:
+    {
+      cursor: "not-allowed"
+    },
+    stateActiveDisabled:
+    {
+      cursor: "not-allowed"
     }
   },
   defaultTraits:
@@ -119,31 +127,31 @@ const config:Config =
           hover_textColor: surface.layers.main.onColor,
           stateSelected:
           {
-            bgColor: surface.layers.mainInv.selected.color,
+            bgColor: surface.layers.main.selected.color,
             hover_bgColor: surface.layers.main.hover.selected.color,
-            textColor: surface.layers.mainInv.selected.onColor,
+            textColor: surface.layers.main.selected.onColor,
             hover_textColor: surface.layers.main.hover.selected.onColor,
           },
           stateSelectedDisabled:
           {
-            bgColor: surface.layers.mainInv.disabled.selected.color,
-            textColor: surface.layers.mainInv.disabled.selected.onColor,
-            hover_bgColor: surface.layers.mainInv.disabled.selected.color,
-            hover_textColor: surface.layers.mainInv.disabled.selected.onColor,
+            bgColor: surface.layers.main.disabled.selected.color,
+            textColor: surface.layers.main.disabled.selected.onColor,
+            hover_bgColor: surface.layers.main.disabled.selected.color,
+            hover_textColor: surface.layers.main.disabled.selected.onColor,
           },
           stateActive:
           {
-            bgColor: surface.layers.mainInv.active.color,
+            bgColor: surface.layers.main.active.color,
             hover_bgColor: surface.layers.main.hover.active.color,
-            textColor: surface.layers.mainInv.active.onColor,
+            textColor: surface.layers.main.active.onColor,
             hover_textColor: surface.layers.main.hover.active.onColor,
           },
           stateActiveDisabled:
           {
-            bgColor: surface.layers.mainInv.disabled.active.color,
-            textColor: surface.layers.mainInv.disabled.active.onColor,
-            hover_bgColor: surface.layers.mainInv.disabled.active.color,
-            hover_textColor: surface.layers.mainInv.disabled.active.onColor,
+            bgColor: surface.layers.main.disabled.active.color,
+            textColor: surface.layers.main.disabled.active.onColor,
+            hover_bgColor: surface.layers.main.disabled.active.color,
+            hover_textColor: surface.layers.main.disabled.active.onColor,
           },
           stateDisabled:
           {

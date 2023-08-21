@@ -37,7 +37,7 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
 {
   const darkMode = useDarkMode();
 
-  const defaultConfig = useMergedComponentConfig<MultiPartComponentConfig<Record<string, string>>>(component) as P
+  const defaultConfig = useMergedComponentConfig(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);

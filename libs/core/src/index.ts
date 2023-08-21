@@ -9,6 +9,7 @@ export * from "./lib/config/useMultiPartSurfaceComponentConfig";
 export * from "./lib/config/useSurfaceComponentConfig";
 export * from "./lib/hooks/useBoolean";
 export * from "./lib/hooks/useCallbackRef";
+export * from "./lib/hooks/useClickOutside";
 export * from "./lib/hooks/useComponentDimensions";
 export * from "./lib/hooks/useControllable";
 export * from "./lib/hooks/useEventListener";

@@ -25,7 +25,7 @@ export function buildSurface(color: string, options?: BuildSurfaceOptions): Surf
     const onPrimaryHex = nonAlphaRGB(options?.darkMode ? darken(primaryHex, primaryBrightness * 70 * coef) : "#ffffff") //(isDarkPrimaryColor ? "#ffffff" : darken(primaryHex, primaryBrightness * 75))
     const onPrimaryContainerHex = nonAlphaRGB(options?.darkMode ? lighten(primaryContainerHex, (1 - primaryContainerBrightness) * 67 * coef) : darken(primaryContainerHex, primaryContainerBrightness * 75 * coef))
 
-    const layers = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
+    const layers = buildSurfaceFromColors(color, "#ffffff", primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
     const palette = generatePalette(RGBAToHex(primaryRGBA), options?.coef)
 
     return formatSurface({

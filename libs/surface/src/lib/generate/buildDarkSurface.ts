@@ -81,7 +81,7 @@ export function buildDarkSurface(darkColor: string, whiteColor: string, options?
     const newOptions: BuildSurfaceOptions = options ?? {}
     // newOptions.darkMode = true
 
-    const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, newOptions)
+    const surface = buildSurfaceFromColors(darkColor, whiteColor, primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, newOptions)
 
     surface.altInv.disabled =
     {

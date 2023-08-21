@@ -75,7 +75,7 @@ export function buildWhiteSurface(whiteColor: string, darkColor: string, options
         }
     }
 
-    const surface = buildSurfaceFromColors(primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
+    const surface = buildSurfaceFromColors(whiteColor, darkColor, primaryHex, onPrimaryHex, primaryContainerHex, onPrimaryContainerHex, options)
 
     surface.mainInv.hover.color = lighten(onPrimaryHex, states.hover)
 

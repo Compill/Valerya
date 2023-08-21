@@ -27,6 +27,8 @@ export interface BuildSurfaceOptions
 
 
 export function buildSurfaceFromColors(
+    basePrimaryHex: string,
+    baseOnPrimaryHex: string,
     primaryHex: string,
     onPrimaryHex: string,
     primaryContainerHex: string,
@@ -40,7 +42,7 @@ export function buildSurfaceFromColors(
         pressed: options?.pressedStatePercent ?? 5,
         selected: options?.selectedStatePercent ?? 5,
         active: options?.activeStatePercent ?? 7,
-        disabledLayer: options?.disabledStatePercent ?? 30,
+        disabledLayer: options?.disabledStatePercent ?? (options?.darkMode ? 50 : 40),
         disabledContent: options?.disabledContentStatePercent ?? 70
     }
 
@@ -48,7 +50,7 @@ export function buildSurfaceFromColors(
     if (hoverPercent.length == 1)
         hoverPercent = "0" + hoverPercent
 
-  const glassColorHex = options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100)
+    const glassColorHex = options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100)
 
     // Rule of thumb:
     // use alphaOnWhiteBackground for all colors
@@ -57,10 +59,10 @@ export function buildSurfaceFromColors(
     // alphaOnWhiteBackground generates hex RGB colors
     // alphaOnBackground generates rgba() RGBA colors
 
-  const main = buildSurfaceScheme(primaryHex, onPrimaryHex, states)
+    const main = buildSurfaceScheme(primaryHex, onPrimaryHex, states)
 
     return {
-        main: main,
+        main,
         alt:
         {
             color: primaryContainerHex,
@@ -103,7 +105,7 @@ export function buildSurfaceFromColors(
                 },
                 selected:
                 {
-                    color: colorBlendContainerFn(primaryHex, states.hover + states.selected),
+                    color: colorBlendContainerFn(primaryContainerHex, states.hover + states.selected),
                     onColor: onPrimaryHex,
                 }
             }
@@ -113,11 +115,11 @@ export function buildSurfaceFromColors(
             onColor: primaryHex,
             active:
             {
-                color: lighten(onPrimaryHex, states.active),
+                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
                 onColor: primaryHex,
             },
             selected: {
-                color: lighten(onPrimaryHex, states.selected),
+                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
                 onColor: primaryHex
             },
             pressed:
@@ -144,12 +146,12 @@ export function buildSurfaceFromColors(
                 color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
                 onColor: primaryHex,
                 active: {
-                    color: lighten(onPrimaryHex, states.hover + states.active),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.hover + states.active) : alphaOnWhiteBackground(darken(primaryHex, states.hover + states.active), (states.hover + states.active * 5) / 100),
                     onColor: primaryHex,
                 },
                 selected:
                 {
-                    color: lighten(onPrimaryHex, states.hover + states.selected),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.hover + states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.hover + states.selected), (states.hover + states.selected * 5) / 100),
                     onColor: primaryHex,
                 }
             }
@@ -157,17 +159,26 @@ export function buildSurfaceFromColors(
         altInv:
         {
             ...buildSurfaceScheme(onPrimaryContainerHex, primaryContainerHex, states),
+            active:
+            {
+                color: options?.darkMode ? darken(onPrimaryContainerHex, states.active) : alphaOnWhiteBackground(darken(onPrimaryContainerHex, states.active), (states.active * 5) / 100),
+                onColor: primaryContainerHex,
+            },
+            selected: {
+                color: options?.darkMode ? darken(onPrimaryContainerHex, states.selected) : alphaOnWhiteBackground(darken(onPrimaryContainerHex, states.selected), (states.selected * 5) / 100),
+                onColor: primaryContainerHex
+            },
             disabled:
             {
-                color: alphaOnBackground(onPrimaryContainerHex, (states.disabledLayer * 1.66) / 100),
+                color: alphaOnBackground(onPrimaryContainerHex, (100 - states.disabledLayer) / 100),
                 onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 active: {
-                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.active), (states.disabledLayer * 1.66) / 100),
+                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.active), (100 - states.disabledLayer) / 100),
                     onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 },
                 selected:
                 {
-                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.selected), (states.disabledLayer * 1.66) / 100),
+                    color: alphaOnBackground(darken(onPrimaryContainerHex, states.selected), (100 - states.disabledLayer) / 100),
                     onColor: alphaOnBackground(primaryContainerHex, states.disabledContent / 100),
                 }
             },
@@ -193,11 +204,11 @@ export function buildSurfaceFromColors(
             onColor: primaryHex,
             active:
             {
-                color: lighten(primaryHex, states.active),
+                color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 5) / 100),
                 onColor: primaryHex,
             },
             selected: {
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
+                color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 5) / 100),
                 onColor: primaryHex
             },
             pressed:
@@ -225,12 +236,12 @@ export function buildSurfaceFromColors(
               color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(glassColorHex, states.hover), (states.hover * 5 * 2) / 100),
                 onColor: primaryHex,
                 active: {
-                    color: lighten(primaryHex, states.hover + states.active),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 6) / 100),
                     onColor: primaryHex,
                 },
                 selected:
                 {
-                    color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
+                    color: options?.darkMode ? darken(onPrimaryHex, states.selected) : alphaOnWhiteBackground(darken(primaryHex, states.selected), (states.selected * 6) / 100),
                     onColor: primaryHex
                 }
             }

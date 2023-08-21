@@ -101,12 +101,10 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
           start="0"
           z="1000"
           {...styles["backdrop"]}
-          {...props}
           bgOpacity={backdropOpacity}
           ref={ref}>
           <div
             alignItems={position === "center" ? position : positionX}
-            mt={position}
             position="fixed"
             w="100%"
             h="full"

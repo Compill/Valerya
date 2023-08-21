@@ -47,7 +47,7 @@ export function useMultiPartSurfaceComponentConfig<T, C extends Record<string, S
   props?: T): { scheme: SurfaceScheme } & PartProps<C>
 {
   const darkMode = useDarkMode();
-  const defaultConfig = useMergedComponentConfig<MultiPartSurfaceComponentConfig<Record<string, string>>>(component) as P
+  const defaultConfig = useMergedComponentConfig(component) as P
 
   if (!defaultConfig && IS_DEV)
     console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);

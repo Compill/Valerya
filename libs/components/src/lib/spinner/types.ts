@@ -1,5 +1,5 @@
-import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
-import { Color, SoperioComponent, SpacingPositive } from "@soperio/react";
+import { Color, SpacingPositive } from "@soperio/react";
+import { ComponentTypings, DisabledThemeProps, ExtendSurfaceComponentConfig, SurfaceComponentConfig } from "@valerya/core";
 import { SurfaceBasedComponent } from "../surface";
 
 type TraitProps = ComponentTypings<"Valerya.Spinner">

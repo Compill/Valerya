@@ -1,8 +1,10 @@
-import { ComponentManager, ThemeSurfaceScheme, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
 import { SurfaceScheme } from "@valerya/surface"
-import { forwardRef, SoperioComponent, HTMLDivProps } from "@soperio/react";
+import { forwardRefWithAs, SoperioComponent, HTMLDivProps, ResponsiveProps, useResponsiveProp } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
+import { mergeRefs } from "@valerya/react-utils";
+import React from "react";
 
 const COMPONENT_ID = "Valerya.Surface"
 
@@ -13,14 +15,16 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 // Something like <Layer depth="0"></Layer>
 // depth being the stack index/z-index of the layer
 
-export interface SurfaceSchemeProps extends TraitProps
+
+type SurfaceSchemeProps = TraitProps &
 {
   scheme?: ThemeSurfaceScheme | SurfaceScheme,
+  hover_scheme?: ThemeSurfaceScheme | SurfaceScheme,
   hoverable?: boolean
 }
 
 export type LayerProps = TraitProps // Alias
-export type SurfaceProps = Omit<ComponentProps, "layer"> & Omit<SurfaceSchemeProps, "layer">
+export type SurfaceProps = Omit<ComponentProps, "layer"> & ResponsiveProps<Omit<SurfaceSchemeProps, "layer">>
 
 export type SurfaceBasedComponent<T = any> = T & Omit<SurfaceProps, "hoverable">
 export type HoverableSurfaceBasedComponent<T = any> = T & SurfaceProps & { hoverable?: boolean }
@@ -31,16 +35,19 @@ export interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, Sur
   hoverable?: boolean
 }
 
-export const Surface = forwardRef<"div", SurfaceComponentProps>((
+export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
   {
-    scheme,
     hoverable,
     layer,
     config,
     ...props
   }: SurfaceComponentProps, ref) =>
 {
-  const { styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { layer }, props)
+  const hoverRef = React.useRef(null)
+  const isHover = useHover(hoverRef)
+  const scheme = useResponsiveProp("scheme", props)
+  const hoverScheme = useResponsiveProp("hover_scheme", props)
+  const { styles } = useSurfaceComponentConfig(COMPONENT_ID, isHover && !props.disabled ? hoverScheme ?? scheme : scheme, config, { layer }, props)
 
   const filteredStyles: SoperioComponent = { ...styles }
 
@@ -53,15 +60,17 @@ export const Surface = forwardRef<"div", SurfaceComponentProps>((
     })
   }
 
+  const Component = props.as ?? "div"
+
   return (
-    <div
-      {...(hoverable || props.onClick ? { cursor: "pointer" } : null)}
+    <Component
+      {...(!props.disabled && (hoverable || props.onClick) ? { cursor: "pointer" } : null)}
       {...filteredStyles}
       {...props}
-      ref={ref}
+      ref={mergeRefs(ref, hoverRef)}
     >
       {props.children}
-    </div>
+    </Component>
   )
 })
 

@@ -99,7 +99,7 @@ export interface Components
   },
   "Valerya.Surface":
   {
-    layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainGlass" | "mainLayer" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
+    layer?: "none" | "main" | "mainInv" | "mainInvHovMain" | "mainLayer" | "mainGlass" | "mainLayerHovMain" | "alt" | "altInv" | "altHovMain"
   },
   "Valerya.Switch":
   {

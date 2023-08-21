@@ -9,26 +9,33 @@ const config: Config =
     switch:
     {
       dflex: true,
-      placeItems: "center"
+      placeItems: "center",
+      cursor: "pointer",
+      w: "full",
+      stateDisabled:
+      {
+        cursor: "not-allowed"
+      }
     },
     track:
     {
-      stateDisabled:
-      {
-        cursor: "default"
-      }
+      
     },
     thumb:
     {
       
     },
+    label: 
+    {
+      flexGrow: "1"
+    }
 
   },
   defaultTraits:
   {
     size: "lg",
     corners: "default",
-    variant: "default"
+    variant: "default",
   },
   subComponents: ["switch", "track", "thumb", "label"],
   traits:
@@ -52,7 +59,7 @@ const config: Config =
         label:
         {
           textSize: "sm",
-          ps: "2"
+          pe: "2"
         },
       },
       md:
@@ -71,7 +78,7 @@ const config: Config =
         label:
         {
           textSize: "md",
-          ps: "2.5"
+          pe: "2.5"
         },
 
       },
@@ -91,7 +98,7 @@ const config: Config =
         label:
         {
           textSize: "lg",
-          ps: "3"
+          pe: "3"
         },
 
       },
@@ -111,7 +118,7 @@ const config: Config =
         label:
         {
           textSize: "xl",
-          ps: "3.5"
+          pe: "3.5"
         },
       },
       x2:
@@ -130,7 +137,7 @@ const config: Config =
         label:
         {
           textSize: "x2",
-          ps: "4"
+          pe: "4"
         },
       },
     },
@@ -178,10 +185,6 @@ const config: Config =
             }
           }
         ),
-        label: {
-          textSize: "lg",
-          textAlign: "center"
-        }
       },
       inverse:
       {
@@ -225,10 +228,6 @@ const config: Config =
             }
           }
         ),
-        label: {
-          textSize: "lg",
-          textAlign: "center"
-        }
       },
     },
     corners:
