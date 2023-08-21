@@ -27,6 +27,7 @@ export default function Page({ ...props })
       <div flexRow>
         <Button scheme={secondaryScheme} variant="default" block mx="auto" my="5">Open Left</Button>
         <Button scheme={secondaryScheme} variant="light" block mx="auto" my="5">Light button</Button>
+        <Button scheme={secondaryScheme} variant="glass" block mx="auto" my="5">Glass button</Button>
         <Button scheme={secondaryScheme} variant="link" block mx="auto" my="5">Link button</Button>
         <Button scheme={secondaryScheme} variant="outline" block mx="auto" my="5">Outline button</Button>
         <Button scheme={secondaryScheme} variant="borderless" block mx="auto" my="5">Borderless</Button>

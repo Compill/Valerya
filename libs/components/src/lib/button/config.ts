@@ -123,6 +123,12 @@ const config: Config =
         {
           layer: "mainLayer",
         }
+      ),
+      glass: (surface: SurfaceScheme, darkMode: boolean) =>
+      (
+        {
+          layer: "mainGlass",
+        }
       )
     },
     corners:

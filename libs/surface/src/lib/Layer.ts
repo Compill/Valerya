@@ -32,6 +32,7 @@ export interface LayerScheme
   main: Layer,
   mainInv: Layer,
   mainLayer: Layer,
+  mainGlass: Layer,
   alt: Layer
   altInv: Layer
 }
