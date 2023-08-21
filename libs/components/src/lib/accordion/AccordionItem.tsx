@@ -69,7 +69,7 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
 
   return (
     <Surface
-      {...styles["item"]} 
+      {...styles["item"]}
       {...itemStyle}
       {...props}
     >
@@ -94,10 +94,10 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
         </div>
 
         {children && (
-          <Button 
-            onClick={handleClick} 
-            scheme={props.scheme ?? styles["item"]?.["scheme"]} 
-            {...styles["itemHeaderCollapseButton"]} 
+          <Button
+            onClick={handleClick}
+            scheme={props["scheme"] ?? styles["item"]?.["scheme"]}
+            {...styles["itemHeaderCollapseButton"]}
             {...itemHeaderCollapseButtonStyle}
           >
             {expandIcon && collapseIcon && (show ? collapseIcon : expandIcon)}
@@ -122,7 +122,7 @@ export const AccordionItem = forwardRef<typeof Surface, AccordionItemProps>(({
         )}
       </div >
 
-      {_isOpen && showDivider && <Divider m="auto" clear="both" scheme={props.scheme ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
+      {_isOpen && showDivider && <Divider m="auto" clear="both" scheme={props["scheme"] ?? styles["item"]?.["scheme"]} {...styles["divider"]} {...dividerStyles} {...itemDividerStyle} />}
 
       {children && (
         <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>
