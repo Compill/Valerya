@@ -233,7 +233,7 @@ export function buildSurfaceFromColors(
             },
             hover: {
                 // color: RGBAToHex(alpha(hexToRGBA(primaryHex), (2.55 * states.hover) / 100)),
-                color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(primaryHex, states.hover), (states.hover * 5) / 100),
+              color: options?.darkMode ? darken(onPrimaryHex, states.hover) : alphaOnWhiteBackground(darken(glassColorHex, states.hover), (states.hover * 5 * 2) / 100),
                 onColor: primaryHex,
                 active: {
                     color: options?.darkMode ? darken(onPrimaryHex, states.active) : alphaOnWhiteBackground(darken(primaryHex, states.active), (states.active * 6) / 100),

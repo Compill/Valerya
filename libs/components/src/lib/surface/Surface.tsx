@@ -15,6 +15,7 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 // Something like <Layer depth="0"></Layer>
 // depth being the stack index/z-index of the layer
 
+
 type SurfaceSchemeProps = TraitProps &
 {
   scheme?: ThemeSurfaceScheme | SurfaceScheme,
@@ -25,8 +26,8 @@ type SurfaceSchemeProps = TraitProps &
 export type LayerProps = TraitProps // Alias
 export type SurfaceProps = Omit<ComponentProps, "layer"> & ResponsiveProps<Omit<SurfaceSchemeProps, "layer">>
 
-export type SurfaceBasedComponent<T = {}> = T & Omit<SurfaceProps, "hoverable">
-export type HoverableSurfaceBasedComponent<T = {}> = T & SurfaceProps & { hoverable?: boolean }
+export type SurfaceBasedComponent<T = any> = T & Omit<SurfaceProps, "hoverable">
+export type HoverableSurfaceBasedComponent<T = any> = T & SurfaceProps & { hoverable?: boolean }
 
 export interface SurfaceComponentProps extends ComponentProps, HTMLDivProps, SurfaceSchemeProps
 {
