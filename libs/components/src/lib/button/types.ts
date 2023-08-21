@@ -5,6 +5,7 @@ import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 
 type TraitProps = ComponentTypings<"Valerya.Button">
 
+
 export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & SelectedState & DisabledState & RightJoinProps<HTMLButtonProps, HTMLDivProps>>; // TODO the as property should correctly handle the right join
 // There is a problem either in the AS type or the forwardRef function
 

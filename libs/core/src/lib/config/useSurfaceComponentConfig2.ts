@@ -1,4 +1,4 @@
-import { IS_DEV, SoperioComponent, splitComponentProps, useDarkMode } from "@soperio/react";
+import { IS_DEV, SoperioComponent, useDarkMode } from "@soperio/react";
 import { SurfaceScheme } from "@valerya/surface";
 import deepmerge from "deepmerge";
 import { useSurface } from "../hooks/useSurface";
@@ -40,6 +40,7 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   component = "",
   surface: ThemeSurfaceScheme | SurfaceScheme | undefined,
   customConfig: ExtendSurfaceComponentConfig<P> | undefined,
+  traitsConfig: Partial<KeysOf<P["traits"]>> = {} as KeysOf<P["traits"]>,
   props?: T): { scheme: SurfaceScheme, styles: Partial<T> }
 {
   const darkMode = useDarkMode();
@@ -74,7 +75,7 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   const _surface = useSurface(surface ?? config?.defaultScheme);
 
   if (config)
-    return mergeProps(config, props, _surface, darkMode);
+    return mergeProps(config, traitsConfig, props, _surface, darkMode);
 
   return {
     scheme: _surface,
@@ -82,11 +83,10 @@ export function useSurfaceComponentConfig<T extends SoperioComponent, P extends 
   }// as T;
 }
 
-const breakpoints = ["sm", "md", "lg", "xl", "x2"]
-
 // Get the right set of soperio props from the config traits (variant, size, corners, ...)
 function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig>(
   config: SurfaceComponentConfig,
+  traitsConfig: Partial<KeysOf<P["traits"]>>,
   props: any,
   surface: SurfaceScheme,
   darkMode: boolean
@@ -98,52 +98,20 @@ function mergeProps<T extends SoperioComponent, P extends SurfaceComponentConfig
   // - the state props
   // - the user defined props on the component
 
-  const traits = Object.keys(config.traits ?? {})
-
 
   // Let's start with the component default values
   let finalProps = { ...(runIfFn(config.defaultProps, surface, darkMode) as T) };
 
-  const c = config as any
   const defaultTraits = config.defaultTraits
-  const configTraits = c.traits
 
+  const c = config as any
 
-  // traits = ["variant", "size", "corners"]
-  // key = "variant"
-  for (const key of traits)
-  {
-    // Config trait for "variant"
-    const trait = configTraits[key]
-    // traitName = "default"
-    const traitName = props[trait] ?? defaultTraits?.[trait]
+  const traits = c.traits
 
-    if (trait && traitName)
-    {
-      const configProps = runIfFn(trait[traitName], surface, darkMode) as T;
-
-      if (configProps)
-      {
-        const [soperioProps, nonSoperioProps] = splitComponentProps(configProps)
-
-        // Add prefix to soperioProps
-        const prefixedProps = {}
-        for (const k in soperioProps)
-        {
-          prefixedProps[`${breakpoint}_${k}`] = soperioProps[k]
-        }
-
-        finalProps = deepmerge(finalProps, nonSoperioProps, prefixedProps) as T
-      }
-    }
-  }
-
-  // const traits = c.traits
-
-  for (const key of traits)
+  for (const key in traitsConfig)
   {
     const trait = traits[key]
-    const traitName = props[key] ?? defaultTraits?.[key]
+    const traitName = traitsConfig[key] ?? defaultTraits?.[key]
 
     if (trait && traitName)
     {
