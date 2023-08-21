@@ -7,7 +7,7 @@ const COMPONENT_ID = "Valerya.SVGIcon";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig);
 
-export interface SVGIconProps extends ComponentProps, ParentComponent
+export interface IconProps extends ComponentProps, ParentComponent
 {
   path: string,
   title?: string,
@@ -17,7 +17,7 @@ export interface SVGIconProps extends ComponentProps, ParentComponent
 /**
  * A component to display an svg icon
  */
-export function SVGIcon({ path, title, size, config, children, ...props }: SVGIconProps)
+export function Icon({ path, title, size, config, children, ...props }: IconProps)
 {
   const styles = useComponentConfig(COMPONENT_ID, config, { size }, props)
 
