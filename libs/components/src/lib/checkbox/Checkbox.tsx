@@ -45,7 +45,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         (
           <>
             {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
-            {typeof label === "string" && label}
+            {typeof label !== "string" && label}
           </>
         )
       }
@@ -69,7 +69,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         (
           <>
             {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
-            {typeof label === "string" && label}
+            {typeof label !== "string" && label}
           </>
         )
       }
