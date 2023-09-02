@@ -1,4 +1,4 @@
-import { forwardRef, HTMLInputProps, omitComponentProps, splitComponentProps } from "@soperio/react";
+import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
 import { ComponentManager, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
@@ -10,7 +10,8 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface CheckboxProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
-  label?: string,
+  label?: string | React.ReactNode,
+  labelPosition?: "start" | "end"
   config?: ExtendConfig;
 }
 
@@ -18,6 +19,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
   {
     scheme,
     label = "",
+    labelPosition = "end",
     size,
     variant,
     corners,
@@ -38,6 +40,16 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         ref={ref}
       />
 
+      {
+        label && labelPosition === "start" &&
+        (
+          <>
+            {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
+            {typeof label === "string" && label}
+          </>
+        )
+      }
+
       <Surface
         scheme={_scheme}
         disabled={inputProps["disabled"]}
@@ -47,12 +59,20 @@ export const Checkbox = forwardRef<"input", CheckboxProps>((
         {/*
           If I don't cast as Record<string, any>, typescript will
           complain about incompatibility for the svg type
-          which differs from a regular html tag type 
+          which differs from a regular html tag type
         */}
         <svg {...styles["checkboxIcon"] as Record<string, any>} />
       </Surface>
-      
-      {label && <span {...styles["label"]}>{label}</span>}
+
+      {
+        label && labelPosition === "end" &&
+        (
+          <>
+            {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
+            {typeof label === "string" && label}
+          </>
+        )
+      }
     </label>
   );
 });

@@ -20,6 +20,7 @@ const config: Config =
       alignItems: "center",
       lineHeight: "none",
       cursor: "pointer",
+      gap: "3",
       stateDisabled:
       {
         cursor: "not-allowed"
@@ -51,7 +52,6 @@ const config: Config =
     },
     label:
     {
-      ms: "3",
       stateDisabled:
       {
         opacity: "30"
