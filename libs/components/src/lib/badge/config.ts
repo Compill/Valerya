@@ -69,6 +69,13 @@ export const config: Config =
         layer: "alt",
         border: "none",
       },
+      glass: (surface: SurfaceScheme, darkMode: boolean) =>
+      (
+        {
+          layer: "mainGlass",
+          border: "none"
+        }
+      ),
       outline: (surface: SurfaceScheme, darkMode: boolean) =>
       (
         {
@@ -88,7 +95,7 @@ export const config: Config =
         }
       ),
     },
-    corners: 
+    corners:
     {
       square: { rounded: "none" },
       default: { rounded: true },

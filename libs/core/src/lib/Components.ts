@@ -17,7 +17,7 @@ export interface Components
   },
   "Valerya.Badge":
   {
-    variant: "default" | "light" | "outline" | "light-outline";
+    variant: "default" | "light" | "glass" | "outline" | "light-outline";
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
     corners: "default" | "rounded" | "pill" | "square";
   },
