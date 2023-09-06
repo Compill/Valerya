@@ -120,6 +120,6 @@ export interface Components
   },
   "Valerya.Tile":
   {
-    variant: "default" | "light" | "tile";
+    variant: "default" | "light" | "glass";
   },
 }
