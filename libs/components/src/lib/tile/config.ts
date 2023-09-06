@@ -19,6 +19,10 @@ export const config: Config =
       light:
       {
         layer: "alt",
+      },
+      glass:
+      {
+        layer: "glass",
       }
     }
   }
