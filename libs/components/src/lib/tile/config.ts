@@ -22,7 +22,7 @@ export const config: Config =
       },
       glass:
       {
-        layer: "glass",
+        layer: "mainGlass",
       }
     }
   }
