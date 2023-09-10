@@ -14,7 +14,6 @@ import
         FloatingPortal,
         FloatingFocusManager,
         useId,
-        useHover
     } from "@floating-ui/react";
 import React from "react";
 
@@ -65,11 +64,10 @@ export function usePopover({
     const click = useClick(context, {
         enabled: controlledOpen == null
     });
-    const hover = useHover(context);
     const dismiss = useDismiss(context);
     const role = useRole(context);
 
-    const interactions = useInteractions([click, hover, dismiss, role]);
+    const interactions = useInteractions([click, dismiss, role]);
 
     return React.useMemo(
         () => ({
