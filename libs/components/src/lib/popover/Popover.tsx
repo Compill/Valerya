@@ -14,7 +14,7 @@ export function Popover({ side = "bottom", modal, children, ...props }: PopoverP
 {
     const { refs, getReferenceProps, floatingStyles, getFloatingProps, labelId, context, open } = usePopover({ modal, placement: side });
 
-    if (children.length != 2)
+    if (children.length !== 2)
         throw new Error("Popover component must have exactly two children")
 
     return (

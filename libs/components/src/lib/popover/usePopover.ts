@@ -13,8 +13,9 @@ import
         Placement,
         FloatingPortal,
         FloatingFocusManager,
-        useId
-    } from "@floating-ui/react"; 
+        useId,
+        useHover
+    } from "@floating-ui/react";
 import React from "react";
 
 interface UsePopoverOptions
@@ -25,7 +26,7 @@ interface UsePopoverOptions
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
 }
-    
+
 export function usePopover({
     initialOpen = false,
     placement = "bottom",
@@ -64,10 +65,11 @@ export function usePopover({
     const click = useClick(context, {
         enabled: controlledOpen == null
     });
+    const hover = useHover(context);
     const dismiss = useDismiss(context);
     const role = useRole(context);
 
-    const interactions = useInteractions([click, dismiss, role]);
+    const interactions = useInteractions([click, hover, dismiss, role]);
 
     return React.useMemo(
         () => ({
