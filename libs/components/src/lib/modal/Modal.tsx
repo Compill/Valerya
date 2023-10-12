@@ -20,7 +20,6 @@ const [ModalContextProvider, useModalContext] = createContext<ModalProps>()
 export interface ModalProps extends Omit<ComponentProps, "position">, ParentComponent, Omit<HTMLDivProps, "position">
 {
   config?: ExtendConfig,
-  closeOnMaskClick?: boolean,
   closeOnEsc?: boolean,
   closeOnBgClick?: boolean,
   show: boolean,
@@ -136,11 +135,13 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
 
 export interface ModalHeaderProps extends SoperioComponent, ParentComponent
 {
+  showCloseButton?: boolean
   showDivider?: boolean;
   borderWidth?: "full" | "padded" | Spacing
 };
 
 export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
+  showCloseButton = true,
   showDivider,
   borderWidth,
   children,
@@ -181,17 +182,22 @@ export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
           {children}
         </div>
 
-        <Button
-          {...styles["headerCloseButton"]}
-          onClick={closeModal}
-        >
-          <svg
-            w="24px"
-            h="24px"
-            viewBox="0 0 24 24">
-            <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-          </svg>
-        </Button>
+        {
+          showCloseButton &&
+          (
+            <Button
+              {...styles["headerCloseButton"]}
+              onClick={closeModal}
+            >
+              <svg
+                w="24px"
+                h="24px"
+                viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+              </svg>
+            </Button>
+          )
+        }
       </div>
       {showDivider && <Divider {...dividerStyles} />}
     </>
