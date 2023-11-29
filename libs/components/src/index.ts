@@ -4,6 +4,7 @@ export * from './lib/badge/';
 export * from './lib/button/';
 export * from './lib/card/';
 export * from './lib/checkbox/';
+export * from './lib/collapse/';
 export * from './lib/container/';
 export * from './lib/divider/';
 export * from './lib/icon/';

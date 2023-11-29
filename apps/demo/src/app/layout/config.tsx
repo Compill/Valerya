@@ -8,6 +8,7 @@ const ButtonPage = React.lazy(() => import("../pages/Button"));
 const DividerPage = React.lazy(() => import("../pages/Divider"));
 const CardPage = React.lazy(() => import("../pages/Card"));
 const CheckboxPage = React.lazy(() => import("../pages/Checkbox"));
+const CollapsePage = React.lazy(() => import("../pages/Collapse"));
 const InputPage = React.lazy(() => import("../pages/Input"));
 const ListPage = React.lazy(() => import("../pages/List"));
 const ModalPage = React.lazy(() => import("../pages/Modal"));
@@ -31,6 +32,7 @@ export const menu = {
   "Button": () => <ButtonPage />,
   "Card": () => <CardPage />,
   "Checkbox": () => <CheckboxPage />,
+  "Collapse": () => <CollapsePage />,
   "Divider": () => <DividerPage />,
   "Input": () => <InputPage />,
   "List": () => <ListPage />,
