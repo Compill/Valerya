@@ -55,7 +55,7 @@
     "update-notifier": "^5.0.1"
   },
   "peerDependencies": {
-    "@soperio/react": "^0.1.60",
+    "@soperio/react": "^0.1.72",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -98,7 +98,6 @@
     "nx": "14.5.4",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
-    "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
     "typescript": "^5.0.4"
   }

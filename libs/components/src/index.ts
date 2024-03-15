@@ -8,6 +8,7 @@ export * from './lib/collapse/';
 export * from './lib/container/';
 export * from './lib/divider/';
 export * from './lib/icon/';
+export * from './lib/icon-button/';
 export * from './lib/input/';
 export * from './lib/list/';
 export * from './lib/modal/';

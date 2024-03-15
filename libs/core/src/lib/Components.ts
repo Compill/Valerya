@@ -47,6 +47,10 @@ export interface Components
   {
     size: "xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6" | "x7";
   },
+  "Valerya.IconButton":
+  {
+    size: /*"xs" | */"sm" | "md" | "lg" | "xl" | "x2"// | "x3" | "x4" | "x5" | "x6" | "x7";
+  },
   "Valerya.Input":
   {
     size: "xs" |"sm" | "md" | "lg" | "xl" | "x2";
