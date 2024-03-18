@@ -1,20 +1,16 @@
 import
-    {
-        useFloating,
-        autoUpdate,
-        offset,
-        flip,
-        shift,
-        useClick,
-        useDismiss,
-        useRole,
-        useInteractions,
-        useMergeRefs,
-        Placement,
-        FloatingPortal,
-        FloatingFocusManager,
-        useId,
-    } from "@floating-ui/react";
+  {
+    Placement,
+    autoUpdate,
+    flip,
+    offset,
+    shift,
+    useClick,
+    useDismiss,
+    useFloating,
+    useInteractions,
+    useRole
+  } from "@floating-ui/react";
 import React from "react";
 
 interface UsePopoverOptions

@@ -13,6 +13,7 @@ export * from './lib/input/';
 export * from './lib/list/';
 export * from './lib/modal/';
 export * from './lib/popover/';
+export * from './lib/popup/';
 export * from './lib/radio/';
 // export * from './lib/scrollable/';
 export * from './lib/select/';
