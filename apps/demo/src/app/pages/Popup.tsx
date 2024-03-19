@@ -15,10 +15,31 @@ export default function Page({ ...props })
     <Container center size="x2" gap="4" justifyContent="center" py="20">
 
 
-      <Popup show={show} side="top-end" onHide={onHide}>
+      <Popup show={show} side="top-start" onHide={onHide}>
         <Button onClick={() => setShow(true)}>Show popup</Button>
-        <div dflex flexCol w="96" h="96" bgColor="white">
-          Hello!
+        <div dflex flexCol w="96" h="96" bgColor="white" overflowY="scroll">
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
+          <p>Hello!</p>
           <Button onClick={() => setShow(false)}>Close popup</Button>
         </div>
       </Popup>
