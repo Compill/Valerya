@@ -1,5 +1,5 @@
 import { HTMLDivProps, SoperioComponent } from "@soperio/react";
-import { FloatingFocusManager, Placement, flip, useDismiss, useFloating, useInteractions } from "@floating-ui/react";
+import { FloatingFocusManager, Placement, flip, useDismiss, useFloating, useInteractions, useRole } from "@floating-ui/react";
 import React from "react";
 
 export interface PopupProps extends SoperioComponent, HTMLDivProps
@@ -21,9 +21,10 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
 
     if (!open)
       onHide?.()
-  },[setIsOpen, onHide])
+  }, [setIsOpen, onHide])
 
-  React.useEffect(() => {
+  React.useEffect(() =>
+  {
     if (show)
       setIsOpen(true)
   }, [show])
@@ -42,9 +43,11 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
   });
 
   const dismiss = useDismiss(context);
+  const role = useRole(context, { role: "menu"});
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     dismiss,
+    role
   ]);
 
   //const { refs, getReferenceProps, floatingStyles, getFloatingProps, labelId, context, open } = usePopover({ modal, placement: side });
@@ -59,7 +62,7 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
       {
         show && isOpen &&
         (
-          <FloatingFocusManager context={context} modal={false}>
+          <FloatingFocusManager context={context} modal={false} >
             <div
               ref={refs.setFloating}
               style={floatingStyles}
