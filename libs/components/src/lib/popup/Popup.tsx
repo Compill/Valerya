@@ -68,6 +68,7 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
               style={floatingStyles}
               // aria-labelledby={labelId}
               {...getFloatingProps()}
+              z="9999"
             >
               {children[1]}
             </div>
