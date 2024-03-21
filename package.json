@@ -23,7 +23,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
-    "@floating-ui/react": "^0.24.8",
+    "@floating-ui/react": "^0.26.9",
     "@material/material-color-utilities": "^0.1.2",
     "@soperio/theme-extensions": "^0.0.7",
     "@swc/core": "^1.2.177",
