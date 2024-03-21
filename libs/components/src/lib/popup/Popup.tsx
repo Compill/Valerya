@@ -13,25 +13,15 @@ export interface PopupProps extends SoperioComponent, HTMLDivProps
 
 export function Popup({ show, side = "bottom-start", modal, onHide, children, ...props }: PopupProps)
 {
-  const [isOpen, setIsOpen] = React.useState(false);
-
   const onOpenChange = React.useCallback((open: boolean, event?: Event | undefined) =>
   {
-    setIsOpen(open)
-
     if (!open)
       onHide?.()
-  }, [setIsOpen, onHide])
-
-  React.useEffect(() =>
-  {
-    if (show)
-      setIsOpen(true)
-  }, [show])
+  }, [onHide])
 
   const { refs, floatingStyles, context } = useFloating({
     placement: side,
-    open: isOpen,
+    open: show,
     onOpenChange,
     middleware: [
       flip({
@@ -60,7 +50,7 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
       {React.cloneElement(children[0], { ref: refs.setReference, ...getReferenceProps() })}
 
       {
-        show && isOpen &&
+        show &&
         (
           <FloatingPortal>
             <div
