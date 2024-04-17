@@ -1,5 +1,5 @@
 import { HTMLDivProps, SoperioComponent } from "@soperio/react";
-import { FloatingFocusManager, FloatingPortal, Placement, flip, useDismiss, useFloating, useInteractions, useRole } from "@floating-ui/react";
+import { FloatingFocusManager, FloatingPortal, Placement, autoUpdate, flip, useDismiss, useFloating, useInteractions, useRole, useTransitionStatus } from "@floating-ui/react";
 import React from "react";
 
 export interface PopupProps extends SoperioComponent, HTMLDivProps
@@ -23,6 +23,7 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
     placement: side,
     open: show,
     onOpenChange,
+    whileElementsMounted: autoUpdate,
     middleware: [
       flip({
         crossAxis: side.includes("-"),
@@ -32,8 +33,10 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
     ],
   });
 
+  const { isMounted, status } = useTransitionStatus(context);
+
   const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "menu"});
+  const role = useRole(context, { role: "menu" });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     dismiss,
@@ -49,21 +52,26 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
     <div {...props}>
       {React.cloneElement(children[0], { ref: refs.setReference, ...getReferenceProps() })}
 
-      <FloatingPortal>
-        <div
-          ref={refs.setFloating}
-          style={floatingStyles}
-          // aria-labelledby={labelId}
-          {...getFloatingProps()}
-          z="9999"
-          opacity={show ? "100" : "0"}
-          transition="opacity"
-          duration="500"
-          easing="in-out"
-        >
-          {children[1]}
-        </div>
-      </FloatingPortal>
+      {
+        isMounted &&
+        (
+          <FloatingPortal >
+            <div
+              ref={refs.setFloating}
+              style={floatingStyles}
+              // aria-labelledby={labelId}
+              {...getFloatingProps()}
+              z="9999"
+              opacity={status == "open" ? "100" : "0"}
+              transition="opacity"
+              duration="500"
+              easing="in-out"
+            >
+              {children[1]}
+            </div>
+          </FloatingPortal>
+        )
+      }
 
     </div>
   )
