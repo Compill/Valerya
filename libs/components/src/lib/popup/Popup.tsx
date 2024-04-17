@@ -49,22 +49,21 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
     <div {...props}>
       {React.cloneElement(children[0], { ref: refs.setReference, ...getReferenceProps() })}
 
-      {
-        show &&
-        (
-          <FloatingPortal>
-            <div
-              ref={refs.setFloating}
-              style={floatingStyles}
-              // aria-labelledby={labelId}
-              {...getFloatingProps()}
-              z="9999"
-            >
-              {children[1]}
-            </div>
-          </FloatingPortal>
-        )
-      }
+      <FloatingPortal>
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          // aria-labelledby={labelId}
+          {...getFloatingProps()}
+          z="9999"
+          opacity={show ? "100" : "0"}
+          transition="opacity"
+          duration="500"
+          easing="in-out"
+        >
+          {children[1]}
+        </div>
+      </FloatingPortal>
 
     </div>
   )

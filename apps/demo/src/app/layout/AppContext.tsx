@@ -10,7 +10,7 @@ const [ provider, useContext ] = createContext<AppContext>()
 
 function AppContextProvider({ children }: ParentComponent)
 {
-  const [page, setPage] = React.useState("IconButton")
+  const [page, setPage] = React.useState("Accordion")
 
   const Provider = provider
   return <Provider value={{page, setPage}}>{children}</Provider>

@@ -1,5 +1,6 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, SoperioComponent, useColor } from "@soperio/react";
+import { SoperioComponent, forwardRef, useColor } from "@soperio/react";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -34,7 +35,7 @@ export const Spinner = forwardRef<typeof Surface, SpinnerProps>(({
   ...props
 }: SpinnerProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
 
   const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size }, { trackColor, thickness, progress, ...props} as ComponentProps)
 
@@ -48,7 +49,7 @@ export const Spinner = forwardRef<typeof Surface, SpinnerProps>(({
 
   return (
     <div
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       display="inline-block"
       {...getBorders(parsedTrackColor, parsedProgress)}
       borderStyle="solid"

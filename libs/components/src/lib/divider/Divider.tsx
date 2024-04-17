@@ -1,5 +1,6 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
 import { forwardRef } from "@soperio/react";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -27,7 +28,7 @@ export const Divider = forwardRef<"div", DividerProps>(({
   ...props
 }: DividerProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
 
   const {scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, thickness }, props);
 
@@ -38,7 +39,7 @@ export const Divider = forwardRef<"div", DividerProps>(({
   return (
     <Surface
       scheme={_scheme}
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       {...styles}
       {...props}
       ref={ref} />

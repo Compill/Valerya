@@ -1,5 +1,6 @@
 import { forwardRef, HTMLInputProps } from "@soperio/react";
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -29,7 +30,7 @@ export const Input = forwardRef<"input", InputProps>((
         ...props
     }, ref) =>
 {
-    const firstRender = useFirstRender();
+  const transition = useComponentTransition();
 
     const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { size, corners, variant }, props);
 
@@ -37,7 +38,7 @@ export const Input = forwardRef<"input", InputProps>((
         <Surface
             scheme={_scheme}
             as="input"
-            transition={firstRender ? "none" : "all"}
+            transition={transition}
             {...(length ? { size: length } : null)}
             {...styles}
             {...props}

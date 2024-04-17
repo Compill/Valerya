@@ -12,12 +12,11 @@ export default function Page({ ...props })
   const onHide = React.useCallback(() => setShow(false), [setShow])
 
   return (
-    <Container center size="x2" gap="4" justifyContent="center" py="20">
+    <Container center size="x2" gap="4" py="20" px="10" mx="auto">
 
-
-      <Popup show={show} side="top-start" onHide={onHide}>
-        <Button onClick={() => setShow(true)}>Show popup</Button>
-        <div dflex flexCol w="96" h="96" bgColor="white" overflowY="scroll">
+      <Popup show={show} side="bottom-start" onHide={onHide}>
+        <Button onClick={() => setShow(true)}>  Show popup</Button>
+        <div dflex flexCol w="96" h="96" bgColor="white"  mt="2" p="2" rounded shadow>
           <p>Hello!</p>
           <p>Hello!</p>
           <p>Hello!</p>
@@ -31,16 +30,7 @@ export default function Page({ ...props })
           <p>Hello!</p>
           <p>Hello!</p>
           <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <p>Hello!</p>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
+          {/* <Button onClick={() => setShow(false)}>Close popup</Button> */}
         </div>
       </Popup>
     </Container>

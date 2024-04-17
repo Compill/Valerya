@@ -1,6 +1,7 @@
 import { forwardRef, IS_DEV } from "@soperio/react";
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
 import React from 'react';
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -12,15 +13,6 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 export interface ButtonProps extends ComponentProps
 {
   config?: ExtendConfig;
-}
-
-function useComponentTransition()
-{
-  const [firstRender, setFirstRender] = React.useState(true)
-
-  React.useEffect(() => setFirstRender(false), [setFirstRender])
-
-  return firstRender ? "none" : "all"
 }
 
 /**
@@ -39,7 +31,7 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
   ...props
 }: ButtonProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
   const preventFocus = React.useCallback((event: any) =>
   {
     event.preventDefault();
@@ -58,7 +50,7 @@ export const Button = forwardRef<typeof Surface, ButtonProps>(({
     <Surface
       as="button"
       scheme={_scheme}
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       // type={type}
       // focus_ringOffset="2"
       // focus_ringOffsetColor="blue-300"

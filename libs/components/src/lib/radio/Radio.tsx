@@ -1,10 +1,10 @@
 import { forwardRef, HTMLInputProps, splitComponentProps } from "@soperio/react";
-import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
-import defaultConfig from "./config";
-import { ComponentManager, useComponentConfig, useFirstRender, useMultiPartSurfaceComponentConfig, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { Surface } from "../surface";
+import defaultConfig from "./config";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 
 const COMPONENT_ID = "Valerya.Radio";
 
@@ -34,15 +34,12 @@ export const Radio = forwardRef<"input", RadioProps>((
     ...props
   }, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
 
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners, dotSize }, props)
 
 
   const [soperioProps, inputProps] = splitComponentProps(props);
-  
-  console.log("styles for svg icon of radio ", props["name"], styles["radioIcon"])
-
 
   return (
     <label {...soperioProps} {...styles["root"]}>
@@ -68,16 +65,16 @@ export const Radio = forwardRef<"input", RadioProps>((
       <Surface
         scheme={_scheme}
         disabled={inputProps["disabled"]}
-        // transition={firstRender ? "none" : "all"}
+        transition={transition}
         easing={props.checked ? "out" : "linear"}
         {...styles["radioSurface"]}
       >
         {/*
           If I don't cast as Record<string, any>, typescript will
           complain about incompatibility for the svg type
-          which differs from a regular html tag type 
+          which differs from a regular html tag type
         */}
-        <svg 
+        <svg
           {...styles["radioIcon"] as Record<string, any>} />
       </Surface>
 

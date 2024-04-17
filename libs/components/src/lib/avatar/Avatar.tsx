@@ -1,6 +1,7 @@
-import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, SoperioComponent } from "@soperio/react";
+import { SoperioComponent, forwardRef } from "@soperio/react";
+import { ComponentManager, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import React from "react";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -137,7 +138,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
     ...props
   }: AvatarProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
   const [activeSrc, setActiveSrc] = React.useState(src);
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { corners, size, variant }, props);
 
@@ -146,7 +147,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
   return (
     <Surface
       scheme={_scheme}
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       ref={ref}
       bgColor={bg}
       {...styles["avatar"]}
@@ -154,7 +155,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
     >
       {activeSrc ?
         <img
-          transition={firstRender ? "none" : "all"}
+          transition={transition}
           alt={name}
           src={activeSrc}
           onError={() => setActiveSrc("")}
@@ -162,7 +163,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
         />
         : name ? (
           <span
-            transition={firstRender ? "none" : "all"}
+            transition={transition}
             {...styles["initials"]}
           >
             {getInitials?.(name)}

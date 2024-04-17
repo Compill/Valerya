@@ -1,7 +1,8 @@
-import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, ParentComponent, HTMLDivProps, HTMLListItemProps, HTMLUListProps, RightJoinProps, SoperioComponent } from "@soperio/react";
+import { HTMLDivProps, HTMLListItemProps, HTMLUListProps, ParentComponent, RightJoinProps, SoperioComponent, forwardRef } from "@soperio/react";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import React from "react";
 import { Divider } from "../divider";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { HoverableSurfaceBasedComponent, Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -33,7 +34,7 @@ const List = forwardRef<"ul", ListProps>(({
   ...props
 }: ListProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners, size, dividerSize }, props);
 
   const showDividers = dividerSize !== "none"
@@ -45,7 +46,7 @@ const List = forwardRef<"ul", ListProps>(({
 
   return (
     <ul
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       {...styles["list"]}
       {...props}
       ref={ref}

@@ -1,5 +1,6 @@
 import { forwardRef, HTMLDivProps, IS_DEV, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
-import { ComponentManager, MultiPartStyleProvider, useFirstRender, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -26,14 +27,14 @@ const CardContainer = forwardRef<typeof Surface, CardProps>(({
   ...props
 }: CardProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition()
 
   const { scheme: _scheme, styles } = useMultiPartSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, corners }, props);
-  
+
   return (
     <Surface
       scheme={_scheme}
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       {...styles["card"]}
       {...props}
       ref={ref}

@@ -1,11 +1,12 @@
 import { forwardRef, IS_DEV } from "@soperio/react";
-import { ComponentManager, useComponentConfig, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
+import React from "react";
 import { Button } from "../button";
-import defaultConfig from "./config";
-import { ComponentProps, ExtendConfig } from "./types";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Icon } from "../icon/Icon";
 import { Surface } from "../surface";
-import React from "react";
+import defaultConfig from "./config";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Valerya.IconButton"
 
@@ -15,15 +16,6 @@ export interface IconButtonProps extends ComponentProps
 {
   icon: string
   config?: ExtendConfig;
-}
-
-function useComponentTransition()
-{
-  const [firstRender, setFirstRender] = React.useState(true)
-
-  React.useEffect(() => setFirstRender(false), [setFirstRender])
-
-  return firstRender ? "none" : "all"
 }
 
 /**

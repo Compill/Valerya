@@ -1,6 +1,6 @@
-import { ComponentManager, useFirstRender, useSurfaceComponentConfig } from "@valerya/core";
-import { forwardRef, ParentComponent } from "@soperio/react";
-import React from "react";
+import { ParentComponent, forwardRef } from "@soperio/react";
+import { ComponentManager, useSurfaceComponentConfig } from "@valerya/core";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -28,7 +28,8 @@ export const Badge = forwardRef<typeof Surface, BadgeProps>(({
   ...props
 }: BadgeProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
+
 
   const { scheme: _scheme, styles } = useSurfaceComponentConfig(COMPONENT_ID, scheme, config, { variant, size, corners }, props);
 
@@ -36,7 +37,7 @@ export const Badge = forwardRef<typeof Surface, BadgeProps>(({
     <Surface
       as="span"
       scheme={_scheme}
-      transition={firstRender ? "none" : "all"}
+      transition={transition}
       w="auto"
       verticalAlign="middle"
       {...styles}

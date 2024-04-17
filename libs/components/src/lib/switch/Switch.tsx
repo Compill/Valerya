@@ -1,6 +1,7 @@
 import { HTMLInputProps, forwardRef, splitComponentProps } from "@soperio/react";
-import { ComponentManager, useFirstRender, useMultiPartSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import React from "react";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -32,7 +33,7 @@ export const Switch = forwardRef<"input", SwitchProps>(({
   ...props
 }: SwitchProps, ref) =>
 {
-  const firstRender = useFirstRender();
+  const transition = useComponentTransition();
 
   const preventFocus = React.useCallback((event: any) =>
   {
@@ -72,7 +73,7 @@ export const Switch = forwardRef<"input", SwitchProps>(({
       <Surface
         scheme={_scheme}
         as="span"
-        transition={firstRender ? "none" : "all"}
+        transition={transition}
         {...styles["track"]}
         disabled={inputProps["disabled"]}
       >
@@ -80,7 +81,7 @@ export const Switch = forwardRef<"input", SwitchProps>(({
         <Surface
           scheme={_scheme}
           as="span"
-          transition={firstRender ? "none" : "all"}
+          transition={transition}
           disabled={inputProps["disabled"]}
           {...styles["thumb"]}
         />

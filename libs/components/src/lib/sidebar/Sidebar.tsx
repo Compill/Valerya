@@ -4,6 +4,7 @@ import React from 'react';
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
+import { useComponentTransition } from "../hooks/useComponentTransition";
 
 const COMPONENT_ID = "Valerya.Sidebar"
 
@@ -29,21 +30,22 @@ export interface SidebarProps extends ComponentProps, ParentComponent
  *
  *
  */
-export const Sidebar = forwardRef<"div", SidebarProps>(({ 
+export const Sidebar = forwardRef<"div", SidebarProps>(({
   scheme,
   variant,
-  side = "start", 
-  onClose, 
-  show = false, 
-  sidebarWidth, 
-  sidebarHeight, 
+  side = "start",
+  onClose,
+  show = false,
+  sidebarWidth,
+  sidebarHeight,
   config,
-  children, 
+  children,
   ...props }: SidebarProps, ref) =>
 {
   const [internalShow, setInternalShow] = React.useState(false);
   const previousSide = usePrevious(side);
 
+  const transition = useComponentTransition("colors");
   const firstRender = useFirstRender();
   const direction = useDirection();
   const previousDirection = usePrevious(direction);
@@ -82,7 +84,7 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
       overflow="hidden"
       inset="0"
       bgColor="#000000"
-      transition={firstRender ? "none" : "colors"}
+      transition={transition}
       easing={props.easing || DEFAULT_EASING}
       duration={props.duration || DEFAULT_DURATION}
       onClick={onClose}
