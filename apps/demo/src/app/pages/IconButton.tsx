@@ -20,11 +20,17 @@ export default function Page({ ...props })
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div dflex flexRow gap="3">
+        <IconButton icon={linktreeIcon} size="xs" rounded="full" variant="glass" />
         <IconButton icon={linktreeIcon} size="sm" rounded="full" variant="glass" />
         <IconButton icon={linktreeIcon} size="md" rounded="full" variant="glass" />
         <IconButton icon={linktreeIcon} size="lg" rounded="full" variant="glass" />
         <IconButton icon={linktreeIcon} size="xl" rounded="full" variant="glass" />
         <IconButton icon={linktreeIcon} size="x2" rounded="full" variant="glass" />
+        <IconButton icon={linktreeIcon} size="x3" rounded="full" variant="glass" />
+        <IconButton icon={linktreeIcon} size="x4" rounded="full" variant="glass" />
+        <IconButton icon={linktreeIcon} size="x5" rounded="full" variant="glass" />
+        <IconButton icon={linktreeIcon} size="x6" rounded="full" variant="glass" />
+        <IconButton icon={linktreeIcon} size="x7" rounded="full" variant="glass" />
       </div>
 
     </Container>

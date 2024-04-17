@@ -14,6 +14,15 @@ export interface ButtonProps extends ComponentProps
   config?: ExtendConfig;
 }
 
+function useComponentTransition()
+{
+  const [firstRender, setFirstRender] = React.useState(true)
+
+  React.useEffect(() => setFirstRender(false), [setFirstRender])
+
+  return firstRender ? "none" : "all"
+}
+
 /**
  *
  *

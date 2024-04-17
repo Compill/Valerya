@@ -1,6 +1,6 @@
-import { ComponentConfig, ComponentTypings, DisabledState, ExtendComponentConfig, SelectedState } from "@valerya/core";
+import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, ExtendSurfaceComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SurfaceComponentConfig } from "@valerya/core";
 import { ButtonProps } from "../button";
-import { HoverableSurfaceBasedComponent } from "../surface";
+import { HoverableSurfaceBasedComponent, LayerProps } from "../surface";
 import { HTMLButtonProps, HTMLDivProps, RightJoinProps } from "@soperio/react";
 
 
@@ -8,5 +8,7 @@ type TraitProps = ComponentTypings<"Valerya.IconButton">;
 
 export type ComponentProps = HoverableSurfaceBasedComponent<TraitProps & SelectedState & DisabledState & RightJoinProps<HTMLButtonProps, HTMLDivProps>>
 
-export type Config = ComponentConfig<TraitProps>;
-export type ExtendConfig = ExtendComponentConfig<Config>;
+interface ConfigStateProps extends SelectedThemeProps<LayerProps>, DisabledThemeProps<LayerProps>, SelectedDisabledThemeProps<LayerProps> { }
+
+export type Config = SurfaceComponentConfig<TraitProps, ComponentProps, ConfigStateProps>;
+export type ExtendConfig = ExtendSurfaceComponentConfig<Config>;
