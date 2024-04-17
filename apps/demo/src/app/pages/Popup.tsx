@@ -16,12 +16,7 @@ export default function Page({ ...props })
 
       <Popup show={show} side="bottom-start" onHide={onHide}>
         <Button onClick={() => setShow(true)}>  Show popup</Button>
-        <div dflex flexCol w="96" h="96" gap="3" bgColor="white"  mt="2" p="2" rounded shadow>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
-          <Button onClick={() => setShow(false)}>Close popup</Button>
+        <div dflex flexCol w="96" h="96" gap="3" bgColor="white"   p="2" rounded shadow>
           <Button onClick={() => setShow(false)}>Close popup</Button>
           <Button onClick={() => setShow(false)}>Close popup</Button>
           <Button onClick={() => setShow(false)}>Close popup</Button>

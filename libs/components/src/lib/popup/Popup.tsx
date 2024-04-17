@@ -1,5 +1,5 @@
-import { HTMLDivProps, SoperioComponent } from "@soperio/react";
-import { FloatingFocusManager, FloatingPortal, Placement, autoUpdate, flip, useDismiss, useFloating, useInteractions, useRole, useTransitionStatus } from "@floating-ui/react";
+import { HTMLDivProps, SoperioComponent, useThemeProperty } from "@soperio/react";
+import { FloatingFocusManager, FloatingPortal, Placement, autoUpdate, flip, useDismiss, useFloating, useInteractions, useRole, useTransitionStatus, useTransitionStyles } from "@floating-ui/react";
 import React from "react";
 
 export interface PopupProps extends SoperioComponent, HTMLDivProps
@@ -13,6 +13,8 @@ export interface PopupProps extends SoperioComponent, HTMLDivProps
 
 export function Popup({ show, side = "bottom-start", modal, onHide, children, ...props }: PopupProps)
 {
+  const easing = useThemeProperty("transition.ease", "in-out")
+
   const onOpenChange = React.useCallback((open: boolean, event?: Event | undefined) =>
   {
     if (!open)
@@ -33,7 +35,16 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
     ],
   });
 
-  const { isMounted, status } = useTransitionStatus(context);
+  const { isMounted, styles } = useTransitionStyles(context, {
+    // Configure both open and close durations:
+    duration: 500,
+    initial: { opacity: 0 },
+    open: { opacity: 1 },
+    close: { opacity: 0},
+    common: { transitionTimingFunction: easing }
+  });
+
+  // const { isMounted, status } = useTransitionStatus(context);
 
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: "menu" });
@@ -55,17 +66,19 @@ export function Popup({ show, side = "bottom-start", modal, onHide, children, ..
       {
         isMounted &&
         (
-          <FloatingPortal >
+          <FloatingPortal>
             <div
               ref={refs.setFloating}
-              style={floatingStyles}
+              // style={floatingStyles}
               // aria-labelledby={labelId}
               {...getFloatingProps()}
               z="9999"
-              opacity={status == "open" ? "100" : "0"}
-              transition="opacity"
-              duration="500"
-              easing="in-out"
+              // opacity={status == "open" ? "100" : "0"}
+              // transition="opacity"
+              // duration="500"
+              // delay="75"
+              // easing={status == "open" ? "in-out" : "linear" }
+              style={{...floatingStyles, ...styles}}
             >
               {children[1]}
             </div>
