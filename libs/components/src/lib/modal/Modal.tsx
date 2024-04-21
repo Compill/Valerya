@@ -8,6 +8,7 @@ import { Divider } from "../divider";
 import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
+import { RemoveScroll } from "react-remove-scroll";
 
 const COMPONENT_ID = "Valerya.Modal";
 
@@ -84,51 +85,53 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
 
   return (
     ReactDOM.createPortal(
-      <motion.div
-        animate={animate}
-        variants={modalAnimation}
-        initial='hidden'
-        tabIndex={-1}
-      >
-        <div
-          onClick={handleClick}
-          pointerEvents={show ? "auto" : "none"}
-          position="fixed"
-          w="100vw"
-          h="100vh"
-          top="0"
-          start="0"
-          z="1000"
-          {...styles["backdrop"]}
-          bgOpacity={backdropOpacity}
-          ref={ref}>
+      <RemoveScroll enabled={show}>
+        <motion.div
+          animate={animate}
+          variants={modalAnimation}
+          initial='hidden'
+          tabIndex={-1}
+        >
           <div
-            alignItems={position === "center" ? position : positionX}
+            onClick={handleClick}
+            pointerEvents={show ? "auto" : "none"}
             position="fixed"
-            w="100%"
-            h="full"
-            overflowX="hidden"
-            overflowY="auto"
-            outline="none"
-            z="1050"
-            {...styles["modalWrapper"]}
-            {...props}>
-            <Surface
-              scheme={_scheme}
-              onClick={(e) => e.stopPropagation()}
-              bgOpacity="100"
-              {...styles["modalContent"]}
-              {...props}
-            >
-              <ModalContextProvider value={context}>
-                <MultiPartStyleProvider value={styles}  >
-                  {children}
-                </MultiPartStyleProvider>
-              </ModalContextProvider>
-            </Surface>
+            w="100vw"
+            h="100vh"
+            top="0"
+            start="0"
+            z="1000"
+            {...styles["backdrop"]}
+            bgOpacity={backdropOpacity}
+            ref={ref}>
+            <div
+              alignItems={position === "center" ? position : positionX}
+              position="fixed"
+              w="100%"
+              h="full"
+              overflowX="hidden"
+              overflowY="auto"
+              outline="none"
+              z="1050"
+              {...styles["modalWrapper"]}
+              {...props}>
+              <Surface
+                scheme={_scheme}
+                onClick={(e) => e.stopPropagation()}
+                bgOpacity="100"
+                {...styles["modalContent"]}
+                {...props}
+              >
+                <ModalContextProvider value={context}>
+                  <MultiPartStyleProvider value={styles}  >
+                    {children}
+                  </MultiPartStyleProvider>
+                </ModalContextProvider>
+              </Surface>
+            </div>
           </div>
-        </div>
-      </motion.div >
+        </motion.div>
+      </RemoveScroll>
       , document.body)
   );
 });
