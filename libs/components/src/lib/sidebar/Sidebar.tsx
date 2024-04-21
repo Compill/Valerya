@@ -5,6 +5,7 @@ import { Surface } from "../surface";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 import { useComponentTransition } from "../hooks/useComponentTransition";
+import { RemoveScroll } from 'react-remove-scroll';
 
 const COMPONENT_ID = "Valerya.Sidebar"
 
@@ -76,40 +77,42 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
   // For a Transition component
 
   return (
-    <div
-      z="1000"
-      w="screen"
-      h="screen"
-      position="fixed"
-      overflow="hidden"
-      inset="0"
-      bgColor="#000000"
-      transition={transition}
-      easing={props.easing || DEFAULT_EASING}
-      duration={props.duration || DEFAULT_DURATION}
-      onClick={onClose}
-      bgOpacity={internalShow ? 50 : 0}
-      dflex
-      flexDirection={isX ? "row" : "column"}
-      justifyContent={justify}
-      alignContent={justify}
-      pointerEvents={show ? "auto" : "none"}
-    >
-      <Surface
-        scheme={scheme}
-        w={width}
-        h={height}
-        transition={firstRender || (side === previousSide && direction === previousDirection) ? "transform" : "none"}
-        transform
+    <RemoveScroll enabled={internalShow}>
+      <div
+        z="1000"
+        w="screen"
+        h="screen"
+        position="fixed"
+        overflow="hidden"
+        inset="0"
+        bgColor="#000000"
+        transition={transition}
         easing={props.easing || DEFAULT_EASING}
         duration={props.duration || DEFAULT_DURATION}
-        translateX={side === previousSide && previousDirection === direction ? translateX : initTranslateX}
-        translateY={side === previousSide && previousDirection === direction ? translateY : initTranslateY}
-        {...styles}
-        {...props}
+        onClick={onClose}
+        bgOpacity={internalShow ? 50 : 0}
+        dflex
+        flexDirection={isX ? "row" : "column"}
+        justifyContent={justify}
+        alignContent={justify}
+        pointerEvents={show ? "auto" : "none"}
       >
-        {children}
-      </Surface>
-    </div>
+        <Surface
+          scheme={scheme}
+          w={width}
+          h={height}
+          transition={firstRender || (side === previousSide && direction === previousDirection) ? "transform" : "none"}
+          transform
+          easing={props.easing || DEFAULT_EASING}
+          duration={props.duration || DEFAULT_DURATION}
+          translateX={side === previousSide && previousDirection === direction ? translateX : initTranslateX}
+          translateY={side === previousSide && previousDirection === direction ? translateY : initTranslateY}
+          {...styles}
+          {...props}
+        >
+          {children}
+        </Surface>
+      </div>
+    </RemoveScroll>
   );
 })
