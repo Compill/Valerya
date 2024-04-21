@@ -118,6 +118,7 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
               <Surface
                 scheme={_scheme}
                 onClick={(e) => e.stopPropagation()}
+                cursor="default"
                 bgOpacity="100"
                 {...styles["modalContent"]}
                 {...props}

@@ -21,7 +21,7 @@ export default function Page({ ...props })
         <Button onClick={() => setSide("bottom")}>Open Bottom</Button>
       </div>
 
-    <div p="20">
+      <div p="20">
         <p>Hello</p>
         <p>Hello</p>
         <p>Hello</p>
@@ -57,10 +57,63 @@ export default function Page({ ...props })
         <p>Hello</p>
         <p>Hello</p>
         <p>Hello</p>
-    </div>
-{/* TODO Add variant */}
-      <Sidebar scheme="default" show={side != null} side={side as Side} sidebarWidth="500px" onClose={() => setSide(null)}>
-        <div p="8">Hello</div>
+      </div>
+      {/* TODO Add variant */}
+      <Sidebar scheme="default" show={side != null} side={side as Side} sidebarWidth="500px" overflowY="scroll" onClose={() => setSide(null)}>
+        <div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+        </div>
       </Sidebar>
     </Container>
   );
