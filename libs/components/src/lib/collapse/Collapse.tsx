@@ -151,7 +151,9 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
             style={{
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
-              overflow: "hidden",
+              // overflowY: "hidden",
+              overflow: "visible hidden",
+              // overflow: "hidden",
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               display: "block",
