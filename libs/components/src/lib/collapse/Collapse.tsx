@@ -96,6 +96,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
       className,
       transition,
       transitionEnd,
+      delay,
       ...rest
     } = props
 
