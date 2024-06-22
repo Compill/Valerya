@@ -144,6 +144,12 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
 
   const bg = name ? randomColor(name) : _scheme.layers.main.color
 
+  React.useEffect(() =>
+  {
+    // On src change, replace active src
+    setActiveSrc(src)
+  }, [src])
+
   return (
     <Surface
       scheme={_scheme}

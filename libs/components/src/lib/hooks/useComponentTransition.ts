@@ -1,6 +1,6 @@
 import React from "react"
 
-export function useComponentTransition(transition?: "all" | "colors" | "opacity" | "shadow" | "trasnform")
+export function useComponentTransition(transition?: "all" | "colors" | "opacity" | "shadow" | "transform")
 {
   const [firstRender, setFirstRender] = React.useState(true)
 
