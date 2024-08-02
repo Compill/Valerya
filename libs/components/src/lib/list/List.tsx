@@ -53,10 +53,10 @@ const List = forwardRef<"ul", ListProps>(({
     >
       <MultiPartStyleProvider value={styles}>
         {_children?.map((item, index) => (
-          <>
+          <React.Fragment key={index}>
             {item}
             {showDividers && index < _children.length - 1 && <Divider scheme={_scheme} {...styles["divider"]} {...(dividerStyle === "transparent" ? { bgColor: "transparent" } : null)} />}
-          </>
+          </React.Fragment>
         ))}
       </MultiPartStyleProvider>
     </ul>
