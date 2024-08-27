@@ -18,14 +18,14 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 const [ModalContextProvider, useModalContext] = createContext<ModalProps>()
 //TODO impossible de overirder les valeurs de position de base de sopério
 
-export interface ModalProps extends Omit<ComponentProps, "position">, ParentComponent, Omit<HTMLDivProps, "position">
+export interface ModalProps extends ComponentProps, ParentComponent
 {
   config?: ExtendConfig,
   closeOnEsc?: boolean,
   closeOnBgClick?: boolean,
   show: boolean,
   onClose?: () => void,
-  position?: "top" | "center" | "bottom" | string,
+  modalPosition?: "top" | "center" | "bottom" | string,
   backdropOpacity?: Opacity
 }
 
@@ -42,7 +42,7 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
   onClose,
   closeOnBgClick: closeOnBackdropClick = true,
   closeOnEsc = true,
-  position = "center",
+  modalPosition = "center",
   show = false,
   backdropOpacity = "50",
   children,
@@ -58,7 +58,7 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
     exit: { opacity: 0, scale: 0 }
   }
   const context = { onClose, show }
-  const positionX = position === "bottom" ? "end" : "start"
+  const positionX = modalPosition === "bottom" ? "end" : "start"
 
   const handleClick = React.useCallback((event: any) =>
   {
@@ -105,7 +105,7 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
             bgOpacity={backdropOpacity}
             ref={ref}>
             <div
-              alignItems={position === "center" ? position : positionX}
+              alignItems={modalPosition === "center" ? modalPosition : positionX}
               position="fixed"
               w="100%"
               h="full"
