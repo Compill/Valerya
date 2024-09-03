@@ -92,6 +92,22 @@ const config: Config =
           }
         )
       },
+      glass:
+      {
+        modalContent: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            layer: "glass",
+            border: "none",
+          }
+        ),
+        divider: (surface: SurfaceScheme, darkMode: boolean) =>
+        (
+          {
+            bgColor: surface.layers.glass.onColor,
+          }
+        )
+      },
       bordered:
       {
         modalContent: (surface: SurfaceScheme, darkMode: boolean) =>
