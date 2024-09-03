@@ -97,14 +97,14 @@ const config: Config =
         modalContent: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            layer: "glass",
+            layer: "mainGlass",
             border: "none",
           }
         ),
         divider: (surface: SurfaceScheme, darkMode: boolean) =>
         (
           {
-            bgColor: surface.layers.glass.onColor,
+            bgColor: surface.layers.mainGlass.onColor,
           }
         )
       },
