@@ -43,7 +43,7 @@ export const Slider = forwardRef <"input", SliderProps>(({
         max: typeof max === "string" ? parseFloat(max) : max,
         step: typeof step === "string" ? parseFloat(step) : step,
         value: value,
-        defaultValue: typeof defaultValue === "string" ? parseFloat(defaultValue) : defaultValue,
+      defaultValue: typeof defaultValue === "string" ?  isNaN(parseFloat(defaultValue)) ? defaultValue : parseFloat(defaultValue) : defaultValue,
         id,
         name,
         isReversed,
@@ -90,7 +90,7 @@ interface RailProps
     disabled?: boolean
 }
 
-const Rail = forwardRef < "span", RailProps>(({ orientation, ...props }: RailProps, ref) => 
+const Rail = forwardRef < "span", RailProps>(({ orientation, ...props }: RailProps, ref) =>
 {
     const styles = useMultiPartStyles();
 
@@ -101,7 +101,7 @@ const Rail = forwardRef < "span", RailProps>(({ orientation, ...props }: RailPro
         {...styles["rail"]}
         w={orientation === "horizontal" ? "full" : styles["rail"]?.["w"]}
         h={orientation === "vertical" ? "full" : styles["rail"]?.["h"]}
-        {...getTrackProps({}, ref)} 
+        {...getTrackProps({}, ref)}
         {...props} />
 })
 
