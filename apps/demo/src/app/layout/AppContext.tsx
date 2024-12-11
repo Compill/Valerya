@@ -10,7 +10,7 @@ const [ provider, useContext ] = createContext<AppContext>()
 
 function AppContextProvider({ children }: ParentComponent)
 {
-  const [page, setPage] = React.useState("Popup")
+  const [page, setPage] = React.useState("Slider")
 
   const Provider = provider
   return <Provider value={{page, setPage}}>{children}</Provider>

@@ -18,7 +18,7 @@ export default function Page({ ...props })
     <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
 
       <div dflex flexCol gap="10" w="64">
-        <Slider variant="default" step={10}/>
+        <Slider variant="default" step={1} min={0} max={500} defaultValue={100} value={undefined}/>
         <Slider variant="default" step={10} disabled/>
         <Slider variant="solid"/>
         <Slider variant="test"/>

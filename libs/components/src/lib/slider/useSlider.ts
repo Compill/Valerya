@@ -110,7 +110,7 @@ export function useSlider({
                 ? trackRect.bottom - clientY
                 : clientX - trackRect.left
 
-                
+
             const length = isVertical ? trackRect.height : trackRect.width
             let percent = diff / length
 
@@ -250,18 +250,18 @@ export function useSlider({
         },
         onPanSessionEnd()
         {
-            if (!isInteractive) 
+            if (!isInteractive)
                 return
-            
+
                 setDragging.off()
             onChangeEnd?.(value)
             prevRef.current = value
         },
         onPan(event)
         {
-            if (!isInteractive) 
+            if (!isInteractive)
                 return
-            
+
                 setValueFromPointer(event)
         },
     })
