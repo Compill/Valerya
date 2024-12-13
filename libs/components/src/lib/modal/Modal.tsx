@@ -177,11 +177,10 @@ export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <>
-      <div dflex justifyContent="between" alignItems="center" {...styles["header"]}>
+      <div dflex justifyContent="between" alignItems="center" {...styles["header"]} {...props}>
         <div
           ref={ref}
           {...styles["headerTitle"]}
-          {...props}
         >
           {children}
         </div>
