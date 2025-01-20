@@ -114,7 +114,8 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
               outline="none"
               z="1050"
               {...styles["modalWrapper"]}
-              {...props}>
+            // {...props}
+            >
               <Surface
                 scheme={_scheme}
                 onClick={(e) => e.stopPropagation()}
