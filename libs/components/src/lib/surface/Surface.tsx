@@ -1,4 +1,4 @@
-import { ComponentManager, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, ComponentThemeState, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
 import { SurfaceScheme } from "@valerya/surface"
 import { forwardRefWithAs, SoperioComponent, HTMLDivProps, ResponsiveProps, useResponsiveProp } from "@soperio/react";
 import defaultConfig from "./config";
@@ -62,11 +62,23 @@ export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
 
   const Component = props.as ?? "div"
 
+  const finalProps = {...props}
+
+  delete finalProps[ComponentThemeState.VALID]
+    delete finalProps[ComponentThemeState.INVALID]
+    delete finalProps[ComponentThemeState.ACTIVE]
+    delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
+    delete finalProps[ComponentThemeState.CHECKED]
+    delete finalProps[ComponentThemeState.CHECKED_DISABLED]
+    delete finalProps[ComponentThemeState.SELECTED]
+    delete finalProps[ComponentThemeState.SELECTED_DISABLED]
+    delete finalProps[ComponentThemeState.DISABLED]
+
   return (
     <Component
       {...(!props.disabled && (hoverable || props.onClick) ? { cursor: "pointer" } : null)}
       {...filteredStyles}
-      {...props}
+      {...finalProps}
       ref={mergeRefs(ref, hoverRef)}
     >
       {props.children}
