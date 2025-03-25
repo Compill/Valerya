@@ -65,14 +65,14 @@ export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
   const finalProps = {...props}
 
   delete finalProps[ComponentThemeState.VALID]
-    delete finalProps[ComponentThemeState.INVALID]
-    delete finalProps[ComponentThemeState.ACTIVE]
-    delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
-    delete finalProps[ComponentThemeState.CHECKED]
-    delete finalProps[ComponentThemeState.CHECKED_DISABLED]
-    delete finalProps[ComponentThemeState.SELECTED]
-    delete finalProps[ComponentThemeState.SELECTED_DISABLED]
-    delete finalProps[ComponentThemeState.DISABLED]
+  delete finalProps[ComponentThemeState.INVALID]
+  delete finalProps[ComponentThemeState.ACTIVE]
+  delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
+  delete finalProps[ComponentThemeState.CHECKED]
+  delete finalProps[ComponentThemeState.CHECKED_DISABLED]
+  delete finalProps[ComponentThemeState.SELECTED]
+  delete finalProps[ComponentThemeState.SELECTED_DISABLED]
+  delete finalProps[ComponentThemeState.DISABLED]
 
   return (
     <Component
