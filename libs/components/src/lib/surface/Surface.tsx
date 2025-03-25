@@ -1,10 +1,10 @@
-import { ComponentManager, ComponentThemeState, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
-import { SurfaceScheme } from "@valerya/surface"
-import { forwardRefWithAs, SoperioComponent, HTMLDivProps, ResponsiveProps, useResponsiveProp } from "@soperio/react";
+import { forwardRefWithAs, HTMLDivProps, ResponsiveProps, SoperioComponent, useResponsiveProp } from "@soperio/react";
+import { ComponentManager, ComponentState, ThemeSurfaceScheme, useHover, useSurfaceComponentConfig } from "@valerya/core";
+import { mergeRefs } from "@valerya/react-utils";
+import { SurfaceScheme } from "@valerya/surface";
+import React from "react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig, TraitProps } from "./types";
-import { mergeRefs } from "@valerya/react-utils";
-import React from "react";
 
 const COMPONENT_ID = "Valerya.Surface"
 
@@ -64,15 +64,12 @@ export const Surface = forwardRefWithAs<"div", SurfaceComponentProps>((
 
   const finalProps = {...props}
 
-  delete finalProps[ComponentThemeState.VALID]
-  delete finalProps[ComponentThemeState.INVALID]
-  delete finalProps[ComponentThemeState.ACTIVE]
-  delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
-  delete finalProps[ComponentThemeState.CHECKED]
-  delete finalProps[ComponentThemeState.CHECKED_DISABLED]
-  delete finalProps[ComponentThemeState.SELECTED]
-  delete finalProps[ComponentThemeState.SELECTED_DISABLED]
-  delete finalProps[ComponentThemeState.DISABLED]
+  delete finalProps[ComponentState.VALID]
+  delete finalProps[ComponentState.INVALID]
+  delete finalProps[ComponentState.ACTIVE]
+  // delete finalProps[ComponentState.CHECKED]
+  // delete finalProps[ComponentState.SELECTED]
+  // delete finalProps[ComponentState.DISABLED]
 
   return (
     <Component
