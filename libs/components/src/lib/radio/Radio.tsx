@@ -12,8 +12,9 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface RadioProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
-  label?: string,
+  label?: string | React.ReactNode,
   config?: ExtendConfig;
+  labelPosition?: "start" | "end"
 }
 
 // TODO Transform in multipart component
@@ -26,6 +27,7 @@ export const Radio = forwardRef<"input", RadioProps>((
   {
     scheme,
     label = "",
+    labelPosition = "end",
     size,
     variant,
     dotSize,
@@ -62,6 +64,16 @@ export const Radio = forwardRef<"input", RadioProps>((
         ref={ref}
       />
 
+      {
+        label && labelPosition === "start" &&
+        (
+          <>
+            {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
+            {typeof label !== "string" && label}
+          </>
+        )
+      }
+
       <Surface
         scheme={_scheme}
         disabled={inputProps["disabled"]}
@@ -78,7 +90,15 @@ export const Radio = forwardRef<"input", RadioProps>((
           {...styles["radioIcon"] as Record<string, any>} />
       </Surface>
 
-      {label && <span {...styles["label"]}>{label}</span>}
+      {
+        label && labelPosition === "end" &&
+        (
+          <>
+            {typeof label === "string" && <span {...styles["label"]}>{label}</span>}
+            {typeof label !== "string" && label}
+          </>
+        )
+      }
     </label>
   );
 });
