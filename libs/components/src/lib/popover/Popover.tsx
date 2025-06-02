@@ -29,6 +29,7 @@ export function Popover({ side = "bottom", modal, children, ...props }: PopoverP
                             ref={refs.setFloating}
                             style={floatingStyles}
                             aria-labelledby={labelId}
+                            z="10"
                             {...getFloatingProps()}
                         >
                             {children[1]}
