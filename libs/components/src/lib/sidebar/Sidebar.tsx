@@ -40,6 +40,7 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
   sidebarWidth,
   sidebarHeight,
   config,
+  closeOnMaskClick,
   children,
   ...props }: SidebarProps, ref) =>
 {
@@ -71,6 +72,11 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
       setInternalShow(show);
   }, [show, internalShow, setInternalShow]);
 
+  const handleClick = React.useCallback((e:React.MouseEvent) =>
+  {
+    e.stopPropagation()
+  }, [])
+
   // Another side bar implementation
   // See https://github.com/DouyinFE/semi-design/blob/main/packages/semi-animation-react/src/Transition.tsx
   // https://github.com/DouyinFE/semi-design/blob/main/packages/semi-ui/sideSheet/SideSheetTransition.tsx
@@ -89,7 +95,7 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
         transition={transition}
         easing={props.easing || DEFAULT_EASING}
         duration={props.duration || DEFAULT_DURATION}
-        onClick={onClose}
+        onClick={closeOnMaskClick ? onClose : undefined}
         bgOpacity={internalShow ? 50 : 0}
         dflex
         flexDirection={isX ? "row" : "column"}
@@ -107,6 +113,7 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
           duration={props.duration || DEFAULT_DURATION}
           translateX={side === previousSide && previousDirection === direction ? translateX : initTranslateX}
           translateY={side === previousSide && previousDirection === direction ? translateY : initTranslateY}
+          onClick={handleClick}
           {...styles}
           {...props}
         >
