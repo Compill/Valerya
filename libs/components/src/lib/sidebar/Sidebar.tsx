@@ -40,7 +40,7 @@ export const Sidebar = forwardRef<"div", SidebarProps>(({
   sidebarWidth,
   sidebarHeight,
   config,
-  closeOnMaskClick,
+  closeOnMaskClick = true,
   children,
   ...props }: SidebarProps, ref) =>
 {
