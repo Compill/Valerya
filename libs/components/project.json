@@ -21,7 +21,7 @@
           "@emotion/react",
           "@valerya/core",
           "@valerya/surface",
-          "@valerya/surface",
+          "@valerya/react-utils",
           "@valerya/utils",
           "framer-motion",
           "lodash",
