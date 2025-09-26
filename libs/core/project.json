@@ -19,7 +19,8 @@
           "react-dom",
           "react/jsx-runtime",
           "@emotion/react",
-          "@soperio/react"
+          "@soperio/react",
+          "@valerya/surface"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",

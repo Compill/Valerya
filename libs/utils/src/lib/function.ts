@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 // import { isFunction, isNumber } from "@soperio/utils"
-import { isFunction, isNumber } from "@soperio/react"
+import { isNumber } from "es-toolkit/compat"
+import { isFunction } from "es-toolkit/compat"
 import { IS_DEV } from "./assertion"
 import { AnyFunction, FunctionArguments } from "./types"
 
@@ -99,13 +100,13 @@ export function distance<P extends Point | number>(a: P, b: P)
 {
     if (isNumber(a) && isNumber(b))
         return distance1D(a, b)
-    
+
         if (isPoint(a) && isPoint(b))
     {
         const xDelta = distance1D(a.x, b.x)
         const yDelta = distance1D(a.y, b.y)
         return Math.sqrt(xDelta ** 2 + yDelta ** 2)
     }
-    
+
     return 0
 }

@@ -1,4 +1,4 @@
-import { isObject } from "@soperio/react"
+import { isObject } from "es-toolkit/compat"
 
 export function isCssVar(value: string): boolean
 {

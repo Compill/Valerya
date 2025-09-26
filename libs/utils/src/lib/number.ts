@@ -1,4 +1,4 @@
-import { isNotNumber } from "@soperio/react"
+import { isNumber } from "es-toolkit/compat"
 import { warn } from "./function"
 
 export const minSafeInteger = Number.MIN_SAFE_INTEGER || -9007199254740991
@@ -7,7 +7,7 @@ export const maxSafeInteger = Number.MAX_SAFE_INTEGER || 9007199254740991
 function toNumber(value: any)
 {
     const num = parseFloat(value)
-    return isNotNumber(num) ? 0 : num
+    return !isNumber(num) ? 0 : num
 }
 
 /**

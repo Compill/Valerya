@@ -16,7 +16,12 @@
           "esm",
           "cjs"
         ],
-        "external": [ "@soperio/utils", "@soperio/react"],
+        "external": [
+          "react",
+          "react-dom",
+          "@soperio/utils",
+          "@soperio/react"
+        ],
         "outputPath": "dist/libs/utils",
         "tsConfig": "libs/utils/tsconfig.lib.json",
         "project": "libs/utils/package.json",
