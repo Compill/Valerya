@@ -165,6 +165,7 @@ export const Avatar = forwardRef<typeof Surface, AvatarProps>((
           alt={name}
           src={activeSrc}
           onError={() => setActiveSrc("")}
+          bgColor="white"
           {...styles["image"]}
         />
         : name ? (
