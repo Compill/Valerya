@@ -19,6 +19,8 @@
           "react-dom",
           "react/jsx-runtime",
           "@emotion/react",
+          "@soperio/core",
+          "@soperio/theming",
           "@soperio/utils",
           "@soperio/jsx-runtime",
           "@soperio/jsx-dev-runtime",
