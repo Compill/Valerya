@@ -25,7 +25,8 @@
           "@valerya/utils",
           "framer-motion",
           "lodash",
-          "@soperio/react"
+          "@soperio/react",
+          "tslib"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",

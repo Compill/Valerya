@@ -18,7 +18,8 @@
           "react",
           "react-dom",
           "@emotion/react",
-          "@soperio/react"
+          "@soperio/react",
+          "tslib"
         ],
         "outputPath": "dist/libs/surface",
         "tsConfig": "libs/surface/tsconfig.lib.json",

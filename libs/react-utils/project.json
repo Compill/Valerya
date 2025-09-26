@@ -18,7 +18,8 @@
         "external": [
           "@soperio/utils",
           "@soperio/react",
-          "@valerya/utils"
+          "@valerya/utils",
+          "tslib"
         ],
         "outputPath": "dist/libs/react-utils",
         "tsConfig": "libs/react-utils/tsconfig.lib.json",

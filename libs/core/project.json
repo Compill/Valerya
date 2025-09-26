@@ -20,7 +20,8 @@
           "react/jsx-runtime",
           "@emotion/react",
           "@soperio/react",
-          "@valerya/surface"
+          "@valerya/surface",
+          "tslib"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
