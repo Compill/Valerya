@@ -19,6 +19,7 @@
         "external": [
           "react",
           "react-dom",
+          "react/jsx-runtime",
           "@soperio/utils",
           "@soperio/react"
         ],
