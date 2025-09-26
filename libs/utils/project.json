@@ -21,7 +21,8 @@
           "react-dom",
           "react/jsx-runtime",
           "@soperio/utils",
-          "@soperio/react"
+          "@soperio/react",
+          "tslib"
         ],
         "outputPath": "dist/libs/utils",
         "tsConfig": "libs/utils/tsconfig.lib.json",
