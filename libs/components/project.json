@@ -20,6 +20,7 @@
           "react/jsx-runtime",
           "@emotion/react",
           "@soperio/react",
+          "@soperio/utils",
           "@valerya/core",
           "@valerya/surface",
           "@valerya/utils",
