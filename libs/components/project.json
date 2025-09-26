@@ -19,13 +19,13 @@
           "react-dom",
           "react/jsx-runtime",
           "@emotion/react",
-          "@soperio/react",
-          "@soperio/utils",
           "@valerya/core",
+          "@valerya/surface",
           "@valerya/surface",
           "@valerya/utils",
           "framer-motion",
-          "lodash"
+          "lodash",
+          "@soperio/react"
         ],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
