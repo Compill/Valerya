@@ -19,9 +19,12 @@
           "react-dom",
           "react/jsx-runtime",
           "@emotion/react",
-          "@soperio/react",
+          "@soperio/utils",
           "@soperio/jsx-runtime",
           "@soperio/jsx-dev-runtime",
+          "@valerya/core",
+          "@valerya/surface",
+          "@valerya/utils",
           "framer-motion",
           "lodash"
         ],
