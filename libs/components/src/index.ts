@@ -17,6 +17,7 @@ export * from './lib/popover/';
 export * from './lib/popup/';
 export * from './lib/radio/';
 // export * from './lib/scrollable/';
+export * from './lib/hooks/useComponentTransition';
 export * from './lib/select/';
 export * from './lib/sidebar/';
 export * from './lib/slider/';
