@@ -36,27 +36,3 @@ export interface LayerScheme
   alt: Layer
   altInv: Layer
 }
-
-
-/*
-
-interface SurfaceScheme
-{
-  palette: PaletteScheme,
-  layers: LayerScheme
-}
-
-Surface Component
-{
-  theme
-  layer
-}
-
-Button
-{
-  theme
-}
-
-+ layer in config
-
-*/

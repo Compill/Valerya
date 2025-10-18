@@ -1,5 +1,5 @@
 import { darken, lighten } from "@soperio/react";
-import chroma from "chroma-js";
+import { scale } from "chroma-js";
 import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
 import { alphaOnBackground, alphaOnWhiteBackground, hexToRGBA, RGBA } from "../utils/colorUtils";
@@ -84,7 +84,7 @@ export function buildWhiteSurface(whiteColor: string, darkColor: string, options
         mainLayer
     }
 
-    const colors = chroma.scale([primaryHex, onPrimaryHex]).colors(10)
+    const colors = scale([primaryHex, onPrimaryHex]).colors(10)
 
     const palette = {
         "50": colors[0],
