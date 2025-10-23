@@ -29,7 +29,7 @@ const config: Config =
       py: "3",
       minH: "16",
       dflex: true,
-      alignItems: "center",
+      alignItems: "start",
       textSize: "lg",
       fontWeight: "600"
     },

@@ -1,5 +1,5 @@
 import { createContext, forwardRef, HTMLDivProps, IS_DEV, Opacity, ParentComponent, SoperioComponent, Spacing } from "@soperio/react";
-import { ComponentManager, MultiPartStyleProvider, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
+import { ComponentManager, MultiPartStyleProvider, ThemeSurfaceScheme, useMultiPartStyles, useMultiPartSurfaceComponentConfig } from "@valerya/core";
 import { motion } from "framer-motion";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -141,12 +141,14 @@ const ModalContainer = forwardRef<"div", ModalProps>(({
 export interface ModalHeaderProps extends SoperioComponent, ParentComponent
 {
   showCloseButton?: boolean
+  closeButtonScheme?: ThemeSurfaceScheme
   showDivider?: boolean;
   borderWidth?: "full" | "padded" | Spacing
 };
 
 export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
   showCloseButton = true,
+  closeButtonScheme = "dark",
   showDivider,
   borderWidth,
   children,
@@ -191,6 +193,7 @@ export const ModalHeader = forwardRef<"div", ModalHeaderProps>(({
           (
             <Button
               {...styles["headerCloseButton"]}
+              scheme={closeButtonScheme}
               onClick={closeModal}
             >
               <svg
