@@ -56,7 +56,8 @@
     "tsconfig-paths": "^4.0.0",
     "tslib": "^2.3.0",
     "unbuild": "^0.8.11",
-    "update-notifier": "^5.0.1"
+    "update-notifier": "^5.0.1",
+    "@valerya/surface": "0.0.109"
   },
   "peerDependencies": {
     "@soperio/react": "^0.1.116",

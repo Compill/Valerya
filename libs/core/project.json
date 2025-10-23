@@ -49,6 +49,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
+        "distFolderPath": "dist/libs/core",
         "access": "public"
       }
     }
