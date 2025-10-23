@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 */**/dist
+
+.nx/cache
+.nx/workspace-data

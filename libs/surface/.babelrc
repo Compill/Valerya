@@ -1,7 +1,12 @@
 {
   "presets": [
     [
-      "@nrwl/web/babel"
+      "@nx/react/babel",
+      {
+        "runtime": "automatic",
+        "importSource": "@soperio"
+      }
     ]
-  ]
+  ],
+  "plugins": []
 }
