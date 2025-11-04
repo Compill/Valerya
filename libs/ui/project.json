@@ -6,35 +6,28 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
         "outputPath": "dist/libs/ui",
-        "tsConfig": "libs/ui/tsconfig.lib.json",
-        "project": "libs/ui/package.json",
-        "entryFile": "libs/ui/src/index.ts",
-        "external": ["react/jsx-runtime", "@emotion/react", "@soperio/react"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "format": ["esm", "cjs"],
-        "addDependenciesToPackageJson": true,
-        "assets": [
-          {
-            "glob": "libs/ui/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ],
-        "babelUpwardRootMode": true
+        "configFile": "libs/ui/vite.config.ts"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/ui"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/ui"
+      ],
       "options": {
         "jestConfig": "libs/ui/jest.config.ts"
       }
@@ -44,7 +37,18 @@
       "options": {
         "distFolderPath": "dist/libs/ui",
         "access": "public"
-      }
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "implicitDependencies": {
+      "dependsOn": [
+        "surface",
+        "components",
+        "core",
+        "react-utils"
+      ]
     }
   }
 }

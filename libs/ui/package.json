@@ -1,6 +1,6 @@
 {
   "name": "@valerya/ui",
-  "version": "0.0.117",
+  "version": "0.0.123",
   "description": "UI component framework for Soperio",
   "keywords": [
     "react",
@@ -19,5 +19,16 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Compill/Valerya.git"
+  },
+  "dependencies": {
+    "@valerya/surface": "^0.0.109",
+    "@valerya/core": "^0.0.104",
+    "@valerya/components": "^0.0.126",
+    "@valerya/react-utils": "^0.0.10",
+    "@valerya/utils": "^0.0.16"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }

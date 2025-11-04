@@ -8,6 +8,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@soperio",
     "noImplicitAny": false,
     "target": "es2015",
     "module": "esnext",
