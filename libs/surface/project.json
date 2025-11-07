@@ -60,7 +60,12 @@
       "options": {
         "distFolderPath": "dist/libs/surface",
         "access": "public"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
     }
   }
 }
