@@ -21,11 +21,11 @@
     "url": "https://github.com/Compill/Valerya.git"
   },
   "dependencies": {
-    "@valerya/surface": "^0.0.109",
-    "@valerya/core": "^0.0.104",
-    "@valerya/components": "^0.0.126",
-    "@valerya/react-utils": "^0.0.10",
-    "@valerya/utils": "^0.0.16"
+    "@valerya/surface": "^1.0.1",
+    "@valerya/core": "^1.0.1",
+    "@valerya/components": "^1.0.1",
+    "@valerya/react-utils": "^1.0.1",
+    "@valerya/utils": "^1.0.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
