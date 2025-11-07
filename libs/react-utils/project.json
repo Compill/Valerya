@@ -57,7 +57,12 @@
       "options": {
         "distFolderPath": "dist/libs/react-utils",
         "access": "public"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
     }
   },
   "tags": []

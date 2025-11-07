@@ -51,7 +51,12 @@
       "options": {
         "distFolderPath": "dist/libs/core",
         "access": "public"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
     }
   }
 }
