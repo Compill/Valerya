@@ -31,7 +31,7 @@
     "@soperio/theme-extensions": "^0.0.7",
     "@swc/core": "1.5.7",
     "@valerya/components": "1.0.1",
-    "@valerya/core": "1.0.1",
+    "@valerya/core": "1.0.2",
     "@valerya/react-utils": "^0.0.10",
     "@valerya/surface": "1.0.2",
     "@valerya/ui": "1.0.1",
