@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "devValeryia": "clear & node bin/index.mjs typings ./src/test/theme.ts",
+    "devValeryia": "npx bin/index.mjs typings ./src/test/theme.ts",
+    "devValeryia2": "npx --node-options=--inspect bin/index.mjs",
     "devValeryaOut": "clear & node bin/index.mjs typings ./src/test/theme.ts  --out ./src/test"
   },
   "dependencies": {

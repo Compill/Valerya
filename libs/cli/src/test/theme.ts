@@ -9,8 +9,8 @@ const theme = extendTheme({
         ...theming
     }
 },
-    withSurface("primary", buildSurface(0xff123456)),
-    withSurface("secondary", buildSurface(0xff654321)),
+    withSurface("primary", buildSurface("#ff123456")),
+    withSurface("secondary", buildSurface("#ff654321")),
 )
 
 export default theme

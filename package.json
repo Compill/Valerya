@@ -29,7 +29,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
     "@floating-ui/react": "^0.27.16",
-    "@soperio/theme-extensions": "^0.0.7",
+    "@soperio/theme-extensions": "^1.0.3",
     "@swc/core": "1.5.7",
     "@valerya/components": "1.0.2",
     "@valerya/core": "1.0.2",

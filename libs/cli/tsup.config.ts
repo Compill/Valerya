@@ -9,4 +9,5 @@ export default defineConfig({
   banner: {
     js: '#!/usr/bin/env node',  // Force shebang in output
   },
+  noExternal: [/.*/]
 });
