@@ -1,9 +1,9 @@
 {
   "name": "@valerya/cli",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A CLI to create component typings for Valerya UI",
   "bin": {
-    "soperio-cli": "bin/index.js"
+    "soperio-cli": "bin/index.mjs"
   },
   "publishConfig": {
     "access": "public"
