@@ -39,7 +39,7 @@ async function runTemplateWorker({
         worker.on("message", (message: ErrorRecord | Serializable) =>
         {
             const errMessage = (message as ErrorRecord)?.err
-            console.log(errMessage) 
+            console.log(errMessage)
 
             if (errMessage)
             {
@@ -89,9 +89,9 @@ export async function generateThemeTypings({
             strictComponentTypes,
             format,
         })
-        
+
         spinner.info()
-        
+
         if (componentTypings)
         {
             const outPath = await resolveOutputPath("Components.d.ts", out)
@@ -115,7 +115,7 @@ export async function generateThemeTypings({
         }
 
         spinner.succeed("Done")
-    } 
+    }
     catch (e)
     {
         spinner.fail("An error occurred")
@@ -125,7 +125,7 @@ export async function generateThemeTypings({
         }
         spinner.stop()
         onError?.()
-    } 
+    }
     finally
     {
         spinner.stop()

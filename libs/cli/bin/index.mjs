@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 var __async = (__this, __arguments, generator) => {
@@ -21,9 +22,17 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
+// ../../../../../../../../opt/homebrew/lib/node_modules/tsup/assets/esm_shims.js
+import path from "path";
+import { fileURLToPath } from "url";
+var import_meta = {};
+var getFilename = /* @__PURE__ */ __name(() => fileURLToPath(import_meta.url), "getFilename");
+var getDirname = /* @__PURE__ */ __name(() => path.dirname(getFilename()), "getDirname");
+var __dirname = /* @__PURE__ */ getDirname();
+
 // src/index.ts
 import "regenerator-runtime/runtime";
-import * as path3 from "path";
+import * as path4 from "path";
 import { program } from "commander";
 import chokidar from "chokidar";
 import throttle from "lodash.throttle";
@@ -37,10 +46,10 @@ import unhandledError from "cli-handle-unhandled";
 // package.json
 var package_default = {
   name: "@valerya/cli",
-  version: "1.0.14",
+  version: "1.0.15",
   description: "A CLI to create component typings for Valerya UI",
   bin: {
-    "soperio-cli": "bin/index.js"
+    "soperio-cli": "bin/index.mjs"
   },
   publishConfig: {
     access: "public"
@@ -112,12 +121,12 @@ __name(initCLI, "initCLI");
 import { promisify as promisify2 } from "util";
 import { writeFile } from "fs";
 import { fork } from "child_process";
-import path2 from "path";
+import path3 from "path";
 import ora from "ora";
 
 // src/command/tokens/resolve-output-path.ts
 import fs from "fs";
-import path from "path";
+import path2 from "path";
 import { promisify } from "util";
 var exists = promisify(fs.exists);
 var themeInterfaceDestination = [
@@ -129,14 +138,14 @@ var themeInterfaceDestination = [
 function resolveThemingDefinitionPath(file) {
   return __async(this, null, function* () {
     const dest = themeInterfaceDestination.concat(file);
-    const baseDir = path.join("..", "..", "..");
+    const baseDir = path2.join("..", "..", "..");
     const cwd = process.cwd();
     const pathsToTry = [
-      path.resolve(baseDir, "..", ...dest),
-      path.resolve(baseDir, "..", "..", ...dest),
-      path.resolve(cwd, ...dest),
-      path.resolve(cwd, "..", ...dest),
-      path.resolve(cwd, "..", "..", ...dest)
+      path2.resolve(baseDir, "..", ...dest),
+      path2.resolve(baseDir, "..", "..", ...dest),
+      path2.resolve(cwd, ...dest),
+      path2.resolve(cwd, "..", ...dest),
+      path2.resolve(cwd, "..", "..", ...dest)
     ];
     const triedPaths = yield Promise.all(pathsToTry.map((possiblePath) => __async(null, null, function* () {
       if (yield exists(possiblePath)) {
@@ -151,7 +160,7 @@ __name(resolveThemingDefinitionPath, "resolveThemingDefinitionPath");
 function resolveOutputPath(defaultFile, overridePath) {
   return __async(this, null, function* () {
     if (overridePath) {
-      return path.resolve(process.cwd(), overridePath, defaultFile);
+      return path2.resolve(process.cwd(), overridePath, defaultFile);
     }
     const themingDefinitionFilePath = yield resolveThemingDefinitionPath(defaultFile);
     if (!themingDefinitionFilePath) {
@@ -166,7 +175,7 @@ __name(resolveOutputPath, "resolveOutputPath");
 var writeFileAsync = promisify2(writeFile);
 function runTemplateWorker(_0) {
   return __async(this, arguments, function* ({ themeFile, strictComponentTypes, format }) {
-    const worker = fork(path2.join(__dirname, "..", "..", "scripts", "read-theme-file.worker.js"), [
+    const worker = fork(path3.join(__dirname, "..", "..", "scripts", "read-theme-file.worker.js"), [
       themeFile
     ].concat(strictComponentTypes ? "--strict-component-types" : []).concat(format ? "--format" : []), {
       stdio: [
@@ -246,10 +255,10 @@ __name(generateThemeTypings, "generateThemeTypings");
 function run() {
   return __async(this, null, function* () {
     yield initCLI();
-    program.command("typings <source>").option("--out <path>", `output dir e.g. ${path3.join(...themeInterfaceDestination)}`).option("--no-format", "Disable auto formatting").option("--watch [path]", "Watch directory for changes and rebuild").action((themeFile, options) => __async(null, null, function* () {
+    program.command("typings <source>").option("--out <path>", `output dir e.g. ${path4.join(...themeInterfaceDestination)}`).option("--no-format", "Disable auto formatting").option("--watch [path]", "Watch directory for changes and rebuild").action((themeFile, options) => __async(null, null, function* () {
       const { out, format, watch } = options;
       if (watch) {
-        const watchPath = typeof watch === "string" ? watch : path3.dirname(themeFile);
+        const watchPath = typeof watch === "string" ? watch : path4.dirname(themeFile);
         const throttledGenerateThemeTypings = throttle(() => __async(null, null, function* () {
           console.time("Duration");
           yield generateThemeTypings({

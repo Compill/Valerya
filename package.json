@@ -18,7 +18,7 @@
     "[BUILD] components": "npx nx run components:build",
     "[BUILD] core": "npx nx run core:build",
     "[BUILD] surface": "npx nx run surface:build",
-    "[BUILD] cli": "cs libs/cli && tsup cli/libs/src/index.ts  --format esm --dts --out-dir cli/libs/ dist",
+    "[BUILD] cli": "cd libs/cli && tsup src/index.ts  --format esm --dts --out-dir dist",
     "update nx step 1": "nx migrate latest",
     "update nx step 2": "npm install",
     "update nx step 3": "nx migrate --run-migrations",
