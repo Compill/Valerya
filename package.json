@@ -31,7 +31,7 @@
     "@floating-ui/react": "^0.27.16",
     "@soperio/theme-extensions": "^1.0.3",
     "@swc/core": "1.5.7",
-    "@valerya/components": "1.0.3",
+    "@valerya/components": "1.0.4",
     "@valerya/core": "1.0.4",
     "@valerya/react-utils": "1.0.1",
     "@valerya/surface": "1.0.4",
