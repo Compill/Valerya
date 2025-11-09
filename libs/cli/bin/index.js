@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-specifier-resolution=node
 const { run } = require("../dist/index.js");
 
 run().catch((e) =>
