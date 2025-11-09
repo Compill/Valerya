@@ -31,7 +31,7 @@ var getDirname = /* @__PURE__ */ __name(() => path.dirname(getFilename()), "getD
 var __dirname = /* @__PURE__ */ getDirname();
 
 // src/index.ts
-import "regenerator-runtime/runtime";
+import "regenerator-runtime";
 import * as path4 from "path";
 import { program } from "commander";
 import chokidar from "chokidar";
@@ -46,7 +46,7 @@ import unhandledError from "cli-handle-unhandled";
 // package.json
 var package_default = {
   name: "@valerya/cli",
-  version: "1.0.15",
+  version: "1.0.16",
   description: "A CLI to create component typings for Valerya UI",
   bin: {
     "soperio-cli": "bin/index.mjs"

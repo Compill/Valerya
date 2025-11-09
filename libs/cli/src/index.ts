@@ -1,4 +1,4 @@
-import "regenerator-runtime/runtime"
+import "regenerator-runtime"
 import * as path from "path"
 import { program } from "commander"
 import chokidar from "chokidar"
