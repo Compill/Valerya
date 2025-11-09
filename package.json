@@ -34,7 +34,7 @@
     "@valerya/components": "1.0.2",
     "@valerya/core": "1.0.2",
     "@valerya/react-utils": "1.0.1",
-    "@valerya/surface": "1.0.2",
+    "@valerya/surface": "1.0.3",
     "@valerya/ui": "1.0.2",
     "@valerya/utils": "1.0.1",
     "chokidar": "^3.5.3",
