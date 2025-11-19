@@ -58,7 +58,7 @@
     "unbuild": "^0.8.11",
     "update-notifier": "^5.0.1",
     "@valerya/surface": "0.0.111",
-    "@valerya/core": "0.0.105",
+    "@valerya/core": "0.0.106",
     "@valerya/components": "0.0.127",
     "@valerya/ui": "0.0.118"
   },
