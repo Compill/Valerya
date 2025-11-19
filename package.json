@@ -57,7 +57,7 @@
     "tslib": "^2.3.0",
     "unbuild": "^0.8.11",
     "update-notifier": "^5.0.1",
-    "@valerya/surface": "0.0.109",
+    "@valerya/surface": "0.0.110",
     "@valerya/core": "0.0.104",
     "@valerya/components": "0.0.126"
   },
