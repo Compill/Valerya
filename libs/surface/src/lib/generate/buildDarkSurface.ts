@@ -1,5 +1,5 @@
 import { darken, lighten } from "@soperio/react";
-import { scale } from "chroma-js";
+import chroma from "chroma-js";
 import { RGBA } from "color-blend/dist/types";
 import { Layer } from "../Layer";
 import { SurfaceScheme } from "../SurfaceScheme";
@@ -103,7 +103,7 @@ export function buildDarkSurface(darkColor: string, whiteColor: string, options?
         mainLayer
     }
 
-    const colors = scale([primaryHex, onPrimaryHex]).colors(10)
+    const colors = chroma.scale([primaryHex, onPrimaryHex]).colors(10)
 
     const palette = {
         "50": colors[0],
