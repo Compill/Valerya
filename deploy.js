@@ -24,7 +24,7 @@ function deploy(lib)
   console.log(`Updated package.json to version ${version}`);
 
   console.log("Deploying...");
-  execSync(`nx run ${lib}:deploy --package-version ${version}`, { stdio: 'inherit' });
+  execSync(`nx run ${lib}:deploy --package-version ${version} --tag dev`, { stdio: 'inherit' });
   console.log("Deployed!");
 
   console.log("Committing...");

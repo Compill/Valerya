@@ -13,7 +13,15 @@
         "tsConfig": "libs/ui/tsconfig.lib.json",
         "project": "libs/ui/package.json",
         "entryFile": "libs/ui/src/index.ts",
-        "external": ["react/jsx-runtime", "@emotion/react", "@soperio/react"],
+        "external": [
+          "react/jsx-runtime",
+          "@emotion/react",
+          "@soperio/react",
+          "@valerya/core",
+          "@valerya/surface",
+          "@valerya/react-utils",
+          "@valerya/utils"
+        ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "format": ["esm", "cjs"],

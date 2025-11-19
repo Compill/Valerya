@@ -62,7 +62,7 @@
     "@valerya/components": "0.0.126"
   },
   "peerDependencies": {
-    "@soperio/react": "^0.1.116",
+    "@soperio/react": "0.1.117",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
