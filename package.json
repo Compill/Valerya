@@ -60,7 +60,7 @@
     "@valerya/surface": "0.0.111",
     "@valerya/core": "0.0.106",
     "@valerya/components": "0.0.128",
-    "@valerya/ui": "0.0.118"
+    "@valerya/ui": "0.0.119"
   },
   "peerDependencies": {
     "@soperio/react": "0.1.117",
